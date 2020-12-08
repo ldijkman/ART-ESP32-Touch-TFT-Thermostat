@@ -9,3 +9,6 @@ Manual by Touch TFT and WIFI clock thermostat
 better as NEST
 
 https://oshwlab.com/l.dijkman/esp32-dev-kit-38-pin-to-spi-touch-tft
+
+
+https://youtu.be/qNYT64CaLEI
