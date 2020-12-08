@@ -4,7 +4,7 @@ ART ESP32 SPI TFT Touch Thermostat
 
 Manual by Touch TFT and WIFI clock thermostat
 
-20 dollar DIY NEST thermostat
+10 dollar DIY NEST thermostat
 
 A Better NEST
 
