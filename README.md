@@ -1,8 +1,8 @@
 # ART-ESP32-Touch-TFT-Thermostat
 
-ART ESP32 SPI TFT Touch Thermostat
+ART ESP32 SPI TFT Touch Clock Thermostat
 
-Manual by Touch TFT and WIFI clock thermostat
+Manual control by Touch TFT and control by WIFI clock thermostat
 
 10 dollar DIY NEST thermostat
 
