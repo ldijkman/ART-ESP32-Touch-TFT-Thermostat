@@ -14,3 +14,5 @@ https://oshwlab.com/l.dijkman/esp32-dev-kit-38-pin-to-spi-touch-tft
 https://youtu.be/qNYT64CaLEI
 
 
+
+Let's make ART smart!
