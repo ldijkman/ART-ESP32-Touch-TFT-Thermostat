@@ -13,4 +13,4 @@ https://oshwlab.com/l.dijkman/esp32-dev-kit-38-pin-to-spi-touch-tft
 
 https://youtu.be/qNYT64CaLEI
 
-https://image.easyeda.com/pullimage/0pvffSdQuBwEW5eRixJsPd3uQcttBgp2v1z47P3t.jpeg
+
