@@ -113,7 +113,10 @@ void appendFile(fs::FS &fs, const char * path, const char * message) {
     return;
   }
   if (file.print(message)) {
-    Serial.print("- message appended");
+    
+   // Serial.print(" - message appended ");
+    Serial.println(message); // this is written o file
+    delay(2000);
   } else {
     Serial.println("- append failed");
   }
@@ -215,15 +218,12 @@ void loop() {
 
   writeFile(SPIFFS, "/ART_Thermostat.txt", "start\r\n");
 
-  appendFile(SPIFFS, "/ART_Thermostat.txt", sensorstring);
-  appendFile(SPIFFS, "/ART_Thermostat.txt", "\r\n");
+  appendFile(SPIFFS, "/ART_Thermostat.txt", sensorstring);//123
 
-  appendFile(SPIFFS, "/ART_Thermostat.txt", temp);
-  appendFile(SPIFFS, "/ART_Thermostat.txt", "\r\n");
+  appendFile(SPIFFS, "/ART_Thermostat.txt", temp);//456,789
 
-  appendFile(SPIFFS, "/ART_Thermostat.txt", dtostrf(temperature, 4, 2, temp));
-  appendFile(SPIFFS, "/ART_Thermostat.txt", "\r\n");
-
+  appendFile(SPIFFS, "/ART_Thermostat.txt", dtostrf(temperature, 5, 2, temp));//456.789
+ 
   appendFile(SPIFFS, "/ART_Thermostat.txt", "16000\r\n");
   appendFile(SPIFFS, "/ART_Thermostat.txt", "16000\r\n");
   appendFile(SPIFFS, "/ART_Thermostat.txt", "16000\r\n");
