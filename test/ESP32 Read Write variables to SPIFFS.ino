@@ -10,10 +10,8 @@
 
 #include "FS.h"
 #include "SPIFFS.h"
-
 int CharRead;
 char CharArray[16];
-
 /* You only need to format SPIFFS the first time you run a
    test or else use the SPIFFS plugin to create a partition
    https://github.com/me-no-dev/arduino-esp32fs-plugin */
@@ -60,10 +58,11 @@ void readFile(fs::FS &fs, const char * path) {
   }
 
   Serial.println("- read from file:");
-  int i = 0;
+  int i = 1;
   String ThisString;
 
   while (file.available()) {
+    
     CharRead = (file.read());
 
     if (CharRead == 10) {  //linefeed
@@ -72,14 +71,18 @@ void readFile(fs::FS &fs, const char * path) {
 
       Serial.print("ThisString.toInt() "); Serial.println(ThisString.toInt());
       Serial.print("ThisString.toFloat() "); Serial.println(ThisString.toFloat());
+      memset(CharArray, 0, sizeof(CharArray));//clear array
     }
     
     if (CharRead == 13) {
       Serial.print(" carriage return ");
+      ThisString="";
+      
       i = 0;
+      delay(2500);
     }
 
-    Serial.print(char(CharRead)); delay(500);
+    Serial.print(char(CharRead)); delay(50);
     CharArray[i] = char(CharRead);
     ThisString = String(CharArray);
     i = i + 1;
@@ -221,12 +224,12 @@ void loop() {
   appendFile(SPIFFS, "/ART_Thermostat.txt", dtostrf(temperature, 4, 2, temp));
   appendFile(SPIFFS, "/ART_Thermostat.txt", "\r\n");
 
-  appendFile(SPIFFS, "/ART_Thermostat.txt", "4\r\n");
-  appendFile(SPIFFS, "/ART_Thermostat.txt", "5\r\n");
-  appendFile(SPIFFS, "/ART_Thermostat.txt", "6\r\n");
-  appendFile(SPIFFS, "/ART_Thermostat.txt", "7\r\n");
-  appendFile(SPIFFS, "/ART_Thermostat.txt", "8\r\n");
-  appendFile(SPIFFS, "/ART_Thermostat.txt", "9\r\n");
+  appendFile(SPIFFS, "/ART_Thermostat.txt", "16000\r\n");
+  appendFile(SPIFFS, "/ART_Thermostat.txt", "16000\r\n");
+  appendFile(SPIFFS, "/ART_Thermostat.txt", "16000\r\n");
+  appendFile(SPIFFS, "/ART_Thermostat.txt", "32000\r\n");
+  appendFile(SPIFFS, "/ART_Thermostat.txt", "32000\r\n");
+  appendFile(SPIFFS, "/ART_Thermostat.txt", "32000\r\n");
   appendFile(SPIFFS, "/ART_Thermostat.txt", "666.666\r\n");
   Serial.println("done writing to file");
   Serial.println("5 second delay");
