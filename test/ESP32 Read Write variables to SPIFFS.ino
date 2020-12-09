@@ -1,5 +1,8 @@
 // ESP32 Read Write variables to SPIFFS
 // Working on it, so far this is it, write 11 valeus and read 11 values
+// directory listing and values
+//
+// outputs data on serial terminal 115200
 //
 // https://oshwlab.com/l.dijkman/esp32-dev-kit-38-pin-to-spi-touch-tft
 // https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat
