@@ -1,5 +1,6 @@
 Test programs for ART thermostat
 
+https://github.com/ldijkman
 
 https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat
 
