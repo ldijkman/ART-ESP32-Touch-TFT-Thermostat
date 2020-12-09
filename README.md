@@ -20,7 +20,9 @@ Let's make ART smart!
 Start ART
 
 @[youtube](http://youtu.be/qNYT64CaLEI)
+
 <img src="https://image.easyeda.com/pullimage/0pvffSdQuBwEW5eRixJsPd3uQcttBgp2v1z47P3t.jpeg">
+
 @[youtube](http://youtu.be/qNYT64CaLEI)
 
 
