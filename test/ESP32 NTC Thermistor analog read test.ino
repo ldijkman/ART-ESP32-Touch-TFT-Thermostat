@@ -4,6 +4,7 @@
 // KY-013 NTC thermistor + is connected to GND  //strange but correct + to GND
 // outputs Fahrenheit and Celcius to serial monitor
 // https://oshwlab.com/l.dijkman/esp32-dev-kit-38-pin-to-spi-touch-tft
+// https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat
 
 int ThermistorPin = 34;   //gpio34
 int Vo;
