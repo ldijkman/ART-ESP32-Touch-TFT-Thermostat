@@ -3,6 +3,7 @@
 // more or less PWM creates a voltage from 0 to 3.3volt on gpio 32
 // But SPI connector LED goes to a transistor on the TFT PCB wich switches the VCC wich i have connected to 5Volt
 // https://oshwlab.com/l.dijkman/esp32-dev-kit-38-pin-to-spi-touch-tft
+// https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat
 
 const int ledPin = 32;  // corresponds to GPIO32
                         // connect to LED of SPI TFT display
