@@ -4,30 +4,6 @@
 // KY-013 NTC thermistor + is connected to GND  //strange but correct + to GND
 // outputs Fahrenheit and Celcius to serial monitor
 // https://oshwlab.com/l.dijkman/esp32-dev-kit-38-pin-to-spi-touch-tft
-// https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat
-//
-// https://www.google.com/search?q=3+fahrenheit+to+celsius
-
-int ThermistorPin = 34;   //gpio34
-int Vo;
-float R1 = 10000;
-float logR2, R2, T, Tc, Tf;
-float c1 = 1.009249522e-03, c2 = 2.378405444e-04, c3 = 2.019202697e-07;
-float voltage = 3.3;   //use 3.3volt
-
-void setup() {
-  Serial.begin(115200);  //serial monitor
-}
-
-void loop() {
-  Vo = 0;
-  for (int i = 0; i <= 500; i++) {          // do 500 readings makes it more stable
-    Vo = Vo + analogRead(Thermisto// ESP32 analog read test
-// KY-013 NTC thermistor signal is connected to GPIO 34 (Analog ADC1_CH6)
-// KY-013 NTC thermistor - is connected to 3.3V //strange but correct - to +3.3V
-// KY-013 NTC thermistor + is connected to GND  //strange but correct + to GND
-// outputs Fahrenheit and Celcius to serial monitor
-// https://oshwlab.com/l.dijkman/esp32-dev-kit-38-pin-to-spi-touch-tft
 //
 // https://www.google.com/search?q=3+fahrenheit+to+celsius
 
