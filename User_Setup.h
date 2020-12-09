@@ -7,6 +7,9 @@
 //
 // great graphic library, love his touch calibration routine
 // https://github.com/Bodmer/TFT_eSPI
+// download from above
+// and arduino IDE menu=>sketch=>include library=>add ZIP library
+// install library from zip
 //
 //
 //
