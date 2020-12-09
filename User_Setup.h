@@ -1,4 +1,16 @@
+//
+//
+//
+// example of my TFT_eSPI User_Setup.h
+// file location => ............/arduino/librays/TFT_eSPI/User_Setup.h
+//
+//
+// great graphic library, love his touch calibration routine
 // https://github.com/Bodmer/TFT_eSPI
+//
+//
+//
+//
 //                            USER DEFINED SETTINGS
 //   Set driver type, fonts to be loaded, pins used and SPI control method etc
 //
