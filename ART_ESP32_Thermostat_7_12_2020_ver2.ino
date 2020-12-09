@@ -792,6 +792,22 @@ void OUTSUB() {
   }
 
 
+
+
+  if (CoolState == 0 ) {
+
+    tft.drawRoundRect(10, 10, 300, 140, 8, BLUE);
+    tft.setTextSize (1);
+    tft.setTextColor (iceblue, BLACK);
+    tft.setCursor(130, 13);
+    tft.print("  ");
+    tft.print(rtc.getTemperature());
+    tft.print(char(247)); // C degree sign
+    tft.print(" C  ");
+
+    // digitalWrite(cool_relais_pin, LOW);          // airco / fan output relais off
+  }
+
   if (CoolState == 1 ) {
 
     tft.drawRoundRect(10, 10, 300, 140, 8, iceblue);
