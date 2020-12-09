@@ -183,7 +183,7 @@ void loop() {
   float temperature = 666.666;
   char temp[10];
   String tempAsString;
-  dtostrf(temperature, 1, 2, temp);
+  dtostrf(temperature, 7, 2, temp); // 7 characters long, with 2 characters after the decimal point.
 
   writeFile(SPIFFS, "/ART_Thermostat.txt", "start\r\n");
 
