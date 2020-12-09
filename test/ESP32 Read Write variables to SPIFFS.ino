@@ -218,11 +218,15 @@ void loop() {
 
   writeFile(SPIFFS, "/ART_Thermostat.txt", "start\r\n");
 
+   
   appendFile(SPIFFS, "/ART_Thermostat.txt", sensorstring);//123
-
+  appendFile(SPIFFS, "/ART_Thermostat.txt", "\r\n");    // must write end of line
+   
   appendFile(SPIFFS, "/ART_Thermostat.txt", temp);//456,789
+  appendFile(SPIFFS, "/ART_Thermostat.txt", "\r\n");    // must write end of line   
 
   appendFile(SPIFFS, "/ART_Thermostat.txt", dtostrf(temperature, 5, 2, temp));//456.789
+  appendFile(SPIFFS, "/ART_Thermostat.txt", "\r\n");    // must write end of line
  
   appendFile(SPIFFS, "/ART_Thermostat.txt", "16000\r\n");
   appendFile(SPIFFS, "/ART_Thermostat.txt", "16000\r\n");
