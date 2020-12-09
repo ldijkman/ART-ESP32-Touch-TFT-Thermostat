@@ -193,7 +193,9 @@ void loop() {
   appendFile(SPIFFS, "/ART_Thermostat.txt", temp);
   appendFile(SPIFFS, "/ART_Thermostat.txt", "\r\n");
 
-  appendFile(SPIFFS, "/ART_Thermostat.txt", "3\r\n");
+  appendFile(SPIFFS, "/ART_Thermostat.txt", dtostrf(temperature, 4, 2, temp));
+ appendFile(SPIFFS, "/ART_Thermostat.txt", "\r\n");
+  
   appendFile(SPIFFS, "/ART_Thermostat.txt", "4\r\n");
   appendFile(SPIFFS, "/ART_Thermostat.txt", "5\r\n");
   appendFile(SPIFFS, "/ART_Thermostat.txt", "6\r\n");
@@ -227,5 +229,6 @@ void loop() {
   delay(5000);
 
 }
+
 
 
