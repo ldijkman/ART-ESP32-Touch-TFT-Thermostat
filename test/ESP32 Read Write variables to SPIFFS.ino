@@ -1,3 +1,4 @@
+
 // ESP32 Read Write variables to SPIFFS
 // Working on it, so far this is it, write 11 valeus and read 11 values
 // directory listing and values
@@ -9,7 +10,10 @@
 
 #include "FS.h"
 #include "SPIFFS.h"
-int tempval;
+
+int CharRead;
+char CharArray[16];
+
 /* You only need to format SPIFFS the first time you run a
    test or else use the SPIFFS plugin to create a partition
    https://github.com/me-no-dev/arduino-esp32fs-plugin */
@@ -56,11 +60,29 @@ void readFile(fs::FS &fs, const char * path) {
   }
 
   Serial.println("- read from file:");
+  int i = 0;
+  String ThisString;
+
   while (file.available()) {
-    tempval = (file.read());
-    if (tempval==10)Serial.println(" line feed");
-    if (tempval==13)Serial.print(" carriage return ");
-    Serial.print(char(tempval));delay(500);
+    CharRead = (file.read());
+
+    if (CharRead == 10) {  //linefeed
+      Serial.println(" line feed");
+      Serial.print("CharArray=>"); Serial.print(CharArray); Serial.println("<=end");
+
+      Serial.print("ThisString.toInt() "); Serial.println(ThisString.toInt());
+      Serial.print("ThisString.toFloat() "); Serial.println(ThisString.toFloat());
+    }
+    
+    if (CharRead == 13) {
+      Serial.print(" carriage return ");
+      i = 0;
+    }
+
+    Serial.print(char(CharRead)); delay(500);
+    CharArray[i] = char(CharRead);
+    ThisString = String(CharArray);
+    i = i + 1;
   }
 }
 
@@ -88,7 +110,7 @@ void appendFile(fs::FS &fs, const char * path, const char * message) {
     return;
   }
   if (file.print(message)) {
-    Serial.println("- message appended");
+    Serial.print("- message appended");
   } else {
     Serial.println("- append failed");
   }
@@ -179,11 +201,11 @@ void loop() {
   Serial.println("ListDir 5 second delay");
   delay(5000);
 
-  int sensorValue = 555;
+  int sensorValue = 123;
   char sensorstring[12];
   itoa(sensorValue , sensorstring, 10);
 
-  float temperature = 666.666;
+  float temperature = 456.789;
   char temp[10];
   String tempAsString;
   dtostrf(temperature, 7, 2, temp); // 7 characters long, with 2 characters after the decimal point.
@@ -211,7 +233,7 @@ void loop() {
   delay(5000);
 
   readFile(SPIFFS, "/ART_Thermostat.txt");
- 
+
   Serial.println("done reading file");
 
   // renameFile(SPIFFS, "/hello.txt", "/foo.txt");
