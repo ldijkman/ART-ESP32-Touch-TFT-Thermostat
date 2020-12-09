@@ -13,7 +13,7 @@
 /* You only need to format SPIFFS the first time you run a
    test or else use the SPIFFS plugin to create a partition
    https://github.com/me-no-dev/arduino-esp32fs-plugin */
-#define FORMAT_SPIFFS_IF_FAILED 0  //0 no format
+#define FORMAT_SPIFFS_IF_FAILED 0
 
 void listDir(fs::FS &fs, const char * dirname, uint8_t levels) {
   Serial.printf("Listing directory: %s\r\n", dirname);
@@ -172,14 +172,27 @@ void setup() {
 }
 
 void loop() {
-   listDir(SPIFFS, "/", 0);
+  listDir(SPIFFS, "/", 0);
   Serial.println("ListDir 5 second delay");
   delay(5000);
 
+  int sensorValue = 555;
+  char sensorstring[12];
+  itoa(sensorValue , sensorstring, 10);
+
+  float temperature = 666.666;
+  char temp[10];
+  String tempAsString;
+  dtostrf(temperature, 1, 2, temp);
 
   writeFile(SPIFFS, "/ART_Thermostat.txt", "start\r\n");
-  appendFile(SPIFFS, "/ART_Thermostat.txt", "1\r\n");
-  appendFile(SPIFFS, "/ART_Thermostat.txt", "2\r\n");
+
+  appendFile(SPIFFS, "/ART_Thermostat.txt", sensorstring);
+  appendFile(SPIFFS, "/ART_Thermostat.txt", "\r\n");
+
+  appendFile(SPIFFS, "/ART_Thermostat.txt", temp);
+  appendFile(SPIFFS, "/ART_Thermostat.txt", "\r\n");
+
   appendFile(SPIFFS, "/ART_Thermostat.txt", "3\r\n");
   appendFile(SPIFFS, "/ART_Thermostat.txt", "4\r\n");
   appendFile(SPIFFS, "/ART_Thermostat.txt", "5\r\n");
@@ -191,7 +204,7 @@ void loop() {
   Serial.println("done writing to file");
   Serial.println("5 second delay");
   delay(5000);
-  
+
   readFile(SPIFFS, "/ART_Thermostat.txt");
   readFile(SPIFFS, "/ART_Thermostat.txt");
   readFile(SPIFFS, "/ART_Thermostat.txt");
@@ -210,8 +223,9 @@ void loop() {
   // deleteFile(SPIFFS, "/TouchCalData");
   // testFileIO(SPIFFS, "/test.txt");
   Serial.println( "Test complete" );
-    Serial.println("5 second delay");
+  Serial.println("5 second delay");
   delay(5000);
 
 }
+
 
