@@ -3,6 +3,7 @@
 // GND
 // IN from gpio 26
 // https://oshwlab.com/l.dijkman/esp32-dev-kit-38-pin-to-spi-touch-tft 
+// https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat
 
 const int relay = 26;
 
