@@ -9,7 +9,7 @@
 
 #include "FS.h"
 #include "SPIFFS.h"
-
+int tempval;
 /* You only need to format SPIFFS the first time you run a
    test or else use the SPIFFS plugin to create a partition
    https://github.com/me-no-dev/arduino-esp32fs-plugin */
@@ -57,7 +57,10 @@ void readFile(fs::FS &fs, const char * path) {
 
   Serial.println("- read from file:");
   while (file.available()) {
-    Serial.write(file.read());
+    tempval = (file.read());
+    if (tempval==10)Serial.println(" line feed");
+    if (tempval==13)Serial.print(" carriage return ");
+    Serial.print(char(tempval));delay(500);
   }
 }
 
@@ -194,8 +197,8 @@ void loop() {
   appendFile(SPIFFS, "/ART_Thermostat.txt", "\r\n");
 
   appendFile(SPIFFS, "/ART_Thermostat.txt", dtostrf(temperature, 4, 2, temp));
- appendFile(SPIFFS, "/ART_Thermostat.txt", "\r\n");
-  
+  appendFile(SPIFFS, "/ART_Thermostat.txt", "\r\n");
+
   appendFile(SPIFFS, "/ART_Thermostat.txt", "4\r\n");
   appendFile(SPIFFS, "/ART_Thermostat.txt", "5\r\n");
   appendFile(SPIFFS, "/ART_Thermostat.txt", "6\r\n");
@@ -208,16 +211,7 @@ void loop() {
   delay(5000);
 
   readFile(SPIFFS, "/ART_Thermostat.txt");
-  readFile(SPIFFS, "/ART_Thermostat.txt");
-  readFile(SPIFFS, "/ART_Thermostat.txt");
-  readFile(SPIFFS, "/ART_Thermostat.txt");
-  readFile(SPIFFS, "/ART_Thermostat.txt");
-  readFile(SPIFFS, "/ART_Thermostat.txt");
-  readFile(SPIFFS, "/ART_Thermostat.txt");
-  readFile(SPIFFS, "/ART_Thermostat.txt");
-  readFile(SPIFFS, "/ART_Thermostat.txt");
-  readFile(SPIFFS, "/ART_Thermostat.txt");
-  readFile(SPIFFS, "/ART_Thermostat.txt");
+ 
   Serial.println("done reading file");
 
   // renameFile(SPIFFS, "/hello.txt", "/foo.txt");
@@ -229,6 +223,3 @@ void loop() {
   delay(5000);
 
 }
-
-
-
