@@ -61,4 +61,3 @@ rPin);
 
   delay(500);
 }
-ESP32 NTC thermistor test analog input
