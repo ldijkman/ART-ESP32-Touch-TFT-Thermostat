@@ -39,6 +39,14 @@ FullScreen https://jsfiddle.net/luberth/b6y53cn0/embedded/result/#Result
 
 Coffee keeps me going
 
+www.paypal.me/LDijkman
+
+            
+                
+                  WANTED, Boring Bored People or Students, I could use some help?!  ;-) 
+                                       Make YourSelf UseFull!
+
+
             http://paypal.me/LDijkman
                 
                   WANTED, Boring Bored People or Students, I could use some help?!  ;-) 
