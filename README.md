@@ -40,11 +40,11 @@ FullScreen https://jsfiddle.net/luberth/b6y53cn0/embedded/result/#Result
 
 
 
-This is wat your arduino ide should look like, with the TAB files
+This is wat your Arduino IDE should look like, with the TAB files
 
-ART_ESP32_Thermostat_7_12_2020_ver2.ino is the main file
+ART_ESP32_Thermostat_7_12_2020_ver2.ino => is the Main File
 
-the other files are included tab files (Should be in the same Directory as Main File)
+The other files are included tab files (Should be in the same Directory as Main File)
 
 <img src="https://image.easyeda.com/pullimage/VNE6BX0bdmtFa41PH79R6Qq3eSFhpZg6qHJ66yZu.jpeg">
 
