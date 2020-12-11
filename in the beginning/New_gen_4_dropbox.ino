@@ -10,6 +10,9 @@
 // The setrotation changes => drives you crazy
 // Possible because of display and touch locations with adafruit librarys
 // i like TFT_eSPI 
+//
+// only 1 analog read for temp each time => makes it jumpy
+// better do 100+ reads and divide by 100+
 
 #include <Adafruit_GFX.h>    // Core graphics library
 #include <Adafruit_TFTLCD.h> // Hardware-specific library
