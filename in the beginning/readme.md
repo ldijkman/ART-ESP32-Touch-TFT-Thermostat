@@ -20,3 +20,5 @@ And now, Art is on its best on an ESP32 and SPI Touch TFT
 Better then Ever
 
 Art still has to learn allot, like WiFi
+
+and remember Things
