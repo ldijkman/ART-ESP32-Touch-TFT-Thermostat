@@ -18,7 +18,11 @@ https://youtu.be/qNYT64CaLEI
 
 
 
-Let's make ART smart!
+Let's make ART smart!.
+41
+.
+42
+.
 
 Start ART
 
@@ -37,9 +41,11 @@ Start ART
 https://jsfiddle.net/luberth/b6y53cn0
 
 FullScreen https://jsfiddle.net/luberth/b6y53cn0/embedded/result/#Result
-.
-.
-.
+
+
+
+
+
 This is wat your Arduino IDE should look like, with the TAB files
 
 ART_ESP32_Thermostat_7_12_2020_ver2.ino => is the Main File
