@@ -21,7 +21,8 @@
 //           https://www.paypal.com/pools/c/8amUN5rgb9
 
 
-
+// TFT_espi commands / ussage
+// https://github.com/Bodmer/User_Manual_TFT_eSPI/blob/master/TFT_eSPI.cpp.All.pdf
 
 
 #include "FS.h"
