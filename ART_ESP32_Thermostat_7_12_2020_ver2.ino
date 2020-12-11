@@ -33,7 +33,7 @@ TFT_eSPI tft = TFT_eSPI(); // Invoke custom library
 // This is the file name used to store the calibration data file, name must start with "/".
 #define CALIBRATION_FILE "/TouchCalData"
 
-//#define FORMAT_SPIFFS_IF_FAILED 0
+//#define FORMAT_SPIFFS_IF_FAILED 0  // i think TFT_eSPI will format disk if needed for TouchCalData saving
 
 // Set REPEAT_CAL to true instead of false or 1or0 to run calibration
 byte REPEAT_CAL = 0;
