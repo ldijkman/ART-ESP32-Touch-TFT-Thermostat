@@ -1,7 +1,7 @@
 //
 // Arduino Uno, Nano, Mega, TFT Touch Thermostat
 //
-// Single File Code from Fabio Mastrotti 
+// Single File Code from / by Fabio Mastrotti 
 // https://www.youtube.com/watch?v=CM0h_ad7ETU
 //
 // This video started it all for me
@@ -9,6 +9,7 @@
 //
 // The setrotation changes => drives you crazy
 // Possible because of display and touch locations with adafruit librarys
+// i like TFT_eSPI 
 
 #include <Adafruit_GFX.h>    // Core graphics library
 #include <Adafruit_TFTLCD.h> // Hardware-specific library
