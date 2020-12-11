@@ -1,10 +1,14 @@
+//
+// Arduino Uno, Nano, Mega, TFT Touch Thermostat
+//
 // Single File Code from Fabio Mastrotti 
 // https://www.youtube.com/watch?v=CM0h_ad7ETU
 //
-// this video started it all for me
+// This video started it all for me
+// https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat
 //
-// the setrotation changes => drives you crazy
-// possible because of display and touch locations with adafruit librarys
+// The setrotation changes => drives you crazy
+// Possible because of display and touch locations with adafruit librarys
 
 #include <Adafruit_GFX.h>    // Core graphics library
 #include <Adafruit_TFTLCD.h> // Hardware-specific library
