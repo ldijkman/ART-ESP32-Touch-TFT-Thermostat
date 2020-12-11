@@ -2,6 +2,9 @@
 // https://www.youtube.com/watch?v=CM0h_ad7ETU
 //
 // this video started it all for me
+//
+// the setrotation changes => drives you crazy
+// possible because of display and touch locations with adafruit librarys
 
 #include <Adafruit_GFX.h>    // Core graphics library
 #include <Adafruit_TFTLCD.h> // Hardware-specific library
