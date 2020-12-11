@@ -23,6 +23,7 @@
 
 // TFT_espi commands / ussage
 // https://github.com/Bodmer/User_Manual_TFT_eSPI/blob/master/TFT_eSPI.cpp.All.pdf
+// https://github.com/Bodmer/TFT_eSPI/blob/master/keywords.txt
 
 
 #include "FS.h"
