@@ -1,7 +1,7 @@
 //
 // Arduino Uno, Nano, Mega, TFT Touch Thermostat
 //
-// Single File Code from / by Fabio Mastrotti 
+// Single File Code from / by Fabio Mastrotto 
 // https://www.youtube.com/watch?v=CM0h_ad7ETU
 //
 // This video started it all for me
