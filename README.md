@@ -14,14 +14,6 @@ https://oshwlab.com/l.dijkman/esp32-dev-kit-38-pin-to-spi-touch-tft
 https://youtu.be/qNYT64CaLEI
 
 
-this is wat your arduino ide should look like, with the TAB files
-
-ART_ESP32_Thermostat_7_12_2020_ver2.ino is the main file
-
-the other files are included tab files
-
-<img src="https://image.easyeda.com/pullimage/VNE6BX0bdmtFa41PH79R6Qq3eSFhpZg6qHJ66yZu.jpeg">
-
 
 
 Let's make ART smart!
@@ -46,6 +38,13 @@ FullScreen https://jsfiddle.net/luberth/b6y53cn0/embedded/result/#Result
 
 
 
+This is wat your arduino ide should look like, with the TAB files
+
+ART_ESP32_Thermostat_7_12_2020_ver2.ino is the main file
+
+the other files are included tab files
+
+<img src="https://image.easyeda.com/pullimage/VNE6BX0bdmtFa41PH79R6Qq3eSFhpZg6qHJ66yZu.jpeg">
 
 
 
