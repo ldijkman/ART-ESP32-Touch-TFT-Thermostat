@@ -4,7 +4,7 @@ File *.SKP = Sketchup File = Free Online inBrowser drawing, Works well on my pi4
 
 https://app.sketchup.com/app#   => Can Save / Export to *.STL for Slic3r for G-Code => 3D Printing
 
-SketchUp Tutorial for Beginners - Part 1 - Basic Functions https://www.youtube.com/watch?v=I_bJPNnO3HQ
+SketchUp GETTING STARTED with SketchUp Free - Lesson 1 - BEGINNERS Start Here! https://www.youtube.com/watch?v=I_bJPNnO3HQ
 
 .
 
