@@ -1,6 +1,6 @@
 3D_Prints for Art
 
-File *.SKP = Sketchup = Online inBrowser drawing, Works well on my pi400 now
+File *.SKP = Sketchup = Free Online inBrowser drawing, Works well on my pi400 now
 
 https://app.sketchup.com/app#   => Can output STL for 3D Printing
 
