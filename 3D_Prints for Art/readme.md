@@ -13,8 +13,9 @@ and be surprised => a github 3D viewer (i was ;-)
 
 DutchOrange, Wander wat Prusa thinks of that Orange ;-)
 
-used an old floppy drive cable not the right number of pins 
-but if you use the same holes on both side its no problem
+Used an old floppy drive FlatCable, Not the correct number of pins 
+
+if you use the same holes on both side its no problem
 
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/3D_Prints%20for%20Art/tft_table.jpg">
 
