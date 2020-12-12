@@ -14,6 +14,10 @@
 // only 1 analog  read for temperate each time => Makes Actual Temperature display jumpy
 // better do 100+ reads and divide by 100+
 
+
+// Original Arduino IDE SourceCode by Fabio Mastrotto 
+// Single File Code from / by Fabio Mastrotto 
+// https://www.youtube.com/watch?v=CM0h_ad7ETU
 #include <Adafruit_GFX.h>    // Core graphics library
 #include <Adafruit_TFTLCD.h> // Hardware-specific library
 #include <TouchScreen.h>
