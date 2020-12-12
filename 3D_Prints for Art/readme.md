@@ -2,7 +2,7 @@
 
 File *.SKP = Sketchup File = Free Online inBrowser drawing, Works well on my pi400 now
 
-https://app.sketchup.com/app#   => Can output STL for Slic3r for G-Code => 3D Printing
+https://app.sketchup.com/app#   => Can Save / Export to *.STL for Slic3r for G-Code => 3D Printing
 
 Click on the
 
