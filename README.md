@@ -71,6 +71,6 @@ www.paypal.me/LDijkman
                       
                       
                       
-# Calendar Time
+# It is Calendar Time
 # Print a Calendar for your Parents
-# http:www.sticker.tk
+# http://www.sticker.tk
