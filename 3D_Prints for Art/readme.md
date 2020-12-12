@@ -12,7 +12,11 @@ and be surprised => a github 3D viewer (i was ;-)
 
 
 DutchOrange, Wander wat Prusa thinks of that Orange ;-)
+.
 
+ScreenSize info from http://www.lcdwiki.com/Main_Page
+
+.
 Used an old floppy drive FlatCable, Not the correct number of pins 
 
 if you use the same holes on both side its no problem
