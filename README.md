@@ -1,6 +1,6 @@
 # ART-ESP32-Touch-TFT-Thermostat
 
-# The Art of Temperature Controlled
+## The Art of Temperature Controlled
 
 ART ESP32 SPI TFT Touch Clock Thermostat
 
