@@ -45,3 +45,10 @@ if you use the same holes on both side its no problem
   
   
 ##  https://oshwlab.com/l.dijkman/esp32-dev-kit-38-pin-to-spi-touch-tft
+
+
+                      
+                      
+# It is Calendar Time
+# Print a Calendar for your Parents, GrandParents
+# http://www.sticker.tk
