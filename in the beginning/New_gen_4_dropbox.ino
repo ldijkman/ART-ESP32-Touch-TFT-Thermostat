@@ -9,7 +9,7 @@
 //
 // The OverUse of setrotation changes => drives you crazy
 // Possible because of display and touch locations with adafruit librarys
-// i like TFT_eSPI 
+// i like TFT_eSPI TFT Graphic Library
 //
 // only 1 analog  read for temperate each time => makes it jumpy
 // better do 100+ reads and divide by 100+
