@@ -8,7 +8,7 @@ Click on the
 
 https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/3D_Prints%20for%20Art/tft_table.stl
 
-and be surprised
+and be surprised => a github 3D viewer
 
 
 DutchOrange, Wander wat Prusa thinks of that ;-)
