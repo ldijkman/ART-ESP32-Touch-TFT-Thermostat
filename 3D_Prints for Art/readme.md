@@ -7,6 +7,8 @@ https://app.sketchup.com/app#   => Can Save / Export to *.STL for Slic3r for G-C
 SketchUp WEB OnLine inBrowser GETTING STARTED with SketchUp Free - Lesson 1 - BEGINNERS Start Here! https://www.youtube.com/watch?v=I_bJPNnO3HQ
 
 .
+How to create 3d model using sketchup web. (easy) https://youtu.be/4nKlk4asY6s
+.
 
 .
 
