@@ -11,7 +11,7 @@
 // Possible because of display and touch locations with AdaFruit Graphic / Touch librarys
 // i like TFT_eSPI TFT Touch Graphic Library
 //
-// only 1 analog  read for temperate each time => makes it jumpy
+// only 1 analog  read for temperate each time => Makes Actual Temperature display jumpy
 // better do 100+ reads and divide by 100+
 
 #include <Adafruit_GFX.h>    // Core graphics library
