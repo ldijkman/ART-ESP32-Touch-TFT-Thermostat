@@ -41,3 +41,7 @@ if you use the same holes on both side its no problem
  
  
   <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/3D_Prints%20for%20Art/version_2.jpg">
+  
+  
+  
+  https://oshwlab.com/l.dijkman/esp32-dev-kit-38-pin-to-spi-touch-tft
