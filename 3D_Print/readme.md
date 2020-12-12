@@ -1,5 +1,5 @@
 3D_Prints for Art
 
-File SKP = Sketchup = online inbrowser drawing
+File *.SKP = Sketchup = Online inbrowser drawing
 
-https://app.sketchup.com/app#   can output STL for 3D Printing
+https://app.sketchup.com/app#   => Can output STL for 3D Printing
