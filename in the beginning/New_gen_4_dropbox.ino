@@ -8,8 +8,8 @@
 // https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat
 //
 // The OverUse of setrotation changes => drives you crazy
-// Possible because of display and touch locations with adafruit librarys
-// i like TFT_eSPI TFT Graphic Library
+// Possible because of display and touch locations with AdaFruit Graphic / Touch librarys
+// i like TFT_eSPI TFT Touch Graphic Library
 //
 // only 1 analog  read for temperate each time => makes it jumpy
 // better do 100+ reads and divide by 100+
