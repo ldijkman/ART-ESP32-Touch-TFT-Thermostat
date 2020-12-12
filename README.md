@@ -4,7 +4,7 @@
 
 ART ESP32 SPI TFT Touch Clock Thermostat
 
-Manual control by Touch TFT and control by WIFI clock thermostat
+Manual control by Touch TFT and control by WIFI WEB Page clock thermostat
 
 10 dollar DIY NEST thermostat
 
@@ -21,9 +21,9 @@ https://youtu.be/qNYT64CaLEI
 
 
 Let's make ART smart!.
-41
+
 .
-42
+
 .
 
 Start ART
