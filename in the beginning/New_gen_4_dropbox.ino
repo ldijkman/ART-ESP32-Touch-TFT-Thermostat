@@ -7,7 +7,7 @@
 // This video started it all for me
 // https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat
 //
-// The setrotation changes => drives you crazy
+// The OverUse of setrotation changes => drives you crazy
 // Possible because of display and touch locations with adafruit librarys
 // i like TFT_eSPI 
 //
