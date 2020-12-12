@@ -10,6 +10,7 @@ https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/3D_Prints%2
 
 and be surprised => a github 3D viewer (i was ;-)
 
+.
 
 DutchOrange, Wander wat Prusa thinks of that Orange ;-)
 
