@@ -11,4 +11,7 @@ https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/3D_Print/tf
 and be surprised
 
 
+DutchOrange, Wander wat Prusa thinks of that ;-)
+
+
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/3D_Prints%20for%20Art/tft_table.jpg">
