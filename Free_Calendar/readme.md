@@ -15,14 +15,9 @@ https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/Free_Calend
 
 Want to make a 3d print / design for connecting / hang the printed calendar papers
 
-should become  a 2 part design
-
-
-See u later
-,
-
 
  http://paypal.me/LDijkman
+ 
  
  https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/Free_Calendar/calendar_1_(4).stl
  
