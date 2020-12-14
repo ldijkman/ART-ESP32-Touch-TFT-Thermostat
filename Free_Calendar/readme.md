@@ -16,10 +16,10 @@ Want to make a 3d print / design for connecting / hang the printed calendar pape
 should become  a 2 part design
 
 
-see u later
+See u later
 
 
 
 
-
- paypal.me/LDijkman
+.
+ http://paypal.me/LDijkman
