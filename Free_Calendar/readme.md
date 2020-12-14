@@ -24,6 +24,10 @@ See u later
 
  http://paypal.me/LDijkman
  
+ https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/Free_Calendar/calendar_1%20(4).stl
+ 
+ calendar_1%20(4).stl with a steel / copper wire
+ 
  <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/Free_Calendar/Free_Printable_Calendar.jpg">
 ,
 
