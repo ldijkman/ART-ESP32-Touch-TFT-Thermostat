@@ -2,7 +2,7 @@
 
 http://84.107.155.75/kalender.php?v=dutch&year=2021
 
-*.SKP is a web sketchup file a free online inbrowser draing program https://app.sketchup.com/app#
+*.SKP is a web sketchup file a free online inbrowser 3D drawing program https://app.sketchup.com/app#
 
 *.STL is for your Slic3r to enerate G-Code for your 3d-printer
 
