@@ -28,7 +28,7 @@ Want to make a 3d print / design for connecting / hang the printed calendar pape
  calendar_1_(4).stl with a steel / copper wire
 
 
-Support this Free Calendar Project ? http://paypal.me/LDijkman
+Support this Free Printable Calendar Project ? http://paypal.me/LDijkman
 
 http://84.107.155.75/kalender.php?v=dutch&year=2021
 
