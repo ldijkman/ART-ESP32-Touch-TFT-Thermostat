@@ -2,7 +2,7 @@
 
 http://84.107.155.75/kalender.php?v=dutch&year=2021
 
-more calendar versions/variants in the video description https://youtu.be/yTHn8bYUQ8A
+more calendar versions/variants links in the video description https://youtu.be/yTHn8bYUQ8A
 
 *.SKP is a web sketchup file a free online inbrowser 3D drawing program https://app.sketchup.com/app#
 
