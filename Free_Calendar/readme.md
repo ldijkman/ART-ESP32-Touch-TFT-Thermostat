@@ -35,4 +35,29 @@ http://84.107.155.75/kalender.php?v=dutch&year=2021
 http://84.107.155.75/kalender.php?v=englisch&year=2021
 
 Print a Calendar for your Parents / GrandParents?! ;-)
+
+kalender 1 day per a4 
+
+http://84.107.155.75/day_calender.php?v=dutch&year=2021
+
+http://84.107.155.75/day_calender.php?v=englisch&year=2021
+
+http://84.107.155.75/day_calender_portrait.php?v=dutch&year=2021
+
+http://84.107.155.75/day_calender_portrait.php?v=englisch&year=2021
+
+
+
+
+week bigger days
+
+http://84.107.155.75/week_kalender.php?v=dutch&year=2021
+
+http://84.107.155.75/week_kalender.php?v=englisch&year=2021
+
+week big days short
+
+http://84.107.155.75/week_kalender_afk.php?v=dutch&year=2021
+
+http://84.107.155.75/week_kalender_afk.php?v=englisch&year=2021
  
