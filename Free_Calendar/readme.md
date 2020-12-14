@@ -21,15 +21,12 @@ should become  a 2 part design
 See u later
 ,
 
-,
 
-,
-
-,
-
-,
-
+ http://paypal.me/LDijkman
+ 
+ <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/Free_Calendar/Free_Printable_Calendar.jpg">
 ,
 
 
  http://paypal.me/LDijkman
+ 
