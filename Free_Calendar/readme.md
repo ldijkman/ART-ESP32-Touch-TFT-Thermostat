@@ -2,6 +2,8 @@
 
 http://84.107.155.75/kalender.php?v=dutch&year=2021
 
+more calendar versions/variants in the video description https://youtu.be/yTHn8bYUQ8A
+
 *.SKP is a web sketchup file a free online inbrowser 3D drawing program https://app.sketchup.com/app#
 
 *.STL is for your Slic3r to generate G-Code for your 3d-printer
