@@ -23,6 +23,8 @@ Want to make a 3d print / design for connecting / hang the printed calendar pape
  
  calendar_1_(4).stl with a steel / copper wire
  
+ DutchOrange Hanger ;-)
+ 
  <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/Free_Calendar/Free_Printable_Calendar.jpg">
 
  calendar_1_(4).stl with a steel / copper wire
