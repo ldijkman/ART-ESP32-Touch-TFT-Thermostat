@@ -10,6 +10,8 @@ more calendar versions/variants links in the video description https://youtu.be/
 
 *.STL is for your Slic3r to generate G-Code for your 3d-printer
 
+Sketchup web 3d text tutorial https://www.youtube.com/watch?v=TQ_WKglHLcA
+
 github STL 3D viewer 
 https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/Free_Calendar/calendar_1_slic3r.stl
 
