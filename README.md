@@ -40,18 +40,17 @@ Start ART
 
 <img src="https://image.easyeda.com/pullimage/A4bHd1cMRSmGSywTSo8FhNrSkIzuRznVZiUuAgie.jpeg">
 
-First time EasyEDA.com and JLCPCB.com and LCSC.com == Perfect!
-
-<img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/ESP32_SPI_touch_TFT_PCB.jpeg">
-
-First time EasyEDA.com and JLCPCB.com and LCSC.com == Perfect!
-
 https://jsfiddle.net/luberth/b6y53cn0
 
 FullScreen https://jsfiddle.net/luberth/b6y53cn0/embedded/result/#Result
 
 -
--
+
+-First time EasyEDA.com and JLCPCB.com and LCSC.com == Perfect!
+
+<img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/ESP32_SPI_touch_TFT_PCB.jpeg">
+
+First time EasyEDA.com and JLCPCB.com and LCSC.com == Perfect!
 
 
 This is wat your Arduino IDE should look like, Main File with the TAB files
