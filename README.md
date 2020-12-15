@@ -40,7 +40,11 @@ Start ART
 
 <img src="https://image.easyeda.com/pullimage/A4bHd1cMRSmGSywTSo8FhNrSkIzuRznVZiUuAgie.jpeg">
 
+First time EasyEDA and JLCPCB and LCSC
+
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/ESP32_SPI_touch_TFT_PCB.jpeg">
+
+First time EasyEDA and JLCPCB and LCSC
 
 https://jsfiddle.net/luberth/b6y53cn0
 
