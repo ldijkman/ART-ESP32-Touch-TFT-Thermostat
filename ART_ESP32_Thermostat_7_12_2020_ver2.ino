@@ -66,6 +66,7 @@ const int freq = 8000;           // 4khz
 const int ledChannel = 3;        // think channel 0 is in use by buzzer
 const int resolution = 8;        // 8bit 0 to 255
 
+byte backgroundlightval = 127;    // not below 5 and upto to 255 backlight brightness better not totaly black
 
 
 // Color definitions
@@ -162,7 +163,7 @@ uint16_t calibrationData[5];
 uint8_t calDataOK = 0;
 
 
-int brightval = 200; //20 to 255 backlight brightness better not totaly black
+
 byte out = 0; //goto label: did not work
 
 byte fullscreenactive = 0;
@@ -178,7 +179,7 @@ void setup(void) {
 
   // attach the channel to the GPIO to be controlled
   ledcAttachPin(ledPin, ledChannel);
-  ledcWrite(ledChannel, 100);                  // 100 +/- halfbright 0-255 PWM screen brightness background light
+  ledcWrite(ledChannel, backgroundlightval);                  // 100 +/- halfbright 0-255 PWM screen brightness background light
   // Jo less energy
 
 
@@ -319,7 +320,8 @@ void loop() {
 
   while (! rtc.begin() || rtc.lostPower() == 1) {
     tft.fillScreen(RED);
-    delay(250);
+    tft.setTextColor(YELLOW);  tft.setTextSize(2);
+    delay(200);
     Serial.println("Couldn't find RTC i2c realtimeclock not found");
     tft.setCursor(0, 70);
     tft.println  ("  RTC realtimeclock lost");
@@ -327,7 +329,7 @@ void loop() {
     tft.println  ("  or power on RTC lost   ");
     tft.println  ("    ");
     tft.println  ("  ShutDown Heat relais ");
-    delay(250);
+    delay(500);
     digitalWrite(heat_relais_pin, LOW);       // heat output off
   }
 
