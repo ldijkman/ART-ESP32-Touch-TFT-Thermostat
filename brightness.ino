@@ -6,7 +6,7 @@ void drawbrightnessscreen() {
 
   tft.drawRoundRect(1, 1, 319, 239, 2, DARKGREY);
 
-  x = map(brightval, 20, 255, 35, 285 ) + 1; // i add 1 otherwise it goes down==do not no why
+  x = map(brightval, 5, 255, 35, 285 ) + 1; // i add 1 otherwise it goes down==do not no why
   y = 0;
   delay(250);
   tft.fillScreen(BLACK);
@@ -61,7 +61,7 @@ void drawbrightnessscreen() {
 
     brightval = x;
 
-    brightval = map(brightval, 35, 285, 20, 255);
+    brightval = map(brightval, 35, 285, 5, 255);
     tft.setCursor(150, 55);
     tft.print(brightval);
     tft.print("  ");
@@ -69,14 +69,13 @@ void drawbrightnessscreen() {
 
     tft.setCursor(150, 80);
     //show it in procent
-    tft.print(map(brightval, 20, 255, 8, 100)); //255/100*20 maybe 8% otherwise black screen
+    tft.print(map(brightval, 5, 255, 2, 100)); //100/255*5 maybe 2% otherwise black screen = no visibility
     tft.print("%  ");
 
     oldx = x;
 
-
-    // ledcWrite(ledChannel, brightval);
-    //for backlight swipe from left to right to set according to x positoin touch
+    if (brightval > 255)brightval = 255;
+    ledcWrite(ledChannel, brightval); //output PWM for backlight swipe from left to right to set according to x positoin touch
 
 
 

@@ -43,9 +43,9 @@ void drawmainscreen() {
     tft.print(now.day());
     tft.print(" ");
     tft.print(monthName[now.month() - 1]);
-    tft.print(" ");
-    tft.print(now.year());
-    tft.print("  ");
+    tft.print("   ");
+    //tft.print(now.year());
+    //tft.print("  ");
 
 
     tft.setTextSize (1);

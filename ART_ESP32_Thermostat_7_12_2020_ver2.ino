@@ -21,9 +21,7 @@
 //           https://www.paypal.com/pools/c/8amUN5rgb9
 
 
-// TFT_espi commands / ussage
-// https://github.com/Bodmer/User_Manual_TFT_eSPI/blob/master/TFT_eSPI.cpp.All.pdf
-// https://github.com/Bodmer/TFT_eSPI/blob/master/keywords.txt
+
 
 
 #include "FS.h"
@@ -35,10 +33,10 @@ TFT_eSPI tft = TFT_eSPI(); // Invoke custom library
 // This is the file name used to store the calibration data file, name must start with "/".
 #define CALIBRATION_FILE "/TouchCalData"
 
-//#define FORMAT_SPIFFS_IF_FAILED 0  // i think TFT_eSPI will format disk if needed for TouchCalData saving
+//#define FORMAT_SPIFFS_IF_FAILED 0
 
 // Set REPEAT_CAL to true instead of false or 1or0 to run calibration
-byte REPEAT_CAL = 0;
+byte REPEAT_CAL = 1;
 
 byte drawgreendot = 1;  // draw touch position with a greendot
 
@@ -61,10 +59,10 @@ RTC_DS3231 rtc;    // download zip from above and install library from zip
 
 
 
-const int ledPin = 25;  // corresponds to GPIO35
+const int ledPin = 14;  // corresponds to GPIO14
 // connect to LED of SPI TFT display
 // setting PWM properties
-const int freq = 4000;           // 4khz
+const int freq = 8000;           // 4khz
 const int ledChannel = 3;        // think channel 0 is in use by buzzer
 const int resolution = 8;        // 8bit 0 to 255
 
@@ -175,12 +173,13 @@ void setup(void) {
 
 
 
-  // configure LED PWM functionalitites
-  //ledcSetup(ledChannel, freq, resolution);
+  // configure LED PWM functionalitites          // screen brightness background light
+  ledcSetup(ledChannel, freq, resolution);
 
   // attach the channel to the GPIO to be controlled
-  // ledcAttachPin(ledPin, ledChannel);
-  // ledcWrite(ledChannel, 125);
+  ledcAttachPin(ledPin, ledChannel);
+  ledcWrite(ledChannel, 100);                  // 100 +/- halfbright 0-255 PWM screen brightness background light
+  // Jo less energy
 
 
 
@@ -250,16 +249,19 @@ void setup(void) {
 
   if (! rtc.begin()) {
     tft.fillScreen(RED);
+    tft.setTextColor(YELLOW);  tft.setTextSize(3);
     while (! rtc.begin()) {
       Serial.println("Could not find RTC, i2c DS3231 realtimeclock not found");
-      tft.setCursor(0, 60);
-      tft.println("  DS3231 ");
-      tft.println("  NO RTC found");
-      tft.println("  RTC i2c on pin");
-      tft.println("  SDA SCL 33 32");
+      tft.setCursor(0, 50);
+      tft.println(" DS3231 RTC");
+      tft.println(" Not Found");
+      tft.println(" RTC i2c on pin");
+      tft.println(" SDA=G33 SCL=G32");
+      tft.println(" VCC=3.3V & GND");
       //example GPIO 33 as SDA and and GPIO 32 as SCL is as follows.
     }
     tft.fillScreen(GREEN);
+    tft.setTextColor(BLACK);
     tft.setCursor(0, 80);
     tft.print("  YES found RTC");
     delay(10000);
@@ -291,7 +293,7 @@ void setup(void) {
   }
 
   drawmainscreen();
- tft.print(" ");
+  tft.print(" ");
   /*draw a grid
     tft.fillRect(1, 1, 4, 4, YELLOW);     // yellow origin xy
     tft.fillRect(316, 236, 4, 4, GREEN);  // green max xy
@@ -343,7 +345,7 @@ void loop() {
 
 
 
-  if (millis() - runTime >= 2500) { // Execute every 1000ms
+  if (millis() - runTime >= 1000) { // Execute every 1000ms
     runTime = millis();             // store millis() counter in variable runtime
 
     tft.setTextColor( BLACK, BLACK);
@@ -398,9 +400,9 @@ void loop() {
     tft.print(now.day());
     tft.print(" ");
     tft.print(monthName[now.month() - 1]);
-    tft.print(" ");
-    tft.print(now.year());
-    tft.print("  ");
+    tft.print("   ");
+    //tft.print(now.year());
+    //tft.print("  ");
 
 
     tft.setTextSize (1);
@@ -432,12 +434,12 @@ void loop() {
         //Serial.println(X);
         if (time_in_minutes >= HeatOFFhour[X] * 60 + HeatOFFminute[X] ) {
           //if (mode == 2) {
-            auto_setpoint = tempOFF[X];
+          auto_setpoint = tempOFF[X];
           //}
         }
         if (time_in_minutes >= HeatONhour[X] * 60 + HeatONminute[X] && time_in_minutes < HeatOFFhour[X] * 60 + HeatOFFminute[X]) {
           //if (mode == 2) {        // 2= automode
-            auto_setpoint = tempON[X];
+          auto_setpoint = tempON[X];
           //}
           goto JumpOver;           // programmers do not like GOTO, i liked gwbasic ;-)
         }
@@ -463,13 +465,13 @@ void loop() {
         //Serial.println(X);
         if (time_in_minutes >= HeatOFFhour[X] * 60 + HeatOFFminute[X] ) {
           //if (mode == 2) {
-            auto_setpoint = tempOFF[X];
+          auto_setpoint = tempOFF[X];
           //}
         }
         if (time_in_minutes >= HeatONhour[X] * 60 + HeatONminute[X] && time_in_minutes < HeatOFFhour[X] * 60 + HeatOFFminute[X]) {
           //if (mode == 2) {        // 2= automode
-            auto_setpoint = tempON[X];
-         // }
+          auto_setpoint = tempON[X];
+          // }
           goto JumpOver;           // programmers do not like GOTO, i liked gwbasic ;-)
         }
       }
@@ -515,14 +517,14 @@ JumpOver:
 
 
 
-    tft.setCursor(250, 0);
-    tft.setTextColor (LIGHTGREY, BLACK);
-    tft.print(((millis() - touchtime) / 1000)); // for future screen aninmation if touch is longer as ?? time ago 
- tft.print("   ");
+  tft.setCursor(250, 0);
+  tft.setTextColor (LIGHTGREY, BLACK);
+  tft.print(((millis() - touchtime) / 1000)); // for future screen aninmation if touch is longer as ?? time ago
+  tft.print("   ");
 
- 
+
   if (tft.getTouch(&x, &y)) {
-    touchtime = millis(); // store millis() for future screen aninmation if touch is longer as ?? time ago 
+    touchtime = millis(); // store millis() for future screen aninmation if touch is longer as ?? time ago
 
 
 
@@ -793,22 +795,6 @@ void OUTSUB() {
     // digitalWrite(heat_relais_pin, HIGH);          // heat output relais on
   }
 
-
-
-
-  if (CoolState == 0 ) {
-
-    tft.drawRoundRect(10, 10, 300, 140, 8, BLUE);
-    tft.setTextSize (1);
-    tft.setTextColor (iceblue, BLACK);
-    tft.setCursor(130, 13);
-    tft.print("  ");
-    tft.print(rtc.getTemperature());
-    tft.print(char(247)); // C degree sign
-    tft.print(" C  ");
-
-    // digitalWrite(cool_relais_pin, LOW);          // airco / fan output relais off
-  }
 
   if (CoolState == 1 ) {
 

@@ -1,22 +1,4 @@
-//
-//
-//
-// example of my TFT_eSPI User_Setup.h
-// file location => ............/arduino/librays/TFT_eSPI/User_Setup.h
-//
-//
-// great graphic library, love his touch calibration routine
 // https://github.com/Bodmer/TFT_eSPI
-// download from above
-// and arduino IDE menu=>sketch=>include library=>add ZIP library
-// install library from zip
-//
-// edit  ............/arduino/librays/TFT_eSPI/User_Setup.h
-// to meet your TFT screen and microprocessor  
-//
-// next are my settings for 4inch spi tft (#define ST7796_DRIVER and ESP32)
-//
-///////////////////////////////////////////////////////////////////////////////////////
 //                            USER DEFINED SETTINGS
 //   Set driver type, fonts to be loaded, pins used and SPI control method etc
 //
