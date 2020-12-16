@@ -48,7 +48,11 @@ FullScreen https://jsfiddle.net/luberth/b6y53cn0/embedded/result/#Result
 
 -First time EasyEDA.com and JLCPCB.com and LCSC.com == Perfect!
 
+My ESP32 TFT prototype test board, extra row of female connnectors for connecting devices test pinout
+
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/ESP32_SPI_touch_TFT_PCB.jpeg">
+
+My ESP32 TFT prototype test board, extra row of female connnectors for connecting devices test pinout
 
 First time EasyEDA.com and JLCPCB.com and LCSC.com == Perfect!
 
@@ -77,6 +81,6 @@ www.paypal.me/LDijkman
                       
                       
                       
-# It is Calendar Time
-# Print a Calendar for your Parents, GrandParents
-# http://www.sticker.tk
+## It is Calendar Time
+## Print a Calendar for your Parents, GrandParents
+## http://www.sticker.tk
