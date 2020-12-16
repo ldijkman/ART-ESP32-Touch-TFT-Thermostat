@@ -59,7 +59,7 @@ RTC_DS3231 rtc;    // download zip from above and install library from zip
 
 
 
-const int ledPin = 14;  // corresponds to GPIO14
+const int ledPin = 15;  // corresponds to GPIO15
 // connect to LED of SPI TFT display
 // setting PWM properties
 const int freq = 8000;           // 4khz

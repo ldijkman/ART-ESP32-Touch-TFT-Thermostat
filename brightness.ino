@@ -52,8 +52,8 @@ void drawbrightnessscreen() {
 
     //yes ;-) i made my first slider without looking at code examples
 
-    if (x < 35)x = 35;
-    if (x > 295)x = 285;
+    if (x <= 35)x = 35;
+    if (x >= 285)x = 285;
     if (x != oldx) {
       tft.fillRoundRect(10, 110, 300, 50, 13, GREEN);
       tft.fillCircle(x, 135, 25, BLACK);
@@ -74,7 +74,7 @@ void drawbrightnessscreen() {
 
     oldx = x;
 
-    if (backgroundlightval > 255)backgroundlightval = 255;
+    if (backgroundlightval >= 255)backgroundlightval = 255;
 
     ledcWrite(ledChannel, backgroundlightval); // output PWM for backlight swipe from left to right to set according to x positoin touch
 
