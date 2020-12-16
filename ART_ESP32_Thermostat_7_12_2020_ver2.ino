@@ -35,8 +35,8 @@ TFT_eSPI tft = TFT_eSPI(); // Invoke custom library
 
 //#define FORMAT_SPIFFS_IF_FAILED 0
 
-// Set REPEAT_CAL to true instead of false or 1or0 to run calibration
-byte REPEAT_CAL = 1;
+// Set REPEAT_CAL to true instead of false or 1 or 0 to run calibration
+byte REPEAT_CAL = 0;
 
 byte drawgreendot = 1;  // draw touch position with a greendot
 
@@ -59,11 +59,11 @@ RTC_DS3231 rtc;    // download zip from above and install library from zip
 
 
 
-const int ledPin = 15;  // corresponds to GPIO15
+const int ledPin = 27;  // corresponds to GPIo
 // connect to LED of SPI TFT display
 // setting PWM properties
-const int freq = 8000;           // 4khz
-const int ledChannel = 3;        // think channel 0 is in use by buzzer
+const int freq = 100;           // hz
+const int ledChannel = 5;        // think channel 0 is in use by buzzer
 const int resolution = 8;        // 8bit 0 to 255
 
 byte backgroundlightval = 127;    // not below 5 and upto to 255 backlight brightness better not totaly black
@@ -317,6 +317,18 @@ void setup(void) {
 void loop() {
 
   DateTime now = rtc.now();
+
+
+  // Jo energy saving Backlight
+  if (now.hour() <= 6) {
+    ledcWrite(ledChannel, 10);
+  } else {
+    ledcWrite(ledChannel, backgroundlightval);
+  }
+  if (now.hour() >= 23) {
+    ledcWrite(ledChannel, 10);  // dim backround light display if hour >= 22uur            //backgroundlightval);
+  }
+
 
   while (! rtc.begin() || rtc.lostPower() == 1) {
     tft.fillScreen(RED);
