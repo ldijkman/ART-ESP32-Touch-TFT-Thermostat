@@ -56,8 +56,8 @@ My ESP32 TFT prototype test board, extra row of female connnectors for connectin
 
 First time EasyEDA.com and JLCPCB.com and LCSC.com == Perfect!
 
-
-This is wat your Arduino IDE should look like, Main File with the TAB files
+#
+## This is wat your Arduino IDE should look like, Main File with the TAB files
 
 ART_ESP32_Thermostat_7_12_2020_ver2.ino => is the Main File
 
