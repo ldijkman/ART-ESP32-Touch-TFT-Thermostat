@@ -106,6 +106,8 @@ in the LOOP{} is a hardcoded setting for now => dim screen if hour > ?? and < as
 
 Jo's Energy Saver ;-)
 
+a touch in top of screen in the blue rectangle => opens the settings menu
+
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/Art_Thermostat_backlight_PWM.jpg">
 
 
