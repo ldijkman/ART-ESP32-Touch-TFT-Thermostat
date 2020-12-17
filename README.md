@@ -81,7 +81,9 @@ First time EasyEDA.com and JLCPCB.com and LCSC.com == Perfect!
 
 Less Wires
 
-(-GND to VCC+3.3V) (VCC3.3V to -GND) resistor is wrong placed on NTC PCB (This way its PULLDOWN)
+(-GND to VCC+3.3V) (VCC3.3V to -GND) resistor is wrong placed on NTC PCB 
+
+(This way its PULLDOWN) Signal pulled down to ground
 
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/RTC_DS3231_NTC_Thermistor.jpg">
 
