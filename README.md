@@ -43,7 +43,7 @@ Let's make ART smart!
 
 <img src="https://image.easyeda.com/pullimage/0pvffSdQuBwEW5eRixJsPd3uQcttBgp2v1z47P3t.jpeg">
 
-ECO mode = continu low heat energy saving setpoint
+ECO mode = continu low heat setpoint energy saving setpoint
 
 NORMAL mode = continu heat comfortable setpoint
 
