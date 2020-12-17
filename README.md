@@ -89,7 +89,7 @@ Less Wires = Only a Signal wire from NTC Thermistor
 
 NTC Connect => (-GND to VCC+3.3V) (VCC+3.3V to -GND) In Other Words Silkscreen print - should be + 
 
-(This way its PULLDOWN) Signal pulled down to ground
+(This way its PULLDOWN) NTC Signal Line pulled down to ground
 
 Art's TFT screen will tell you how to connect the wires to ESP32 on startup
 
