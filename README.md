@@ -116,7 +116,7 @@ a touch in top of screen in the blue rectangle => opens the settings menu
 
 Blue border rectangle = Heating / Cooling is OFF
 
-DutchOrange border Rectangle = Heating is ON
+DutchOrange border Rectangle = The Heat is ON
 
 IceBlue border Rectangle = Cooling is ON
 
