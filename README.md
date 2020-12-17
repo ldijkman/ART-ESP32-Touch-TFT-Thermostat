@@ -38,13 +38,13 @@ Let's make ART smart!
 
 <img src="https://image.easyeda.com/pullimage/0pvffSdQuBwEW5eRixJsPd3uQcttBgp2v1z47P3t.jpeg">
 
-ECO mode = continu low heat setpoint energy saving setpoint
+ECO mode = continu low heat setpoint energy saving setpoint (14C?)
 
-NORMAL mode = continu heat comfortable setpoint
+NORMAL mode = continu heat comfortable setpoint (21C?)
 
 AUTO mode = Switch heat temperature on programmed times with temperature
 
-COOL mode = continu setpoint cooling airco/ventilator
+COOL mode = continu setpoint cooling airco/ventilator (25C?)
 
 
 @[youtube](http://youtu.be/qNYT64CaLEI)	
