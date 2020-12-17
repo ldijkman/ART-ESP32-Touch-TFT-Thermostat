@@ -76,6 +76,12 @@ My ESP32 TFT prototype test board, extra row of female connnectors for connectin
 
 First time EasyEDA.com and JLCPCB.com and LCSC.com == Perfect!	
 
+
+DS3231 RTC with NTC Thermistor soldered onto power 
+(GND to +3.3V) (3.3Vto GND) resistor is wrong placed on NTC PCB (This way its PULLDOWN)
+
+<img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/RTC_DS3231_NTC_Thermistor.jpg">
+
 #	
 ## This is wat your Arduino IDE should look like, Main File with the TAB files	
 
