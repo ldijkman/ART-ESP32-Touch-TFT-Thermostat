@@ -114,6 +114,12 @@ Jo's Energy Saver ;-)
 
 a touch in top of screen in the blue rectangle => opens the settings menu
 
+Blue border rectangle = Heating / Cooling is OFF
+
+DutchOrange border Rectangle = Heating is ON
+
+IceBlue border Rectangle = Cooling is ON
+
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/Art_Thermostat_backlight_PWM.jpg">
 
 
