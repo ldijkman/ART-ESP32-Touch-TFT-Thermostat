@@ -36,6 +36,8 @@ Let's make ART smart!
 
 @[youtube](http://youtu.be/qNYT64CaLEI)	
 
+Simple Looks, No OverKill (Maybe make it SkinAble, For Those who like OverKill)
+
 <img src="https://image.easyeda.com/pullimage/0pvffSdQuBwEW5eRixJsPd3uQcttBgp2v1z47P3t.jpeg">
 
 ECO mode = continu low heat setpoint energy saving setpoint (14C?)
