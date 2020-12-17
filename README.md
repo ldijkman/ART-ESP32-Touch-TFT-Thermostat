@@ -12,10 +12,10 @@ Manual control by Touch TFT and control by WIFI WEB Page clock thermostat	20 dol
 10 dollar DIY NEST thermostat	
 
 
-A Better NEST	A Better NEST
+Art, A Better NEST	
 
 
-https://oshwlab.com/l.dijkman/esp32-dev-kit-38-pin-to-spi-touch-tft	https://oshwlab.com/l.dijkman/esp32-dev-kit-38-pin-to-spi-touch-tft
+https://oshwlab.com/l.dijkman/esp32-dev-kit-38-pin-to-spi-touch-tft	
 
 
 https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat	
@@ -31,7 +31,7 @@ https://youtu.be/qNYT64CaLEI	https://youtu.be/qNYT64CaLEI
 
 
 Let's make ART smart!
-Let's make ART smart!.	
+
 
 .	
 
@@ -41,7 +41,16 @@ Let's make ART smart!.
 
 @[youtube](http://youtu.be/qNYT64CaLEI)	
 
-<img src="https://image.easyeda.com/pullimage/0pvffSdQuBwEW5eRixJsPd3uQcttBgp2v1z47P3t.jpeg">	
+<img src="https://image.easyeda.com/pullimage/0pvffSdQuBwEW5eRixJsPd3uQcttBgp2v1z47P3t.jpeg">
+
+ECO mode = continu low heat energy saving setpoint
+
+NORMAL mode = continu heat comfortable setpoint
+
+AUTO mode = Switch heat temperature on programmed times with temperature
+
+COOL mode = continu setpoint cooling airco/ventilator
+
 
 @[youtube](http://youtu.be/qNYT64CaLEI)	
 
