@@ -253,12 +253,13 @@ void setup(void) {
     tft.setTextColor(YELLOW);  tft.setTextSize(3);
     while (! rtc.begin()) {
       Serial.println("Could not find RTC, i2c DS3231 realtimeclock not found");
-      tft.setCursor(0, 50);
+      tft.setCursor(0, 30);
       tft.println(" DS3231 RTC");
       tft.println(" Not Found");
       tft.println(" RTC i2c on pin");
       tft.println(" SDA=G33 SCL=G32");
       tft.println(" VCC=3.3V & GND");
+      tft.println(" NTC Signal G34");
       //example GPIO 33 as SDA and and GPIO 32 as SCL is as follows.
     }
     tft.fillScreen(GREEN);
@@ -320,7 +321,7 @@ void loop() {
 
 
   // Jo energy saving Backlight
-  if (now.hour() <= 6) {
+  if (now.hour() < 8) {
     ledcWrite(ledChannel, 10);
   } else {
     ledcWrite(ledChannel, backgroundlightval);
