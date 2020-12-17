@@ -90,6 +90,26 @@ Art's TFT screen will tell you how to connect the wires to ESP32 on startup
 
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/RTC_DS3231_NTC_Thermistor.jpg">
 
+
+#
+## TFT Backlight PWM cut the LED track to 3.3V
+
+i have cut the LED track to 3.3V between the Pads
+
+soldered a wire on the LED side pad
+
+LED connected Wire connected to GPIO15 for the moment
+
+Can now control the BackLight PWM from the screen/slidebar
+
+in the LOOP{} is a hardcoded setting for now => dim screen if hour > ?? and < as ??
+
+Jo's Energy Saver ;-)
+
+<img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/Art_Thermostat_backlight_PWM.jpg">
+
+
+
 #	
 ## This is wat your Arduino IDE should look like, Main File with the TAB files	
 
