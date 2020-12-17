@@ -79,7 +79,9 @@ First time EasyEDA.com and JLCPCB.com and LCSC.com == Perfect!
 #
 ## DS3231 RTC with NTC Thermistor soldered onto power 
 
-Less Wires
+VCC on RTC DS3231 is 3.3V
+
+Less Wires = only a signal wire from NTC Thermistor
 
 (-GND to VCC+3.3V) (VCC3.3V to -GND) resistor is wrong placed on NTC PCB 
 
