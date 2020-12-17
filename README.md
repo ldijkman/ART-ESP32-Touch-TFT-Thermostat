@@ -76,8 +76,10 @@ My ESP32 TFT prototype test board, extra row of female connnectors for connectin
 
 First time EasyEDA.com and JLCPCB.com and LCSC.com == Perfect!	
 
-
+#
 ## DS3231 RTC with NTC Thermistor soldered onto power 
+
+Less Wires
 
 (GND to +3.3V) (3.3Vto GND) resistor is wrong placed on NTC PCB (This way its PULLDOWN)
 
