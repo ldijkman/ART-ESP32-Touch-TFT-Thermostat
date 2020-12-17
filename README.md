@@ -1,4 +1,4 @@
-# ART-ESP32-Touch-TFT-Thermostat	# ART-ESP32-Touch-TFT-Thermostat
+# ART-ESP32-Touch-TFT-Thermostat
 
 ART ESP32 SPI TFT Touch Clock Thermostat	
 
