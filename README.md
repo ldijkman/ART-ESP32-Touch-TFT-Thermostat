@@ -83,7 +83,7 @@ VCC on RTC DS3231 is 3.3V
 
 Less Wires = only a signal wire from NTC Thermistor
 
-NTC Connect => (-GND to VCC+3.3V) (VCC3.3V to -GND) Silkscreen print - should be + 
+NTC Connect => (-GND to VCC+3.3V) (VCC+3.3V to -GND) Silkscreen print - should be + 
 
 (This way its PULLDOWN) Signal pulled down to ground
 
