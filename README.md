@@ -53,6 +53,8 @@ COOL mode = continu setpoint cooling airco/ventilator (25C?)
 
 @[youtube](http://youtu.be/qNYT64CaLEI)	
 
+Future (Could use some help on the WiFiManger & WebServer / HTML WebPage Part)
+
 <img src="https://image.easyeda.com/pullimage/A4bHd1cMRSmGSywTSo8FhNrSkIzuRznVZiUuAgie.jpeg">	
 
 https://jsfiddle.net/luberth/b6y53cn0	
