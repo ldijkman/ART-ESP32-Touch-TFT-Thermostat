@@ -72,6 +72,8 @@ My ESP32 TFT prototype test board, extra row of female connnectors for connectin
 
 Only the holes ar a bit tight, but female row headers fit => Next time, double side copper PCB
 
+And Ground the copper poor infill
+
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/ESP32_SPI_touch_TFT_PCB.jpeg">	
 
 My ESP32 TFT prototype test board, extra row of female connnectors for connecting devices test pinout	
