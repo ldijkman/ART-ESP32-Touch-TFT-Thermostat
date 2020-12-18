@@ -126,7 +126,7 @@ IceBlue border Rectangle = Cooling is ON
 
 
 #
-## At output relais
+## Art output relais  heat & cool or single relais
 
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/Art_Thermostat_relais.jpg">
 
