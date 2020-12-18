@@ -128,6 +128,10 @@ IceBlue border Rectangle = Cooling is ON
 #
 ## Art output relais  heat & cool or single relais
 
+i think this double relais is optical isolated
+
+the single relais is switched by transistor
+
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/Art_Thermostat_relais.jpg">
 
 
