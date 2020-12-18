@@ -125,6 +125,11 @@ IceBlue border Rectangle = Cooling is ON
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/Art_Thermostat_backlight_PWM.jpg">
 
 
+#
+## At output relais
+
+<img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/Art_Thermostat_relais.jpg">
+
 
 #	
 ## This is wat your Arduino IDE should look like, Main File with the TAB files	
