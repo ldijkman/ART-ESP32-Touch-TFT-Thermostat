@@ -17,6 +17,7 @@ void settings_one_screen() {
       // tft.print("X="); tft.print(x); tft.print(" ");
       // tft.setCursor(200, 30);
       // tft.print("Y="); tft.print(y); tft.print(" ");
+      if (drawgreendot)tft.drawPixel(x, y, GREEN);
     }
 
     if ((millis() - TempLong)  > 60000) { // compare stored TempLong to current millis() counter
@@ -94,8 +95,6 @@ void settings_one_screen() {
       break;
     }
 
-
-    if (drawgreendot)tft.drawPixel(x, y, GREEN);
   }
 
 }

@@ -102,7 +102,7 @@ long runTime2;
 
 const int ntc_thermistor_pin = 34;        // NTC thermistor module KY-013 signal pin gpio34
 const int heat_relais_pin = 26;          // relais module connection pin gpio26
-const int cool_relais_pin = 26;         // other contact for aico / fan
+const int cool_relais_pin = 25;         // other contact for aico / fan
 
 int oldstate;
 double oldval;
@@ -186,8 +186,10 @@ void setup(void) {
 
   Wire.begin(I2C_SDA, I2C_SCL);
 
-  //pinMode(heat_relais_pin, OUTPUT);
-  //pinMode(cool_relais_pin, OUTPUT);
+  pinMode(heat_relais_pin, OUTPUT);
+  pinMode(cool_relais_pin, OUTPUT);
+  digitalWrite(heat_relais_pin, HIGH);       // HIGH = heat output relais off
+  digitalWrite(cool_relais_pin, HIGH);       // HIGH = cool output relais off
 
 
   // times must be from 00:00 to 23:59 following sequence??? maybe left 00:00 if not used
@@ -791,7 +793,7 @@ void OUTSUB() {
     tft.print(char(247)); // C degree sign
     tft.print(" C  ");
 
-    //digitalWrite(heat_relais_pin, LOW);       // heat output relais off
+    digitalWrite(heat_relais_pin, HIGH);       // HIGH = heat output relais off
   }
 
 
@@ -807,22 +809,36 @@ void OUTSUB() {
     tft.print(char(247)); // C degree sign
     tft.print(" C  ");
 
-    // digitalWrite(heat_relais_pin, HIGH);          // heat output relais on
+    digitalWrite(heat_relais_pin, LOW);          // LOW = heat output relais on
   }
 
+  if (CoolState == 0 ) {
+    if (mode==3) {
+      tft.drawRoundRect(10, 10, 300, 140, 8, BLUE);
+      tft.setTextSize (1);
+      tft.setTextColor (iceblue, BLACK);
+      tft.setCursor(130, 13);
+      tft.print("  ");
+      tft.print(rtc.getTemperature());
+      tft.print(char(247)); // C degree sign
+      tft.print(" C  ");
+    }
+    digitalWrite(cool_relais_pin, HIGH);          // HIGH = airco / fan output relais off
+  }
 
   if (CoolState == 1 ) {
+    if (mode == 3) {
+      tft.drawRoundRect(10, 10, 300, 140, 8, iceblue);
+      tft.setTextSize (1);
+      tft.setTextColor (iceblue, BLACK);
+      tft.setCursor(130, 13);
+      tft.print("  ");
+      tft.print(rtc.getTemperature());
+      tft.print(char(247)); // C degree sign
+      tft.print(" C  ");
 
-    tft.drawRoundRect(10, 10, 300, 140, 8, iceblue);
-    tft.setTextSize (1);
-    tft.setTextColor (iceblue, BLACK);
-    tft.setCursor(130, 13);
-    tft.print("  ");
-    tft.print(rtc.getTemperature());
-    tft.print(char(247)); // C degree sign
-    tft.print(" C  ");
-
-    // digitalWrite(cool_relais_pin, HIGH);          // airco / fan output relais on
+      digitalWrite(cool_relais_pin, LOW);          // LOW = airco / fan output relais on
+    }
   }
 
   while ((millis() - runTime2) < 75) {  // delay to set execution time of outsub equal
