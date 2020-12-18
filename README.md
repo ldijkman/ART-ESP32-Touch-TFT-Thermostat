@@ -22,7 +22,7 @@ https://www.youtube.com/user/LuberthDijkman/videos
 
 
 #
-## More info at
+## Art is also described @
 ## https://oshwlab.com/l.dijkman/esp32-dev-kit-38-pin-to-spi-touch-tft
 
 
