@@ -6,14 +6,6 @@ Manual by Touch TFT and WIFI(Future) clock thermostat
 
 10 dollar DIY NEST thermostat	
 
-```diff
-- text in red
-+ text in green
-! text in orange
-# text in gray
-@@ text in purple (and bold)@@
-```
-
 Art, A Better NEST	
 
 
@@ -100,11 +92,11 @@ Less Wires = Only a Signal wire from NTC Thermistor
 NTC Connect => (-GND to VCC+3.3V) (VCC+3.3V to -GND) In Other Words Silkscreen print - should be + 
 
 (This way its PULLDOWN) NTC Signal Line pulled down to ground
+```diff
+-Art's TFT screen will tell you how to connect the wires to ESP32 on startup</div>
 
-<div class="text-red mb-2">Art's TFT screen will tell you how to connect the wires to ESP32 on startup</div>
-
-<div class="text-red mb-2">On first boot Art's screen is Snowy for 20 seconds => I think Art is Formatting his Brain/Flash</div>
-
+-On first boot Art's screen is Snowy for 20 seconds => I think Art is Formatting his Brain/Flash</div>
+```
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/RTC_DS3231_NTC_Thermistor.jpg">
 
 
@@ -184,3 +176,11 @@ www.paypal.me/LDijkman
 ## It is Calendar Time	
 ## Print a Calendar for your Parents, GrandParents	
 ## http://www.sticker.tk
+
+```diff
+- text in red
++ text in green
+! text in orange
+# text in gray
+@@ text in purple (and bold)@@
+```
