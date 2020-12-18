@@ -128,9 +128,13 @@ IceBlue border Rectangle = Cooling is ON
 #
 ## Art output relais  heat & cool or single relais
 
-i think this double relais is optical isolated
+i think this double relais is optical isolated switched
 
 the single relais is switched by transistor
+
+GND=GND
+VCC = +5V (for the relais Coil)
+IN1, IN2 = 3.3V Gpio?? from ESP32
 
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/Art_Thermostat_relais.jpg">
 
