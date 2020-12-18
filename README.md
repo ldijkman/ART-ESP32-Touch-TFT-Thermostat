@@ -141,7 +141,7 @@ IN1, IN2 = 3.3V Gpio?? from ESP32
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/Art_Thermostat_relais.jpg">
 
 #
-## Art's Sensor BMP280 Temperature, Humidity, Barometer sensor (Future)
+## Art's Sensor BMP280 Temperature, Humidity, Barometer (4Future)
 
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/Art_Thermostat_BMP280.jpg">
 
@@ -150,7 +150,7 @@ IN1, IN2 = 3.3V Gpio?? from ESP32
 
 ART_ESP32_Thermostat_7_12_2020_ver2.ino => is the Main File	
 
-The other files are included tab files (Should be in the same Directory as Main File)	
+The other *.INO files are included tab files (Should be in the same Directory as Main File)	
 
 <img src="https://image.easyeda.com/pullimage/VNE6BX0bdmtFa41PH79R6Qq3eSFhpZg6qHJ66yZu.jpeg">	
 
