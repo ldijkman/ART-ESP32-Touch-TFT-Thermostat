@@ -86,15 +86,7 @@ void settings_two_screen() {
       break;
     }
 
-    //print touch xy position to serial monitor
-    Serial.print(x);
-    Serial.print(",");
-    Serial.println(y);
-    //  tft.setTextColor(GREEN, BLACK);
-    // tft.setCursor(120 , 30);
-    // tft.print("X="); tft.print(x); tft.print(" ");
-    // tft.setCursor(200, 30);
-    // tft.print("Y="); tft.print(y); tft.print(" ");
+   
     if (drawgreendot)tft.drawPixel(x, y, GREEN);
   }
 
