@@ -19,8 +19,19 @@ void drawbrightnessscreen() {
   TempLong = millis();  // store millis() counter in variable TempLong
 
   while (1 == 1) {                  // 1 wil always be 1   so forever
-    tft.getTouch(&x, &y);
-
+    
+    if (tft.getTouch(&x, &y)) {
+      //print touch xy position to serial monitor
+      Serial.print(x);
+      Serial.print(",");
+      Serial.println(y);
+      // tft.setTextColor(GREEN, BLACK);
+      // tft.setCursor(120 , 30);
+      // tft.print("X="); tft.print(x); tft.print(" ");
+      // tft.setCursor(200, 30);
+      // tft.print("Y="); tft.print(y); tft.print(" ");
+    }
+    
     if ((millis() - TempLong)  > 60000) { // compare stored TempLong to current millis() counter
       tft.fillScreen(BLACK);
       break;                              // after 60 seconds inactivetie timer break while loop timeout
@@ -78,17 +89,6 @@ void drawbrightnessscreen() {
 
     ledcWrite(ledChannel, backgroundlightval); // output PWM for backlight swipe from left to right to set according to x positoin touch
 
-
-
-    //print touch xy position to serial monitor
-    Serial.print(x);
-    Serial.print(",");
-    Serial.println(y);
-    // tft.setTextColor(GREEN, BLACK);
-    // tft.setCursor(120 , 30);
-    // tft.print("X="); tft.print(x); tft.print(" ");
-    // tft.setCursor(200, 30);
-    // tft.print("Y="); tft.print(y); tft.print(" ");
     if (drawgreendot)tft.drawPixel(x, y, GREEN);
   }
   //waitfortouchanywhere();
