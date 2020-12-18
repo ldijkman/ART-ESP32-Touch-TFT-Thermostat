@@ -134,7 +134,7 @@ the single relais is switched by transistor
 
 GND=GND
 
-VCC = +5V (for the relais Coil)
+VCC = +5V (for the relais Coil) ESP32 +5VDC is comming from  USB
 
 IN1, IN2 = 3.3V Gpio?? from ESP32
 
