@@ -93,9 +93,9 @@ NTC Connect => (-GND to VCC+3.3V) (VCC+3.3V to -GND) In Other Words Silkscreen p
 
 (This way its PULLDOWN) NTC Signal Line pulled down to ground
 ```diff
--Art's TFT screen will tell you how to connect the wires to ESP32 on startup</div>
+-Art's TFT screen will tell you how to connect the wires to ESP32 on startup
 
--On first boot Art's screen is Snowy for 20 seconds => I think Art is Formatting his Brain/Flash</div>
+-On first boot Art's screen is Snowy for 20 seconds => I think Art is Formatting his Brain/Flash
 ```
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/RTC_DS3231_NTC_Thermistor.jpg">
 
