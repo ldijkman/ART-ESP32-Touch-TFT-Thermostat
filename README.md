@@ -140,6 +140,10 @@ IN1, IN2 = 3.3V Gpio?? from ESP32
 
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/Art_Thermostat_relais.jpg">
 
+#
+## Art's Sensor BMP280 Temperature, Humidity, Barometer sensor (Future)
+
+<img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/Art_Thermostat_BMP280.jpg">
 
 #	
 ## This is wat your Arduino IDE should look like, Main File with the TAB files	
