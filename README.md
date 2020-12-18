@@ -22,7 +22,7 @@ https://www.youtube.com/user/LuberthDijkman/videos
 
 
 #
-## Art's HardWare is also described @
+## A Part of Art => HardWare is described @
 ## https://oshwlab.com/l.dijkman/esp32-dev-kit-38-pin-to-spi-touch-tft
 
 
