@@ -6,7 +6,18 @@ void settings_one_screen() {
   TempLong = millis();  // store millis() counter in variable TempLong
 
   while (1 == 1) {                  // 1 == 1   so forever
-    tft.getTouch(&x, &y);
+    
+    if (tft.getTouch(&x, &y)) {
+      //print touch xy position to serial monitor
+      Serial.print(x);
+      Serial.print(",");
+      Serial.println(y);
+      // tft.setTextColor(GREEN, BLACK);
+      // tft.setCursor(120 , 30);
+      // tft.print("X="); tft.print(x); tft.print(" ");
+      // tft.setCursor(200, 30);
+      // tft.print("Y="); tft.print(y); tft.print(" ");
+    }
 
     if ((millis() - TempLong)  > 60000) { // compare stored TempLong to current millis() counter
       tft.fillScreen(BLACK);
@@ -23,7 +34,7 @@ void settings_one_screen() {
 
     tft.drawRoundRect(10, 85, 145, 70, 8, LIGHTGREY);
     tft.setCursor(25, 110); tft.print("Brightness");
-    tft.setCursor(40, 130); tft.print(brightval); tft.print(" "); tft.print(map(brightval, 20, 255, 8, 100)); tft.print("%  ");
+    tft.setCursor(40, 130); tft.print(backgroundlightval); tft.print(" "); tft.print(map(backgroundlightval, 20, 255, 8, 100)); tft.print("%  ");
     if (x > 10 && x < 150 && y > 60 && y < 140) {
       tft.drawRoundRect(10, 85, 145, 70, 8, GREEN);
       Serial.println("brightness button pressed");
@@ -69,7 +80,7 @@ void settings_one_screen() {
       tft.setTextColor(GREEN, BLACK); tft.setCursor(70, 190); tft.print("<<");
       tft.drawRoundRect(10, 165, 145, 70, 8, GREEN);
       delay(500);
-      x=0;y=0;
+      x = 0; y = 0;
       break;
     }
 
@@ -83,15 +94,7 @@ void settings_one_screen() {
       break;
     }
 
-    //print touch xy position to serial monitor
-    Serial.print(x);
-    Serial.print(",");
-    Serial.println(y);
-    // tft.setTextColor(GREEN, BLACK);
-    // tft.setCursor(120 , 30);
-    // tft.print("X="); tft.print(x); tft.print(" ");
-    // tft.setCursor(200, 30);
-    // tft.print("Y="); tft.print(y); tft.print(" ");
+
     if (drawgreendot)tft.drawPixel(x, y, GREEN);
   }
 
