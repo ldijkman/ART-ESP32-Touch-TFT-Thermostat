@@ -136,7 +136,9 @@ GND=GND
 
 VCC = +5V (for the relais Coil) ESP32 +5VDC is comming from  USB
 
-IN1, IN2 = if pulled low to GND => relais==ON (GPIO26 and GPIO?? from ESP32)
+IN1, IN2 = if pulled low to GND => relais==ON (GPIO25 and GPIO26 from ESP32)
+
+>>>>>>>>>> maybe Disconnect relais when programming ESP32  <<<<<<<<<<<<<<<
 
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/Art_Thermostat_relais.jpg">
 
