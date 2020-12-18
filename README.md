@@ -6,7 +6,13 @@ Manual by Touch TFT and WIFI(Future) clock thermostat
 
 10 dollar DIY NEST thermostat	
 
-- red
+```diff
+- text in red
++ text in green
+! text in orange
+# text in gray
+@@ text in purple (and bold)@@
+```
 
 Art, A Better NEST	
 
