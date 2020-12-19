@@ -133,6 +133,8 @@ the double relaiscoil is optical isolated swithed by optocoupler
 
 the single relaiscoil is switched by transistor
 
+a bit big relais for most off the time 24VAC CentralHeatingSystem switching
+
 GND=GND
 
 VCC = +5V (for the relais Coil) ESP32 +5VDC is comming from  USB
