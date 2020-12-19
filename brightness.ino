@@ -69,7 +69,9 @@ void drawbrightnessscreen() {
     if (x != oldx) {                                              // only draw slidebar and circle if x touch has changed, x not is xold
       tft.fillRoundRect(10, 110, 300, 50, 13, GREEN);
       tft.fillCircle(x, 135, 25, BLACK);
-    }
+    } 
+    
+    oldx = x;                                                    // store x in oldx for next compare, should whe draw a slidebar
 
     backgroundlightval = x;
  
@@ -83,8 +85,6 @@ void drawbrightnessscreen() {
     //show it in procent
     tft.print(map(backgroundlightval, 5, 255, 2, 100));          // 100/255*5 maybe 2% otherwise black screen = no visibility
     tft.print("%  ");
-
-    oldx = x;
 
     if (backgroundlightval >= 255)backgroundlightval = 255;
 
