@@ -129,9 +129,9 @@ IceBlue border Rectangle = Cooling is ON
 #
 ## Art output relais  heat & cool or single relais
 
-i think this double relais is optical isolated switched
+the double relaiscoil is optical isolated swithed by optocoupler
 
-the single relais is switched by transistor
+the single relaiscoil is switched by transistor
 
 GND=GND
 
