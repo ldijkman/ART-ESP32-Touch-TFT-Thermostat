@@ -82,7 +82,7 @@ void drawbrightnessscreen() {
 
 
     tft.setCursor(150, 80);
-    //show it in procent                                             // scale x into procent
+    //show it in procent                                             // scale x into procent, for %value on screen
     tft.print(map(backgroundlightval, 5, 255, 2, 100));              // 100/255*5 maybe 2% otherwise black screen = no visibility
     tft.print("%  ");
 
