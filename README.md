@@ -148,6 +148,10 @@ IN1, IN2 = if pulled low to GND => relais==ON (GPIO25 and GPIO26 from ESP32)
 #
 ## Art's Sensor BME280 Temperature, Humidity, Barometer (4Future)
 
+ESP32 BME280 sensor test 
+
+https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/test/ESP32_BME280_barometer_humidity_temperature_sensor_test.ino
+
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/Art_Thermostat_BMP280.jpg">
 
 #	
