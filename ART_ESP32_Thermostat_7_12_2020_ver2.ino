@@ -62,8 +62,8 @@ RTC_DS3231 rtc;    // download zip from above and install library from zip
 const int ledPin = 27;  // corresponds to GPIo
 // connect to LED of SPI TFT display
 // setting PWM properties
-const int freq = 100;           // hz
-const int ledChannel = 5;        // think channel 0 is in use by buzzer
+const int freq = 4000;           // hz
+const int ledChannel = 0;        // think channel 0 is in use by buzzer
 const int resolution = 8;        // 8bit 0 to 255
 
 byte backgroundlightval = 127;    // not below 5 and upto to 255 backlight brightness better not totaly black
@@ -107,7 +107,7 @@ const int cool_relais_pin = 25;         // other contact for aico / fan
 int oldstate;
 double oldval;
 
-double TempCelsius = 0;
+float TempCelsius = 0;
 float Tf = 0;
 long ntc_analog_value;
 int counter = 0;
@@ -375,10 +375,12 @@ void loop() {
     // my pcb is pulled up so i switched + and - wire on ntc_pcb
     ntc_analog_value = 0;
     int numberoffmeasurements = 100;
-    for (int i = 0; i < numberoffmeasurements; i++) {
+    for (int Q = 0; Q < numberoffmeasurements; Q++) {
       ntc_analog_value = ntc_analog_value + analogRead(ntc_thermistor_pin);
     }
+     Serial.print(" ntc_analog_value = "); Serial.println(ntc_analog_value, 1);
     ntc_analog_value = ntc_analog_value / numberoffmeasurements;
+    
 
     R2 = R1 * (4095.0 / (float)ntc_analog_value - 1.0);
     logR2 = log(R2);
@@ -537,7 +539,7 @@ JumpOver:
   tft.setCursor(250, 0);
   tft.setTextColor (LIGHTGREY, BLACK);
   tft.print(((millis() - touchtime) / 1000));                   // last touch secondstoswitchtofullscreen seconds ago, go fullscreen
-  if (fullscreenactive == 0 && ((millis() - touchtime) / 1000) >= secondstoswitchtofullscreen) {
+  if ((fullscreenactive == 0) && (((millis() - touchtime) / 1000) >= secondstoswitchtofullscreen)) {
     fullscreenactive = 1;                                        // show fullscreen with milibar and humidity
     tft.fillRoundRect(5, 155, 310, 80, 1, BLACK);               // erase  buttons for fullscreen barometer en humidity text
   }
@@ -570,8 +572,8 @@ JumpOver:
       drawmainscreen();         // restore main screen
 
     }
-   
-    if (fullscreenactive) {              
+
+    if (fullscreenactive==1) {
       // touch in bottomscreen makes buttons visible and active
       if (x > 0 && x < 320 && y > 165 && y < 240) {
         fullscreenactive = 0;                                        // show fullscreen with milibar and humidity
@@ -581,7 +583,7 @@ JumpOver:
       }
     }
 
-    if (!fullscreenactive) {                                         // if not fullscreen touch buttons should not react to touch when in fullscreen
+    if (fullscreenactive==0) {                                         // if not fullscreen touch buttons should not react to touch when in fullscreen
 
       // mode touch button
       if (x > 100 && x < 200 && y > 165 && y < 240) {
@@ -713,54 +715,54 @@ JumpOver:
         //OUTSUB();
       }
 
+
+
+      // + touch button
+      if (x > 220 && x < 320 && y > 165 && y < 240) {
+
+        // 0=normal 1=eco 2=auto 3=Cool
+        if (mode == 0) {
+          normal_setpoint = (normal_setpoint + decrement);
+          if (normal_setpoint > 30)normal_setpoint = 30;
+        }
+        if (mode == 1) {
+          eco_setpoint = (eco_setpoint + decrement);
+          if (eco_setpoint > 30)eco_setpoint = 30;
+        }
+        if (mode == 2) {
+          auto_setpoint = (auto_setpoint + decrement);
+          if (auto_setpoint > 30)auto_setpoint = 30;
+        }
+        if (mode == 3) {
+          cool_setpoint = (cool_setpoint  + decrement);
+          if (cool_setpoint > 30)cool_setpoint = 30;
+        }
+
+        tft.setTextSize(4);
+        tft.setCursor(35, 65);
+
+        if (mode == 0) {
+          tft.setTextColor(LIGHTGREY, BLACK);          // 0=normal 1=eco 2=auto 3=Cool
+          tft.print(normal_setpoint, 1);
+        }
+        if (mode == 1) {
+          tft.setTextColor(GREEN, BLACK);
+          tft.print(eco_setpoint, 1);
+        }
+        if (mode == 2) {
+          tft.setTextColor(dutchorange, BLACK);
+          tft.print(auto_setpoint, 1);
+        }
+        if (mode == 3) {
+          tft.setTextColor(iceblue, BLACK);
+          tft.print(cool_setpoint, 1);
+        }
+        delay(50);
+        // OUTSUB();
+
+
+      }
     }  // end if not fullscreen touch buttons should not react to touch when in fullscreen
-
-    // + touch button
-    if (x > 220 && x < 320 && y > 165 && y < 240) {
-
-      // 0=normal 1=eco 2=auto 3=Cool
-      if (mode == 0) {
-        normal_setpoint = (normal_setpoint + decrement);
-        if (normal_setpoint > 30)normal_setpoint = 30;
-      }
-      if (mode == 1) {
-        eco_setpoint = (eco_setpoint + decrement);
-        if (eco_setpoint > 30)eco_setpoint = 30;
-      }
-      if (mode == 2) {
-        auto_setpoint = (auto_setpoint + decrement);
-        if (auto_setpoint > 30)auto_setpoint = 30;
-      }
-      if (mode == 3) {
-        cool_setpoint = (cool_setpoint  + decrement);
-        if (cool_setpoint > 30)cool_setpoint = 30;
-      }
-
-      tft.setTextSize(4);
-      tft.setCursor(35, 65);
-
-      if (mode == 0) {
-        tft.setTextColor(LIGHTGREY, BLACK);          // 0=normal 1=eco 2=auto 3=Cool
-        tft.print(normal_setpoint, 1);
-      }
-      if (mode == 1) {
-        tft.setTextColor(GREEN, BLACK);
-        tft.print(eco_setpoint, 1);
-      }
-      if (mode == 2) {
-        tft.setTextColor(dutchorange, BLACK);
-        tft.print(auto_setpoint, 1);
-      }
-      if (mode == 3) {
-        tft.setTextColor(iceblue, BLACK);
-        tft.print(cool_setpoint, 1);
-      }
-      delay(50);
-      // OUTSUB();
-
-
-    }
-
   }
 
 }
@@ -804,8 +806,8 @@ void OUTSUB() {
 
   if (HeatState == 0 ) {
 
-    if (!fullscreenactive)tft.drawRoundRect(10, 10, 300, 140, 8, BLUE);
-    if (fullscreenactive) tft.drawRoundRect(10, 10, 300, 220, 8, BLUE);
+    if (!fullscreenactive){tft.drawRoundRect(10, 10, 300, 140, 8, BLUE);}
+    if (fullscreenactive) {tft.drawRoundRect(10, 10, 300, 220, 8, BLUE);}
     tft.setTextSize (1);
     tft.setTextColor (BLUE, BLACK);
     tft.setCursor(130, 13);
@@ -822,8 +824,8 @@ void OUTSUB() {
   if (HeatState == 1 ) {
     bordercolor = dutchorange;
 
-    if (!fullscreenactive)tft.drawRoundRect(10, 10, 300, 140, 8, bordercolor);
-    if (fullscreenactive)tft.drawRoundRect(10, 10, 300, 220, 8, bordercolor);
+    if (!fullscreenactive){tft.drawRoundRect(10, 10, 300, 140, 8, bordercolor);}
+    if (fullscreenactive){tft.drawRoundRect(10, 10, 300, 220, 8, bordercolor);}
     tft.setTextSize (1);
     tft.setTextColor (dutchorange, BLACK);
     tft.setCursor(130, 13);
@@ -838,8 +840,8 @@ void OUTSUB() {
   if (CoolState == 0 ) {
     if (mode == 3) {
 
-      if (!fullscreenactive)tft.drawRoundRect(10, 10, 300, 140, 8, BLUE);
-      if (fullscreenactive)tft.drawRoundRect(10, 10, 300, 220, 8, BLUE);
+      if (!fullscreenactive){tft.drawRoundRect(10, 10, 300, 140, 8, BLUE);}
+      if (fullscreenactive){tft.drawRoundRect(10, 10, 300, 220, 8, BLUE);}
       tft.setTextSize (1);
       tft.setTextColor (iceblue, BLACK);
       tft.setCursor(130, 13);
@@ -854,8 +856,8 @@ void OUTSUB() {
   if (CoolState == 1 ) {
     if (mode == 3) {
 
-      if (!fullscreenactive)tft.drawRoundRect(10, 10, 300, 140, 8, iceblue);
-      if (fullscreenactive)tft.drawRoundRect(10, 10, 300, 220, 8, iceblue);
+      if (!fullscreenactive){tft.drawRoundRect(10, 10, 300, 140, 8, iceblue);}
+      if (fullscreenactive){tft.drawRoundRect(10, 10, 300, 220, 8, iceblue);}
       tft.setTextSize (1);
       tft.setTextColor (iceblue, BLACK);
       tft.setCursor(130, 13);

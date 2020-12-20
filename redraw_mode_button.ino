@@ -2,7 +2,7 @@ void redraw_mode_button() {
 
   if (fullscreenactive == 1) {
    
-    tft.fillRoundRect(11, 147, 297, 5, 0, BLACK);  // erase a piece of bottom rectangle of main screen rectangle
+    tft.fillRoundRect(11, 147, 297,8, 0, BLACK);  // erase a piece of bottom rectangle of main screen rectangle
     
     tft.setTextColor(LIGHTGREY);
     tft.setTextSize(2);
@@ -13,7 +13,6 @@ void redraw_mode_button() {
     tft.setTextSize(2);
     tft.setCursor(20, 205);
     tft.println("Humidity  55.7 %");
-
     return;   // skip redraw button if fullscreen active
 
   }
