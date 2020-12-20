@@ -1,7 +1,7 @@
 /*********
-
-  Complete project details at https://randomnerdtutorials.com 
-
+***************************************************************
+  most of this code came from https://randomnerdtutorials.com 
+***************************************************************
 changes made by luberth dijkman
 For Art Thermostat, a better NEST
    
