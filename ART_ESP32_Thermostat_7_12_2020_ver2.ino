@@ -374,7 +374,7 @@ void loop() {
     // ntc is pulled down to ground null -vdc 0vdc or whatever you call it
     // my pcb is pulled up so i switched + and - wire on ntc_pcb
     ntc_analog_value = 0;
-    int numberoffmeasurements = 100;
+    int numberoffmeasurements = 250;
     for (int Q = 0; Q < numberoffmeasurements; Q++) {
       ntc_analog_value = ntc_analog_value + analogRead(ntc_thermistor_pin);
     }

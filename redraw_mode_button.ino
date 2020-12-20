@@ -7,7 +7,14 @@ void redraw_mode_button() {
     tft.setTextColor(LIGHTGREY);
     tft.setTextSize(2);
     tft.setCursor(20, 170);
-    tft.println("990.50 mbar => Rain");
+    tft.println("990.50 mbar => Rain");  
+    // bit off weather predict by barometric pressure 
+    // is this correct?
+    // 975 stormy
+    // 995 Rain 
+    // 1015 change 
+    // 1035 Fair
+    // 1055 very dry 
 
     tft.setTextColor(LIGHTGREY);
     tft.setTextSize(2);
