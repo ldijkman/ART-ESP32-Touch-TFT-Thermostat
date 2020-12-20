@@ -42,9 +42,9 @@ https://www.paypal.com/pools/c/8amUN5rgb9
 www.paypal.me/LDijkman
               
 
-                
-      WANTED, Boring Bored People or Students, I could use some help?!  ;-) 
-                      Make YourSelf UseFull!
+Arduino Experience, But dont know what to do?                
+WANTED, Boring Bored People or Students, I could use some help?!  ;-) 
+Make YourSelf UseFull!
 
 
 
@@ -53,5 +53,7 @@ www.paypal.me/LDijkman
                       
 # It is Calendar Time
 # Print a Calendar for your Parents, GrandParents
-# http://www.sticker.tk
+#### http://www.sticker.tk
+
+# http://84.107.155.75/kalender.php
 
