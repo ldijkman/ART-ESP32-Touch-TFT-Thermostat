@@ -174,10 +174,11 @@ Make YourSelf UseFull!
 
 
 
-## It is Calendar Time	
+## It is Calendar Time, Free Printaable Calender in many Languages	
 ## Print a Calendar for your Parents, GrandParents	
 ## http://www.sticker.tk
 
+why is textcolor so hard in github readme.md markdown
 ```diff
 - text in red
 + text in green
