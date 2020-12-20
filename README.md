@@ -146,7 +146,7 @@ IN1, IN2 = if pulled low to GND => relais==ON (GPIO25 and GPIO26 from ESP32)
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/Art_Thermostat_relais.jpg">
 
 #
-## Art's Sensor BMP280 Temperature, Humidity, Barometer (4Future)
+## Art's Sensor BME280 Temperature, Humidity, Barometer (4Future)
 
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/Art_Thermostat_BMP280.jpg">
 
@@ -176,7 +176,11 @@ Make YourSelf UseFull!
 
 ## It is Calendar Time, Free Printable Calender in many Languages	
 ## Print a Calendar for your Parents, GrandParents	
-## http://www.sticker.tk
+## http://www.sticker.tk == HACKED
+
+USE
+
+# http://84.107.155.75/kalender.php
 
 why is textcolor so hard in github readme.md markdown
 ```diff
