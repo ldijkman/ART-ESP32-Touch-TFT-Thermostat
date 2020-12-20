@@ -41,10 +41,10 @@ https://www.paypal.com/pools/c/8amUN5rgb9
 
 www.paypal.me/LDijkman
               
+#
+###Arduino Experience, But dont know what to do?     
 
-Arduino Experience, But dont know what to do?     
-
-WANTED, Boring Bored People or Students, I could use some help?!  ;-)
+### WANTED, Boring Bored People or Students, I could use some help?!  ;-)
 
 ### Make YourSelf UseFull!
 
@@ -52,7 +52,7 @@ WANTED, Boring Bored People or Students, I could use some help?!  ;-)
 
 
                       
-                      
+#                     
 # It is Calendar Time
 # Print a Calendar for your Parents, GrandParents
 #### http://www.sticker.tk
