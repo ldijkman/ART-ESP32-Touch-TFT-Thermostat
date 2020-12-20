@@ -563,25 +563,25 @@ JumpOver:
     if (drawgreendot)tft.drawPixel(x, y, GREEN);
 
 
-    // press on mainscreen oens settings menu
+    // press on mainscreen opens settings menu
     if (x > 0 && x < 320 && y > 0 && y < 140) {
       settings_one_screen();    // open settings menu
       fullscreenactive = 0;
       drawmainscreen();         // restore main screen
 
     }
-
-    if (fullscreenactive) {
+   
+    if (fullscreenactive) {              
       // touch in bottomscreen makes buttons visible and active
       if (x > 0 && x < 320 && y > 165 && y < 240) {
-        fullscreenactive = 0;                          // show fullscreen with milibar and humidity
-        delay(250);  // better should be wait for touchrelease
-        x = 0; y = 0; // otherwise it could be seen as a button press
-        tft.fillRoundRect(5, 155, 310, 80, 1, BLACK); // erase old barometer and humidity text
+        fullscreenactive = 0;                                        // show fullscreen with milibar and humidity
+        delay(250);                                                  // better should be wait for touchrelease
+        x = 0; y = 0;                                                // otherwise it could be seen as a button press
+        tft.fillRoundRect(5, 155, 310, 80, 1, BLACK);                // erase old barometer and humidity text
       }
     }
 
-    if (!fullscreenactive) {                       // if not fullscreen touch buttons should not react to touch when in fullscreen
+    if (!fullscreenactive) {                                         // if not fullscreen touch buttons should not react to touch when in fullscreen
 
       // mode touch button
       if (x > 100 && x < 200 && y > 165 && y < 240) {

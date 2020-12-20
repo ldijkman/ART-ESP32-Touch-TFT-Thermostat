@@ -1,7 +1,8 @@
 void redraw_mode_button() {
 
   if (fullscreenactive == 1) {
-    
+   
+    tft.fillRoundRect(11, 147, 297, 5, 0, BLACK);  // erase a piece of bottom rectangle of main screen rectangle
     
     tft.setTextColor(LIGHTGREY);
     tft.setTextSize(2);
