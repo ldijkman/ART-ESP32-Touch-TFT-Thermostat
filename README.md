@@ -168,10 +168,9 @@ www.paypal.me/LDijkman
 
 
 
-
-
-      WANTED, Boring Bored People or Students, I could use some help?!  ;-) 	
-                      Make YourSelf UseFull!	
+Have you got Arduino Experience, But don't know what to Do
+WANTED, Boring Bored People or Students, I Could use some Help?!  ;-) 	
+Make YourSelf UseFull!	
 
 
 
