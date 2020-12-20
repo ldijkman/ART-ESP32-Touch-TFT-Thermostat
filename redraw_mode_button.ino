@@ -1,6 +1,36 @@
 void redraw_mode_button() {
 
-//if(fullscreenactive)return;
+  if (fullscreenactive == 1) {
+    
+    
+    tft.setTextColor(LIGHTGREY);
+    tft.setTextSize(2);
+    tft.setCursor(20, 170);
+    tft.println("990.50 mbar => Rain");
+
+    tft.setTextColor(LIGHTGREY);
+    tft.setTextSize(2);
+    tft.setCursor(20, 205);
+    tft.println("Humidity  55.7 %");
+
+    return;   // skip redraw button if fullscreen active
+
+  }
+
+  
+
+  tft.drawRoundRect(10, 10, 300, 140, 8, LIGHTGREY);  // main sreen outline
+
+  tft.drawRoundRect(10, 160, 90, 70, 8, LIGHTGREY);   // -     draw buttons outline
+  tft.drawRoundRect(115, 160, 90, 70, 8, LIGHTGREY);  // mode  draw buttons outline
+  tft.drawRoundRect(220, 160, 90, 70, 8, LIGHTGREY);  // +     draw buttons outline
+
+  tft.setTextColor(LIGHTGREY);
+  tft.setTextSize(6);
+  tft.setCursor(41, 175);
+  tft.println("-");
+  tft.setCursor(251, 175);
+  tft.println("+");
 
   tft.setTextSize(4);// 0=normal 1=eco 2=a utoc3=
   tft.setCursor(35, 65); //ool

@@ -58,23 +58,5 @@ void drawmainscreen() {
 
   redraw_mode_button();
 
-//while(1==1){
 
-if (tft.getTouch(&x, &y)){
-  TempLong = millis();  // store millis() 
-}
-   tft.setCursor(0, 20);
-    tft.setTextColor (RED);
- 
-    tft.setTextColor (LIGHTGREY, BLACK);
-    //tft.print(((millis() - TempLong) / 1000)); tft.print(" ");
-    tft.drawRoundRect(10, 10, 300, 140, 8, LIGHTGREY);  // main sreen outline
-  //  for (int i = 138; i <= 220; i++) {
-    //  tft.drawRoundRect(10, 10, 300, i-1, 8, BLACK);
-    //  tft.drawRoundRect(10, 10, 300, i, 8, bordercolor); 
-  
-  //  delay(25);
-  //}
-//}
-fullscreenactive=1;
 }
