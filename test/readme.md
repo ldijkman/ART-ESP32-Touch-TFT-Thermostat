@@ -42,9 +42,11 @@ https://www.paypal.com/pools/c/8amUN5rgb9
 www.paypal.me/LDijkman
               
 
-Arduino Experience, But dont know what to do?                
-WANTED, Boring Bored People or Students, I could use some help?!  ;-) 
-Make YourSelf UseFull!
+Arduino Experience, But dont know what to do?     
+
+WANTED, Boring Bored People or Students, I could use some help?!  ;-)
+
+### Make YourSelf UseFull!
 
 
 
