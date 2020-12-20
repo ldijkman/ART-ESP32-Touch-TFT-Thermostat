@@ -30,7 +30,7 @@ Adafruit_BME280 bme; // I2C
 
 void setup() {
   Serial.begin(115200);
-  delay(500);
+  delay(500);                    // a delay here otherwise next line whas not recieved by terminal==to fast???
   Serial.println("BME280 test");
 
   bool status;
