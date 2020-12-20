@@ -174,7 +174,7 @@ Make YourSelf UseFull!
 
 
 
-## It is Calendar Time, Free Printaable Calender in many Languages	
+## It is Calendar Time, Free Printable Calender in many Languages	
 ## Print a Calendar for your Parents, GrandParents	
 ## http://www.sticker.tk
 
