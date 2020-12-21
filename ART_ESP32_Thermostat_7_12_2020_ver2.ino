@@ -1,3 +1,7 @@
+//********************************************************************************
+// 21 december 2020 switched to BME280 temp, mbar, humid, sensor == much better
+//********************************************************************************
+
 // ART ESP32 Thermostat by luberth dijkman
 // https://oshwlab.com/l.dijkman/esp32-dev-kit-38-pin-to-spi-touch-tft
 // https://create.arduino.cc/editor/luberth/becc77e8-4000-4673-9412-dbaac0a3b268/preview
@@ -57,7 +61,12 @@ byte Force_DateTimeRewrite = 0;  // if 1 write time and date to DS3231 RTClock /
 RTC_DS3231 rtc;    // download zip from above and install library from zip
 // Sketch=>include library=>Add ZIP Library
 
-
+#include <Adafruit_Sensor.h>  // used zip from https://github.com/adafruit/Adafruit_Sensor 
+#include <Adafruit_BME280.h>  // used zip from https://github.com/adafruit/Adafruit_BME280_Library
+                              // Sketch=>include library=>Add ZIP Library
+#define SEALEVELPRESSURE_HPA (1013.25)
+Adafruit_BME280 BME280; // I2C
+bool BME280_status;
 
 const int ledPin = 27;  // corresponds to GPIo
 // connect to LED of SPI TFT display
@@ -272,7 +281,11 @@ void setup(void) {
   }
   tft.setTextColor(LIGHTGREY);
 
-
+  BME280_status = BME280.begin(0x76);  
+  if (!BME280_status) {
+    Serial.println("Could not find a valid BME280 sensor, check wiring!");
+    while (1);
+  }
 
 
   // set the time from PC to DS3231 RTC
@@ -321,7 +334,9 @@ void loop() {
 
   DateTime now = rtc.now();
 
+  
 
+  
   // Jo energy saving Backlight
   if (now.hour() < 8) {
     ledcWrite(ledChannel, 10);
@@ -365,6 +380,41 @@ void loop() {
   if (millis() - runTime >= 1000) { // Execute every 1000ms
     runTime = millis();             // store millis() counter in variable runtime
 
+
+
+
+
+Serial.print("Temperature = ");
+  Serial.print(BME280.readTemperature());
+  Serial.println(" *C");
+  
+  // Convert temperature to Fahrenheit
+  /*Serial.print("Temperature = ");
+  Serial.print(1.8 * BME280.readTemperature() + 32);
+  Serial.println(" *F");*/
+  
+  Serial.print("Pressure = ");
+  Serial.print(BME280.readPressure() / 100.0F);
+  Serial.println(" hPa");
+
+  Serial.print("Approx. Altitude = ");
+  Serial.print(BME280.readAltitude(SEALEVELPRESSURE_HPA));
+  Serial.println(" m");
+
+  Serial.print("Humidity = ");
+  Serial.print(BME280.readHumidity());
+  Serial.println(" %");
+
+  Serial.println();
+
+
+
+
+
+
+
+
+
     tft.setTextColor( BLACK, BLACK);
     tft.setTextSize(1);
     tft.setCursor(310, 3);
@@ -376,10 +426,10 @@ void loop() {
     ntc_analog_value = 0;
     int numberoffmeasurements = 250;
     for (int Q = 0; Q < numberoffmeasurements; Q++) {
-      ntc_analog_value = ntc_analog_value + analogRead(ntc_thermistor_pin);
+     // ntc_analog_value = ntc_analog_value + analogRead(ntc_thermistor_pin);
     }
-     Serial.print(" ntc_analog_value = "); Serial.println(ntc_analog_value, 1);
-    ntc_analog_value = ntc_analog_value / numberoffmeasurements;
+    // Serial.print(" ntc_analog_value = "); Serial.println(ntc_analog_value, 1);
+    //ntc_analog_value = ntc_analog_value / numberoffmeasurements;
     
 
     R2 = R1 * (4095.0 / (float)ntc_analog_value - 1.0);
@@ -388,6 +438,9 @@ void loop() {
     T = T - 273.15 + CalibrationOffset;
     Tf = (T * 9.0 / 5) + 32.0;
     TempCelsius = T ;
+    
+    TempCelsius=BME280.readTemperature();
+ 
     Serial.print("Fahrenheit = "); Serial.print(Tf, 1);
     Serial.print(" Celsius = "); Serial.println(TempCelsius, 1);
     // https://www.google.com/search?q=3+fahrenheit+to+celsius

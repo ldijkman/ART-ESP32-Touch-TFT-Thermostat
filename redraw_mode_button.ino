@@ -1,30 +1,51 @@
 void redraw_mode_button() {
 
   if (fullscreenactive == 1) {
-   
-    tft.fillRoundRect(11, 147, 297,8, 0, BLACK);  // erase a piece of bottom rectangle of main screen rectangle
-    
-    tft.setTextColor(LIGHTGREY);
+
+    float bartemp = BME280.readPressure() / 100.0F ;
+
+    tft.fillRoundRect(11, 147, 297, 8, 0, BLACK); // erase a piece of bottom rectangle of main screen rectangle
+
+    tft.setTextColor(LIGHTGREY, BLACK);
     tft.setTextSize(2);
     tft.setCursor(20, 170);
-    tft.println("990.50 mbar => Rain");  
-    // bit off weather predict by barometric pressure 
+
+    tft.print(bartemp);
+
+    if ( bartemp  <= 985) {
+      tft.println(" mbar = Stormy    ");
+    }
+    if (bartemp > 985 && bartemp <= 1005) {
+      tft.println(" mbar = Rain     ");
+    }
+    if (bartemp > 1005 && bartemp <= 1025) {
+      tft.println(" mbar = Change   ");
+    }
+    if (bartemp > 1025 && bartemp <= 1045) {
+      tft.println(" mbar = Fair     ");
+    }
+    if (bartemp >= 1045)  {
+      tft.println(" mbar = Very Dry ");
+    }
+    // bit off weather predict by barometric pressure
     // is this correct?
     // 975 stormy
-    // 995 Rain 
-    // 1015 change 
+    // 995 Rain
+    // 1015 change
     // 1035 Fair
-    // 1055 very dry 
+    // 1055 very dry
 
-    tft.setTextColor(LIGHTGREY);
+    tft.setTextColor(LIGHTGREY, BLACK);
     tft.setTextSize(2);
     tft.setCursor(20, 205);
-    tft.println("Humidity  55.7 %");
+    tft.print("Humidity ");
+    tft.print(BME280.readHumidity());
+    tft.println(" %  ");
     return;   // skip redraw button if fullscreen active
 
   }
 
-  
+
 
   tft.drawRoundRect(10, 10, 300, 140, 8, LIGHTGREY);  // main sreen outline
 
@@ -39,8 +60,8 @@ void redraw_mode_button() {
   tft.setCursor(251, 175);
   tft.println("+");
 
-  tft.setTextSize(4);// 0=normal 1=eco 2=a utoc3=
-  tft.setCursor(35, 65); //ool
+  tft.setTextSize(4);// 0=normal 1=eco 2=auto 3=//cool
+  tft.setCursor(35, 65);
   if (mode == 0) {
     tft.setTextColor(LIGHTGREY, BLACK);  // 0=normal 1=eco 2=auto 3=Cool
     tft.print(normal_setpoint, 1);
