@@ -85,6 +85,8 @@ First time EasyEDA.com and JLCPCB.com and LCSC.com == Perfect!
 #
 ## DS3231 RTC with NTC Thermistor soldered onto power 
 
+## sorry i switched to BME280 sensor temp. humid. barometer sensor == much better 
+
 VCC on RTC DS3231 is 3.3V
 
 Less Wires = Only a Signal wire from NTC Thermistor
