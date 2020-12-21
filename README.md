@@ -96,6 +96,10 @@ NTC Connect => (-GND to VCC+3.3V) (VCC+3.3V to -GND) In Other Words Silkscreen p
 -Art's TFT screen will tell you how to connect the wires to ESP32 on startup
 
 -On first boot Art's screen is Snowy for 20 seconds => I think Art is Formatting his Brain/Flash
+
+ESP32 Note: Analog noise and fluctuences with analog read => multiread and capacitor 
+
+https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/adc.html
 ```
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/RTC_DS3231_NTC_Thermistor.jpg">
 
