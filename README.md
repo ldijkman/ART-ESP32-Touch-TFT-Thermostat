@@ -103,7 +103,7 @@ ESP32 Note: Analog noise and fluctuences with analog read => multiread and capac
 
 https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/adc.html
 
-not so cler for me => think they want a 0.1mf 100uf capacitor between signal and ground to damp the analog read
+Not so clear for me as DIY Tinker  => think they want a 0.1mf 100uf capacitor between signal and ground to damp the analog read
 
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/RTC_DS3231_NTC_Thermistor.jpg">
 
