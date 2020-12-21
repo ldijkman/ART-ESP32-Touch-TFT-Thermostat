@@ -35,11 +35,17 @@ void redraw_mode_button() {
     // 1035 Fair
     // 1055 very dry
 
+    float humidtemp = BME280.readHumidity();
+
     tft.setTextColor(LIGHTGREY, BLACK);
     tft.setTextSize(2);
     tft.setCursor(20, 205);
     tft.print("Humidity ");
+    if (humidtemp >= 40 && humidtemp <= 60) {  // between 40% and 60% is good for in house
+      tft.setTextColor(GREEN, BLACK);
+    }
     tft.print(BME280.readHumidity());
+    tft.setTextColor(LIGHTGREY, BLACK);
     tft.println(" %  ");
     return;   // skip redraw button if fullscreen active
 
