@@ -477,13 +477,13 @@ Serial.print("Temperature = ");
     //tft.print("  ");
 
 
-    tft.setTextSize (1);
-    tft.setTextColor (LIGHTGREY, BLACK);
-    tft.setCursor(130, 13);
-    tft.print("  ");
-    tft.print(rtc.getTemperature());
-    //tft.print(char(247)); //degree sign
-    tft.print(" C  ");
+  //  tft.setTextSize (1);
+  //  tft.setTextColor (LIGHTGREY, BLACK);
+  //  tft.setCursor(130, 13);
+  //  tft.print("  ");
+  //  tft.print(rtc.getTemperature());
+  //  //tft.print(char(247)); //degree sign
+  //  tft.print(" C  ");
 
     oldminute = now.minute();
     // }

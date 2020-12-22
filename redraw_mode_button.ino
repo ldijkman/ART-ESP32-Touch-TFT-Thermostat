@@ -8,10 +8,11 @@ void redraw_mode_button() {
 
     tft.setTextColor(LIGHTGREY, BLACK);
     tft.setTextSize(2);
-    tft.setCursor(20, 170);
+    tft.setCursor(20, 160);
 
     tft.print(bartemp);
-
+    tft.println(" mbar ");
+    /*
     if ( bartemp  <= 985) {
       tft.println(" mbar = Stormy    ");
     }
@@ -27,6 +28,15 @@ void redraw_mode_button() {
     if (bartemp >= 1045)  {
       tft.println(" mbar = Very Dry ");
     }
+    */
+
+    tft.fillRoundRect (25, 183, 270, 2, 2, LIGHTGREY);              // draw scale for linear barometer
+    tft.setTextColor(LIGHTGREY, BLACK);
+    tft.setTextSize(0);
+    tft.setCursor(20, 188);       
+    tft.println("  stormy |  Rain  | change |  Fair  | very dry");
+    tft.fillCircle(map(bartemp, 955, 1075, 25, 295), 183, 3, GREEN);              // draw circle at cuurrent barometer pressure
+  
     // bit off weather predict by barometric pressure
     // is this correct?
     // 975 stormy
@@ -56,7 +66,7 @@ void redraw_mode_button() {
     tft.fillRoundRect (205, 233, 90, 2, 2, RED);                                // draw scale for humidity
     tft.fillRoundRect (115, 233, 90, 2, 2, GREEN);                              // draw scale for humidity
     tft.fillRoundRect (25, 233, 90, 2, 2, YELLOW);                              // draw scale for humidity
-    tft.fillCircle(map(humidtemp, 0, 100, 25, 295), 233, 2, BLUE);              // draw circle at rv%
+    tft.fillCircle(map(humidtemp, 0, 100, 25, 295), 233, 3, BLACK);              // draw circle at rv%
 
     return;   // skip redraw button if fullscreen active
 
