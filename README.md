@@ -209,14 +209,7 @@ USE
 
 # http://84.107.155.75/kalender.php
 
-why is textcolor so hard in github readme.md markdown
-```diff
-- text in red
-+ text in green
-! text in orange
-# text in gray
-@@ text in purple (and bold)@@
-```
+
 
 
 #
