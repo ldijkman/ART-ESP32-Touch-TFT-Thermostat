@@ -166,15 +166,13 @@ https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/test/ESP32_
 
 BME280 humidity a scale makes vissible how whe ar doing with RV%
 
-Anyone with coding Weather station experience => barometer should give better weather info 
-
-i think 1004 mb is on low change rain = but is not vissible now
-
-https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/redraw_mode_button.ino
-
 got my barometer pressure info from my pi webserver page http://84.107.155.75/
 
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/Art_Therrmostt_humidity_scale.jpg">
+
+## Art with Linear BaroMeter and Humidity scale
+
+<img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/Art_Thermostat_linear_barometer.jpg">
 
 
 #	
