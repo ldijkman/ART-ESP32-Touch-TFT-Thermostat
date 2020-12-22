@@ -168,6 +168,8 @@ BME280 humidity a scale makes vissible how whe ar doing with RV%
 
 got my barometer pressure info from my pi webserver page http://84.107.155.75/
 
+## Art with Linear Humidity Comfort Scale 
+
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/Art_Therrmostt_humidity_scale.jpg">
 
 ## Art with Linear BaroMeter and Humidity scale
