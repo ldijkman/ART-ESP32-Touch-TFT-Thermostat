@@ -170,7 +170,7 @@ BME280 humidity a scale makes vissible how whe ar doing with RV%
 
 got my barometer pressure info from my pi webserver page http://84.107.155.75/
 
-HE IS DAT HTTP://ARDDUINO.Tk
+HE IS DAT HTTP://ARDUINO.Tk
 
 ## Art with Linear Humidity Comfort Scale 
 
