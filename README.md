@@ -192,19 +192,21 @@ The other *.INO files are included tab files (Should be in the same Directory as
 <img src="https://image.easyeda.com/pullimage/VNE6BX0bdmtFa41PH79R6Qq3eSFhpZg6qHJ66yZu.jpeg">	
 
 
-
-Coffee keeps me going	
+#
+### A Penny for Sharing My Thoughts?	
 
 www.paypal.me/LDijkman	
 
 
 
-
+#
 Have you got Arduino Experience, But don't know what to Do
+
 WANTED, Boring Bored People or Students, I Could use some Help?!  ;-) 	
+
 Make YourSelf UseFull!	
 
-
+#
 
 ## It is Calendar Time, Free Printable Calender in many Languages	
 ## Print a Calendar for your Parents, GrandParents	
