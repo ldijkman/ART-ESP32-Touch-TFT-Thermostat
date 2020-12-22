@@ -172,7 +172,7 @@ got my barometer pressure info from my pi webserver page http://84.107.155.75/
 
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/Art_Therrmostt_humidity_scale.jpg">
 
-## Art with Linear BaroMeter and Humidity scale
+## Art with Linear BaroMeter and Humidity Comfort Scale
 
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/Art_Thermostat_linear_barometer.jpg">
 
