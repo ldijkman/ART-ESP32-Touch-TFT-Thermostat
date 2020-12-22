@@ -166,6 +166,10 @@ https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/test/ESP32_
 
 BME280 humidity a scale makes vissible how whe ar doing with RV%
 
+Anyone with coding Weather station experience => barometer should give better weather info 
+
+https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/redraw_mode_button.ino
+
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/Art_Therrmostt_humidity_scale.jpg">
 
 
