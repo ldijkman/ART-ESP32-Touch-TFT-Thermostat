@@ -193,13 +193,6 @@ The other *.INO files are included tab files (Should be in the same Directory as
 
 
 #
-### A Penny for Sharing My Thoughts?	
-
-www.paypal.me/LDijkman	
-
-
-
-#
 Have you got Arduino Experience, But don't know what to Do
 
 WANTED, Boring Bored People or Students, I Could use some Help?!  ;-) 	
@@ -224,3 +217,9 @@ why is textcolor so hard in github readme.md markdown
 # text in gray
 @@ text in purple (and bold)@@
 ```
+
+
+#
+### A Penny for Sharing My Thoughts?	
+
+www.paypal.me/LDijkman	
