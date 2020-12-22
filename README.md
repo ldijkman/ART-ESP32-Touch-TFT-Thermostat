@@ -166,7 +166,7 @@ https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/test/ESP32_
 
 BME280 humidity a scale makes vissible how whe ar doing with RV%
 
-<img sc="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/Art_Therrmostt_humidity_scale.jpg">
+<img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/Art_Therrmostt_humidity_scale.jpg">
 
 
 #	
