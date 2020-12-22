@@ -205,11 +205,9 @@ Make YourSelf UseFull!
 
 ## It is Calendar Time, Free Printable Calender in many Languages	
 ## Print a Calendar for your Parents, GrandParents	
-## http://www.sticker.tk == HACKED
-
-http://arduino.tk/kalender.php
-
-# http://84.107.155.75/kalender.php
+## http://sticker.tk/kalender.php
+## http://arduino.tk/kalender.php
+## http://84.107.155.75/kalender.php
 
 
 
