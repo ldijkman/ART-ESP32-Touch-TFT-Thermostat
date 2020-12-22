@@ -164,6 +164,11 @@ https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/test/ESP32_
 
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/Art_Thermostat_BMP280.jpg">
 
+BME280 humidity a scale makes vissible how whe ar doing with RV%
+
+<img sc="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/Art_Therrmostt_humidity_scale.jpg">
+
+
 #	
 ## This is wat your Arduino IDE should look like, Main File with the TAB files	
 
