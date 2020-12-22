@@ -22,7 +22,7 @@
 
 // under construction
 // Thank you for the Coffee!
-//           https://www.paypal.com/pools/c/8amUN5rgb9
+//           https://paypal.me/LDijkman
 
 
 

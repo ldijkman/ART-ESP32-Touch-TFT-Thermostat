@@ -41,12 +41,23 @@ void redraw_mode_button() {
     tft.setTextSize(2);
     tft.setCursor(20, 205);
     tft.print("Humidity ");
-    if (humidtemp >= 40 && humidtemp <= 60) {  // between 40% and 60% is good for in house
-      tft.setTextColor(GREEN, BLACK);
-    }
-    tft.print(BME280.readHumidity());
+    // if (humidtemp >= 40 && humidtemp <= 60) {  // draw green text between 40% and 60% is good for in house
+    //  tft.setTextColor(GREEN, BLACK);
+    // }
+    tft.print(humidtemp);
     tft.setTextColor(LIGHTGREY, BLACK);
     tft.println(" %  ");
+    
+
+    // scale makes better vissible how whe are doing with moisture comfort
+    //   humidtemp=100; // for testing scale, to see if blue circle is drawn at correct location
+    //   humidtemp=0;   // for testing scale, to see if blue circle is drawn at correct location
+    
+    tft.fillRoundRect (205, 233, 90, 2, 2, RED);                                // draw scale for humidity
+    tft.fillRoundRect (115, 233, 90, 2, 2, GREEN);                              // draw scale for humidity
+    tft.fillRoundRect (25, 233, 90, 2, 2, YELLOW);                              // draw scale for humidity
+    tft.fillCircle(map(humidtemp, 0, 100, 25, 295), 233, 2, BLUE);              // draw circle at rv%
+
     return;   // skip redraw button if fullscreen active
 
   }
@@ -58,6 +69,7 @@ void redraw_mode_button() {
   tft.drawRoundRect(10, 160, 90, 70, 8, LIGHTGREY);   // -     draw buttons outline
   tft.drawRoundRect(115, 160, 90, 70, 8, LIGHTGREY);  // mode  draw buttons outline
   tft.drawRoundRect(220, 160, 90, 70, 8, LIGHTGREY);  // +     draw buttons outline
+
 
   tft.setTextColor(LIGHTGREY);
   tft.setTextSize(6);
