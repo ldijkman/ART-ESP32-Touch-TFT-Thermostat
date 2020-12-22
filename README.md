@@ -174,6 +174,8 @@ got my barometer pressure info from my pi webserver page http://84.107.155.75/
 
 ## Art with Linear BaroMeter and Humidity Comfort Scale
 
+No it's not a slider, You can not change the weather with it!
+
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/Art_Thermostat_linear_barometer.jpg">
 
 
