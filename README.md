@@ -206,9 +206,10 @@ Make YourSelf UseFull!
 ## It is Calendar Time, Free Printable Calender in many Languages	
 ## Print a Calendar for your Parents, GrandParents	
 ## http://sticker.tk/kalender.php
-## http://arduino.tk/kalender.php
-## http://printit.tk/kalender.php
-## http://84.107.155.75/kalender.php
+## http://arduino.tk
+## http://PRINT-it.tk      
+## http://PRINTit.tk
+
 
 Art has a brand new home server http://www.arduino.tk
 
