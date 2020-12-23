@@ -214,9 +214,9 @@ Make YourSelf UseFull!
 Art has a brand new home server http://www.arduino.tk
 
 #
-## rtttl nokia ringtones for Art's Alarm 
+## maybe rtttl nokia ringtones for Art's Alarm 
 
-http://Arduino.tk/forum/rtttl/
+http://Arduino.tk/rtttl/
 
 
 #
