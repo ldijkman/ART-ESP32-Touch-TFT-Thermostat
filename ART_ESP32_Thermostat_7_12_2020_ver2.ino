@@ -347,6 +347,13 @@ void loop() {
     ledcWrite(ledChannel, 10);  // dim backround light display if hour >= 22uur            //backgroundlightval);
   }
 
+if (((millis() - touchtime) / 1000) <= 60) {
+   ledcWrite(ledChannel, backgroundlightval);  // if display is touched keep it bright for 60 seconds
+}
+
+
+
+
 
   while (! rtc.begin() || rtc.lostPower() == 1) {
     tft.fillScreen(RED);
