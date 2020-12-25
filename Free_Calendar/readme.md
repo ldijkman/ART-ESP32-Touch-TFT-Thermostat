@@ -46,7 +46,7 @@ Want to make a 3d print / design for connecting / hang the printed calendar pape
 
 http://PRINT-it.TK?v=dutch&year=2021
 
-http://PRINT-it.TKkalender.php?v=englisch&year=2021
+http://PRINT-it.TK?v=englisch&year=2021
 
 
 
