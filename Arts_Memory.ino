@@ -16,4 +16,5 @@
 // screen brightnes
 //
 // auto mode  program & times temps
-
+//
+// Arts age ;-) time since startdate / memory creation?
