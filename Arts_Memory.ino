@@ -104,7 +104,7 @@ void loop() {
   listDir(SPIFFS, "/", 0);
   Serial.println("ListDir 5 second delay");
   delay(5000);
-  File  file = SPIFFS.open("/ART_Thermostat.txt", FILE_WRITE);
+  File  file = SPIFFS.open("/Arts_Memory", FILE_WRITE);
   if (!file) {
     Serial.println("- failed to open file for writing");
     return;
@@ -131,7 +131,7 @@ void loop() {
 
 
 
-  File readfile = SPIFFS.open("/ART_Thermostat.txt");
+  File readfile = SPIFFS.open("/Arts_Memory");
   if (!readfile || readfile.isDirectory()) {
     Serial.println("no good");
     return;
