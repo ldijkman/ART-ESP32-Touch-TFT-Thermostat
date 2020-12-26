@@ -3,4 +3,4 @@
 // 
 // touch calibrate setting save has already formatted Arts Brain if needed 
 //
-// Use another brain-file for Art => file = "/Arts_Memory" 
+// Use another brain-file for Art => file = "/Arts_Memory"; 
