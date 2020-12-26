@@ -43,7 +43,7 @@ char CharArray[16];
 /* You only need to format SPIFFS the first time you run a
    test or else use the SPIFFS plugin to create a partition
    https://github.com/me-no-dev/arduino-esp32fs-plugin */
-#define FORMAT_SPIFFS_IF_FAILED 1
+#define FORMAT_SPIFFS_IF_FAILED 0
 
 void listDir(fs::FS &fs, const char * dirname, uint8_t levels) {
   Serial.println("now in begin of list directory");
