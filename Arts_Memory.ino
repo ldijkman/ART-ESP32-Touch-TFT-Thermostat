@@ -14,6 +14,7 @@
 // switchpoint above / below
 // alarm setpoints low/high
 // screen brightnes
+// screen dark Jo's energysaving nightmode times
 //
 // auto mode  program & times temps
 //
