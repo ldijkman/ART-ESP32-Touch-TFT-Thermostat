@@ -45,10 +45,7 @@
 //
 // auto mode  program & times temps
 //
-// Arts age / birthday ;-) time since startdate / memory creation?
-// number of reboots
-// heating on time
-// cooling on time
+// Arts age ;-) time since startdate / memory creation?
 //
 //
 //
@@ -137,6 +134,21 @@ void loop() {
   Serial.println("ListDir 5 second delay");
   Serial.println(); Serial.println(); Serial.println(); Serial.println(); Serial.println();
   delay(5000);
+
+
+// check if calibration file exists and size is correct
+  if (SPIFFS.exists("/Arts_Memory")) {
+    Serial.println("Art memory file escists this is the contnt");
+     ReadArtsMemory();
+      Serial.println("end Art memory read");
+  }
+
+  Serial.println(); Serial.println(); Serial.println(); Serial.println(); Serial.println();
+  delay(5000);
+
+
+
+
 
   WriteintoArtsMemory();
 
