@@ -46,6 +46,9 @@
 // auto mode  program & times temps
 //
 // Arts age ;-) time since startdate / memory creation?
+// number of reboots
+// heating on time
+// cooling on time
 //
 //
 //
