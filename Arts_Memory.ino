@@ -41,47 +41,6 @@
 
 #include "FS.h"
 #include "SPIFFS.h"
-int CharRead;
-char CharArray[16];
-/* You only need to format SPIFFS the first time you run a
-   test or else use the SPIFFS plugin to create a partition
-   https://github.com/me-no-dev/arduino-esp32fs-plugin */
-#define FORMAT_SPIFFS_IF_FAILED 1
-
-void listDir(fs::FS &fs, const char * dirname, uint8_t levels) {
-  Serial.println("now in begin of list directory");
-  Serial.printf("Listing directory: %s\r\n", dirname);
-
-  File root = fs.open(dirname);
-  if (!root) {
-    Serial.println("- failed to open directory");
-    return;
-  }
-  if (!root.isDirectory()) {
-    Serial.println(" - not a directory");
-    return;
-  }
-
-  File file = root.openNextFile();
-  while (file) {
-    if (file.isDirectory()) {
-      Serial.print("  DIR : ");
-      Serial.println(file.name());
-      if (levels) {
-        listDir(fs, file.name(), levels - 1);
-      }
-    } else {
-      Serial.print("  FILE: ");
-      Serial.print(file.name());
-      Serial.print("\tSIZE: ");
-      Serial.println(file.size());
-    }
-    file = root.openNextFile();
-  }
-}
-
-
-
 
 void setup() {
   Serial.begin(115200);
@@ -92,15 +51,11 @@ void setup() {
   while (!SPIFFS.begin()) {             //FORMAT_SPIFFS_IF_FAILED)) {
     Serial.println("SPIFFS Mount Failed");
   }
-}
-
-
-
+} //end setup
 
 
 
 void loop() {
-
   Serial.println("dirctory listing");
   listDir(SPIFFS, "/", 0);
   Serial.println("ListDir 5 second delay");
@@ -119,8 +74,8 @@ void loop() {
 
   Serial.println(); Serial.println();
   delay(5000);
-
-}
+   
+}  //end loop
 
 
 
@@ -174,5 +129,40 @@ void ReadArtsMemory() {
     i = i + 1;
 
   }
+}
 
+
+
+
+//################################################################
+void listDir(fs::FS &fs, const char * dirname, uint8_t levels) {
+  Serial.println("now in begin of list directory");
+  Serial.printf("Listing directory: %s\r\n", dirname);
+
+  File root = fs.open(dirname);
+  if (!root) {
+    Serial.println("- failed to open directory");
+    return;
+  }
+  if (!root.isDirectory()) {
+    Serial.println(" - not a directory");
+    return;
+  }
+
+  File file = root.openNextFile();
+  while (file) {
+    if (file.isDirectory()) {
+      Serial.print("  DIR : ");
+      Serial.println(file.name());
+      if (levels) {
+        listDir(fs, file.name(), levels - 1);
+      }
+    } else {
+      Serial.print("  FILE: ");
+      Serial.print(file.name());
+      Serial.print("\tSIZE: ");
+      Serial.println(file.size());
+    }
+    file = root.openNextFile();
+  }
 }
