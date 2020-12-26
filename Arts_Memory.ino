@@ -43,7 +43,7 @@ char CharArray[16];
 /* You only need to format SPIFFS the first time you run a
    test or else use the SPIFFS plugin to create a partition
    https://github.com/me-no-dev/arduino-esp32fs-plugin */
-#define FORMAT_SPIFFS_IF_FAILED 0
+#define FORMAT_SPIFFS_IF_FAILED 1
 
 void listDir(fs::FS &fs, const char * dirname, uint8_t levels) {
   Serial.println("now in begin of list directory");
@@ -139,35 +139,23 @@ void loop() {
 
   Serial.println("got acces to Arts memory, going to read his brain / memory");
   int i = 1;
-  String ThisString;
+  String ThisString, readstring;
   while (readfile.available()) {
 
-    CharRead = (readfile.read());
-
-    if (CharRead == 10) {  //linefeed
-      Serial.println(" line feed");
-      Serial.print("CharArray=>"); Serial.print(CharArray); Serial.println("<=end");
-
-      Serial.print("ThisString.toInt() "); Serial.println(ThisString.toInt());
-      Serial.print("ThisString.toFloat() "); Serial.println(ThisString.toFloat());
-      memset(CharArray, 0, sizeof(CharArray));//clear array
-    }
-
-    if (CharRead == 13) {
-      Serial.print(" carriage return ");
-      ThisString = "";
-
-      i = 0;
-      delay(2500);
-    }
-
-    Serial.print(char(CharRead)); delay(50);
-    CharArray[i] = char(CharRead);
-    ThisString = String(CharArray);
+    readstring = (readfile.readStringUntil('\n'));
+    Serial.print("line ");
+    Serial.print(i);
+    Serial.print(" = ");
+    Serial.println(readstring);
+    
     i = i + 1;
+
   }
 
-  Serial.println("done reading file");
+
+
+
+  Serial.println("done reading Arts memory");
   Serial.println( "Test complete" );
   Serial.println("5 second delay");
   delay(5000);
