@@ -23,6 +23,31 @@
 //
 //
 //
+// Wouldnt that be Great if Art can remember Things
+// Read from Arts memory and write into Arts memory
+//
+// touch calibrate setting save has already formatted Arts Brain if needed
+//
+// Use new brain-file for Art => file = "/Arts_Memory";
+//
+//***************************
+// what do we want to save
+//***************************
+// eco setpoint
+// normal setpoint
+// cool setpoint
+// switchpoint above / below
+// alarm setpoints low/high
+// screen brightnes
+//
+// auto mode  program & times temps
+//
+// Arts age ;-) time since startdate / memory creation?
+//
+//
+//
+//
+//
 //copy this ino for testing in a blank arduino ide
 //and upload to esp32 see in serial monitor result so far
 //
@@ -99,17 +124,47 @@ void setup() {
 
 void loop() {
   Serial.println("now in begin of loop");
-  Serial.println(); Serial.println();
+  Serial.println(); Serial.println(); Serial.println(); Serial.println(); Serial.println();
 
+  Serial.println("dirctory listing");
   listDir(SPIFFS, "/", 0);
   Serial.println("ListDir 5 second delay");
+  Serial.println(); Serial.println(); Serial.println(); Serial.println(); Serial.println();
   delay(5000);
+
+  WriteintoArtsMemory();
+
+
+  Serial.println("done writing into Arts memory");
+  Serial.println("5 second delay");
+  delay(5000);
+  Serial.println(); Serial.println(); Serial.println(); Serial.println(); Serial.println();
+
+  ReadArtsMemory();
+
+  Serial.println("done reading Arts memory");
+  Serial.println( "Test complete" );
+  Serial.println("5 second delay");
+  delay(5000);
+
+  Serial.println(); Serial.println(); Serial.println(); Serial.println(); Serial.println();
+  Serial.println(); Serial.println(); Serial.println(); Serial.println(); Serial.println();
+
+}
+
+
+
+
+
+
+
+void WriteintoArtsMemory() {
   File  file = SPIFFS.open("/Arts_Memory", FILE_WRITE);
   if (!file) {
     Serial.println("- failed to open file for writing");
     return;
   } else {
-    file.println("1");
+    file.println(millis());
     file.println("22");
     file.println("1111");
     file.println("11114");
@@ -121,16 +176,14 @@ void loop() {
     file.close();
     Serial.println("done writing into arts memory file");
   }
-
-  Serial.println("5 second delay");
-  delay(5000);
-  Serial.println(); Serial.println(); Serial.println(); Serial.println(); Serial.println(); Serial.println();
+}
 
 
 
 
 
 
+void ReadArtsMemory() {
   File readfile = SPIFFS.open("/Arts_Memory");
   if (!readfile || readfile.isDirectory()) {
     Serial.println("no good");
@@ -147,21 +200,9 @@ void loop() {
     Serial.print(i);
     Serial.print(" = ");
     Serial.println(readstring);
-    
+
     i = i + 1;
 
   }
-
-
-
-
-  Serial.println("done reading Arts memory");
-  Serial.println( "Test complete" );
-  Serial.println("5 second delay");
-  delay(5000);
-
-
-  Serial.println(); Serial.println(); Serial.println(); Serial.println(); Serial.println();
-  Serial.println(); Serial.println(); Serial.println(); Serial.println(); Serial.println();
 
 }
