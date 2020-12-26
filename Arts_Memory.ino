@@ -23,7 +23,6 @@
 // total time cooling on
 //
 //
-
 //
 //
 //
@@ -90,9 +89,8 @@ void setup() {
   Serial.println("now in begin of setup");
   Serial.println(); Serial.println();
 
-  if (!SPIFFS.begin(FORMAT_SPIFFS_IF_FAILED)) {
+  while (!SPIFFS.begin()) {             //FORMAT_SPIFFS_IF_FAILED)) {
     Serial.println("SPIFFS Mount Failed");
-    return;
   }
 }
 
@@ -102,47 +100,25 @@ void setup() {
 
 
 void loop() {
-  Serial.println("now in begin of loop");
-  Serial.println(); Serial.println(); Serial.println(); Serial.println(); Serial.println();
 
   Serial.println("dirctory listing");
   listDir(SPIFFS, "/", 0);
   Serial.println("ListDir 5 second delay");
-  Serial.println(); Serial.println(); Serial.println(); Serial.println(); Serial.println();
+  Serial.println(); Serial.println();
   delay(5000);
 
 
-// check if calibration file exists and size is correct
+  // check if calibration file exists   // part from touch calibration
   if (SPIFFS.exists("/Arts_Memory")) {
-    Serial.println("Art memory file escists this is the contnt");
-     ReadArtsMemory();
-      Serial.println("end Art memory read");
+    Serial.println("Art memory file exists this is the content");
+    ReadArtsMemory();
+  } else {
+    Serial.println("Creating arts memory file");
+    WriteintoArtsMemory();
   }
 
-  Serial.println(); Serial.println(); Serial.println(); Serial.println(); Serial.println();
+  Serial.println(); Serial.println();
   delay(5000);
-
-
-
-
-
-  WriteintoArtsMemory();
-
-
-  Serial.println("done writing into Arts memory");
-  Serial.println("5 second delay");
-  delay(5000);
-  Serial.println(); Serial.println(); Serial.println(); Serial.println(); Serial.println();
-
-  ReadArtsMemory();
-
-  Serial.println("done reading Arts memory");
-  Serial.println( "Test complete" );
-  Serial.println("5 second delay");
-  delay(5000);
-
-  Serial.println(); Serial.println(); Serial.println(); Serial.println(); Serial.println();
-  Serial.println(); Serial.println(); Serial.println(); Serial.println(); Serial.println();
 
 }
 
@@ -151,7 +127,7 @@ void loop() {
 
 
 
-
+//##############################################
 void WriteintoArtsMemory() {
   File  file = SPIFFS.open("/Arts_Memory", FILE_WRITE);
   if (!file) {
@@ -176,7 +152,7 @@ void WriteintoArtsMemory() {
 
 
 
-
+//##########################################
 void ReadArtsMemory() {
   File readfile = SPIFFS.open("/Arts_Memory");
   if (!readfile || readfile.isDirectory()) {
