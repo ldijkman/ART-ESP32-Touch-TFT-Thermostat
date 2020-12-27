@@ -44,7 +44,7 @@ const char Web_page[] PROGMEM = R"=====(
        margin: auto;
        text-align: center;
        width: 100%;
-       heigth: 100%;
+       height: 100%;
        border: 3px solid #000000;
        padding: 10px;
        background: #558ED5;
