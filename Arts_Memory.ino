@@ -36,17 +36,9 @@
 
 
 void ArtsMemory() {
-  
   tft.setTextSize (1);
-  
   while (0 == 0) {
-        
-    if (tft.getTouch(&x, &y)) {
-      break;
-      x=0,y=0;
-      delay(500);
-    }
-    
+
     tft.fillScreen(BLACK);
     tft.drawRoundRect(1, 1, 319, 239, 2, DARKGREY);
     tft.setCursor(10 , 10);
@@ -55,7 +47,14 @@ void ArtsMemory() {
     tft.println(); tft.println();
     tft.println("ListDir 5 second delay");
 
-    delay(5000);
+    for (int i = 0; i <= 500; i++) {
+      if (tft.getTouch(&x, &y)) {
+        break;
+        x = 0, y = 0;
+        delay(1000);
+      }
+      delay(10);
+    }
 
     tft.fillScreen(BLACK);
     tft.drawRoundRect(1, 1, 319, 239, 2, DARKGREY);
@@ -71,9 +70,18 @@ void ArtsMemory() {
 
     tft.println(); tft.println();
     tft.println(" 5 second delay");
-    delay(5000);
+        for (int i = 0; i <= 500; i++) {
+      if (tft.getTouch(&x, &y)) {
+        break;
+        x = 0, y = 0;
+        delay(1000);
+      }
+      delay(10);
+    }
   }
 }
+
+
 
 
 
