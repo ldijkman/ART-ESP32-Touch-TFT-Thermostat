@@ -49,7 +49,7 @@ void ArtsMemory() {
 
     for (int i = 0; i <= 500; i++) {
       if (tft.getTouch(&x, &y)) {
-        break;
+        return;
         x = 0, y = 0;
         delay(1000);
       }
@@ -70,9 +70,9 @@ void ArtsMemory() {
 
     tft.println(); tft.println();
     tft.println(" 5 second delay");
-        for (int i = 0; i <= 500; i++) {
+    for (int i = 0; i <= 500; i++) {
       if (tft.getTouch(&x, &y)) {
-        break;
+        return;
         x = 0, y = 0;
         delay(1000);
       }
@@ -80,9 +80,6 @@ void ArtsMemory() {
     }
   }
 }
-
-
-
 
 
 
