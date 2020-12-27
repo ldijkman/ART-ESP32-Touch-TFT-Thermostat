@@ -30,7 +30,7 @@ WebServer server(80);
 #include <WiFiClient.h>
 
 const char* ssid     = "Bangert 30 Andijk";  // wifi router name broadcasted in the air
-const char* password = "ikwilerin";          // wifi router password
+const char* password = "password";          // wifi router password
 
 
 // This function returns an HTML formated page in the correct type for display
