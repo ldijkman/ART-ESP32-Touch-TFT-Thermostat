@@ -26,15 +26,17 @@
 //
 //
 //
-
-
-
-//while (!SPIFFS.begin()) {             //FORMAT_SPIFFS_IF_FAILED)) {
+// touch calibrate did already format and mount?
+// and some other SPIFFS things?
+//
+//while (!SPIFFS.bgin()) {             //FORMAT_SPIFFS_IF_FAILED)) {
 //   tft.println("SPIFFS Mount Failed");
 //}
 
 
 
+
+//###############
 void ArtsMemory() {
   if (SPIFFS.exists("/Arts_Memory")) {
     tft.println("Creating arts memory file");
@@ -51,12 +53,12 @@ void ArtsMemory() {
     tft.println(); tft.println();
     tft.println("ListDir 5 second delay");
 
-    for (int i = 0; i <= 500; i++) {
+    for (int i = 0; i <= 500; i++) {   //500x10 is 5 seconds
       if (tft.getTouch(&x, &y)) {
         tft.drawRoundRect(1, 1, 319, 239, 2, GREEN);
         x = 0, y = 0;
         delay(1000);
-        return;
+        return;               // exit if touched
       }
       delay(10);
     }
@@ -103,8 +105,8 @@ void WriteintoArtsMemory() {
     file.println(normal_setpoint);
     file.println(cool_setpoint);
     file.println("1555");
-    file.println("881111111");
-    file.println("1111111");
+    file.println("12345");
+    file.println("6789");
     file.println("16611.111");
     file.println("11.111");
     file.close();
@@ -124,23 +126,24 @@ void ReadArtsMemory() {
     return;
   }
 
-  tft.println("Got acces 2 Arts memory, going to read Art's Mem.");
+  tft.println(" Got acces 2 Arts memory, going to read Art's Mem.");
+  tft.println("");
   int i = 1;
   String ThisString, readstring;
   while (readfile.available()) {
 
     readstring = (readfile.readStringUntil('\n'));
     if (i == 1) {
-       tft.print("millis        ");
+      tft.print(" millis        ");
     }
-    if (i == 2) { 
-       tft.print("eco setpoint  ");
+    if (i == 2) {
+      tft.print(" eco setpoint  ");
     }
     if (i == 3) {
-       tft.print("normal sepoint");
+      tft.print(" normal sepoint");
     }
     if (i == 4) {
-       tft.print("cool setpoint ");
+      tft.print(" cool setpoint ");
     }
 
     tft.print(" = ");
