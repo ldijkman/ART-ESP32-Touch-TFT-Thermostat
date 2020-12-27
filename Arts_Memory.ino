@@ -72,8 +72,8 @@ void ArtsMemory() {
     tft.println(); tft.println();
     tft.println(" 5 second delay");
     for (int i = 0; i <= 500; i++) {
-      tft.drawRoundRect(1, 1, 319, 239, 2, GREEN);
       if (tft.getTouch(&x, &y)) {
+        tft.drawRoundRect(1, 1, 319, 239, 2, GREEN);
         x = 0, y = 0;
         delay(1000);
         return;
