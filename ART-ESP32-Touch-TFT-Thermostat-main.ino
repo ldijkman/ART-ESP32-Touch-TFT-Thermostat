@@ -33,9 +33,9 @@ const char* ssid     = "Bangert 30 Andijk";  // wifi router name broadcasted in 
 const char* password = "passsword";          // wifi router password
 
 
-// This function returns an HTML formated page in the correct type for display 
+// This function returns an HTML formated page in the correct type for display
 // It uses the Raw string macro 'R' to place commands in PROGMEM
-const char Web_page[] PROGMEM = R"=====( 
+const char Web_page[] PROGMEM = R"=====(
 <!DOCTYPE html>
 <html>
   <style>
@@ -396,12 +396,17 @@ void setup(void) {
     tft.fillRect(1, i, 320, 1, 0x1111);
     }
   */
-
-
+  tft.setTextColor(GREEN,BLACK);
+  tft.setCursor(15, 30);
   WiFi.mode(WIFI_STA);        // Connect to your wifi
   WiFi.begin(ssid, password); // Start the Wi-Fi services
-  Serial.println("Connecting to : "+String(ssid));
-  while (WiFi.waitForConnectResult() != WL_CONNECTED) {Serial.print(".");} // Wait for WiFi to connect
+  Serial.println("Connecting to WiFi : "+String(ssid));
+  tft.println("Connecting to WiFi : "+String(ssid));
+  tft.setCursor(15, 40);
+  while (WiFi.waitForConnectResult() != WL_CONNECTED) {
+    Serial.print(".");    // Wait for WiFi to connect
+    tft.print(".");
+  } 
   Serial.println(" Connected to : "+String(ssid));
   Serial.print("Use IP address: ");
   Serial.println(WiFi.localIP());  //IP address assigned to your ESP
@@ -427,7 +432,7 @@ void loop() {
 
   // webserver
  server.handleClient();  // Keep checking for a client connection
- 
+
   
   // Jo energy saving Backlight
   if (now.hour() < 8) {
@@ -544,7 +549,7 @@ Serial.print("Temperature = ");
     TempCelsius = T ;
     
     TempCelsius=BME280.readTemperature();
- 
+
     Serial.print("Fahrenheit = "); Serial.print(Tf, 1);
     Serial.print(" Celsius = "); Serial.println(TempCelsius, 1);
     // https://www.google.com/search?q=3+fahrenheit+to+celsius
