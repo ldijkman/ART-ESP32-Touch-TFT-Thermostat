@@ -43,7 +43,8 @@ const char Web_page[] PROGMEM = R"=====(
        font-family: sans-serif;
        margin: auto;
        text-align: center;
-       width: 50%;
+       width: 100%;
+       heigth: 100%;
        border: 3px solid #000000;
        padding: 10px;
        background: #558ED5;
