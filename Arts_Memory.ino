@@ -36,8 +36,17 @@
 
 
 void ArtsMemory() {
+  
   tft.setTextSize (1);
+  
   while (0 == 0) {
+        
+    if (tft.getTouch(&x, &y)) {
+      break;
+      x=0,y=0;
+      delay(500);
+    }
+    
     tft.fillScreen(BLACK);
     tft.drawRoundRect(1, 1, 319, 239, 2, DARKGREY);
     tft.setCursor(10 , 10);
