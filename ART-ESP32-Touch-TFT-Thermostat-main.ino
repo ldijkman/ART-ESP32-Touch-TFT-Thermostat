@@ -30,7 +30,7 @@ WebServer server(80);
 #include <WiFiClient.h>
 
 const char* ssid     = "Bangert 30 Andijk";  // wifi router name broadcasted in the air
-const char* password = "passsword";          // wifi router password
+const char* password = "ikwilerin";          // wifi router password
 
 
 // This function returns an HTML formated page in the correct type for display
@@ -50,7 +50,7 @@ const char Web_page[] PROGMEM = R"=====(
        background: #558ED5;
     }
     h1 {
-      font-size: 36px;
+      font-size: 30px;
       color: white;
     }
     h4 {
@@ -61,9 +61,9 @@ const char Web_page[] PROGMEM = R"=====(
   <body>
      <div class = "displayobject">
      <center>
-       <h1>Art Smart Thermostat </h1><br>
-       <h1>Art in the Air</h1><br></center>
-       <h1></h1><br>
+       <h1>Art Smart Thermostat <br>
+       Art in the Air</h1><br></center>
+       <br>
        <h4>Temperature reading: <span id="TEMPvalue">0</span>&deg</h4>
        <h4>Humidity reading: <span id="HUMIvalue">0</span>%</h4>
        <h4>Pressure reading: <span id="PRESvalue">0</span>mbar</h4><br>
