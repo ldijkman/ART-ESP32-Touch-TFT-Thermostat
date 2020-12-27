@@ -49,9 +49,10 @@ void ArtsMemory() {
 
     for (int i = 0; i <= 500; i++) {
       if (tft.getTouch(&x, &y)) {
-        return;
+        tft.drawRoundRect(1, 1, 319, 239, 2, GREEN);
         x = 0, y = 0;
         delay(1000);
+        return;
       }
       delay(10);
     }
@@ -71,15 +72,17 @@ void ArtsMemory() {
     tft.println(); tft.println();
     tft.println(" 5 second delay");
     for (int i = 0; i <= 500; i++) {
+      tft.drawRoundRect(1, 1, 319, 239, 2, GREEN);
       if (tft.getTouch(&x, &y)) {
-        return;
         x = 0, y = 0;
         delay(1000);
+        return;
       }
       delay(10);
     }
   }
 }
+
 
 
 
@@ -162,7 +165,7 @@ void listDir(fs::FS &fs, const char * dirname, uint8_t levels) {
     } else {
       tft.print("  FILE: ");
       tft.print(file.name());
-      tft.print("\tSIZE: ");
+      tft.print("\t SIZE: ");
       tft.println(file.size());
     }
     file = root.openNextFile();
