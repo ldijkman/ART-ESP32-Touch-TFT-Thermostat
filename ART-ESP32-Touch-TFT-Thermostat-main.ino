@@ -491,7 +491,7 @@ tft.println(WiFi.localIP());
     runTime = millis();             // store millis() counter in variable runtime
 
 
-
+server.handleClient();  // Keep checking for a client connection
 
 
 Serial.print("Temperature = ");
