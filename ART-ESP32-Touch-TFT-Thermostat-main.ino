@@ -30,78 +30,10 @@ WebServer server(80);
 #include <WiFiClient.h>
 
 const char* ssid     = "Bangert 30 Andijk";  // wifi router name broadcasted in the air
-const char* password = "password";          // wifi router password
+const char* password = "Password";          // wifi router password
 
 
-// This function returns an HTML formated page in the correct type for display
-// It uses the Raw string macro 'R' to place commands in PROGMEM
-const char Web_page[] PROGMEM = R"=====(
-<!DOCTYPE html>
-<html>
-  <style>
-    .displayobject{
-       font-family: sans-serif;
-       margin: auto;
-       text-align: center;
-       width: 100%;
-       height: 100%;
-       border: 3px solid #000000;
-       padding: 10px;
-       background: #558ED5;
-    }
-    h1 {
-      font-size: 30px;
-      color: white;
-    }
-    h4 {
-      font-size: 30px;
-      color: yellow;
-    }
-  </style>
-  <body>
-     <div class = "displayobject">
-     <center>
-       <h1>Art Smart Thermostat <br>
-       Art in the Air</h1><br></center>
-       <br>
-       <h4>Temperature reading: <span id="TEMPvalue">0</span>&deg</h4>
-       <h4>Humidity reading: <span id="HUMIvalue">0</span>%</h4>
-       <h4>Pressure reading: <span id="PRESvalue">0</span>mbar</h4><br>
-     </div>
-     <script>
-       setInterval(function() {getSensorData();}, 1000); // Call the update function every set interval e.g. 1000mS or 1-sec
-  
-       function getSensorData() {
-          var xhttp = new XMLHttpRequest();
-          xhttp.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("TEMPvalue").innerHTML = this.responseText;
-          }
-        };
-        xhttp.open("GET", "TEMPread", true);
-        xhttp.send();
-        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("HUMIvalue").innerHTML = this.responseText;
-          }
-        };
-        xhttp.open("GET", "HUMIread", true);
-        xhttp.send();
-        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("PRESvalue").innerHTML = this.responseText;}
-        };  
-        xhttp.open("GET", "PRESread", true);
-        xhttp.send(); 
-      }
-    </script>
-  </body>
-</html>
-)=====";
+
 
 #include "FS.h"
 #include <SPI.h>
@@ -413,9 +345,9 @@ void setup(void) {
   Serial.println(WiFi.localIP());  //IP address assigned to your ESP
   //----------------------------------------------------------------
   server.on("/", handleRoot);         // This displays the main webpage, it is called when you open a client connection on the IP address using a browser
-  server.on("/TEMPread", handleTEMP); // To update Temperature called by the function getSensorData
-  server.on("/HUMIread", handleHUMI); // To update Humidity called by the function getSensorData
-  server.on("/PRESread", handlePRES); // To update Pressure called by the function getSensorData
+  server.on("/temp", handleTEMP); // To update Temperature called by the function getSensorData
+  server.on("/humid", handleHUMID); // To update Humidity called by the function getSensorData
+  server.on("/pressure", handlePRESS); // To update Pressure called by the function getSensorData
   //----------------------------------------------------------------
   server.begin();                     // Start the webserver
 
@@ -493,16 +425,16 @@ tft.println(WiFi.localIP());
 
 server.handleClient();  // Keep checking for a client connection
 
-
+/*
 Serial.print("Temperature = ");
   Serial.print(BME280.readTemperature());
   Serial.println(" *C");
   
   // Convert temperature to Fahrenheit
-  /*Serial.print("Temperature = ");
-  Serial.print(1.8 * BME280.readTemperature() + 32);
-  Serial.println(" *F");*/
-  
+  // Serial.print("Temperature = ");
+  // Serial.print(1.8 * BME280.readTemperature() + 32);
+  // Serial.println(" *F");
+ 
   Serial.print("Pressure = ");
   Serial.print(BME280.readPressure() / 100.0F);
   Serial.println(" hPa");
@@ -516,10 +448,7 @@ Serial.print("Temperature = ");
   Serial.println(" %");
 
   Serial.println();
-
-
-
-
+*/
 
 
 
@@ -528,7 +457,7 @@ Serial.print("Temperature = ");
     tft.setTextColor( BLACK, BLACK);
     tft.setTextSize(1);
     tft.setCursor(310, 3);
-    tft.println("o");//char(3));          //Alive HEARTBEAThttps://github.com/Bodmer/TFT_eSPI
+    tft.println("o");//char(3));          //Alive HEARTBEAT  https://github.com/Bodmer/TFT_eSPI
 
 
     // ntc is pulled down to ground null -vdc 0vdc or whatever you call it
