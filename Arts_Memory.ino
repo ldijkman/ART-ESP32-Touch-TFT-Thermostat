@@ -1,9 +1,9 @@
 // Wouldnt that be Great if Art can remember Things
 // Read from Arts memory and write into Arts memory
-// 
-// touch calibrate setting save has already formatted Arts Brain if needed 
 //
-// Use new brain-file for Art => file = "/Arts_Memory"; 
+// touch calibrate setting save has already formatted Arts Brain if needed
+//
+// Use new brain-file for Art => file = "/Arts_Memory";
 //
 //***************************
 // what do we want to save
@@ -14,11 +14,10 @@
 // switchpoint above / below
 // alarm setpoints low/high
 // screen brightnes
-// screen dark Jo's energysaving nightmode times
 //
 // auto mode  program & times temps
 //
-// Arts age ;-) time since startdate / BirthDay / memory creation?
+// Arts age ;-) time since startdate / memory creation?
 // nunber of reboots
 // total time heating on
 // total time cooling on
@@ -27,57 +26,45 @@
 //
 //
 //
-//copy this ino for testing in a blank arduino ide
-//and upload to esp32 see in serial monitor result so far
-//
-// mostly code from the ARDUINO ESP32 Examples SPIFFS test
-// ESP32 Read Write variables to SPIFFS
-// Working on it, so far this is it, write 11 valeus and read 11 values
-// directory listing and values
-//
-// outputs data on serial terminal 115200
-//
-// https://oshwlab.com/l.dijkman/esp32-dev-kit-38-pin-to-spi-touch-tft
-// https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat
 
-#include "FS.h"
-#include "SPIFFS.h"
 
-void setup() {
-  Serial.begin(115200);
-  delay(1000);
-  Serial.println("now in begin of setup");
-  Serial.println(); Serial.println();
 
-  while (!SPIFFS.begin()) {             //FORMAT_SPIFFS_IF_FAILED)) {
-    Serial.println("SPIFFS Mount Failed");
+//while (!SPIFFS.begin()) {             //FORMAT_SPIFFS_IF_FAILED)) {
+//   tft.println("SPIFFS Mount Failed");
+//}
+
+
+
+void ArtsMemory() {
+  tft.setTextSize (1);
+  while (0 == 0) {
+    tft.fillScreen(BLACK);
+    tft.drawRoundRect(1, 1, 319, 239, 2, DARKGREY);
+    tft.setCursor(10 , 10);
+    tft.println("directory listing");
+    listDir(SPIFFS, "/", 0);
+    tft.println(); tft.println();
+    tft.println("ListDir 5 second delay");
+
+    delay(5000);
+
+    tft.fillScreen(BLACK);
+    tft.drawRoundRect(1, 1, 319, 239, 2, DARKGREY);
+    tft.setCursor(10 , 10);
+    // check if calibration file exists   // part from touch calibration
+    if (SPIFFS.exists("/Arts_Memory")) {
+      tft.println("Art memory file exists this is the content");
+      ReadArtsMemory();
+    } else {
+      tft.println("Creating arts memory file");
+      WriteintoArtsMemory();
+    }
+
+    tft.println(); tft.println();
+    tft.println(" 5 second delay");
+    delay(5000);
   }
-} //end setup
-
-
-
-void loop() {
-  Serial.println("dirctory listing");
-  listDir(SPIFFS, "/", 0);
-  Serial.println("ListDir 5 second delay");
-  Serial.println(); Serial.println();
-  delay(5000);
-
-
-  // check if calibration file exists   // part from touch calibration
-  if (SPIFFS.exists("/Arts_Memory")) {
-    Serial.println("Art memory file exists this is the content");
-    ReadArtsMemory();
-  } else {
-    Serial.println("Creating arts memory file");
-    WriteintoArtsMemory();
-  }
-
-  Serial.println(); Serial.println();
-  delay(5000);
-   
-}  //end loop
-
+}
 
 
 
@@ -87,7 +74,7 @@ void loop() {
 void WriteintoArtsMemory() {
   File  file = SPIFFS.open("/Arts_Memory", FILE_WRITE);
   if (!file) {
-    Serial.println("- failed to open file for writing");
+    tft.println("- failed to open file for writing");
     return;
   } else {
     file.println(millis());
@@ -100,7 +87,7 @@ void WriteintoArtsMemory() {
     file.println("16611.111");
     file.println("11.111");
     file.close();
-    Serial.println("done writing into arts memory file");
+    tft.println("done writing into arts memory file");
   }
 }
 
@@ -112,20 +99,20 @@ void WriteintoArtsMemory() {
 void ReadArtsMemory() {
   File readfile = SPIFFS.open("/Arts_Memory");
   if (!readfile || readfile.isDirectory()) {
-    Serial.println("no good");
+    tft.println("no good");
     return;
   }
 
-  Serial.println("got acces to Arts memory, going to read his brain / memory");
+  tft.println("Got acces 2 Arts memory, going to read Art's Mem.");
   int i = 1;
   String ThisString, readstring;
   while (readfile.available()) {
 
     readstring = (readfile.readStringUntil('\n'));
-    Serial.print("line ");
-    Serial.print(i);
-    Serial.print(" = ");
-    Serial.println(readstring);
+    tft.print("line ");
+    tft.print(i);
+    tft.print(" = ");
+    tft.println(readstring);
 
     i = i + 1;
 
@@ -137,32 +124,32 @@ void ReadArtsMemory() {
 
 //################################################################
 void listDir(fs::FS &fs, const char * dirname, uint8_t levels) {
-  Serial.println("now in begin of list directory");
-  Serial.printf("Listing directory: %s\r\n", dirname);
-
+  tft.println("");
+  tft.printf("Listing directory: %s\r\n", dirname);
+  tft.println("");
   File root = fs.open(dirname);
   if (!root) {
-    Serial.println("- failed to open directory");
+    tft.println("- failed to open directory");
     return;
   }
   if (!root.isDirectory()) {
-    Serial.println(" - not a directory");
+    tft.println(" - not a directory");
     return;
   }
 
   File file = root.openNextFile();
   while (file) {
     if (file.isDirectory()) {
-      Serial.print("  DIR : ");
-      Serial.println(file.name());
+      tft.print("  DIR : ");
+      tft.println(file.name());
       if (levels) {
         listDir(fs, file.name(), levels - 1);
       }
     } else {
-      Serial.print("  FILE: ");
-      Serial.print(file.name());
-      Serial.print("\tSIZE: ");
-      Serial.println(file.size());
+      tft.print("  FILE: ");
+      tft.print(file.name());
+      tft.print("\tSIZE: ");
+      tft.println(file.size());
     }
     file = root.openNextFile();
   }

@@ -59,11 +59,11 @@ void settings_two_screen() {
     }
 
     tft.drawRoundRect(165, 85, 145, 70, 8, LIGHTGREY);
-    tft.setCursor(180, 110); tft.print("4");
+    tft.setCursor(180, 110); tft.print("Art's Mem.");
     if (x > 165 && x < 315 && y > 70 && y < 145) {
       tft.drawRoundRect(165, 85, 145, 70, 8, GREEN);
       delay(500);
-      drawtimedatesetscreen();
+      ArtsMemory();
       delay(250);
       break;
     }
