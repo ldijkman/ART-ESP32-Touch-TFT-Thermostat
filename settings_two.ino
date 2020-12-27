@@ -59,9 +59,10 @@ void settings_two_screen() {
     }
 
     tft.drawRoundRect(165, 85, 145, 70, 8, LIGHTGREY);
-    tft.setCursor(180, 110); tft.print("Art's Mem.");
+    tft.setCursor(180, 110); tft.setTextColor(LIGHTGREY, BLACK);tft.print("Art's Mem.");
     if (x > 165 && x < 315 && y > 70 && y < 145) {
       tft.drawRoundRect(165, 85, 145, 70, 8, GREEN);
+      tft.setCursor(180, 110); tft.setTextColor(GREEN, BLACK);tft.print("Art's Mem.");
       delay(500);
       ArtsMemory();
       delay(250);

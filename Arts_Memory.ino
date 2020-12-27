@@ -36,6 +36,10 @@
 
 
 void ArtsMemory() {
+  if (SPIFFS.exists("/Arts_Memory")) {
+    tft.println("Creating arts memory file");
+    WriteintoArtsMemory();
+  }
   tft.setTextSize (1);
   while (0 == 0) {
 
@@ -95,9 +99,9 @@ void WriteintoArtsMemory() {
     return;
   } else {
     file.println(millis());
-    file.println("22");
-    file.println("1111");
-    file.println("11114");
+    file.println(eco_setpoint);
+    file.println(normal_setpoint);
+    file.println(cool_setpoint);
     file.println("1555");
     file.println("881111111");
     file.println("1111111");
@@ -126,8 +130,19 @@ void ReadArtsMemory() {
   while (readfile.available()) {
 
     readstring = (readfile.readStringUntil('\n'));
-    tft.print("line ");
-    tft.print(i);
+    if (i == 1) {
+       tft.print("millis        ");
+    }
+    if (i == 2) { 
+       tft.print("eco setpoint  ");
+    }
+    if (i == 3) {
+       tft.print("normal sepoint");
+    }
+    if (i == 4) {
+       tft.print("cool setpoint ");
+    }
+
     tft.print(" = ");
     tft.println(readstring);
 
