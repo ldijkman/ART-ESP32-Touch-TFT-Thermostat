@@ -1,6 +1,36 @@
 void redraw_mode_button() {
 
+
+  tft.print(mode);
+  tft.println(oldmode);
+
+
+  if (mode == 0) {
+    tft.setTextColor(LIGHTGREY, BLACK); tft.setTextSize(2);
+    tft.setCursor(180, 110); tft.println(" Normal ");
+  }
+  if (mode == 1) {
+    tft.setTextColor(GREEN, BLACK); tft.setTextSize(2);
+    tft.setCursor(180, 110); tft.println("  Eco  ");
+  }
+  if (mode == 2) {
+    tft.setTextColor(dutchorange, BLACK); tft.setTextSize(2);
+    tft.setCursor(180, 110); tft.println(" Auto  ");
+  }
+  if (mode == 3) {
+    tft.setTextColor(iceblue, BLACK); tft.setTextSize(2);
+    tft.setCursor(180, 110); tft.println(" Cool  ");
+  }
+
   if (fullscreenactive == 1) {
+
+    if (mode != oldmode) {
+      fullscreenactive = 0;  // if mode changed online exit fullmode to redraw buttons
+      touchtime = millis();
+      TempLong = millis(); // reset last touch count
+      tft.fillRoundRect(5, 155, 310, 80, 1, BLACK);                // erase old barometer and humidity
+      return;
+    }
 
     float bartemp = BME280.readPressure() / 100.0F ;
 
@@ -31,8 +61,8 @@ void redraw_mode_button() {
     */
     // bartemp = 955; // test scale min
     // bartemp=1075; // test scale max
-     //tft.fillRoundRect (25, 183, 270, 2, 1, LIGHTGREY);              // draw grey scale bar for linear barometer
-     tft.fillRoundRect (25, 180, 270, 8, 1, BLACK);              // erase green ball for linear barometer
+    //tft.fillRoundRect (25, 183, 270, 2, 1, LIGHTGREY);              // draw grey scale bar for linear barometer
+    tft.fillRoundRect (25, 180, 270, 8, 1, BLACK);              // erase green ball for linear barometer
     // delay(250); // for scale min / max test
     tft.setTextColor(LIGHTGREY, BLACK);
     tft.setTextSize(0);
@@ -73,6 +103,7 @@ void redraw_mode_button() {
     tft.fillRoundRect (25, 233, 90, 2, 2, YELLOW);                              // draw scale for humidity
     tft.fillCircle(map(humidtemp, 0, 100, 25, 295), 233, 3, BLACK);             // draw circle, scale currenthumid range 0to100 to xscreenpos range 25to295
     tft.fillRoundRect(map(humidtemp, 0, 100, 25, 295) - 3, 233, 6, 2, 0, MAGENTA); // draw rect at current barometer pressure
+
     return;   // skip redraw button if fullscreen active
 
   }

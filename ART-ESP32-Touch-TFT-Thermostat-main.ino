@@ -1,7 +1,7 @@
 //********************************************************************************
 // 21 december 2020 switched to BME280 temp, mbar, humid, sensor == much better
 //********************************************************************************
-
+  
 // ART ESP32 Thermostat by luberth dijkman
 // https://oshwlab.com/l.dijkman/esp32-dev-kit-38-pin-to-spi-touch-tft
 // https://create.arduino.cc/editor/luberth/becc77e8-4000-4673-9412-dbaac0a3b268/preview
@@ -30,7 +30,7 @@ WebServer server(80);
 #include <WiFiClient.h>
 
 const char* ssid     = "Bangert 30 Andijk";  // wifi router name broadcasted in the air
-const char* password = "Password";          // wifi router password
+const char* password = "PassWord";          // wifi router password
 
 
 
@@ -75,7 +75,7 @@ RTC_DS3231 rtc;    // download zip from above and install library from zip
 Adafruit_BME280 BME280; // I2C
 bool BME280_status;
 
-const int ledPin = 27;  // corresponds to GPIo
+const int ledPin = 17;  // corresponds to GPIo
 // connect to LED of SPI TFT display
 // setting PWM properties
 const int freq = 4000;           // hz
@@ -132,7 +132,8 @@ byte CoolState = 0;
 
 
 byte mode = 1;              // start with eco mode that is safest
-
+ byte oldmode;
+ 
 double decrement = 0.1;
 double temp_setpoint = 20;
 
@@ -349,6 +350,11 @@ void setup(void) {
   server.on("/humid", handleHUMID); // To update Humidity called by the function getSensorData
   server.on("/pressure", handlePRESS); // To update Pressure called by the function getSensorData
   server.on("/mode", handlemode); // To update Pressure called by the function getSensorData
+
+  server.on("/mode0", handlemode0); // To update Pressure called by the function getSensorData
+  server.on("/mode1", handlemode1); // To update Pressure called by the function getSensorData
+  server.on("/mode2", handlemode2); // To update Pressure called by the function getSensorData
+  server.on("/mode3", handlemode3); // To update Pressure called by the function getSensorData
   //----------------------------------------------------------------
   server.begin();                     // Start the webserver
 
@@ -633,7 +639,8 @@ JumpOver:
   tft.setTextColor (LIGHTGREY, BLACK);
   tft.print(((millis() - touchtime) / 1000));                   // last touch secondstoswitchtofullscreen seconds ago, go fullscreen
   if ((fullscreenactive == 0) && (((millis() - touchtime) / 1000) >= secondstoswitchtofullscreen)) {
-    fullscreenactive = 1;                                        // show fullscreen with milibar and humidity
+    fullscreenactive = 1;                          // show fullscreen with milibar and humidity
+    oldmode = mode;           //if mode changes online redraw buttons                           
     tft.fillRoundRect(5, 155, 310, 80, 1, BLACK);               // erase  buttons for fullscreen barometer en humidity text
   }
 
