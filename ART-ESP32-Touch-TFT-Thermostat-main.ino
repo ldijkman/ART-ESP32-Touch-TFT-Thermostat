@@ -348,6 +348,7 @@ void setup(void) {
   server.on("/temp", handleTEMP); // To update Temperature called by the function getSensorData
   server.on("/humid", handleHUMID); // To update Humidity called by the function getSensorData
   server.on("/pressure", handlePRESS); // To update Pressure called by the function getSensorData
+  server.on("/mode", handlemode); // To update Pressure called by the function getSensorData
   //----------------------------------------------------------------
   server.begin();                     // Start the webserver
 
