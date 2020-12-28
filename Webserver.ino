@@ -1,9 +1,10 @@
 
-// This function returns an HTML webpage 
+// This function returns an HTML webpage
 // It uses the Raw string macro 'R' to place commands in PROGMEM
 const char Web_page[] PROGMEM = R"=====(
 <!DOCTYPE html>
-<html>
+<html><head>
+<title>Art, ESP32 Smart Thermostat</title>
   <style>
     .displayobject{
        font-family: sans-serif;
@@ -24,6 +25,68 @@ const char Web_page[] PROGMEM = R"=====(
       color: yellow;
     }
   </style>
+
+ 
+
+
+  <script>
+
+    setInterval(function(){getSensorDataeen(); }, 5000); // Call function every set interval 
+    setInterval(function(){getSensorDatatwee(); }, 4500);
+    setInterval(function(){getSensorDatadrie(); }, 5500);
+    setInterval(function(){getSensorDatavier(); }, 1000);
+
+    //document.getElementById("modeid").innerHTML = "Cool Mode"; 
+      
+       function getSensorDataeen() {
+        var xa = new XMLHttpRequest();  
+         xa.onreadystatechange = function() {
+            if (xa.readyState == 4 && xa.status == 200) {
+              document.getElementById("tempid").innerHTML = this.responseText;
+            } 
+          }
+          xa.open("GET", "temp", true);
+          xa.send();
+       }
+
+
+      function getSensorDatatwee() {
+        var ya= new XMLHttpRequest();        
+        ya.onreadystatechange = function() {
+          if (ya.readyState == 4 && ya.status == 200) {
+            document.getElementById("humidid").innerHTML = this.responseText;
+          }  
+        }     
+        ya.open("GET", "humid", true);
+        ya.send();
+      }
+      
+      function getSensorDatadrie() {
+        var zza = new XMLHttpRequest();        
+        zza.onreadystatechange = function() {
+          if (zza.readyState == 4 && zza.status == 200) {
+            document.getElementById("pressid").innerHTML = this.responseText;
+          } 
+        }
+        zza.open("GET", "pressure", true);
+        zza.send(); 
+      }
+      
+      function getSensorDatavier() {    
+        var qqa = new XMLHttpRequest();
+        qqa.onreadystatechange = function() {  
+          if (qqa.readyState == 4 && qqa.status == 200) {
+            document.getElementById("modeid").innerHTML = this.responseText;
+         }
+        }
+        qqa.open("GET", "mode", true);
+        qqa.send(); 
+      }  
+       
+</script>
+
+
+  </head>
   <body>
      <div class = "displayobject">
      <center>
@@ -32,46 +95,17 @@ const char Web_page[] PROGMEM = R"=====(
        The Art of Temperature Controlled</h1>
        </center>
        <br>
-       <h4><a href="/temp">Temperature</a> <span id="TEMPvalue">0</span>&deg</h4>
-       <h4><a href="/humid">Humidity</a> <span id="HUMIDvalue">0</span>%</h4>
-       <h4><a href="/pressure">Pressure</a> <span id="PRESSvalue">0</span>mbar</h4><br>
+       <h4><a href="/temp">Temperature</a> <span id="tempid">-- </span>&degC</h4>
+       <h4><a href="/humid">Humidity</a> <span id="humidid">-- </span>%</h4>
+       <h4><a href="/pressure">Pressure</a> <span id="pressid">-- </span>mbar</h4>
+       <h4><a href="/mode">Mode</a> <span id="modeid">-- </span></h4><br>
        <h1><br>
        <br>
        <br>
        <br><br><br><br><br><br><br><br><br><br><br><br>
        </h1>
      </div>
-     <script>
-       setInterval(function() {getSensorData();}, 1000); // Call the update function every set interval e.g. 1000mS or 1-sec
   
-       function getSensorData() {
-          var xhttp = new XMLHttpRequest();
-          xhttp.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("TEMPvalue").innerHTML = this.responseText;
-          }
-        };
-        xhttp.open("GET", "temp", true);
-        xhttp.send();
-        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("HUMIDvalue").innerHTML = this.responseText;
-          }
-        };
-        xhttp.open("GET", "humid", true);
-        xhttp.send();
-        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("PRESSvalue").innerHTML = this.responseText;}
-        };  
-        xhttp.open("GET", "pressure", true);
-        xhttp.send(); 
-      }
-    </script>
   </body>
 </html>
 )=====";
@@ -95,4 +129,9 @@ void handleHUMID() { // This function is called by the script to update the sens
 void handlePRESS() { // This function is called by the script to update the sensor value, in this example random data!
   String pressure = String(BME280.readPressure() / 100.0F,2);
   server.send(200, "text/plain", pressure); //Send sensor reading when there's a client ajax request
+}
+
+void handlemode() { // This function is called by the script to update the sensor value, in this example random data!
+  String modevalue = String(mode);
+  server.send(200, "text/plain", modevalue); //Send sensor reading when there's a client ajax request
 }
