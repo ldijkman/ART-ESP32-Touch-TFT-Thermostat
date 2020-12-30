@@ -1,25 +1,25 @@
 void redraw_mode_button() {
 
 
-  tft.print(mode);
-  tft.println(oldmode);
+  //tft.print(mode);
+  //tft.println(oldmode);
 
 
   if (mode == 0) {
     tft.setTextColor(LIGHTGREY, BLACK); tft.setTextSize(2);
-    tft.setCursor(180, 110); tft.println(" Normal ");
+    tft.setCursor(20,45); tft.println(" Normal ");
   }
   if (mode == 1) {
     tft.setTextColor(GREEN, BLACK); tft.setTextSize(2);
-    tft.setCursor(180, 110); tft.println("  Eco  ");
+    tft.setCursor(20, 45); tft.println("  Eco  ");
   }
   if (mode == 2) {
     tft.setTextColor(dutchorange, BLACK); tft.setTextSize(2);
-    tft.setCursor(180, 110); tft.println(" Auto  ");
+    tft.setCursor(20, 45); tft.println(" Auto  ");
   }
   if (mode == 3) {
     tft.setTextColor(iceblue, BLACK); tft.setTextSize(2);
-    tft.setCursor(180, 110); tft.println(" Cool  ");
+    tft.setCursor(20, 45); tft.println(" Cool  ");
   }
 
   if (fullscreenactive == 1) {

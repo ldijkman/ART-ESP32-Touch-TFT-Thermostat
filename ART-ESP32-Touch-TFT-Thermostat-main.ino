@@ -1,7 +1,7 @@
 //********************************************************************************
 // 21 december 2020 switched to BME280 temp, mbar, humid, sensor == much better
 //********************************************************************************
-  
+
 // ART ESP32 Thermostat by luberth dijkman
 // https://oshwlab.com/l.dijkman/esp32-dev-kit-38-pin-to-spi-touch-tft
 // https://create.arduino.cc/editor/luberth/becc77e8-4000-4673-9412-dbaac0a3b268/preview
@@ -30,7 +30,7 @@ WebServer server(80);
 #include <WiFiClient.h>
 
 const char* ssid     = "Bangert 30 Andijk";  // wifi router name broadcasted in the air
-const char* password = "PassWord";          // wifi router password
+const char* password = "apassword";          // wifi router password
 
 
 
@@ -70,7 +70,7 @@ RTC_DS3231 rtc;    // download zip from above and install library from zip
 
 #include <Adafruit_Sensor.h>  // used zip from https://github.com/adafruit/Adafruit_Sensor 
 #include <Adafruit_BME280.h>  // used zip from https://github.com/adafruit/Adafruit_BME280_Library
-                              // Sketch=>include library=>Add ZIP Library
+// Sketch=>include library=>Add ZIP Library
 #define SEALEVELPRESSURE_HPA (1013.25)
 Adafruit_BME280 BME280; // I2C
 bool BME280_status;
@@ -132,8 +132,8 @@ byte CoolState = 0;
 
 
 byte mode = 1;              // start with eco mode that is safest
- byte oldmode;
- 
+byte oldmode;
+
 double decrement = 0.1;
 double temp_setpoint = 20;
 
@@ -186,6 +186,8 @@ byte out = 0; //goto label: did not work
 byte fullscreenactive = 0;                      // flag fullscreen 0 or 1
 int secondstoswitchtofullscreen = 20;          // seconds to go fullscreen with barometer and humdity
 int bordercolor = dutchorange;
+
+
 
 void setup(void) {
 
@@ -289,7 +291,7 @@ void setup(void) {
   }
   tft.setTextColor(LIGHTGREY);
 
-  BME280_status = BME280.begin(0x76);  
+  BME280_status = BME280.begin(0x76);
   if (!BME280_status) {
     Serial.println("Could not find a valid BME280 sensor, check wiring!");
     while (1);
@@ -330,18 +332,25 @@ void setup(void) {
     tft.fillRect(1, i, 320, 1, 0x1111);
     }
   */
-  tft.setTextColor(GREEN,BLACK);
+  tft.setTextColor(GREEN, BLACK);
   tft.setCursor(15, 30);
   WiFi.mode(WIFI_STA);        // Connect to your wifi
+
   WiFi.begin(ssid, password); // Start the Wi-Fi services
-  Serial.println("Connecting to WiFi : "+String(ssid));
-  tft.println("Connecting to WiFi : "+String(ssid));
-  tft.setCursor(15, 40);
+  Serial.println("Connecting to WiFi : " + String(ssid));
+  tft.println("Connecting to WiFi : " + String(ssid));
+
+
+  TempLong = millis();  // store millis() counter in variable TempLong
+
   while (WiFi.waitForConnectResult() != WL_CONNECTED) {
-    Serial.print(".");    // Wait for WiFi to connect
-    tft.print(".");
-  } 
-  Serial.println(" Connected to : "+String(ssid));
+    // Wait for WiFi to connect
+    tft.setCursor(20, 40);
+    tft.print(30 - ((millis() - TempLong) / 1000)); tft.print(" ");
+    if ((millis() - TempLong)  > 30000)break;           // timeout exit if it takes to lomg 30 seconds = nowifi
+  }
+  Serial.println(" Connected to : " + String(ssid));
+
   Serial.print("Use IP address: ");
   Serial.println(WiFi.localIP());  //IP address assigned to your ESP
   //----------------------------------------------------------------
@@ -371,9 +380,9 @@ void loop() {
   DateTime now = rtc.now();
 
   // webserver
- server.handleClient();  // Keep checking for a client connection
+  server.handleClient();  // Keep checking for a client connection
 
-  
+
   // Jo energy saving Backlight
   if (now.hour() < 8) {
     ledcWrite(ledChannel, 10);
@@ -384,9 +393,9 @@ void loop() {
     ledcWrite(ledChannel, 10);  // dim backround light display if hour >= 22uur            //backgroundlightval);
   }
 
-if (((millis() - touchtime) / 1000) <= 60) {
-   ledcWrite(ledChannel, backgroundlightval);  // if display is touched keep it bright for 60 seconds
-}
+  if (((millis() - touchtime) / 1000) <= 60) {
+    ledcWrite(ledChannel, backgroundlightval);  // if display is touched keep it bright for 60 seconds
+  }
 
 
 
@@ -404,6 +413,8 @@ if (((millis() - touchtime) / 1000) <= 60) {
     tft.println  ("    ");
     tft.println  ("  ShutDown Heat relais ");
     delay(500);
+    tft.fillScreen(BLACK);
+    tft.drawRoundRect(1, 1, 319, 239, 2, DARKGREY);     // show screen size on bigger display
     digitalWrite(heat_relais_pin, LOW);       // heat output off
   }
 
@@ -417,7 +428,7 @@ if (((millis() - touchtime) / 1000) <= 60) {
   tft.setTextColor(GREEN, BLACK);
   tft.setTextSize(1);
   tft.setCursor(120, 40);
-tft.println(WiFi.localIP());
+  tft.println(WiFi.localIP());
 
 
 
@@ -430,32 +441,32 @@ tft.println(WiFi.localIP());
     runTime = millis();             // store millis() counter in variable runtime
 
 
-server.handleClient();  // Keep checking for a client connection
+    server.handleClient();  // Keep checking for a client connection
 
-/*
-Serial.print("Temperature = ");
-  Serial.print(BME280.readTemperature());
-  Serial.println(" *C");
-  
-  // Convert temperature to Fahrenheit
-  // Serial.print("Temperature = ");
-  // Serial.print(1.8 * BME280.readTemperature() + 32);
-  // Serial.println(" *F");
- 
-  Serial.print("Pressure = ");
-  Serial.print(BME280.readPressure() / 100.0F);
-  Serial.println(" hPa");
+    /*
+      Serial.print("Temperature = ");
+      Serial.print(BME280.readTemperature());
+      Serial.println(" *C");
 
-  Serial.print("Approx. Altitude = ");
-  Serial.print(BME280.readAltitude(SEALEVELPRESSURE_HPA));
-  Serial.println(" m");
+      // Convert temperature to Fahrenheit
+      // Serial.print("Temperature = ");
+      // Serial.print(1.8 * BME280.readTemperature() + 32);
+      // Serial.println(" *F");
 
-  Serial.print("Humidity = ");
-  Serial.print(BME280.readHumidity());
-  Serial.println(" %");
+      Serial.print("Pressure = ");
+      Serial.print(BME280.readPressure() / 100.0F);
+      Serial.println(" hPa");
 
-  Serial.println();
-*/
+      Serial.print("Approx. Altitude = ");
+      Serial.print(BME280.readAltitude(SEALEVELPRESSURE_HPA));
+      Serial.println(" m");
+
+      Serial.print("Humidity = ");
+      Serial.print(BME280.readHumidity());
+      Serial.println(" %");
+
+      Serial.println();
+    */
 
 
 
@@ -472,11 +483,11 @@ Serial.print("Temperature = ");
     ntc_analog_value = 0;
     int numberoffmeasurements = 250;
     for (int Q = 0; Q < numberoffmeasurements; Q++) {
-     // ntc_analog_value = ntc_analog_value + analogRead(ntc_thermistor_pin);
+      // ntc_analog_value = ntc_analog_value + analogRead(ntc_thermistor_pin);
     }
     // Serial.print(" ntc_analog_value = "); Serial.println(ntc_analog_value, 1);
     //ntc_analog_value = ntc_analog_value / numberoffmeasurements;
-    
+
 
     R2 = R1 * (4095.0 / (float)ntc_analog_value - 1.0);
     logR2 = log(R2);
@@ -484,8 +495,8 @@ Serial.print("Temperature = ");
     T = T - 273.15 + CalibrationOffset;
     Tf = (T * 9.0 / 5) + 32.0;
     TempCelsius = T ;
-    
-    TempCelsius=BME280.readTemperature();
+
+    TempCelsius = BME280.readTemperature();
 
     Serial.print("Fahrenheit = "); Serial.print(Tf, 1);
     Serial.print(" Celsius = "); Serial.println(TempCelsius, 1);
@@ -523,13 +534,13 @@ Serial.print("Temperature = ");
     //tft.print("  ");
 
 
-  //  tft.setTextSize (1);
-  //  tft.setTextColor (LIGHTGREY, BLACK);
-  //  tft.setCursor(130, 13);
-  //  tft.print("  ");
-  //  tft.print(rtc.getTemperature());
-  //  //tft.print(char(247)); //degree sign
-  //  tft.print(" C  ");
+    //  tft.setTextSize (1);
+    //  tft.setTextColor (LIGHTGREY, BLACK);
+    //  tft.setCursor(130, 13);
+    //  tft.print("  ");
+    //  tft.print(rtc.getTemperature());
+    //  //tft.print(char(247)); //degree sign
+    //  tft.print(" C  ");
 
     oldminute = now.minute();
     // }
@@ -640,7 +651,7 @@ JumpOver:
   tft.print(((millis() - touchtime) / 1000));                   // last touch secondstoswitchtofullscreen seconds ago, go fullscreen
   if ((fullscreenactive == 0) && (((millis() - touchtime) / 1000) >= secondstoswitchtofullscreen)) {
     fullscreenactive = 1;                          // show fullscreen with milibar and humidity
-    oldmode = mode;           //if mode changes online redraw buttons                           
+    oldmode = mode;           //if mode changes online redraw buttons
     tft.fillRoundRect(5, 155, 310, 80, 1, BLACK);               // erase  buttons for fullscreen barometer en humidity text
   }
 
@@ -673,7 +684,7 @@ JumpOver:
 
     }
 
-    if (fullscreenactive==1) {
+    if (fullscreenactive == 1) {
       // touch in bottomscreen makes buttons visible and active
       if (x > 0 && x < 320 && y > 165 && y < 240) {
         fullscreenactive = 0;                                        // show fullscreen with milibar and humidity
@@ -683,7 +694,7 @@ JumpOver:
       }
     }
 
-    if (fullscreenactive==0) {                                         // if not fullscreen touch buttons should not react to touch when in fullscreen
+    if (fullscreenactive == 0) {                                       // if not fullscreen touch buttons should not react to touch when in fullscreen
 
       // mode touch button
       if (x > 100 && x < 200 && y > 165 && y < 240) {
@@ -906,8 +917,12 @@ void OUTSUB() {
 
   if (HeatState == 0 ) {
 
-    if (!fullscreenactive){tft.drawRoundRect(10, 10, 300, 140, 8, BLUE);}
-    if (fullscreenactive) {tft.drawRoundRect(10, 10, 300, 220, 8, BLUE);}
+    if (!fullscreenactive) {
+      tft.drawRoundRect(10, 10, 300, 140, 8, BLUE);
+    }
+    if (fullscreenactive) {
+      tft.drawRoundRect(10, 10, 300, 220, 8, BLUE);
+    }
     tft.setTextSize (1);
     tft.setTextColor (BLUE, BLACK);
     tft.setCursor(130, 13);
@@ -924,8 +939,12 @@ void OUTSUB() {
   if (HeatState == 1 ) {
     bordercolor = dutchorange;
 
-    if (!fullscreenactive){tft.drawRoundRect(10, 10, 300, 140, 8, bordercolor);}
-    if (fullscreenactive){tft.drawRoundRect(10, 10, 300, 220, 8, bordercolor);}
+    if (!fullscreenactive) {
+      tft.drawRoundRect(10, 10, 300, 140, 8, bordercolor);
+    }
+    if (fullscreenactive) {
+      tft.drawRoundRect(10, 10, 300, 220, 8, bordercolor);
+    }
     tft.setTextSize (1);
     tft.setTextColor (dutchorange, BLACK);
     tft.setCursor(130, 13);
@@ -940,8 +959,12 @@ void OUTSUB() {
   if (CoolState == 0 ) {
     if (mode == 3) {
 
-      if (!fullscreenactive){tft.drawRoundRect(10, 10, 300, 140, 8, BLUE);}
-      if (fullscreenactive){tft.drawRoundRect(10, 10, 300, 220, 8, BLUE);}
+      if (!fullscreenactive) {
+        tft.drawRoundRect(10, 10, 300, 140, 8, BLUE);
+      }
+      if (fullscreenactive) {
+        tft.drawRoundRect(10, 10, 300, 220, 8, BLUE);
+      }
       tft.setTextSize (1);
       tft.setTextColor (iceblue, BLACK);
       tft.setCursor(130, 13);
@@ -956,8 +979,12 @@ void OUTSUB() {
   if (CoolState == 1 ) {
     if (mode == 3) {
 
-      if (!fullscreenactive){tft.drawRoundRect(10, 10, 300, 140, 8, iceblue);}
-      if (fullscreenactive){tft.drawRoundRect(10, 10, 300, 220, 8, iceblue);}
+      if (!fullscreenactive) {
+        tft.drawRoundRect(10, 10, 300, 140, 8, iceblue);
+      }
+      if (fullscreenactive) {
+        tft.drawRoundRect(10, 10, 300, 220, 8, iceblue);
+      }
       tft.setTextSize (1);
       tft.setTextColor (iceblue, BLACK);
       tft.setCursor(130, 13);
