@@ -3,8 +3,9 @@
 // and print inforation about time and date to serial monitor
 // software i2c on other i/o = non hardware i2c
 // ART ESP32Thermostat by luberth dijkman
-// https://oshwlab.com/l.dijkman/esp32-dev-kit-38-pin-to-spi-touch-tft
-// https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat
+// https://oshwlab.com/l.dijkman/esp32-dev-kit-38-pin-to-spi-touch-tft 
+// https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat 
+// http://www.Arduino.TK
 
 #include <Wire.h> 
 
