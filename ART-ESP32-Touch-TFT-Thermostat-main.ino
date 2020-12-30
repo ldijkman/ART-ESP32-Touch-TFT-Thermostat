@@ -1,3 +1,29 @@
+// hello
+//
+//
+//
+//
+//
+//
+// TFT white screen / blank screen
+// make sure u set the file 
+// ......................../arduino/libraries/TFT_eSPI/User_Setup.h
+// Correct to match your TFT screen driver and hardware
+//
+// my example User_Setup.h settings at http://Arduino.TK
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 //********************************************************************************
 // 21 december 2020 switched to BME280 temp, mbar, humid, sensor == much better
 //********************************************************************************
@@ -30,7 +56,7 @@ WebServer server(80);
 #include <WiFiClient.h>
 
 const char* ssid     = "Bangert 30 Andijk";  // wifi router name broadcasted in the air
-const char* password = "apassword";          // wifi router password
+const char* password = "password";          // wifi router password
 
 
 
@@ -381,7 +407,8 @@ void loop() {
 
   // webserver
   server.handleClient();  // Keep checking for a client connection
-
+  Serial.print("Task running on core ");
+  Serial.println(xPortGetCoreID());
 
   // Jo energy saving Backlight
   if (now.hour() < 8) {
@@ -402,20 +429,24 @@ void loop() {
 
 
   while (! rtc.begin() || rtc.lostPower() == 1) {
-    tft.fillScreen(RED);
-    tft.setTextColor(YELLOW);  tft.setTextSize(2);
-    delay(200);
-    Serial.println("Couldn't find RTC i2c realtimeclock not found");
-    tft.setCursor(0, 70);
-    tft.println  ("  RTC realtimeclock lost");
-    tft.println  (" RTC i2c on SDA SCL 20 21");
-    tft.println  ("  or power on RTC lost   ");
-    tft.println  ("    ");
-    tft.println  ("  ShutDown Heat relais ");
-    delay(500);
-    tft.fillScreen(BLACK);
-    tft.drawRoundRect(1, 1, 319, 239, 2, DARKGREY);     // show screen size on bigger display
-    digitalWrite(heat_relais_pin, LOW);       // heat output off
+    //Glitch?
+    delay(100);
+    while (! rtc.begin() || rtc.lostPower() == 1) { // doublecheck try it again
+      tft.fillScreen(RED);
+      tft.setTextColor(YELLOW);  tft.setTextSize(2);
+      delay(200);
+      Serial.println("Couldn't find RTC i2c realtimeclock not found");
+      tft.setCursor(0, 70);
+      tft.println  ("  RTC realtimeclock lost");
+      tft.println  (" RTC i2c on SDA SCL 20 21");
+      tft.println  ("  or power on RTC lost   ");
+      tft.println  ("    ");
+      tft.println  ("  ShutDown Heat relais ");
+      delay(500);
+      tft.fillScreen(BLACK);
+      tft.drawRoundRect(1, 1, 319, 239, 2, DARKGREY);     // show screen size on bigger display
+      digitalWrite(heat_relais_pin, LOW);       // heat output off
+    }
   }
 
 
@@ -1094,6 +1125,6 @@ void readFile(fs::FS & fs, const char * path) {
 //ver 00001
 
 // Thank you for the Coffee!
-//           https://www.paypal.com/pools/c/8amUN5rgb9
+//           https://www.paypal.me/LDijkman
 
 //bye

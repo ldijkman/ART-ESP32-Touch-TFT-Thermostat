@@ -12,16 +12,16 @@ const char Web_page[] PROGMEM = R"=====(
        text-align: center;
        width: 100%;
        height: 100%;
-       border: 3px solid #000000;
-       padding: 10px;
+       border: 0px solid #000000;
+       padding: 4px;
        background: #558ED5;
     }
     h1 {
-      font-size: 30px;
+      font-size: 25px;
       color: white;
     }
     h4 {
-      font-size: 30px;
+      font-size: 25px;
       color: yellow;
     }
   </style>
@@ -91,9 +91,9 @@ const char Web_page[] PROGMEM = R"=====(
   <body>
      <div class = "displayobject">
      <center>
-       <h1>Art Smart Thermostat <br>
+       <h1><a href="javascript:window.location.reload(true)">Art ESP32 Smart Thermostat <br>
        Art in the Air<br>
-       The Art of Temperature Controlled</h1>
+       The Art of Temperature Controlled</a></h1>
        </center>
        <h4><a href="/temp">Temperature</a> <span id="tempid">-- </span> &degC</h4>
        <h4><a href="/humid">Humidity</a> <span id="humidid">-- </span> %</h4>
@@ -122,6 +122,7 @@ function myFunction(val) {
      
 
        <br>
+       www.Arduino.TK
        <br>
        <br><br><br><br><br><br><br><br><br><br><br><br>
        </h1>
