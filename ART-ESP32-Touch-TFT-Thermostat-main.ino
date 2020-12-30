@@ -372,8 +372,8 @@ void setup(void) {
   while (WiFi.waitForConnectResult() != WL_CONNECTED) {
     // Wait for WiFi to connect
     tft.setCursor(20, 40);
-    tft.print(30 - ((millis() - TempLong) / 1000)); tft.print(" ");
-    if ((millis() - TempLong)  > 30000)break;           // timeout exit if it takes to lomg 30 seconds = nowifi
+    tft.print(60 - ((millis() - TempLong) / 1000)); tft.print(" ");
+    if ((millis() - TempLong)  > 60000)break;           // timeout exit if it takes to lomg 30 seconds = nowifi
   }
   Serial.println(" Connected to : " + String(ssid));
 

@@ -26,7 +26,7 @@ const char Web_page[] PROGMEM = R"=====(
     }
   </style>
 
- 
+
 
 
   <script>
@@ -107,18 +107,43 @@ setInterval(function(){myFunction(); }, 1000);
 
 function myFunction(val) { 
   //alert("The input value has changed. The new value is: " + val);
- 
-  if(document.getElementById("modeidtext").value==0)document.getElementById("textmodeid").value="Normal Mode";
-  if(document.getElementById("modeidtext").value==1)document.getElementById("textmodeid").value="Eco Mode";
-  if(document.getElementById("modeidtext").value==2)document.getElementById("textmodeid").value="Auto Mode";
-  if(document.getElementById("modeidtext").value==3)document.getElementById("textmodeid").value="Cool Mode";
+
+  if(document.getElementById("modeidtext").value==0){
+    document.getElementById("textmodeid").value="Normal Mode";
+     document.getElementById("normalbtn").style="color:green; background-color:PaleTurquoise;";
+    }else{
+      document.getElementById("normalbtn").style="color:black; background-color:grey;";
+  }
+  if(document.getElementById("modeidtext").value==1){
+    document.getElementById("textmodeid").value="Eco Mode";
+     document.getElementById("ecobtn").style="color:green; background-color:PaleTurquoise;";
+  }else{
+      document.getElementById("ecobtn").style="color:black; background-color:grey;";
+  }
+  if(document.getElementById("modeidtext").value==2){
+    document.getElementById("textmodeid").value="Auto Mode";
+     document.getElementById("autobtn").style="color:green; background-color:PaleTurquoise;";
+  }else{
+      document.getElementById("autobtn").style="color:black; background-color:grey;";
+  }
+  if(document.getElementById("modeidtext").value==3){
+    document.getElementById("textmodeid").value="Cool Mode";
+     document.getElementById("coolbtn").style="color:green; background-color:PaleTurquoise;";
+  }else{
+      document.getElementById("coolbtn").style="color:black; background-color:grey;";
+  }
 }
 </script>
-
+       <!--
        <input type="button" onclick="location.href='mode0';" value="Normal Mode" />
        <input type="button" onclick="location.href='mode1';" value="Eco Mode" />
        <input type="button" onclick="location.href='mode2';" value="Auto Mode" />
-       <input type="button" onclick="location.href='mode3';" value="Cool Mode" />
+       <input type="button" onclick="location.href='mode3';" value="Cool Mode" /><br><br>
+       -->
+       <button id="normalbtn" onclick="location.href='mode0';" style="color:grey"><h3>Normal Mode</h3></button> 
+       <button id="ecobtn" onclick="location.href='mode1';" style="color:grey"><h3>Eco Mode</h3></button> 
+       <button id="autobtn" onclick="location.href='mode2';" style="color:grey"><h3>Auto Mode</h3></button> 
+       <button id="coolbtn" onclick="location.href='mode3';" style="color:grey"><h3>Cool Mode</h3></button> 
      
 
        <br>
