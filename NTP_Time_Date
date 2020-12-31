@@ -3,7 +3,11 @@
 // https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat 
 // http://www.Arduino.TK
 //
-// standalone program for test
+
+
+// standalone program for test 
+
+
 #include <NTPClient.h>
 // change next line to use with another board/shield
 //#include <ESP8266WiFi.h>
