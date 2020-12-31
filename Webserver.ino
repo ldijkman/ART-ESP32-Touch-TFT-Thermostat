@@ -94,9 +94,9 @@ const char Web_page[] PROGMEM = R"=====(
   <body>
      <div class = "displayobject">
      <center>
-       <h1><a href="javascript:window.location.reload(true)">Art ESP32 Smart Thermostat <br>
+       <h1>Art ESP32 Smart Thermostat <br>
        Art in the Air<br>
-       The Art of Temperature Controlled</a></h1>
+       The Art of Temperature Controlled</h1>
        </center>
        <h4><a href="/temp">Temperature</a> <span id="tempid">-- </span> &degC</h4>
        <h4><a href="/humid">Humidity</a> <span id="humidid">-- </span> %</h4>
@@ -143,10 +143,10 @@ function myFunction(val) {
        <input type="button" onclick="location.href='mode2';" value="Auto Mode" />
        <input type="button" onclick="location.href='mode3';" value="Cool Mode" /><br><br>
        -->
-       <button id="normalbtn" onclick="location.href='mode0';" style="color:grey"><h3>Normal Mode</h3></button> 
-       <button id="ecobtn" onclick="location.href='mode1';" style="color:grey"><h3>Eco Mode</h3></button> 
-       <button id="autobtn" onclick="location.href='mode2';" style="color:grey"><h3>Auto Mode</h3></button> 
-       <button id="coolbtn" onclick="location.href='mode3';" style="color:grey"><h3>Cool Mode</h3></button> 
+       <button id="normalbtn" onclick="location.href='/mode0';" style="color:grey"><h3>Normal Mode</h3></button> 
+       <button id="ecobtn" onclick="location.href='/mode1';" style="color:grey"><h3>Eco Mode</h3></button> 
+       <button id="autobtn" onclick="location.href='/mode2';" style="color:grey"><h3>Auto Mode</h3></button> 
+       <button id="coolbtn" onclick="location.href='/mode3';" style="color:grey"><h3>Cool Mode</h3></button> 
      
 
        <br>

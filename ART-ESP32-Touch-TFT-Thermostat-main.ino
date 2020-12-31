@@ -58,7 +58,7 @@ WebServer server(80);
 #include <WiFiClient.h>
 
 const char* ssid     = "Bangert 30 Andijk";  // wifi router name broadcasted in the air
-const char* password = "password";          // wifi router password
+const char* password = "Password";          // wifi router password
 
 
 
