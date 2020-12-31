@@ -55,11 +55,11 @@ if you use the same holes on both side its no problem
 ##  https://oshwlab.com/l.dijkman/esp32-dev-kit-38-pin-to-spi-touch-tft
 
 
+<img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/images/Art_ESP32_Smart_Thermostat_OpenSource_3D_Print.jpg?raw=true">
                       
                       
 # It is Calendar Time
 # Print a Calendar for your Parents, GrandParents
-# http://www.sticker.tk
+# http://www.PRINT-it.TK
 
 
-<img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/images/Art_ESP32_Smart_Thermostat_OpenSource_3D_Print.jpg?raw=true">
