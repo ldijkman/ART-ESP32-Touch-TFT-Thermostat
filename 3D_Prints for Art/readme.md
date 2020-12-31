@@ -56,7 +56,8 @@ if you use the same holes on both side its no problem
 
 
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/images/Art_ESP32_Smart_Thermostat_OpenSource_3D_Print.jpg?raw=true">
-                      
+
+<img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/images/Criiminal9090_Imresive_Espressive.gif">
                       
 # It is Calendar Time
 # Print a Calendar for your Parents, GrandParents
