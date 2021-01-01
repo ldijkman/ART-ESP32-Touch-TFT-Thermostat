@@ -13,7 +13,7 @@ const char Web_page[] PROGMEM = R"=====(
 <meta name=\"copyright\" content=\"2020-2021 Dirk Luberth Dijkman Bangert 30 1619GJ The Nethrlands\">
 <meta name=\"description\" content=\"\">
 <meta name=\"keywords\" content=\"\">
-<meta property=\"og:url\" content=\"https://www.Arduino.TK/\">
+<meta property=\"og:url\" content=\"http://www.Arduino.TK/\">
 
   <style>
     .displayobject{
