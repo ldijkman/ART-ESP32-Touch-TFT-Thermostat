@@ -11,7 +11,7 @@ const char Web_page[] PROGMEM = R"=====(
 <meta name=\"viewport" content="width=device-width, initial-scale=.7\">
 <meta name=\"author" content="Remote HTML Web Control Art ESP32 Smart Thermostat\">
 <meta name=\"copyright\" content=\"2020-2021 Dirk Luberth Dijkman Bangert 30 1619GJ The Netherlands\">
-<meta name=\"description\" content=\"\">
+<meta name=\"description\" content=\"ESP32 Smart Thermostat\">
 <meta name=\"keywords\" content=\"\">
 <meta property=\"og:url\" content=\"http://www.Arduino.TK/\">
 
