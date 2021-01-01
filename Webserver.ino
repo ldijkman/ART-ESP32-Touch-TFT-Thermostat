@@ -8,12 +8,12 @@ const char Web_page[] PROGMEM = R"=====(
 <!DOCTYPE html>
 <html><head>
 <title>Art, ESP32 Smart Thermostat</title>
-<meta name="viewport" content="width=device-width, initial-scale=.7">
-<meta name="author" content="Remote HTML Web Control Art ESP32 Smart Thermostat">
-<meta name="copyright" content="2020-2021 Dirk Luberth Dijkman Bangert 30 1619GJ The Nethrlands">
-<meta name="description" content="">
-<meta name="keywords" content="">
-<meta property="og:url" content="https://www.Arduino.TK/">
+<meta name=\"viewport" content="width=device-width, initial-scale=.7\">
+<meta name=\"author" content="Remote HTML Web Control Art ESP32 Smart Thermostat\">
+<meta name=\"copyright\" content=\"2020-2021 Dirk Luberth Dijkman Bangert 30 1619GJ The Nethrlands\">
+<meta name=\"description\" content=\"\">
+<meta name=\"keywords\" content=\"\">
+<meta property=\"og:url\" content=\"https://www.Arduino.TK/\">
 
   <style>
     .displayobject{
