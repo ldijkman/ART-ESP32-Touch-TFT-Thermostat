@@ -1,5 +1,5 @@
-// https://oshwlab.com/l.dijkman/esp32-dev-kit-38-pin-to-spi-touch-tft 
-// https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat 
+// https://oshwlab.com/l.dijkman/esp32-dev-kit-38-pin-to-spi-touch-tft
+// https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat
 // http://www.Arduino.TK
 
 // This function returns an HTML webpage
@@ -13,6 +13,7 @@ const char Web_page[] PROGMEM = R"=====(
 <meta name=\"copyright\" content=\"2020-2021 Dirk Luberth Dijkman Bangert 30 1619GJ The Netherlands\">
 <meta name=\"description\" content=\"ESP32 Smart Thermostat\">
 <meta name=\"keywords\" content=\"\">
+<!--<meta name=\"robots\" content=\"noimageindex, nofollow, nosnippet\">-->
 <meta property=\"og:url\" content=\"http://www.Arduino.TK/\">
 
   <style>
@@ -24,7 +25,10 @@ const char Web_page[] PROGMEM = R"=====(
        height: 1000px;
        border: 0px solid #000000;
        padding: 0px;
-       background: #558ED5;
+       //background: #558ED5;
+       background-image: url('http://arduino.tk/clouds.jpg');
+       border: 1px solid black;
+       background-size: 100% 100%;
     }
     h1 {
       font-size: 25px;
@@ -32,7 +36,31 @@ const char Web_page[] PROGMEM = R"=====(
     }
     h4 {
       font-size: 25px;
-      color: yellow;
+      color: violet;
+    }
+    
+    a:link {
+      color: black;
+      background-color: transparent;
+      text-decoration: none;
+    }
+
+    a:visited {
+      color: black;
+      background-color: transparent;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: black;
+      background-color: transparent;
+      text-decoration: underline;
+    }
+
+    a:active {
+      color: black;
+      background-color: transparent;
+      text-decoration: underline;
     }
   </style>
 
@@ -98,11 +126,11 @@ const char Web_page[] PROGMEM = R"=====(
 
 
   </head>
-  <body>
+  <body><!-- bgcolor="DodgerBlue"> -->
      <div class = "displayobject">
      <center>
        <h1>Art ESP32 Smart Thermostat <br>
-       Art in the Air<br>
+       Art in the Air / Cloud<br>
        The Art of Temperature Controlled</h1>
        </center>
        <h4><a href="/temp">Temperature</a> <span id="tempid">-- </span> &degC</h4>
@@ -154,14 +182,10 @@ function myFunction(val) {
        <button id="ecobtn" onclick="location.href='/mode1';" style="color:grey"><h3>Eco Mode</h3></button> 
        <button id="autobtn" onclick="location.href='/mode2';" style="color:grey"><h3>Auto Mode</h3></button> 
        <button id="coolbtn" onclick="location.href='/mode3';" style="color:grey"><h3>Cool Mode</h3></button> 
-     
-
        <br>
-       www.Arduino.TK
-       <br>
-       <br><br><br><br><br><br><br><br><br><br><br><br>
+       www.Arduino.TK<br>
        </h1>
-     </div>
+ </div>
   
   </body>
 </html>

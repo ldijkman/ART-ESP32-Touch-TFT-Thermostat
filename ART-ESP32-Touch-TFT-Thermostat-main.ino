@@ -1,22 +1,26 @@
 // hello
-// https://oshwlab.com/l.dijkman/esp32-dev-kit-38-pin-to-spi-touch-tft 
-// https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat 
+// https://oshwlab.com/l.dijkman/esp32-dev-kit-38-pin-to-spi-touch-tft
+// https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat
 // http://www.Arduino.TK
 //
-// GNU General Public License, 
-// which basically means that you may freely copy, change, and distribute it, 
-// but you may not impose any restrictions on further distribution, 
+// GNU General Public License,
+// which basically means that you may freely copy, change, and distribute it,
+// but you may not impose any restrictions on further distribution,
 // and you must make the source code available.
 //
 //
 //
 // TFT white screen / blank screen
-// make sure u set the file 
+// make sure u set the file
 // ......................../arduino/libraries/TFT_eSPI/User_Setup.h
 // Correct to match your TFT screen driver and hardware
 //
 // my example User_Setup.h settings at http://Arduino.TK
 //
+//
+//
+//
+
 //
 //
 //
@@ -61,10 +65,18 @@ WebServer server(80);
 #include <WiFiClient.h>
 
 const char* ssid     = "Bangert 30 Andijk";  // wifi router name broadcasted in the air
-const char* password = "PassWord";          // wifi router password
+const char* password = "ikwilerin";          // wifi router password
 
 
+#include <NTPClient.h>               // Include NTPClient library
+#include <TimeLib.h>                 // Include Arduino time library https://github.com/PaulStoffregen/Time
+WiFiUDP ntpUDP;
 
+
+// You can specify the time server pool and the offset, (in seconds)
+// additionaly you can specify the update interval (in milliseconds).
+NTPClient timeClient(ntpUDP, "europe.pool.ntp.org", 3600, 24 * 60 * 60 * 1000);
+int last_second = 0, second_ = 0, minute_ = 0, hour_ = 0, day_ = 0, month_ = 0, year_ = 0;
 
 #include "FS.h"
 #include <SPI.h>
@@ -398,7 +410,7 @@ void setup(void) {
   //----------------------------------------------------------------
   server.begin();                     // Start the webserver
 
-
+  timeClient.begin();
   OUTSUB();
 }
 
@@ -408,12 +420,39 @@ void setup(void) {
 
 void loop() {
 
-  DateTime now = rtc.now();
+  DateTime now = rtc.now();  //ds3231
+
+  timeClient.update();  //ntp
+
+  unsigned long unix_epoch = timeClient.getEpochTime();    // Get Unix epoch time from the NTP server
+
+  second_ = second(unix_epoch);
+  if (last_second != second_) {
+    Serial.print("GetFormattedTime ");Serial.println(timeClient.getFormattedTime());  //ntp
+
+    Serial.print("DayOfWeek "); Serial.println(timeClient.getDay());                  //ntp
+    Serial.print("seconds since 1-1970 "); Serial.println(timeClient.getEpochTime()); //ntp
+
+    Serial.print("hour "); Serial.println(hour(unix_epoch));                          //ntp
+    Serial.print("minute "); Serial.println(minute(unix_epoch));                      //ntp
+    Serial.print("second "); Serial.println(second(unix_epoch));                      //ntp
+
+    Serial.print("day "); Serial.println(day(unix_epoch));                            //ntp
+    Serial.print("month "); Serial.println(month(unix_epoch));                        //ntp
+    Serial.print("year "); Serial.println(year(unix_epoch));                          //ntp
+
+    Serial.print("Task running on core ");
+    Serial.println(xPortGetCoreID());
+
+    last_second = second_;
+
+  }
+
+
 
   // webserver
   server.handleClient();  // Keep checking for a client connection
-  Serial.print("Task running on core ");
-  Serial.println(xPortGetCoreID());
+
 
   // Jo energy saving Backlight
   if (now.hour() < 8) {
