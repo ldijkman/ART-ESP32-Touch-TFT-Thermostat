@@ -65,7 +65,7 @@ WebServer server(80);
 #include <WiFiClient.h>
 
 const char* ssid     = "Bangert 30 Andijk";  // wifi router name broadcasted in the air
-const char* password = "ikwilerin";          // wifi router password
+const char* password = "Password";          // wifi router password
 
 
 #include <NTPClient.h>               // Include NTPClient library
