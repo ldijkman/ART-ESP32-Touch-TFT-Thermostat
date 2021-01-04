@@ -65,7 +65,7 @@ WebServer server(80);
 #include <WiFiClient.h>
 
 const char* ssid     = "Bangert 30 Andijk";  // wifi router name broadcasted in the air
-const char* password = "Password";          // wifi router password
+const char* password = "password";          // wifi router password
 
 
 #include <NTPClient.h>               // Include NTPClient library
@@ -428,7 +428,11 @@ void loop() {
 
   second_ = second(unix_epoch);
   if (last_second != second_) {
-    Serial.print("GetFormattedTime ");Serial.println(timeClient.getFormattedTime());  //ntp
+    Serial.print("GetFormattedTime "); Serial.println(timeClient.getFormattedTime()); //ntp
+
+    tft.setTextColor(GREEN, BLACK);
+    tft.setCursor(120, 50);
+    tft.println("NTP Time: " + timeClient.getFormattedTime());
 
     Serial.print("DayOfWeek "); Serial.println(timeClient.getDay());                  //ntp
     Serial.print("seconds since 1-1-1970 "); Serial.println(timeClient.getEpochTime()); //ntp
