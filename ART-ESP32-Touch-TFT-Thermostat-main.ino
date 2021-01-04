@@ -431,7 +431,7 @@ void loop() {
     Serial.print("GetFormattedTime ");Serial.println(timeClient.getFormattedTime());  //ntp
 
     Serial.print("DayOfWeek "); Serial.println(timeClient.getDay());                  //ntp
-    Serial.print("seconds since 1-1970 "); Serial.println(timeClient.getEpochTime()); //ntp
+    Serial.print("seconds since 1-1-1970 "); Serial.println(timeClient.getEpochTime()); //ntp
 
     Serial.print("hour "); Serial.println(hour(unix_epoch));                          //ntp
     Serial.print("minute "); Serial.println(minute(unix_epoch));                      //ntp
