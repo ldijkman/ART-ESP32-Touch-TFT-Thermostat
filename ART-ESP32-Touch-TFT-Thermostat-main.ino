@@ -3,6 +3,8 @@
 // https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat
 // http://www.Arduino.TK
 //
+// https://m.facebook.com/groups/2643123052617990
+//
 // GNU General Public License,
 // which basically means that you may freely copy, change, and distribute it,
 // but you may not impose any restrictions on further distribution,
