@@ -1,7 +1,15 @@
-// https://oshwlab.com/l.dijkman/esp32-dev-kit-38-pin-to-spi-touch-tft 
-// https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat 
+// hello
+// https://oshwlab.com/l.dijkman/esp32-dev-kit-38-pin-to-spi-touch-tft
+// https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat
 // http://www.Arduino.TK
-
+//
+// https://m.facebook.com/groups/2643123052617990
+//
+// GNU General Public License,
+// which basically means that you may freely copy, change, and distribute it,
+// but you may not impose any restrictions on further distribution,
+// and you must make the source code available.
+//
 
 void settings_two_screen() {
   x = 0; y = 0;
