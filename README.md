@@ -31,6 +31,8 @@ https://www.youtube.com/user/LuberthDijkman/videos
 
 https://m.facebook.com/groups/2643123052617990
 
+https://www.facebook.com/groups/esp32smartthermostat
+
 
 
 
@@ -252,3 +254,5 @@ www.paypal.me/LDijkman
 # Help Art?!
 
 https://m.facebook.com/groups/2643123052617990
+
+https://www.facebook.com/groups/esp32smartthermostat
