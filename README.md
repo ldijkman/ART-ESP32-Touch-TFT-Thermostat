@@ -8,6 +8,17 @@ Manual by Touch TFT and WIFI(Future) clock thermostat
 
 Art, A Better NEST	
 
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+GNU General Public License,
+
+which basically means that you may freely copy, change, and distribute it,
+
+but you may not impose any restrictions on further distribution,
+
+and you must make the source code available.
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 https://oshwlab.com/l.dijkman/esp32-dev-kit-38-pin-to-spi-touch-tft	
 
@@ -15,8 +26,11 @@ https://oshwlab.com/l.dijkman/esp32-dev-kit-38-pin-to-spi-touch-tft
 https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat	
 
 
-
 https://www.youtube.com/user/LuberthDijkman/videos
+
+
+https://m.facebook.com/groups/2643123052617990
+
 
 
 
@@ -236,3 +250,5 @@ www.paypal.me/LDijkman
 # Art is now LIVE at http://Arduino.TK
 
 # Help Art?!
+
+https://m.facebook.com/groups/2643123052617990
