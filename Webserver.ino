@@ -4,6 +4,7 @@
 // http://www.Arduino.TK
 //
 // https://m.facebook.com/groups/2643123052617990
+// https://www.facebook.com/groups/esp32smartthermostat
 //
 // GNU General Public License,
 // which basically means that you may freely copy, change, and distribute it,
