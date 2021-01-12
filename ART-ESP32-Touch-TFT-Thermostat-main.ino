@@ -321,7 +321,7 @@ void setup(void) {
     while (! rtc.begin()) {
       Serial.println("Could not find RTC, i2c DS3231 realtimeclock not found");
       tft.setCursor(0, 30);
-      tft.println(" DS3231 RTC");
+      tft.println(" DS3231 RTC & BME280");
       tft.println(" Not Found");
       tft.println(" RTC i2c on pin");
       tft.println(" SDA=G33 SCL=G32");
