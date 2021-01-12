@@ -326,7 +326,7 @@ void setup(void) {
       tft.println(" RTC i2c on pin");
       tft.println(" SDA=G33 SCL=G32");
       tft.println(" VCC=3.3V & GND");
-      tft.println(" NTC Signal G34");
+      //tft.println(" NTC Signal G34");
       //example GPIO 33 as SDA and and GPIO 32 as SCL is as follows.
     }
     tft.fillScreen(GREEN);
@@ -340,7 +340,7 @@ void setup(void) {
   BME280_status = BME280.begin(0x76);
   if (!BME280_status) {
     Serial.println("Could not find a valid BME280 sensor, check wiring!");
-    while (1);
+    while (1==1){Serial.println("Could not find a valid BME280 sensor, check wiring!");}
   }
 
 
