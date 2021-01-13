@@ -289,13 +289,12 @@ void setup(void) {
 
   tft.init();             // tft_espi
 
-  tft.setRotation(1);    // setrotation before touch calibration
+  tft.setRotation(1);     // setrotation before touch calibration
 
-  // Calibrate the touch screen and retrieve the scaling factors
-  touch_calibrate();
+  touch_calibrate();      // Calibrate the touch screen and retrieve the scaling factors
 
-  // Clear the screen
-  tft.fillScreen(TFT_BLACK);
+
+  tft.fillScreen(TFT_BLACK);                          // Clear the screen
   tft.drawRoundRect(1, 1, 319, 239, 2, DARKGREY);     // show screen size on bigger display
   tft.setCursor(0, 60);
   tft.setTextColor(LIGHTGREY);  tft.setTextSize(3);
@@ -392,18 +391,18 @@ void setup(void) {
   Serial.println(" Connected to : " + String(ssid));
 
   Serial.print("Use IP address: ");
-  Serial.println(WiFi.localIP());  //IP address assigned to your ESP
+  Serial.println(WiFi.localIP());         // IP address assigned to your ESP
   //----------------------------------------------------------------
-  server.on("/", handleRoot);         // This displays the main webpage, it is called when you open a client connection on the IP address using a browser
-  server.on("/temp", handleTEMP); // To update Temperature called by the function getSensorData
-  server.on("/humid", handleHUMID); // To update Humidity called by the function getSensorData
-  server.on("/pressure", handlePRESS); // To update Pressure called by the function getSensorData
-  server.on("/mode", handlemode); // To update Pressure called by the function getSensorData
+  server.on("/", handleRoot);             // This displays the main webpage, when you open a client connection browser
+  server.on("/temp", handleTEMP);         // To update Temperature called by the function getSensorData
+  server.on("/humid", handleHUMID);       // To update Humidity called by the function getSensorData
+  server.on("/pressure", handlePRESS);    // To update Pressure called by the function getSensorData
+  server.on("/mode", handlemode);         // To update mode called by the function getSensorData
 
-  server.on("/mode0", handlemode0); // To update Pressure called by the function getSensorData
-  server.on("/mode1", handlemode1); // To update Pressure called by the function getSensorData
-  server.on("/mode2", handlemode2); // To update Pressure called by the function getSensorData
-  server.on("/mode3", handlemode3); // To update Pressure called by the function getSensorData
+  server.on("/mode0", handlemode0);       // To update mode0 called by the function getSensorData
+  server.on("/mode1", handlemode1);       // To update mode1 called by the function getSensorData
+  server.on("/mode2", handlemode2);       // To update mode2 called by the function getSensorData
+  server.on("/mode3", handlemode3);       // To update mode3 called by the function getSensorData
   //----------------------------------------------------------------
 
   server.begin();                     // Start the webserver
