@@ -332,6 +332,8 @@ void setup(void) {
   BME280_status = BME280.begin(0x76);
   while (!BME280_status) {
     Serial.println("Could not find a valid BME280 sensor, check wiring!");
+    tft.setCursor(0, 30);
+    tft.println("BME280 Not Found");
   }
 
 
