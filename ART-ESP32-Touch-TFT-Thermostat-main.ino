@@ -66,7 +66,7 @@
 #include <WebServer.h>
 WebServer server(80);
 #include <WiFiClient.h>
-                                              // some say do not use spaces in broadcasted wifi router name
+// some say do not use spaces in broadcasted wifi router name
 const char* ssid     = "Bangert-30-Andijk";  // wifi router name broadcasted in the air by your wifi router
 const char* password = "password";          // your wifi router password
 
@@ -107,8 +107,8 @@ byte Force_DateTimeRewrite = 0;  // if 1 write time and date to DS3231 RTClock /
 
 #include <Wire.h>
 
-#define I2C_SDA 33
-#define I2C_SCL 32
+#define I2C_SDA 33    // Gpio 33 non standard i2c adress
+#define I2C_SCL 32    // Gpio 32 non standard i2c adress  
 
 #include "RTClib.h" // https://github.com/adafruit/RTClib
 RTC_DS3231 rtc;    // download zip from above and install library from zip
@@ -121,12 +121,12 @@ RTC_DS3231 rtc;    // download zip from above and install library from zip
 Adafruit_BME280 BME280; // I2C
 bool BME280_status;
 
-const int ledPin = 17;  // corresponds to GPI17
+const int ledPin = 17;  // corresponds to GPIO17
 // connect to LED of SPI TFT display
 // setting PWM properties
 const int freq = 4000;           // hz
 const int ledChannel = 0;        // think channel 0 is in use by buzzer
-const int resolution = 8;        // 8bit 0 to 255
+const int resolution = 8;        // 8 bit = 0 to 255
 
 byte backgroundlightval = 127;    // not below 5 and upto to 255 backlight brightness better not totaly black
 
@@ -162,24 +162,24 @@ long touchtime;
 long runTime;
 long runTime2;
 
-const int ntc_thermistor_pin = 34;        // NTC thermistor module KY-013 signal pin gpio34
-const int heat_relais_pin = 26;          // relais module connection pin gpio26
-const int cool_relais_pin = 25;         // other contact for aico / fan
+
+const int heat_relais_pin = 26;          // Gpio 26 relais Heat
+const int cool_relais_pin = 25;         //  Gpio 25 relais Cool for aico / fan
 
 int oldstate;
 double oldval;
 
 float TempCelsius = 0;
 float Tf = 0;
-long ntc_analog_value;
 int counter = 0;
 int HeatState = 0;
 byte CoolState = 0;
 
-
+// name "mode" should be changed its colored orange allready used by some library?
 byte mode = 1;              // start with eco mode that is safest
 byte oldmode;
 
+// name "decrement" should be changed its orange colored allready used by some library?
 double decrement = 0.1;
 double temp_setpoint = 20;
 
@@ -221,7 +221,7 @@ uint8_t calDataOK = 0;
 
 
 
-byte out = 0; //goto label: did not work
+byte out = 0;                                   // a flag,  goto label: did not work
 
 byte fullscreenactive = 0;                      // flag fullscreen 0 or 1
 int secondstoswitchtofullscreen = 20;          // seconds to go fullscreen with barometer and humdity
@@ -243,7 +243,7 @@ void setup(void) {
 
 
 
-  Wire.begin(I2C_SDA, I2C_SCL);
+  Wire.begin(I2C_SDA, I2C_SCL);                               // start i2c on non stndard i2c pins
 
   pinMode(heat_relais_pin, OUTPUT);
   pinMode(cool_relais_pin, OUTPUT);
@@ -287,9 +287,9 @@ void setup(void) {
   //  }
   //readFile(SPIFFS, "/art_times.txt");
 
-  tft.init();
+  tft.init();             // tft_espi
 
-  tft.setRotation(1); //setrotation before touch calibration
+  tft.setRotation(1);    // setrotation before touch calibration
 
   // Calibrate the touch screen and retrieve the scaling factors
   touch_calibrate();
@@ -320,7 +320,6 @@ void setup(void) {
       tft.println(" RTC i2c on pin");
       tft.println(" SDA=G33 SCL=G32");
       tft.println(" VCC=3.3V & GND");
-      //example GPIO 33 as SDA and and GPIO 32 as SCL is as follows.
     }
     tft.fillScreen(GREEN);
     tft.setTextColor(BLACK);
@@ -331,12 +330,10 @@ void setup(void) {
   tft.setTextColor(LIGHTGREY);
 
   BME280_status = BME280.begin(0x76);
-  if (!BME280_status) {
+  while (!BME280_status) {
     Serial.println("Could not find a valid BME280 sensor, check wiring!");
-    while (!BME280_status) {
-      Serial.println("Could not find a valid BME280 sensor, check wiring!");
-    }
   }
+
 
 
   // set the time from PC to DS3231 RTC
@@ -415,7 +412,6 @@ void setup(void) {
   tft.setTextSize(1);
   tft.setCursor(120, 40);
   tft.println(WiFi.localIP());
-
 
   OUTSUB();
 }
@@ -922,7 +918,7 @@ void OUTSUB() {
     if (TempCelsius < (normal_setpoint - switchbelowset))HeatState = 1;
   }
   if (mode == 1) {                                         // eco
-    CoolState = 0;              
+    CoolState = 0;
     if (TempCelsius > (eco_setpoint + switchaboveset))HeatState = 0;
     if (TempCelsius < (eco_setpoint - switchbelowset))HeatState = 1;
   }
