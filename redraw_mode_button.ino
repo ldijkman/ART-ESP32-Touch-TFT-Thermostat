@@ -12,34 +12,34 @@
 // and you must make the source code available.
 //
 
-void redraw_mode_button() {
+void redraw_modus_button() {
 
 
-  //tft.print(mode);
-  //tft.println(oldmode);
+  //tft.print(modus);
+  //tft.println(oldmodus);
 
 
-  if (mode == 0) {
+  if (modus == 0) {
     tft.setTextColor(LIGHTGREY, BLACK); tft.setTextSize(2);
     tft.setCursor(20,45); tft.println(" Normal ");
   }
-  if (mode == 1) {
+  if (modus == 1) {
     tft.setTextColor(GREEN, BLACK); tft.setTextSize(2);
     tft.setCursor(20, 45); tft.println("  Eco  ");
   }
-  if (mode == 2) {
+  if (modus == 2) {
     tft.setTextColor(dutchorange, BLACK); tft.setTextSize(2);
     tft.setCursor(20, 45); tft.println(" Auto  ");
   }
-  if (mode == 3) {
+  if (modus == 3) {
     tft.setTextColor(iceblue, BLACK); tft.setTextSize(2);
     tft.setCursor(20, 45); tft.println(" Cool  ");
   }
 
   if (fullscreenactive == 1) {
 
-    if (mode != oldmode) {
-      fullscreenactive = 0;  // if mode changed online exit fullmode to redraw buttons
+    if (modus != oldmodus) {
+      fullscreenactive = 0;  // if modus changed online exit fullmodus to redraw buttons
       touchtime = millis();
       TempLong = millis(); // reset last touch count
       tft.fillRoundRect(5, 155, 310, 80, 1, BLACK);                // erase old barometer and humidity
@@ -127,7 +127,7 @@ void redraw_mode_button() {
   //tft.drawRoundRect(10, 10, 300, 140, 8, LIGHTGREY);  // main sreen outline
 
   tft.drawRoundRect(10, 160, 90, 70, 8, LIGHTGREY);   // -     draw buttons outline
-  tft.drawRoundRect(115, 160, 90, 70, 8, LIGHTGREY);  // mode  draw buttons outline
+  tft.drawRoundRect(115, 160, 90, 70, 8, LIGHTGREY);  // modus  draw buttons outline
   tft.drawRoundRect(220, 160, 90, 70, 8, LIGHTGREY);  // +     draw buttons outline
 
 
@@ -140,25 +140,25 @@ void redraw_mode_button() {
 
   tft.setTextSize(4);// 0=normal 1=eco 2=auto 3=//cool
   tft.setCursor(35, 65);
-  if (mode == 0) {
+  if (modus == 0) {
     tft.setTextColor(LIGHTGREY, BLACK);  // 0=normal 1=eco 2=auto 3=Cool
     tft.print(normal_setpoint, 1);
   }
-  if (mode == 1) {
+  if (modus == 1) {
     tft.setTextColor(GREEN, BLACK);
     tft.print(eco_setpoint, 1);
   }
-  if (mode == 2) {
+  if (modus == 2) {
     tft.setTextColor(dutchorange, BLACK);
     tft.print(auto_setpoint, 1);
   }
-  if (mode == 3) {
+  if (modus == 3) {
     tft.setTextColor(iceblue, BLACK);
     tft.print(cool_setpoint, 1);
   }
 
 
-  if (mode == 0) {  // normal mode
+  if (modus == 0) {  // normal modus
 
     tft.fillRoundRect(117, 162, 86, 66, 12, BLACK); // erase old button text
     tft.setTextColor(LIGHTGREY);
@@ -166,11 +166,11 @@ void redraw_mode_button() {
     tft.setCursor(130, 173);
     tft.println("NORMAL");
     tft.setCursor(137, 200);
-    tft.println("MODE");
-    tft.drawRoundRect(115, 160, 90, 70, 8, LIGHTGREY);  // mode  draw buttons outline
+    tft.println("modus");
+    tft.drawRoundRect(115, 160, 90, 70, 8, LIGHTGREY);  // modus  draw buttons outline
   }
 
-  if (mode == 1) {  // eco mode
+  if (modus == 1) {  // eco modus
 
     tft.fillRoundRect(117, 162, 86, 66, 12, BLACK); // erase old button text
     tft.setTextColor(GREEN);
@@ -178,11 +178,11 @@ void redraw_mode_button() {
     tft.setCursor(144, 173);
     tft.println("ECO");
     tft.setCursor(137, 200);
-    tft.println("MODE");
-    tft.drawRoundRect(115, 160, 90, 70, 8, GREEN);  // mode  draw buttons outline
+    tft.println("modus");
+    tft.drawRoundRect(115, 160, 90, 70, 8, GREEN);  // modus  draw buttons outline
   }
 
-  if (mode == 2) {  // auto mode
+  if (modus == 2) {  // auto modus
 
     tft.fillRoundRect(117, 162, 86, 66, 12, BLACK); // erase old button text
     tft.setTextColor(dutchorange);
@@ -190,11 +190,11 @@ void redraw_mode_button() {
     tft.setCursor(135, 173);
     tft.println("AUTO");
     tft.setCursor(137, 200);
-    tft.println("MODE");
-    tft.drawRoundRect(115, 160, 90, 70, 8, dutchorange);  // mode  draw buttons outline
+    tft.println("modus");
+    tft.drawRoundRect(115, 160, 90, 70, 8, dutchorange);  // modus  draw buttons outline
   }
 
-  if (mode == 3) {  // cool mode
+  if (modus == 3) {  // cool modus
 
     tft.fillRoundRect(117, 162, 86, 66, 12, BLACK); // erase old button text
     tft.setTextColor(iceblue);
@@ -202,8 +202,8 @@ void redraw_mode_button() {
     tft.setCursor(135, 173);
     tft.println("COOL");
     tft.setCursor(137, 200);
-    tft.println("MODE");
-    tft.drawRoundRect(115, 160, 90, 70, 8, iceblue);  // mode  draw buttons outline
+    tft.println("modus");
+    tft.drawRoundRect(115, 160, 90, 70, 8, iceblue);  // modus  draw buttons outline
   }
 
   OUTSUB();

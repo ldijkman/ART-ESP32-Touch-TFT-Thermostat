@@ -29,7 +29,7 @@
 // alarm setpoints low/high
 // screen brightnes
 //
-// auto mode  program & times temps
+// auto modus  program & times temps
 //
 // Arts age ;-) time since startdate / memory creation?
 // nunber of reboots

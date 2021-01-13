@@ -132,14 +132,14 @@ byte backgroundlightval = 127;      // not below 5 and upto to 255 backlight bri
 byte nightbackgroundlightval = 10; 
 
 // Color definitions
-#define BLACK   0x0000
-#define BLUE    0x001F
-#define RED     0xF800
-#define GREEN   0x07E0
-#define CYAN    0x07FF
-#define MAGENTA 0xF81F
-#define YELLOW  0xFFE0
-#define WHITE   0xFFFF
+#define BLACK       0x0000
+#define BLUE        0x001F
+#define RED         0xF800
+#define GREEN       0x07E0
+#define CYAN        0x07FF
+#define MAGENTA     0xF81F
+#define YELLOW      0xFFE0
+#define WHITE       0xFFFF
 #define NAVY        0x000F
 #define DARKGREEN   0x03E0
 #define DARKCYAN    0x03EF
@@ -153,7 +153,7 @@ byte nightbackgroundlightval = 10;
 #define PINK        0xF81F
 
 #define dutchorange 0xfbc0
-#define iceblue 0x1dfb
+#define iceblue     0x1dfb
 // pitty you can not enter a colorcode on next page
 // https://chrishewett.com/blog/true-rgb565-colour-picker/
 
@@ -166,21 +166,18 @@ long runTime2;
 const int heat_relais_pin = 26;          // Gpio 26 relais Heat for control central heating
 const int cool_relais_pin = 25;         //  Gpio 25 relais Cool for aico / fan
 
-int oldstate;
-double oldval;
-
 float TempCelsius = 0;
 float Tf = 0;
 int counter = 0;
 int HeatState = 0;
 byte CoolState = 0;
 
-// name "mode" should be changed its colored orange allready used by some library?
-byte mode = 1;              // start with eco mode that is safest
-byte oldmode;
+// name "mode" should be changed its colored orange allready used by Arduino or library?
+// changed name "mode" to "modus"
+byte modus = 1;              // start with eco modus that is safest
+byte oldmodus;
 
-// name "decrement" should be changed its orange colored allready used by some library?
-double decrement = 0.1;
+double decrement_step = 0.1;
 double temp_setpoint = 20;
 
 double normal_setpoint = 21;    // save our planet
@@ -246,7 +243,7 @@ void setup(void) {
   Wire.begin(I2C_SDA, I2C_SCL);                               // start i2c on non stndard i2c pins
 
   pinMode(heat_relais_pin, OUTPUT);
-  pinMode(cool_relais_pin, OUTPUT);
+ pinMode(cool_relais_pin, OUTPUT);
   digitalWrite(heat_relais_pin, HIGH);       // HIGH = heat output relais off
   digitalWrite(cool_relais_pin, HIGH);       // HIGH = cool output relais off
 
@@ -386,7 +383,7 @@ void setup(void) {
     // Wait for WiFi to connect
     tft.setCursor(20, 40);
     tft.print(60 - ((millis() - TempLong) / 1000)); tft.print(" ");
-    if ((millis() - TempLong)  > 60000)break;           // timeout exit if it takes to lomg 30 seconds = nowifi
+    if ((millis() - TempLong)  > 60000)break;           // timeout exit if it takes to lomg 60 seconds = nowifi
   }
   Serial.println(" Connected to : " + String(ssid));
 
@@ -397,12 +394,12 @@ void setup(void) {
   server.on("/temp", handleTEMP);         // To update Temperature called by the function getSensorData
   server.on("/humid", handleHUMID);       // To update Humidity called by the function getSensorData
   server.on("/pressure", handlePRESS);    // To update Pressure called by the function getSensorData
-  server.on("/mode", handlemode);         // To update mode called by the function getSensorData
+  server.on("/modus", handlemodus);         // To update modus called by the function getSensorData
 
-  server.on("/mode0", handlemode0);       // To update mode0 called by the function getSensorData
-  server.on("/mode1", handlemode1);       // To update mode1 called by the function getSensorData
-  server.on("/mode2", handlemode2);       // To update mode2 called by the function getSensorData
-  server.on("/mode3", handlemode3);       // To update mode3 called by the function getSensorData
+  server.on("/modus0", handlemodus0);       // To update modus0 called by the function getSensorData
+  server.on("/modus1", handlemodus1);       // To update modus1 called by the function getSensorData
+  server.on("/modus2", handlemodus2);       // To update modus2 called by the function getSensorData
+  server.on("/modus3", handlemodus3);       // To update modus3 called by the function getSensorData
   //----------------------------------------------------------------
 
   server.begin();                     // Start the webserver
@@ -593,7 +590,7 @@ void loop() {
 
     //test hardcoded switch on day / time array
 
-    Serial.println("mode == 2");
+    Serial.println("modus == 2");
 
     // monday to friday
     if (now.dayOfTheWeek() >= 1 && now.dayOfTheWeek()  <= 5  ) { // 1=monday to 5=friday
@@ -651,7 +648,7 @@ void loop() {
 
 JumpOver:
     Serial.println("i just jumped over");
-    redraw_mode_button();
+    redraw_modus_button();
 
     tft.setCursor(165, 65);
     tft.setTextColor(LIGHTGREY, BLACK);  tft.setTextSize(5);
@@ -659,8 +656,6 @@ JumpOver:
 
     counter = 0;
     OUTSUB();
-
-    oldval = TempCelsius;
 
 
   } // end Execute every 1000ms=1second
@@ -679,15 +674,15 @@ JumpOver:
   tft.print(((millis() - touchtime) / 1000));                   // last touch secondstoswitchtofullscreen seconds ago, go fullscreen
   if ((fullscreenactive == 0) && (((millis() - touchtime) / 1000) >= secondstoswitchtofullscreen)) {
     fullscreenactive = 1;                          // show fullscreen with milibar and humidity
-    oldmode = mode;           //if mode changes online redraw buttons
+    oldmodus = modus;           //if modus changes online redraw buttons
     tft.fillRoundRect(5, 155, 310, 80, 1, BLACK);               // erase  buttons for fullscreen barometer en humidity text
   }
+  tft.print("   ");    // erase some textval
 
 
-
-  tft.print("   ");
-
-
+ 
+  
+  
   if (tft.getTouch(&x, &y)) {
     touchtime = millis(); // store millis() for future screen aninmation if touch is longer as ?? time ago
 
@@ -724,23 +719,23 @@ JumpOver:
 
     if (fullscreenactive == 0) {                                       // if not fullscreen touch buttons should not react to touch when in fullscreen
 
-      // mode touch button
+      // modus touch button
       if (x > 100 && x < 200 && y > 165 && y < 240) {
 
-        mode = mode + 1;
-        if (mode > 3)mode = 0;  // 0=normal 1=eco 2=auto 3=Cool
+        modus = modus + 1;
+        if (modus > 3)modus = 0;  // 0=normal 1=eco 2=auto 3=Cool
 
 
 
 
-        if (mode == 0) { // nomal continu mode at comfort temperature
+        if (modus == 0) { // nomal continu modus at comfort temperature
 
           tft.fillRoundRect(117, 162, 86, 66, 12, BLACK); // erase old button text
           tft.setCursor(130, 173);
           tft.setTextColor(LIGHTGREY);  tft.setTextSize(2);
           tft.println("NORMAL");
           tft.setCursor(137, 200);
-          tft.println("MODE");
+          tft.println("modus");
 
           tft.setTextSize(4);
           delay(750);
@@ -750,14 +745,14 @@ JumpOver:
 
 
 
-        if (mode == 1) { // eco  continu mode at goosebumbs temperature
+        if (modus == 1) { // eco  continu modus at goosebumbs temperature
 
           tft.fillRoundRect(117, 162, 86, 66, 12, BLACK); // erase old button text
           tft.setCursor(144, 173);
           tft.setTextColor(GREEN);  tft.setTextSize(2);
           tft.println("ECO");
           tft.setCursor(137, 200);
-          tft.println("MODE");
+          tft.println("modus");
 
           tft.setTextSize(4);
           delay(750);
@@ -766,14 +761,14 @@ JumpOver:
         }
 
 
-        if (mode == 2) {  // 2=automode switch temperature by time program
+        if (modus == 2) {  // 2=automodus switch temperature by time program
 
           tft.fillRoundRect(117, 162, 86, 66, 12, BLACK); // erase old button text
           tft.setCursor(135, 173);
           tft.setTextColor(dutchorange);  tft.setTextSize(2);
           tft.println("AUTO");
           tft.setCursor(137, 200);
-          tft.println("MODE");
+          tft.println("modus");
 
           tft.setTextSize(4);
           delay(750);
@@ -782,14 +777,14 @@ JumpOver:
         }
 
 
-        if (mode == 3) {  // 3=cool mode airco mode
+        if (modus == 3) {  // 3=cool modus airco modus
 
           tft.fillRoundRect(117, 162, 86, 66, 12, BLACK); // erase old button text
           tft.setCursor(135, 173);
           tft.setTextColor(iceblue);  tft.setTextSize(2);
           tft.println("COOL");
           tft.setCursor(137, 200);
-          tft.println("MODE");
+          tft.println("modus");
 
           tft.setTextSize(4);
           delay(750);
@@ -805,39 +800,39 @@ JumpOver:
       if (x > 0 && x < 90 && y > 165 && y < 240) {
 
         // 0=normal 1=eco 2=auto 3=Cool
-        if (mode == 0) {                                        // normal
-          normal_setpoint = (normal_setpoint - decrement);
+        if (modus == 0) {                                        // normal
+          normal_setpoint = (normal_setpoint - decrement_step);
           if (normal_setpoint < 10)normal_setpoint = 10;
         }
-        if (mode == 1) {                                       // eco
-          eco_setpoint = (eco_setpoint - decrement);
+        if (modus == 1) {                                       // eco
+          eco_setpoint = (eco_setpoint - decrement_step);
           if (eco_setpoint < 10)eco_setpoint = 10;
         }
-        if (mode == 2) {                                       // auto
-          auto_setpoint = (auto_setpoint - decrement);
+        if (modus == 2) {                                       // auto
+          auto_setpoint = (auto_setpoint - decrement_step);
           if (auto_setpoint < 10)auto_setpoint = 10;
         }
-        if (mode == 3) {                                       // cool
-          cool_setpoint = (cool_setpoint - decrement);
+        if (modus == 3) {                                       // cool
+          cool_setpoint = (cool_setpoint - decrement_step);
           if (cool_setpoint < 10)cool_setpoint = 10;
         }
 
 
         tft.setTextSize(4);   // 0=normal 1=eco 2=auto 3=Cool
         tft.setCursor(35, 65);
-        if (mode == 0) {                                       // normal
+        if (modus == 0) {                                       // normal
           tft.setTextColor(LIGHTGREY, BLACK);
           tft.print(normal_setpoint, 1);
         }
-        if (mode == 1) {                                      // eco
+        if (modus == 1) {                                      // eco
           tft.setTextColor(GREEN, BLACK);
           tft.print(eco_setpoint, 1);
         }
-        if (mode == 2) {                                      // auto
+        if (modus == 2) {                                      // auto
           tft.setTextColor(dutchorange, BLACK);
           tft.print(auto_setpoint, 1);
         }
-        if (mode == 3) {                                      // cool
+        if (modus == 3) {                                      // cool
           tft.setTextColor(iceblue, BLACK);
           tft.print(cool_setpoint, 1);
         }
@@ -851,39 +846,39 @@ JumpOver:
       if (x > 220 && x < 320 && y > 165 && y < 240) {
 
         // 0=normal 1=eco 2=auto 3=Cool
-        if (mode == 0) {                                     // normal
-          normal_setpoint = (normal_setpoint + decrement);
+        if (modus == 0) {                                     // normal
+          normal_setpoint = (normal_setpoint + decrement_step);
           if (normal_setpoint > 30)normal_setpoint = 30;
         }
-        if (mode == 1) {                                     // eco
-          eco_setpoint = (eco_setpoint + decrement);
+        if (modus == 1) {                                     // eco
+          eco_setpoint = (eco_setpoint + decrement_step);
           if (eco_setpoint > 30)eco_setpoint = 30;
         }
-        if (mode == 2) {                                     // auto
-          auto_setpoint = (auto_setpoint + decrement);
+        if (modus == 2) {                                     // auto
+          auto_setpoint = (auto_setpoint + decrement_step);
           if (auto_setpoint > 30)auto_setpoint = 30;
         }
-        if (mode == 3) {                                     // cool
-          cool_setpoint = (cool_setpoint  + decrement);
+        if (modus == 3) {                                     // cool
+          cool_setpoint = (cool_setpoint  + decrement_step);
           if (cool_setpoint > 30)cool_setpoint = 30;
         }
 
         tft.setTextSize(4);
         tft.setCursor(35, 65);
 
-        if (mode == 0) {                                // normal
+        if (modus == 0) {                                // normal
           tft.setTextColor(LIGHTGREY, BLACK);          // 0=normal 1=eco 2=auto 3=Cool
           tft.print(normal_setpoint, 1);
         }
-        if (mode == 1) {                               // eco
+        if (modus == 1) {                               // eco
           tft.setTextColor(GREEN, BLACK);
           tft.print(eco_setpoint, 1);
         }
-        if (mode == 2) {                             // auto
+        if (modus == 2) {                             // auto
           tft.setTextColor(dutchorange, BLACK);
           tft.print(auto_setpoint, 1);
         }
-        if (mode == 3) {                             // cool
+        if (modus == 3) {                             // cool
           tft.setTextColor(iceblue, BLACK);
           tft.print(cool_setpoint, 1);
         }
@@ -907,22 +902,22 @@ void OUTSUB() {
 
 
   // 0=normal 1=eco 2=auto 3=Cool
-  if (mode == 0) {                                         // normal
+  if (modus == 0) {                                         // normal
     CoolState = 0;
     if (TempCelsius > (normal_setpoint + switchaboveset))HeatState = 0;
     if (TempCelsius < (normal_setpoint - switchbelowset))HeatState = 1;
   }
-  if (mode == 1) {                                         // eco
+  if (modus == 1) {                                         // eco
     CoolState = 0;
     if (TempCelsius > (eco_setpoint + switchaboveset))HeatState = 0;
     if (TempCelsius < (eco_setpoint - switchbelowset))HeatState = 1;
   }
-  if (mode == 2) {                                         // auto
+  if (modus == 2) {                                         // auto
     CoolState = 0;
     if (TempCelsius > (auto_setpoint + switchaboveset))HeatState = 0;
     if (TempCelsius < (auto_setpoint - switchbelowset))HeatState = 1;
   }
-  if (mode == 3) {                                          // cool
+  if (modus == 3) {                                          // cool
     HeatState = 0;
     if (TempCelsius > (cool_setpoint + switchaboveset)) CoolState = 1;
     if (TempCelsius < (cool_setpoint - switchbelowset)) CoolState = 0;
@@ -976,7 +971,7 @@ void OUTSUB() {
   }
 
   if (CoolState == 0 ) {
-    if (mode == 3) {
+    if (modus == 3) {
 
       if (!fullscreenactive) {
         tft.drawRoundRect(10, 10, 300, 140, 8, BLUE);
@@ -996,7 +991,7 @@ void OUTSUB() {
   }
 
   if (CoolState == 1 ) {
-    if (mode == 3) {
+    if (modus == 3) {
 
       if (!fullscreenactive) {
         tft.drawRoundRect(10, 10, 300, 140, 8, iceblue);
@@ -1047,7 +1042,7 @@ void waitfortouchanywhere() {
 
   while (1 == 1) {                  // 1 wil always be 1   so forever
     if (tft.getTouch(&x, &y)) break; // touch anywhere on the screen to break while loop
-    //  pinMode(XM, OUTPUT);
+    // pinMode(XM, OUTPUT);
     // pinMode(YP, OUTPUT);
 
 

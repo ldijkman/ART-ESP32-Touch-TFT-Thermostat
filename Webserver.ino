@@ -84,7 +84,7 @@ const char Web_page[] PROGMEM = R"=====(
     setInterval(function(){getSensorDatadrie(); }, 1500);
     setInterval(function(){getSensorDatavier(); }, 1000);
 
-    //document.getElementById("modeid").innerHTML = "Cool Mode"; 
+    //document.getElementById("modusid").innerHTML = "Cool modus"; 
       
        function getSensorDataeen() {
         var xa = new XMLHttpRequest();  
@@ -124,11 +124,11 @@ const char Web_page[] PROGMEM = R"=====(
         var qqa = new XMLHttpRequest();
         qqa.onreadystatechange = function() {  
           if (qqa.readyState == 4 && qqa.status == 200) {
-            document.getElementById("modeid").innerHTML = this.responseText;
-            document.getElementById("modeidtext").value = this.responseText;
+            document.getElementById("modusid").innerHTML = this.responseText;
+            document.getElementById("modusidtext").value = this.responseText;
          }
         }
-        qqa.open("GET", "mode", true);
+        qqa.open("GET", "modus", true);
         qqa.send(); 
       }  
        
@@ -146,8 +146,8 @@ const char Web_page[] PROGMEM = R"=====(
        <h4><a href="/temp">Temperature</a> <span id="tempid">-- </span> &degC</h4>
        <h4><a href="/humid">Humidity</a> <span id="humidid">-- </span> %</h4>
        <h4><a href="/pressure">Pressure</a> <span id="pressid">-- </span> mbar</h4>
-       <h4><a href="/mode">Mode</a> <span id="modeid">-- </span></h4>
-       Active Mode = <input type="button" id="modeidtext" value="?" size="2" >=<input type="button" id="textmodeid" value="?"><br><br>
+       <h4><a href="/modus">modus</a> <span id="modusid">-- </span></h4>
+       Active modus = <input type="button" id="modusidtext" value="?" size="2" >=<input type="button" id="textmodusid" value="?"><br><br>
 
 <script>
 
@@ -156,26 +156,26 @@ setInterval(function(){myFunction(); }, 1000);
 function myFunction(val) { 
   //alert("The input value has changed. The new value is: " + val);
 
-  if(document.getElementById("modeidtext").value==0){
-    document.getElementById("textmodeid").value="Normal Mode";
+  if(document.getElementById("modusidtext").value==0){
+    document.getElementById("textmodusid").value="Normal modus";
      document.getElementById("normalbtn").style="color:green; background-color:PaleTurquoise;";
     }else{
       document.getElementById("normalbtn").style="color:black; background-color:grey;";
   }
-  if(document.getElementById("modeidtext").value==1){
-    document.getElementById("textmodeid").value="Eco Mode";
+  if(document.getElementById("modusidtext").value==1){
+    document.getElementById("textmodusid").value="Eco modus";
      document.getElementById("ecobtn").style="color:green; background-color:PaleTurquoise;";
   }else{
       document.getElementById("ecobtn").style="color:black; background-color:grey;";
   }
-  if(document.getElementById("modeidtext").value==2){
-    document.getElementById("textmodeid").value="Auto Mode";
+  if(document.getElementById("modusidtext").value==2){
+    document.getElementById("textmodusid").value="Auto modus";
      document.getElementById("autobtn").style="color:green; background-color:PaleTurquoise;";
   }else{
       document.getElementById("autobtn").style="color:black; background-color:grey;";
   }
-  if(document.getElementById("modeidtext").value==3){
-    document.getElementById("textmodeid").value="Cool Mode";
+  if(document.getElementById("modusidtext").value==3){
+    document.getElementById("textmodusid").value="Cool modus";
      document.getElementById("coolbtn").style="color:green; background-color:PaleTurquoise;";
   }else{
       document.getElementById("coolbtn").style="color:black; background-color:grey;";
@@ -183,15 +183,15 @@ function myFunction(val) {
 }
 </script>
        <!--
-       <input type="button" onclick="location.href='mode0';" value="Normal Mode" />
-       <input type="button" onclick="location.href='mode1';" value="Eco Mode" />
-       <input type="button" onclick="location.href='mode2';" value="Auto Mode" />
-       <input type="button" onclick="location.href='mode3';" value="Cool Mode" /><br><br>
+       <input type="button" onclick="location.href='modus0';" value="Normal modus" />
+       <input type="button" onclick="location.href='modus1';" value="Eco modus" />
+       <input type="button" onclick="location.href='modus2';" value="Auto modus" />
+       <input type="button" onclick="location.href='modus3';" value="Cool modus" /><br><br>
        -->
-       <button id="normalbtn" onclick="location.href='/mode0';" style="color:grey"><h3>Normal Mode</h3></button> 
-       <button id="ecobtn" onclick="location.href='/mode1';" style="color:grey"><h3>Eco Mode</h3></button> 
-       <button id="autobtn" onclick="location.href='/mode2';" style="color:grey"><h3>Auto Mode</h3></button> 
-       <button id="coolbtn" onclick="location.href='/mode3';" style="color:grey"><h3>Cool Mode</h3></button> 
+       <button id="normalbtn" onclick="location.href='/modus0';" style="color:grey"><h3>Normal modus</h3></button> 
+       <button id="ecobtn" onclick="location.href='/modus1';" style="color:grey"><h3>Eco modus</h3></button> 
+       <button id="autobtn" onclick="location.href='/modus2';" style="color:grey"><h3>Auto modus</h3></button> 
+       <button id="coolbtn" onclick="location.href='/modus3';" style="color:grey"><h3>Cool modus</h3></button> 
        <br>
        www.Arduino.TK<br>
        </h1>
@@ -222,40 +222,40 @@ void handlePRESS() { // This function is called by the script to update the sens
   server.send(200, "text/plain", pressure); //Send sensor reading when there's a client ajax request
 }
 
-void handlemode() { // This function is called by the script to update the sensor value, in this example random data!
-  String modevalue = String(mode);
-  server.send(200, "text/plain", modevalue); //Send sensor reading when there's a client ajax request
+void handlemodus() { // This function is called by the script to update the sensor value, in this example random data!
+  String modusvalue = String(modus);
+  server.send(200, "text/plain", modusvalue); //Send sensor reading when there's a client ajax request
 }
 
 
 
-void handlemode0() { // This function is called by the script to update the sensor value, in this example random data!
-  mode=0;
-   String modevalue = String(mode);
+void handlemodus0() { // This function is called by the script to update the sensor value, in this example random data!
+  modus=0;
+   String modusvalue = String(modus);
     server.send(200, "text/html", Web_page); //Send web page
-  //server.send(200, "text/plain", modevalue); //Send sensor reading when there's a client ajax request
+  //server.send(200, "text/plain", modusvalue); //Send sensor reading when there's a client ajax request
 }
 
 
-void handlemode1() { // This function is called by the script to update the sensor value, in this example random data!
-  mode=1;
-   String modevalue = String(mode);
+void handlemodus1() { // This function is called by the script to update the sensor value, in this example random data!
+  modus=1;
+   String modusvalue = String(modus);
    server.send(200, "text/html", Web_page); //Send web page
-  //server.send(200, "text/plain", modevalue); //Send sensor reading when there's a client ajax request
+  //server.send(200, "text/plain", modusvalue); //Send sensor reading when there's a client ajax request
 }
 
 
 
-void handlemode2() { // This function is called by the script to update the sensor value, in this example random data!
-  mode=2;
-   String modevalue = String(mode);
+void handlemodus2() { // This function is called by the script to update the sensor value, in this example random data!
+  modus=2;
+   String modusvalue = String(modus);
    server.send(200, "text/html", Web_page); //Send web page
-  //server.send(200, "text/plain", modevalue); //Send sensor reading when there's a client ajax request
+  //server.send(200, "text/plain", modusvalue); //Send sensor reading when there's a client ajax request
 }
 
-void handlemode3() { // This function is called by the script to update the sensor value, in this example random data!
-  mode=3;
-   String modevalue = String(mode);
+void handlemodus3() { // This function is called by the script to update the sensor value, in this example random data!
+  modus=3;
+   String modusvalue = String(modus);
    server.send(200, "text/html", Web_page); //Send web page
-  //server.send(200, "text/plain", modevalue); //Send sensor reading when there's a client ajax request
+  //server.send(200, "text/plain", modusvalue); //Send sensor reading when there's a client ajax request
 }

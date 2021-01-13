@@ -21,7 +21,7 @@ void drawmainscreen() {
   //tft.drawRoundRect(10, 10, 300, 140, 8, LIGHTGREY);  // main sreen outline
 
   tft.drawRoundRect(10, 160, 90, 70, 8, LIGHTGREY);   // -     draw buttons outline
-  tft.drawRoundRect(115, 160, 90, 70, 8, LIGHTGREY);  // mode  draw buttons outline
+  tft.drawRoundRect(115, 160, 90, 70, 8, LIGHTGREY);  // modus  draw buttons outline
   tft.drawRoundRect(220, 160, 90, 70, 8, LIGHTGREY);  // +     draw buttons outline
 
   tft.setTextColor(LIGHTGREY);
@@ -70,7 +70,7 @@ void drawmainscreen() {
     //tft.print(char(247)); //degree sign
     tft.print(" C  ");
 
-  redraw_mode_button();
+  redraw_modus_button();
 
 
 }
