@@ -78,13 +78,13 @@ WiFiUDP ntpUDP;
 
 // You can specify the time server pool and the offset, (in seconds)
 // additionaly you can specify the update interval (in milliseconds).
-NTPClient timeClient(ntpUDP, "europe.pool.ntp.org", 3600, 24 * 60 * 60 * 1000);
-int last_second = 0, second_ = 0, minute_ = 0, hour_ = 0, day_ = 0, month_ = 0, year_ = 0;
+NTPClient timeClient(ntpUDP, "europe.pool.ntp.org", 3600, 24 * 60 * 60 * 1000);                 // 3600 = 1 hour offset, 24 hour update
+int last_second = 0, second_ = 0, minute_ = 0, hour_ = 0, day_ = 0, month_ = 0, year_ = 0;      // some variables for ntp time
 
 #include "FS.h"
 #include <SPI.h>
-#include <TFT_eSPI.h>      // Hardware-specific library https://github.com/Bodmer/TFT_eSPI
-TFT_eSPI tft = TFT_eSPI(); // Invoke custom library
+#include <TFT_eSPI.h>      // Hardware-specific TFT SPI library https://github.com/Bodmer/TFT_eSPI
+TFT_eSPI tft = TFT_eSPI(); // Invoke custom TFT library
 
 // The SPIFFS (FLASH filing system) is used to hold touch screen calibration data
 // This is the file name used to store the calibration data file, name must start with "/".
@@ -93,7 +93,7 @@ TFT_eSPI tft = TFT_eSPI(); // Invoke custom library
 //#define FORMAT_SPIFFS_IF_FAILED 0
 
 // Set REPEAT_CAL to true instead of false or 1 or 0 to run calibration
-byte REPEAT_CAL = 0;
+byte REPEAT_CAL = 0;     // repeat call flag fr calibration
 
 byte drawgreendot = 1;  // draw touch position with a greendot
 
@@ -121,15 +121,15 @@ RTC_DS3231 rtc;    // download zip from above and install library from zip
 Adafruit_BME280 BME280; // I2C
 bool BME280_status;
 
-const int ledPin = 17;  // corresponds to GPIO17
+const int ledPin = 17;            // corresponds to GPIO17 for backlight brightness
 // connect to LED of SPI TFT display
 // setting PWM properties
 const int freq = 4000;           // hz
 const int ledChannel = 0;        // think channel 0 is in use by buzzer
 const int resolution = 8;        // 8 bit = 0 to 255
 
-byte backgroundlightval = 127;    // not below 5 and upto to 255 backlight brightness better not totaly black
-
+byte backgroundlightval = 127;      // not below 5 and upto to 255 backlight brightness better not totaly black
+byte nightbackgroundlightval = 10; 
 
 // Color definitions
 #define BLACK   0x0000
@@ -163,7 +163,7 @@ long runTime;
 long runTime2;
 
 
-const int heat_relais_pin = 26;          // Gpio 26 relais Heat
+const int heat_relais_pin = 26;          // Gpio 26 relais Heat for control central heating
 const int cool_relais_pin = 25;         //  Gpio 25 relais Cool for aico / fan
 
 int oldstate;
@@ -289,9 +289,9 @@ void setup(void) {
 
   tft.init();             // tft_espi
 
-  tft.setRotation(1);     // setrotation before touch calibration
+  tft.setRotation(1);     // TFT SPI setrotation before touch calibration
 
-  touch_calibrate();      // Calibrate the touch screen and retrieve the scaling factors
+  touch_calibrate();      // TFT Calibrate the touch screen and retrieve the scaling factors
 
 
   tft.fillScreen(TFT_BLACK);                          // Clear the screen
@@ -304,7 +304,7 @@ void setup(void) {
   tft.println("   Controlled");
   tft.setTextSize(1); tft.setCursor(20, 230);
   tft.println("Made by Luberth Dijkman Andijk The Netherlands");
-  delay(8000);
+  delay(8000);                                                  // 8 second delay
 
   tft.setTextColor(BLACK);
 
@@ -423,41 +423,40 @@ void setup(void) {
 
 void loop() {
 
-  DateTime now = rtc.now();  //ds3231
+  DateTime now = rtc.now();  // DS3231
 
-  timeClient.update();  //ntp
+  timeClient.update();       // NTP time
 
-  // webserver
-  server.handleClient();  // Keep checking for a client connection
+  server.handleClient();     // webserver Keep checking for a client connection
 
 
   unsigned long unix_epoch = timeClient.getEpochTime();    // Get Unix epoch time from the NTP server
 
   second_ = second(unix_epoch);
   if (last_second != second_) {
-    Serial.print("GetFormattedTime "); Serial.println(timeClient.getFormattedTime()); //ntp
+    Serial.print("GetFormattedTime "); Serial.println(timeClient.getFormattedTime());      // NTP
 
     tft.setTextColor(GREEN, BLACK);
     tft.setTextSize(1);
     tft.setCursor(120, 50);
     tft.println("NTP Time: " + timeClient.getFormattedTime());
 
-    Serial.print("DayOfWeek "); Serial.println(timeClient.getDay());                  //ntp
-    Serial.print("seconds since 1-1-1970 "); Serial.println(timeClient.getEpochTime()); //ntp
+    Serial.print("DayOfWeek "); Serial.println(timeClient.getDay());                    // ntp
+    Serial.print("seconds since 1-1-1970 "); Serial.println(timeClient.getEpochTime()); // ntp
 
-    Serial.print("hour "); Serial.println(hour(unix_epoch));                          //ntp
-    Serial.print("minute "); Serial.println(minute(unix_epoch));                      //ntp
-    Serial.print("second "); Serial.println(second(unix_epoch));                      //ntp
+    Serial.print("hour "); Serial.println(hour(unix_epoch));                            // ntp
+    Serial.print("minute "); Serial.println(minute(unix_epoch));                        // ntp
+    Serial.print("second "); Serial.println(second(unix_epoch));                        // ntp
 
-    Serial.print("day "); Serial.println(day(unix_epoch));                            //ntp
-    Serial.print("month "); Serial.println(month(unix_epoch));                        //ntp
-    Serial.print("year "); Serial.println(year(unix_epoch));                          //ntp
+    Serial.print("day "); Serial.println(day(unix_epoch));                              // ntp
+    Serial.print("month "); Serial.println(month(unix_epoch));                          // ntp
+    Serial.print("year "); Serial.println(year(unix_epoch));                            // ntp
 
-    Serial.print("Task running on core ");
+    Serial.print("Task running on core ");                                              // am i using only 1 core of dual core ESP32?
     Serial.println(xPortGetCoreID());
 
 
-    TempCelsius = BME280.readTemperature();
+    TempCelsius = BME280.readTemperature();                                             // get temp from BME280
 
     // Serial.print("Fahrenheit = "); Serial.print(Tf, 1);
     Serial.print(" Celsius = "); Serial.println(TempCelsius, 1);
@@ -490,10 +489,10 @@ void loop() {
     if (now.hour() < 10)tft.print(" ");        // print 01 to 09 as 1 to 9
     tft.print(now.hour());
     tft.print(":");
-    if (now.minute() < 10)tft.print("0");      // print 01 to 09 as 01 to 09
+    if (now.minute() < 10)tft.print("0");      // print 1 to 9 as 01 to 09
     tft.print(now.minute());
     tft.print(":");
-    if (now.second() < 10)tft.print("0");      // print 01 to 09 as 01 to 09
+    if (now.second() < 10)tft.print("0");      // print 1 to 9 as 01 to 09
     tft.print(now.second());
 
     tft.setCursor(15, 12);
@@ -568,11 +567,11 @@ void loop() {
   tft.setTextColor(RED, BLACK);
   tft.setTextSize(1);
   tft.setCursor(310, 3);
-  tft.println("o");//char(3));              //Alive HEARTBEAT
+  tft.println("o");//char(3));              // Alive HEARTBEAT
 
 
-  if (millis() - runTime >= 1000) { // Execute every 1000ms
-    runTime = millis();             // store millis() counter in variable runtime
+  if (millis() - runTime >= 1000) {         // Execute every 1000ms
+    runTime = millis();                     // store millis() counter in variable runtime
 
 
     server.handleClient();  // Keep checking for a client connection
@@ -581,7 +580,7 @@ void loop() {
     tft.setTextColor( BLACK, BLACK);
     tft.setTextSize(1);
     tft.setCursor(310, 3);
-    tft.println("o");//char(3));          //Alive HEARTBEAT  https://github.com/Bodmer/TFT_eSPI
+    tft.println("o");//char(3));          //Alive HEARTBEAT 
 
 
 
@@ -603,7 +602,7 @@ void loop() {
 
       // timeinminutes is more easy to work switch with versus hours:minutes
       // timeinseconds is not needed minutes is accurate enough
-      // 1440 minutes a day
+      // 24x60=1440 minutes a day
 
       for (X = 0; X <= 2; X++) {
         //Serial.println(X);
@@ -616,7 +615,7 @@ void loop() {
         }
 
       }
-    }//weekday >=1 && <=5 mon...fri
+    }// end weekday >=1 && <=5 mon...fri
 
 
 
@@ -630,7 +629,7 @@ void loop() {
 
       // timeinminutes is more easy to work switch with versus hours:minutes
       // timeinseconds is not needed minutes is accurate enough
-      // 1440 minutes a day
+      // 24x60=1440 minutes a day
 
       for (X = 10; X <= 12; X++) { // <= smaller or equal, x++ means x=x+1
         //Serial.println(X);
@@ -643,7 +642,7 @@ void loop() {
         }
       }
 
-    }// day 0 || 6 sat sun
+    }// end day 0 || 6 sat sun
 
 
 
@@ -654,19 +653,14 @@ JumpOver:
     Serial.println("i just jumped over");
     redraw_mode_button();
 
-
-    // print actual temperature to the screen
     tft.setCursor(165, 65);
     tft.setTextColor(LIGHTGREY, BLACK);  tft.setTextSize(5);
-    tft.println(TempCelsius, 1);
-
+    tft.println(TempCelsius, 1);                               // print actual temperature to the screen
 
     counter = 0;
     OUTSUB();
 
     oldval = TempCelsius;
-
-
 
 
   } // end Execute every 1000ms=1second
