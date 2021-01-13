@@ -67,7 +67,7 @@
 WebServer server(80);
 #include <WiFiClient.h>
                                               // some say do not use spaces in broadcasted wifi router name
-const char* ssid     = "Bangert-30-Andijk";  // wifi router name broadcasted in the air
+const char* ssid     = "Bangert-30-Andijk";  // wifi router name broadcasted in the air by your wifi router
 const char* password = "password";          // wifi router password
 
 
