@@ -734,7 +734,7 @@ JumpOver:
           tft.setCursor(130, 173);
           tft.setTextColor(LIGHTGREY);  tft.setTextSize(2);
           tft.println("NORMAL");
-          tft.setCursor(137, 200);
+          tft.setCursor(130, 200);
           tft.println("modus");
 
           tft.setTextSize(4);
@@ -751,7 +751,7 @@ JumpOver:
           tft.setCursor(144, 173);
           tft.setTextColor(GREEN);  tft.setTextSize(2);
           tft.println("ECO");
-          tft.setCursor(137, 200);
+          tft.setCursor(130, 200);
           tft.println("modus");
 
           tft.setTextSize(4);
@@ -767,7 +767,7 @@ JumpOver:
           tft.setCursor(135, 173);
           tft.setTextColor(dutchorange);  tft.setTextSize(2);
           tft.println("AUTO");
-          tft.setCursor(137, 200);
+          tft.setCursor(130, 200);
           tft.println("modus");
 
           tft.setTextSize(4);
@@ -783,7 +783,7 @@ JumpOver:
           tft.setCursor(135, 173);
           tft.setTextColor(iceblue);  tft.setTextSize(2);
           tft.println("COOL");
-          tft.setCursor(137, 200);
+          tft.setCursor(130, 200);
           tft.println("modus");
 
           tft.setTextSize(4);

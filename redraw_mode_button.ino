@@ -165,7 +165,7 @@ void redraw_modus_button() {
     tft.setTextSize(2);
     tft.setCursor(130, 173);
     tft.println("NORMAL");
-    tft.setCursor(137, 200);
+    tft.setCursor(130, 200);
     tft.println("modus");
     tft.drawRoundRect(115, 160, 90, 70, 8, LIGHTGREY);  // modus  draw buttons outline
   }
@@ -177,7 +177,7 @@ void redraw_modus_button() {
     tft.setTextSize(2);
     tft.setCursor(144, 173);
     tft.println("ECO");
-    tft.setCursor(137, 200);
+    tft.setCursor(130, 200);
     tft.println("modus");
     tft.drawRoundRect(115, 160, 90, 70, 8, GREEN);  // modus  draw buttons outline
   }
@@ -189,7 +189,7 @@ void redraw_modus_button() {
     tft.setTextSize(2);
     tft.setCursor(135, 173);
     tft.println("AUTO");
-    tft.setCursor(137, 200);
+    tft.setCursor(130, 200);
     tft.println("modus");
     tft.drawRoundRect(115, 160, 90, 70, 8, dutchorange);  // modus  draw buttons outline
   }
@@ -201,7 +201,7 @@ void redraw_modus_button() {
     tft.setTextSize(2);
     tft.setCursor(135, 173);
     tft.println("COOL");
-    tft.setCursor(137, 200);
+    tft.setCursor(130, 200);
     tft.println("modus");
     tft.drawRoundRect(115, 160, 90, 70, 8, iceblue);  // modus  draw buttons outline
   }
