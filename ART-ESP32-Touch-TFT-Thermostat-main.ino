@@ -129,7 +129,7 @@ const int ledChannel = 0;        // think channel 0 is in use by buzzer
 const int resolution = 8;        // 8 bit = 0 to 255
 
 byte backgroundlightval = 127;      // not below 5 and upto to 255 backlight brightness better not totaly black
-byte nightbackgroundlightval = 10; 
+byte nightbackgroundlightval = 10;
 
 // Color definitions
 #define BLACK       0x0000
@@ -243,7 +243,7 @@ void setup(void) {
   Wire.begin(I2C_SDA, I2C_SCL);                               // start i2c on non stndard i2c pins
 
   pinMode(heat_relais_pin, OUTPUT);
- pinMode(cool_relais_pin, OUTPUT);
+  pinMode(cool_relais_pin, OUTPUT);
   digitalWrite(heat_relais_pin, HIGH);       // HIGH = heat output relais off
   digitalWrite(cool_relais_pin, HIGH);       // HIGH = cool output relais off
 
@@ -326,10 +326,13 @@ void setup(void) {
   tft.setTextColor(LIGHTGREY);
 
   BME280_status = BME280.begin(0x76);
-  while (!BME280_status) {
+  if (!BME280_status) {
     Serial.println("Could not find a valid BME280 sensor, check wiring!");
-    tft.setCursor(0, 30);
+    tft.fillScreen(RED); tft.setTextSize(3);
+    tft.setCursor(10, 30);
+    tft.setTextColor(YELLOW);
     tft.println("BME280 Not Found");
+    delay(20000);
   }
 
 
@@ -577,7 +580,7 @@ void loop() {
     tft.setTextColor( BLACK, BLACK);
     tft.setTextSize(1);
     tft.setCursor(310, 3);
-    tft.println("o");//char(3));          //Alive HEARTBEAT 
+    tft.println("o");//char(3));          //Alive HEARTBEAT
 
 
 
@@ -680,9 +683,9 @@ JumpOver:
   tft.print("   ");    // erase some textval
 
 
- 
-  
-  
+
+
+
   if (tft.getTouch(&x, &y)) {
     touchtime = millis(); // store millis() for future screen aninmation if touch is longer as ?? time ago
 
