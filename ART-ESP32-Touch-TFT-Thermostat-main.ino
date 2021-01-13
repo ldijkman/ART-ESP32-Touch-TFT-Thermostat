@@ -67,7 +67,7 @@
 WebServer server(80);
 #include <WiFiClient.h>
 
-const char* ssid     = "Bangert 30 Andijk";  // wifi router name broadcasted in the air
+const char* ssid     = "Bangert-30-Andijk";  // wifi router name broadcasted in the air
 const char* password = "password";          // wifi router password
 
 
@@ -189,12 +189,6 @@ double eco_setpoint = 15;     // save our planet
 double cool_setpoint = 25;   // save our planet
 
 long time_in_minutes;
-
-float Vo;
-float R1 = 10000;  // 10K
-float logR2, R2, T, Tc;
-float c1 = 1.009249522e-03, c2 = 2.378405444e-04, c3 = 2.019202697e-07;
-float voltage = 3.3;   // use 3.3volt
 
 float CalibrationOffset = 0;  // correction for actual temp +or-
 float switchbelowset = 0.2;
@@ -340,7 +334,9 @@ void setup(void) {
   BME280_status = BME280.begin(0x76);
   if (!BME280_status) {
     Serial.println("Could not find a valid BME280 sensor, check wiring!");
-    while (1==1){Serial.println("Could not find a valid BME280 sensor, check wiring!");}
+    while (1 == 1) {
+      Serial.println("Could not find a valid BME280 sensor, check wiring!");
+    }
   }
 
 
@@ -411,9 +407,17 @@ void setup(void) {
   server.on("/mode2", handlemode2); // To update Pressure called by the function getSensorData
   server.on("/mode3", handlemode3); // To update Pressure called by the function getSensorData
   //----------------------------------------------------------------
+
   server.begin();                     // Start the webserver
 
   timeClient.begin();
+
+  tft.setTextColor(GREEN, BLACK);
+  tft.setTextSize(1);
+  tft.setCursor(120, 40);
+  tft.println(WiFi.localIP());
+
+
   OUTSUB();
 }
 
@@ -450,6 +454,69 @@ void loop() {
 
     Serial.print("Task running on core ");
     Serial.println(xPortGetCoreID());
+
+
+
+    TempCelsius = BME280.readTemperature();
+
+    // Serial.print("Fahrenheit = "); Serial.print(Tf, 1);
+    Serial.print(" Celsius = "); Serial.println(TempCelsius, 1);
+    // https://www.google.com/search?q=3+fahrenheit+to+celsius
+
+
+
+    Serial.print("Temperature = ");
+    Serial.print(BME280.readTemperature());
+    Serial.println(" *C");
+    // Convert temperature to Fahrenheit
+    // Serial.print("Temperature = ");
+    // Serial.print(1.8 * BME280.readTemperature() + 32);
+    // Serial.println(" *F");
+    Serial.print("Pressure = ");
+    Serial.print(BME280.readPressure() / 100.0F);
+    Serial.println(" hPa");
+    Serial.print("Approx. Altitude = ");
+    Serial.print(BME280.readAltitude(SEALEVELPRESSURE_HPA));
+    Serial.println(" m");
+    Serial.print("Humidity = ");
+    Serial.print(BME280.readHumidity());
+    Serial.println(" %");
+    Serial.println();
+
+
+    tft.setTextSize (2);
+    tft.setTextColor (LIGHTGREY, BLACK);
+    tft.setCursor(30, 100);
+    if (now.hour() < 10)tft.print(" ");        // print 01 to 09 as 1 to 9
+    tft.print(now.hour());
+    tft.print(":");
+    if (now.minute() < 10)tft.print("0");      // print 01 to 09 as 01 to 09
+    tft.print(now.minute());
+    tft.print(":");
+    if (now.second() < 10)tft.print("0");      // print 01 to 09 as 01 to 09
+    tft.print(now.second());
+
+    tft.setCursor(15, 12);
+    tft.setTextSize (1);
+    tft.print("Day ");
+    tft.print(now.dayOfTheWeek());             // prints daynumber of the week
+
+    tft.setTextSize (2);
+    tft.setTextColor (LIGHTGREY, BLACK);
+    tft.setCursor(17, 130);
+    tft.print(dayname[now.dayOfTheWeek()]);
+    tft.print(now.day());
+    tft.print(" ");
+    tft.print(monthName[now.month() - 1]);
+    tft.print("   ");
+    //tft.print(now.year());
+    //tft.print("  ");
+
+
+
+    oldminute = now.minute();
+
+
 
     last_second = second_;
 
@@ -507,51 +574,11 @@ void loop() {
   tft.println("o");//char(3));              //Alive HEARTBEAT
 
 
-  tft.setTextColor(GREEN, BLACK);
-  tft.setTextSize(1);
-  tft.setCursor(120, 40);
-  tft.println(WiFi.localIP());
-
-
-
-
-
-
-
-
   if (millis() - runTime >= 1000) { // Execute every 1000ms
     runTime = millis();             // store millis() counter in variable runtime
 
 
     server.handleClient();  // Keep checking for a client connection
-
-    /*
-      Serial.print("Temperature = ");
-      Serial.print(BME280.readTemperature());
-      Serial.println(" *C");
-
-      // Convert temperature to Fahrenheit
-      // Serial.print("Temperature = ");
-      // Serial.print(1.8 * BME280.readTemperature() + 32);
-      // Serial.println(" *F");
-
-      Serial.print("Pressure = ");
-      Serial.print(BME280.readPressure() / 100.0F);
-      Serial.println(" hPa");
-
-      Serial.print("Approx. Altitude = ");
-      Serial.print(BME280.readAltitude(SEALEVELPRESSURE_HPA));
-      Serial.println(" m");
-
-      Serial.print("Humidity = ");
-      Serial.print(BME280.readHumidity());
-      Serial.println(" %");
-
-      Serial.println();
-    */
-
-
-
 
 
     tft.setTextColor( BLACK, BLACK);
@@ -560,72 +587,12 @@ void loop() {
     tft.println("o");//char(3));          //Alive HEARTBEAT  https://github.com/Bodmer/TFT_eSPI
 
 
-    // ntc is pulled down to ground null -vdc 0vdc or whatever you call it
-    // my pcb is pulled up so i switched + and - wire on ntc_pcb
-    ntc_analog_value = 0;
-    int numberoffmeasurements = 250;
-    for (int Q = 0; Q < numberoffmeasurements; Q++) {
-      // ntc_analog_value = ntc_analog_value + analogRead(ntc_thermistor_pin);
-    }
-    // Serial.print(" ntc_analog_value = "); Serial.println(ntc_analog_value, 1);
-    //ntc_analog_value = ntc_analog_value / numberoffmeasurements;
 
 
-    R2 = R1 * (4095.0 / (float)ntc_analog_value - 1.0);
-    logR2 = log(R2);
-    T = (1.0 / (c1 + c2 * logR2 + c3 * logR2 * logR2 * logR2));
-    T = T - 273.15 + CalibrationOffset;
-    Tf = (T * 9.0 / 5) + 32.0;
-    TempCelsius = T ;
 
-    TempCelsius = BME280.readTemperature();
-
-    Serial.print("Fahrenheit = "); Serial.print(Tf, 1);
-    Serial.print(" Celsius = "); Serial.println(TempCelsius, 1);
-    // https://www.google.com/search?q=3+fahrenheit+to+celsius
 
 
     time_in_minutes = (now.hour() * 60 + now.minute()); //time to minutes makes it easier to switch on a time
-
-    tft.setTextSize (2);
-    tft.setTextColor (LIGHTGREY, BLACK);
-    tft.setCursor(30, 100);
-    if (now.hour() < 10)tft.print(" ");        // print 01 to 09 as 1 to 9
-    tft.print(now.hour());
-    tft.print(":");
-    if (now.minute() < 10)tft.print("0");      // print 01 to 09 as 01 to 09
-    tft.print(now.minute());
-    tft.print(":");
-    if (now.second() < 10)tft.print("0");      // print 01 to 09 as 01 to 09
-    tft.print(now.second());
-
-    tft.setCursor(15, 12);
-    tft.setTextSize (1);
-    tft.print("Day ");
-    tft.print(now.dayOfTheWeek());             // prints daynumber of the week
-
-    tft.setTextSize (2);
-    tft.setTextColor (LIGHTGREY, BLACK);
-    tft.setCursor(17, 130);
-    tft.print(dayname[now.dayOfTheWeek()]);
-    tft.print(now.day());
-    tft.print(" ");
-    tft.print(monthName[now.month() - 1]);
-    tft.print("   ");
-    //tft.print(now.year());
-    //tft.print("  ");
-
-
-    //  tft.setTextSize (1);
-    //  tft.setTextColor (LIGHTGREY, BLACK);
-    //  tft.setCursor(130, 13);
-    //  tft.print("  ");
-    //  tft.print(rtc.getTemperature());
-    //  //tft.print(char(247)); //degree sign
-    //  tft.print(" C  ");
-
-    oldminute = now.minute();
-    // }
 
 
     //test hardcoded switch on day / time array
