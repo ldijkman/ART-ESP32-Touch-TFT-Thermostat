@@ -66,7 +66,7 @@
 #include <WebServer.h>
 WebServer server(80);
 #include <WiFiClient.h>
-
+                                              // some say do not use spaces in broadcasted wifi router name
 const char* ssid     = "Bangert-30-Andijk";  // wifi router name broadcasted in the air
 const char* password = "password";          // wifi router password
 
@@ -121,7 +121,7 @@ RTC_DS3231 rtc;    // download zip from above and install library from zip
 Adafruit_BME280 BME280; // I2C
 bool BME280_status;
 
-const int ledPin = 17;  // corresponds to GPIo
+const int ledPin = 17;  // corresponds to GPI17
 // connect to LED of SPI TFT display
 // setting PWM properties
 const int freq = 4000;           // hz
@@ -188,7 +188,7 @@ double auto_setpoint = 20;     // save our planet
 double eco_setpoint = 15;     // save our planet
 double cool_setpoint = 25;   // save our planet
 
-long time_in_minutes;
+int time_in_minutes;
 
 float CalibrationOffset = 0;  // correction for actual temp +or-
 float switchbelowset = 0.2;
@@ -320,7 +320,6 @@ void setup(void) {
       tft.println(" RTC i2c on pin");
       tft.println(" SDA=G33 SCL=G32");
       tft.println(" VCC=3.3V & GND");
-      //tft.println(" NTC Signal G34");
       //example GPIO 33 as SDA and and GPIO 32 as SCL is as follows.
     }
     tft.fillScreen(GREEN);
@@ -334,7 +333,7 @@ void setup(void) {
   BME280_status = BME280.begin(0x76);
   if (!BME280_status) {
     Serial.println("Could not find a valid BME280 sensor, check wiring!");
-    while (1 == 1) {
+    while (!BME280_status) {
       Serial.println("Could not find a valid BME280 sensor, check wiring!");
     }
   }
@@ -410,7 +409,7 @@ void setup(void) {
 
   server.begin();                     // Start the webserver
 
-  timeClient.begin();
+  timeClient.begin();                 // start ntp?
 
   tft.setTextColor(GREEN, BLACK);
   tft.setTextSize(1);
@@ -431,6 +430,10 @@ void loop() {
 
   timeClient.update();  //ntp
 
+  // webserver
+  server.handleClient();  // Keep checking for a client connection
+
+
   unsigned long unix_epoch = timeClient.getEpochTime();    // Get Unix epoch time from the NTP server
 
   second_ = second(unix_epoch);
@@ -438,6 +441,7 @@ void loop() {
     Serial.print("GetFormattedTime "); Serial.println(timeClient.getFormattedTime()); //ntp
 
     tft.setTextColor(GREEN, BLACK);
+    tft.setTextSize(1);
     tft.setCursor(120, 50);
     tft.println("NTP Time: " + timeClient.getFormattedTime());
 
@@ -454,7 +458,6 @@ void loop() {
 
     Serial.print("Task running on core ");
     Serial.println(xPortGetCoreID());
-
 
 
     TempCelsius = BME280.readTemperature();
@@ -513,19 +516,16 @@ void loop() {
     //tft.print("  ");
 
 
-
     oldminute = now.minute();
-
-
 
     last_second = second_;
 
-  }
+  }  // end last_second not is  second_
 
 
 
-  // webserver
-  server.handleClient();  // Keep checking for a client connection
+
+
 
 
   // Jo energy saving Backlight
@@ -611,14 +611,10 @@ void loop() {
       for (X = 0; X <= 2; X++) {
         //Serial.println(X);
         if (time_in_minutes >= HeatOFFhour[X] * 60 + HeatOFFminute[X] ) {
-          //if (mode == 2) {
           auto_setpoint = tempOFF[X];
-          //}
         }
         if (time_in_minutes >= HeatONhour[X] * 60 + HeatONminute[X] && time_in_minutes < HeatOFFhour[X] * 60 + HeatOFFminute[X]) {
-          //if (mode == 2) {        // 2= automode
           auto_setpoint = tempON[X];
-          //}
           goto JumpOver;           // programmers do not like GOTO, i liked gwbasic ;-)
         }
 
@@ -642,14 +638,10 @@ void loop() {
       for (X = 10; X <= 12; X++) { // <= smaller or equal, x++ means x=x+1
         //Serial.println(X);
         if (time_in_minutes >= HeatOFFhour[X] * 60 + HeatOFFminute[X] ) {
-          //if (mode == 2) {
           auto_setpoint = tempOFF[X];
-          //}
         }
         if (time_in_minutes >= HeatONhour[X] * 60 + HeatONminute[X] && time_in_minutes < HeatOFFhour[X] * 60 + HeatOFFminute[X]) {
-          //if (mode == 2) {        // 2= automode
           auto_setpoint = tempON[X];
-          // }
           goto JumpOver;           // programmers do not like GOTO, i liked gwbasic ;-)
         }
       }
@@ -664,10 +656,6 @@ void loop() {
 JumpOver:
     Serial.println("i just jumped over");
     redraw_mode_button();
-
-
-    if (ntc_analog_value <= 60 || ntc_analog_value >= 960) sensorfail = 1;
-    // maybe do something with it?
 
 
     // print actual temperature to the screen
@@ -922,8 +910,8 @@ JumpOver:
 
 
       }
-    }  // end if not fullscreen touch buttons should not react to touch when in fullscreen
-  }
+    }          // end if not fullscreen touch buttons should not react to touch when in fullscreen
+  }           //end if (tft.getTouch(&x, &y))
 
 }
 
@@ -1046,9 +1034,9 @@ void OUTSUB() {
     }
   }
 
-  while ((millis() - runTime2) < 75) {  // delay to set execution time of outsub equal
+  //while ((millis() - runTime2) < 75) {  // delay to set execution time of outsub equal
     //Serial.println(millis() - runTime2);
-  }
+  //}
 
 }
 
