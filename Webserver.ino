@@ -18,6 +18,8 @@ const char Web_page[] PROGMEM = R"=====(
 <!DOCTYPE html>
 <html><head>
 <title>Art, ESP32 Smart Thermostat</title>
+ <link rel="shortcut icon" href="http://arduino.tk/thumbsup_2.png"> 
+ <link rel="alternate icon" class="js-site-favicon" type="image/png" href="http://arduino.tk/thumbsup_2.png">
 <meta name=\"viewport" content="width=device-width, initial-scale=.7\">
 <meta name=\"author" content="Remote HTML Web Control Art ESP32 Smart Thermostat\">
 <meta name=\"copyright\" content=\"2020-2021 Dirk Luberth Dijkman Bangert 30 1619GJ The Netherlands\">
