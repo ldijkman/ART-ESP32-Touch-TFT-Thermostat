@@ -80,6 +80,8 @@ WiFiUDP ntpUDP;
 // additionaly you can specify the update interval (in milliseconds).
 NTPClient timeClient(ntpUDP, "europe.pool.ntp.org", 3600, 24 * 60 * 60 * 1000);                 // 3600 = 1 hour offset, 24 hour update
 int last_second = 0, second_ = 0, minute_ = 0, hour_ = 0, day_ = 0, month_ = 0, year_ = 0;      // some variables for ntp time
+unsigned long unix_epoch;
+
 
 #include "FS.h"
 #include <SPI.h>
@@ -424,14 +426,14 @@ void setup(void) {
 
 void loop() {
 
-  DateTime now = rtc.now();  // DS3231
+  DateTime now = rtc.now();  // DS3231 RTC RealTimeClock
 
   timeClient.update();       // NTP time
 
   server.handleClient();     // webserver Keep checking for a client connection
 
 
-  unsigned long unix_epoch = timeClient.getEpochTime();    // Get Unix epoch time from the NTP server
+  unix_epoch = timeClient.getEpochTime();    // Get Unix epoch time from the NTP server
 
   second_ = second(unix_epoch);
   if (last_second != second_) {

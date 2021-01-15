@@ -33,6 +33,19 @@ void drawtimedatesetscreen() {
     x = 0; y = 0;
     tft.getTouch(&x, &y);
 
+    tft.setTextColor(GREEN, BLACK);
+    tft.setTextSize(1);
+    tft.setCursor(15, 200);
+    tft.println("NTP Time: " + timeClient.getFormattedTime());      // ntp
+
+    tft.setCursor(15, 210);
+    tft.print("Day ");
+    tft.print(day(unix_epoch));                                     // ntp
+    tft.print(" Month ");
+    tft.print(month(unix_epoch));                                   // ntp
+    tft.print(" Year ");
+    tft.println(year(unix_epoch));                                  // ntp
+
     tft.setTextSize (4);
     tft.setTextColor (LIGHTGREY, BLACK);
     tft.setCursor(65, 25);
