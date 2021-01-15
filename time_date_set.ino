@@ -114,10 +114,19 @@ void drawtimedatesetscreen() {
     tft.drawRoundRect(165, 120, 70, 50, 8, LIGHTGREY);
     tft.drawRoundRect(245, 120, 70, 50, 8, LIGHTGREY);
 
+
     //exit back button
     tft.setCursor(260 , 200);
     tft.println("BACK");
     tft.drawRoundRect(245, 180, 70, 50, 8, LIGHTGREY);
+
+    // ntp2rtc button
+    tft.setTextSize(1);
+    tft.setCursor(170 , 200);
+    tft.println("NTP 2 RTC");
+    tft.drawRoundRect(165, 180, 70, 50, 8, LIGHTGREY);
+
+
 
     //print touch xy position to serial monitor
     if (x != 0 && y != 0) {
@@ -271,6 +280,19 @@ void drawtimedatesetscreen() {
       delay(250);
       break;
     }
+
+
+
+
+    if (x > 165 && x < 235 && y > 180 && y < 235) {  // ntp2rtc button and exit
+      tft.drawRoundRect(165, 180, 70, 50, 8, GREEN);
+      delay(250);
+      unix_epoch = timeClient.getEpochTime();    // Get Unix epoch time from the NTP server
+      rtc.adjust(DateTime(year(unix_epoch), month(unix_epoch), day(unix_epoch), hour(unix_epoch), minute(unix_epoch), second(unix_epoch)));
+      delay(250);
+      break;
+    }
+
 
     if (x > 50 && x < 115 && y > 15 && y < 45) {
       uurselect = 1, minuutselect = 0, secondeselect = 0, dagselect = 0, maandselect = 0, jaarselect = 0;
