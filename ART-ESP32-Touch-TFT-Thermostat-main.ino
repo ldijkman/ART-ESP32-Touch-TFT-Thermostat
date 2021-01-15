@@ -68,7 +68,7 @@ WebServer server(80);
 #include <WiFiClient.h>
 // some say do not use spaces in broadcasted wifi router name
 const char* ssid     = "Bangert-30-Andijk";  // wifi router name broadcasted in the air by your wifi router
-const char* password = "password";          // your wifi router password
+const char* password = "Password";          // your wifi router password
 
 
 #include <NTPClient.h>               // Include NTPClient library
@@ -373,30 +373,36 @@ void setup(void) {
   */
   tft.setTextColor(GREEN, BLACK);
   tft.setCursor(15, 30);
-  WiFi.mode(WIFI_STA);        // Connect to your wifi
 
-  WiFi.begin(ssid, password); // Start the Wi-Fi services
+  WiFi.disconnect();
+
+  WiFi.mode(WIFI_STA);                                              // Connect to your wifi
+
+  WiFi.begin(ssid, password);                                       // Start the Wi-Fi services
   Serial.println("Connecting to WiFi : " + String(ssid));
   tft.println("Connecting to WiFi : " + String(ssid));
 
 
-  TempLong = millis();  // store millis() counter in variable TempLong
+  TempLong = millis();                                              // store millis() counter in variable TempLong
 
-  while (WiFi.waitForConnectResult() != WL_CONNECTED) {
-    // Wait for WiFi to connect
+  while (WiFi.waitForConnectResult() != WL_CONNECTED) {             // Wait for WiFi to connect
     tft.setCursor(20, 40);
     tft.print(60 - ((millis() - TempLong) / 1000)); tft.print(" ");
-    if ((millis() - TempLong)  > 60000)break;           // timeout exit if it takes to lomg 60 seconds = nowifi
+    if ((millis() - TempLong)  > 60000)break;                       // timeout exit if it takes to lomg 60 seconds = nowifi
   }
-  Serial.println(" Connected to : " + String(ssid));
+  Serial.println(" Connected to : " + String(ssid));                // serial print broadcasted router wifi name
+  tft.setCursor(15, 30); 
+  tft.println("                 " + String(ssid) + "     ");        // tft print broadcasted router wifi name
+  tft.setCursor(120, 40);
+  tft.println(WiFi.localIP());                                      // tft print ip adres
 
-  Serial.print("Use IP address: ");
-  Serial.println(WiFi.localIP());         // IP address assigned to your ESP
+  Serial.println("Use IP address: " + WiFi.localIP());              // IP address assigned to your ESP32
+  
   //----------------------------------------------------------------
-  server.on("/", handleRoot);             // This displays the main webpage, when you open a client connection browser
-  server.on("/temp", handleTEMP);         // To update Temperature called by the function getSensorData
-  server.on("/humid", handleHUMID);       // To update Humidity called by the function getSensorData
-  server.on("/pressure", handlePRESS);    // To update Pressure called by the function getSensorData
+  server.on("/", handleRoot);               // This displays the main webpage, when you open a client connection browser
+  server.on("/temp", handleTEMP);           // To update Temperature called by the function getSensorData
+  server.on("/humid", handleHUMID);         // To update Humidity called by the function getSensorData
+  server.on("/pressure", handlePRESS);      // To update Pressure called by the function getSensorData
   server.on("/modus", handlemodus);         // To update modus called by the function getSensorData
 
   server.on("/modus0", handlemodus0);       // To update modus0 called by the function getSensorData
@@ -409,10 +415,7 @@ void setup(void) {
 
   timeClient.begin();                 // start ntp?
 
-  tft.setTextColor(GREEN, BLACK);
-  tft.setTextSize(1);
-  tft.setCursor(120, 40);
-  tft.println(WiFi.localIP());
+
 
   OUTSUB();
 }
