@@ -203,6 +203,7 @@ function myFunction(val) {
        <button id="coolbtn" onclick="location.href='/modus3';" style="color:grey"><h3>Cool modus</h3></button> 
        <br>
        www.Arduino.TK<br>
+       Phonebrowser? &#8942; &#9776; add to startscreen and you have a quicklink to thermostat<br>
        </h1>
  </div>
   

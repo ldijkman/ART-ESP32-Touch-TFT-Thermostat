@@ -68,7 +68,7 @@ WebServer server(80);
 #include <WiFiClient.h>
 // some say do not use spaces in broadcasted wifi router name
 const char* ssid     = "Bangert-30-Andijk";  // wifi router name broadcasted in the air by your wifi router
-const char* password = "Password";          // your wifi router password
+const char* password = "password";          // your wifi router password
 
 
 #include <NTPClient.h>               // Include NTPClient library
@@ -167,8 +167,7 @@ const int heat_relais_pin = 26;          // Gpio 26 relais Heat for control cent
 const int cool_relais_pin = 25;         //  Gpio 25 relais Cool for aico / fan
 
 float TempCelsius = 0;
-float Tf = 0;
-int counter = 0;
+
 int HeatState = 0;
 byte CoolState = 0;
 
@@ -199,7 +198,6 @@ float switchaboveset = 0.2;
 // int minumumheatontime = 4;     // minutes can imagine if not getting hot condesation corrosion
 // int maximumheatontime = 60;    // desired temperature not reached within .. minutes
 
-byte sensorfail = 0;
 
 int oldminute;
 int X;
@@ -660,7 +658,7 @@ JumpOver:
     tft.setTextColor(LIGHTGREY, BLACK);  tft.setTextSize(5);
     tft.println(TempCelsius, 1);                               // print actual temperature to the screen
 
-    counter = 0;
+    
     OUTSUB();
 
 
