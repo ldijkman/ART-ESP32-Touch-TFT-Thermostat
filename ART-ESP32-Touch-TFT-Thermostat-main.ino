@@ -171,7 +171,7 @@ const int cool_relais_pin = 25;         //  Gpio 25 relais Cool for aico / fan
 
 float TempCelsius = 20;
 
-int HeatState = 0;
+byte HeatState = 0;
 byte CoolState = 0;
 
 // name "mode" should be changed its colored orange allready used by Arduino or library?
@@ -225,7 +225,7 @@ byte fullscreenactive = 0;                      // flag fullscreen 0 or 1
 int secondstoswitchtofullscreen = 20;          // seconds to go fullscreen with barometer and humdity
 int bordercolor = dutchorange;
 
-byte DOW; // 1 monday 7 sunday = yes = real weekends
+byte DOW;                                     // my week 1 monday 7 sunday = yes = real weekends
 
 
 void setup(void) {
@@ -603,8 +603,8 @@ void loop() {
     // in The Netherlands the week starts with monday, we have weekends
 
     // lets make real weekends
-    DOW = now.dayOfTheWeek();           // sux 0=sunday  monday=6   = only saturday weekend, that sux
-    if (DOW == 0) DOW = 7;              // make sunday = 0 to sunday =7    = yes = real weekends
+    DOW = now.dayOfTheWeek();           // sux 0=sunday  saturday=6   = only saturday weekend, that sux
+    if (DOW == 0) DOW = 7;              // make sunday = 0 to sunday = 7    = yes = real weekends
 
     // monday to friday
     if (DOW >= 1 && DOW <= 5  ) { // 1=monday to 5=friday
