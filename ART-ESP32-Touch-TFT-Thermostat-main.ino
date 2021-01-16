@@ -470,6 +470,11 @@ void loop() {
     // https://www.google.com/search?q=3+fahrenheit+to+celsius
 
 
+    tft.setCursor(165, 65);
+    tft.setTextColor(LIGHTGREY, BLACK);
+    tft.setTextSize(5);
+    tft.println(TempCelsius, 1);                               // print actual temperature to the screen
+
 
     Serial.print("Temperature = ");
     Serial.print(TempCelsius);
@@ -670,10 +675,6 @@ JumpOver:
     Serial.println("i just jumped over");
     redraw_modus_button();
 
-    tft.setCursor(165, 65);
-    tft.setTextColor(LIGHTGREY, BLACK);  tft.setTextSize(5);
-    tft.println(TempCelsius, 1);                               // print actual temperature to the screen
-
 
     OUTSUB();
 
@@ -711,14 +712,14 @@ JumpOver:
     Serial.print(x);
     Serial.print(",");
     Serial.println(y);
-    tft.setCursor(140 , 20);
+    tft.setCursor(140 , 22);
     tft.print("X="); tft.println(x);
-    tft.setCursor(180, 20);
+    tft.setCursor(180, 22);
     tft.print("Y="); tft.println(y);;
     if (drawgreendot)tft.drawPixel(x, y, GREEN);
 
 
-    // press on mainscreen opens settings menu
+    // press on mainscreen / top of screen opens settings menu
     if (x > 0 && x < 320 && y > 0 && y < 140) {
       settings_one_screen();    // open settings menu
       fullscreenactive = 0;
