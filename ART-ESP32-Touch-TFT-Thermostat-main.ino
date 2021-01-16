@@ -78,8 +78,9 @@ WiFiUDP ntpUDP;
 
 // You can specify the time server pool and the offset, (in seconds)
 // additionaly you can specify the update interval (in milliseconds).
-NTPClient timeClient(ntpUDP, "europe.pool.ntp.org", 3600, 24 * 60 * 60 * 1000);                 // 3600 = 1 hour offset, 24 hour update
-int last_second = 0, second_ = 0, minute_ = 0, hour_ = 0, day_ = 0, month_ = 0, year_ = 0;      // some variables for ntp time
+byte NTP_Offset = 1;                                                                              // NTP time offset in hours + or -
+NTPClient timeClient(ntpUDP, "europe.pool.ntp.org", NTP_Offset * 60 * 60, 24 * 60 * 60 * 1000);   // offset in seconds, 24 hour update
+int last_second = 0, second_ = 0, minute_ = 0, hour_ = 0, day_ = 0, month_ = 0, year_ = 0;        // some variables for NTP time
 unsigned long unix_epoch;
 
 
@@ -159,7 +160,7 @@ byte nightbackgroundlightval = 10;
 // pitty you can not enter a colorcode on next page
 // https://chrishewett.com/blog/true-rgb565-colour-picker/
 
-long TempLong;
+long TempLong;           // some variables for storing millis
 long touchtime;
 long runTime;
 long runTime2;
@@ -168,7 +169,7 @@ long runTime2;
 const int heat_relais_pin = 26;          // Gpio 26 relais Heat for control central heating
 const int cool_relais_pin = 25;         //  Gpio 25 relais Cool for aico / fan
 
-float TempCelsius = 0;
+float TempCelsius = 20;
 
 int HeatState = 0;
 byte CoolState = 0;
@@ -178,7 +179,7 @@ byte CoolState = 0;
 byte modus = 1;              // start with eco modus that is safest
 byte oldmodus;
 
-double decrement_step = 0.1;
+double decrement_step = 0.1;     // steps for + and - button
 double temp_setpoint = 20;
 
 double normal_setpoint = 21;    // save our planet
@@ -188,9 +189,9 @@ double cool_setpoint = 25;   // save our planet
 
 int time_in_minutes;
 
-float CalibrationOffset = 0;  // correction for actual temp +or-
-float switchbelowset = 0.2;
-float switchaboveset = 0.2;
+float CalibrationOffset = 0.0;  // correction for actual temp +or-
+float switchbelowset = 0.2;     // switch point below 
+float switchaboveset = 0.2;     // switch poit above
 
 // some things for sleepless nights
 // float lowtempalarm = 5;
@@ -391,13 +392,13 @@ void setup(void) {
     if ((millis() - TempLong)  > 60000)break;                       // timeout exit if it takes to lomg 60 seconds = nowifi
   }
   Serial.println(" Connected to : " + String(ssid));                // serial print broadcasted router wifi name
-  tft.setCursor(15, 30); 
-  tft.println("                 " + String(ssid) + "     ");        // tft print broadcasted router wifi name
+  tft.setCursor(15, 30);
+  tft.println("                  " + String(ssid) + "     ");        // tft print broadcasted router wifi name
   tft.setCursor(120, 40);
   tft.println(WiFi.localIP());                                      // tft print ip adres
 
   Serial.println("Use IP address: " + WiFi.localIP());              // IP address assigned to your ESP32
-  
+
   //----------------------------------------------------------------
   server.on("/", handleRoot);               // This displays the main webpage, when you open a client connection browser
   server.on("/temp", handleTEMP);           // To update Temperature called by the function getSensorData
@@ -413,7 +414,7 @@ void setup(void) {
 
   server.begin();                     // Start the webserver
 
-  timeClient.begin();                 // start ntp?
+  timeClient.begin();                 // start NTP?
 
 
 
@@ -460,6 +461,7 @@ void loop() {
 
 
     TempCelsius = BME280.readTemperature();                                             // get temp from BME280
+    TempCelsius = TempCelsius + CalibrationOffset;
 
     // Serial.print("Fahrenheit = "); Serial.print(Tf, 1);
     Serial.print(" Celsius = "); Serial.println(TempCelsius, 1);
@@ -468,7 +470,7 @@ void loop() {
 
 
     Serial.print("Temperature = ");
-    Serial.print(BME280.readTemperature());
+    Serial.print(TempCelsius);
     Serial.println(" *C");
     // Convert temperature to Fahrenheit
     // Serial.print("Temperature = ");
@@ -660,7 +662,7 @@ JumpOver:
     tft.setTextColor(LIGHTGREY, BLACK);  tft.setTextSize(5);
     tft.println(TempCelsius, 1);                               // print actual temperature to the screen
 
-    
+
     OUTSUB();
 
 

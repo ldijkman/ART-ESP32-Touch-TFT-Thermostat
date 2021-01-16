@@ -120,14 +120,6 @@ void drawtimedatesetscreen() {
     tft.println("BACK");
     tft.drawRoundRect(245, 180, 70, 50, 8, LIGHTGREY);
 
-    // ntp2rtc button
-    tft.setTextSize(1);
-    tft.setCursor(170 , 200);
-    tft.println("NTP 2 RTC");
-    tft.drawRoundRect(165, 180, 70, 50, 8, LIGHTGREY);
-
-
-
     //print touch xy position to serial monitor
     if (x != 0 && y != 0) {
       Serial.print(x);
@@ -283,11 +275,17 @@ void drawtimedatesetscreen() {
 
 
 
-
+    // ntp2rtc button
+    tft.setTextSize(1);
+    tft.setTextColor (LIGHTGREY, BLACK);
+    tft.setCursor(170 , 200);
+    tft.println("NTP 2 RTC");
+    tft.drawRoundRect(165, 180, 70, 50, 8, LIGHTGREY);
     if (x > 165 && x < 235 && y > 180 && y < 235) {  // ntp2rtc button and exit
-      tft.drawRoundRect(165, 180, 70, 50, 8, GREEN);
+      tft.drawRoundRect(165, 180, 70, 50, 8, GREEN);                                         // button is touched make it green
+      tft.setTextColor (GREEN, BLACK);tft.setCursor(170 , 200);tft.println("NTP 2 RTC");
       delay(250);
-      unix_epoch = timeClient.getEpochTime();    // Get Unix epoch time from the NTP server
+      unix_epoch = timeClient.getEpochTime();    // Get Unix epoch time from the NTP server and set it to rtc
       rtc.adjust(DateTime(year(unix_epoch), month(unix_epoch), day(unix_epoch), hour(unix_epoch), minute(unix_epoch), second(unix_epoch)));
       delay(250);
       break;

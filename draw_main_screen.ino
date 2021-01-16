@@ -72,7 +72,7 @@ void drawmainscreen() {
 
   tft.setTextColor(GREEN, BLACK);
   tft.setCursor(15, 30);
-  tft.println("                 " + String(ssid) + "     ");        // tft print broadcasted router wifi name
+  tft.println("                  " + String(ssid) + "     ");        // tft print broadcasted router wifi name
   tft.setCursor(120, 40);
   tft.println(WiFi.localIP());                                      // tfp print ip adress
 
