@@ -4,10 +4,12 @@ Remote wifi sensors / switches for Art
 
 temp sensors
 
-lights
+timed lights
+
+timed blinds / curtains
 
 smoke detectors
 
-pir sensors
+pir sensors / light / alarm
 
 switches
