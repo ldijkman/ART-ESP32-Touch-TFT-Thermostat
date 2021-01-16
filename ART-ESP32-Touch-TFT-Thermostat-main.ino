@@ -190,7 +190,7 @@ double cool_setpoint = 25;   // save our planet
 int time_in_minutes;
 
 float CalibrationOffset = 0.0;  // correction for actual temp +or-
-float switchbelowset = 0.2;     // switch point below 
+float switchbelowset = 0.2;     // switch point below
 float switchaboveset = 0.2;     // switch poit above
 
 // some things for sleepless nights
@@ -225,6 +225,7 @@ byte fullscreenactive = 0;                      // flag fullscreen 0 or 1
 int secondstoswitchtofullscreen = 20;          // seconds to go fullscreen with barometer and humdity
 int bordercolor = dutchorange;
 
+byte DOW; // 1 monday 7 sunday = yes = real weekends
 
 
 void setup(void) {
@@ -597,12 +598,17 @@ void loop() {
 
 
     //test hardcoded switch on day / time array
+    // saturday sunday;
+    // stupid start the week with sunday => no more weekends
+    // in The Netherlands the week starts with monday, we have weekends
 
-    Serial.println("modus == 2");
+    // lets make real weekends
+    DOW = now.dayOfTheWeek();           // sux 0=sunday  monday=6   = only saturday weekend, that sux
+    if (DOW == 0) DOW = 7;              // make sunday = 0 to sunday =7    = yes = real weekends
 
     // monday to friday
-    if (now.dayOfTheWeek() >= 1 && now.dayOfTheWeek()  <= 5  ) { // 1=monday to 5=friday
-      Serial.println("weekday");
+    if (DOW >= 1 && DOW <= 5  ) { // 1=monday to 5=friday
+      Serial.println("it is a weekday");
 
 
       // timeinminutes is more easy to work switch with versus hours:minutes
@@ -628,7 +634,8 @@ void loop() {
     // stupid start the week with sunday => no more weekends
     // in The Netherlands the week starts with monday, we have weekends
 
-    if (now.dayOfTheWeek() == 0 || now.dayOfTheWeek() == 6) { // 6=saturday 0=sunday;
+
+    if (DOW == 6 || DOW == 7) { // 6=saturday 7=sunday;
       Serial.println("hieperdepiep hoera weekend");
 
 
@@ -647,7 +654,7 @@ void loop() {
         }
       }
 
-    }// end day 0 || 6 sat sun
+    }// end DOW 6 || 7 sat sun
 
 
 
