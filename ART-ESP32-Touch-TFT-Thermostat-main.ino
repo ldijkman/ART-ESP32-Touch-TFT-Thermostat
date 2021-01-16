@@ -84,10 +84,10 @@ int last_second = 0, second_ = 0, minute_ = 0, hour_ = 0, day_ = 0, month_ = 0, 
 unsigned long unix_epoch;
 
 
-#include "FS.h"
-#include <SPI.h>
-#include <TFT_eSPI.h>      // Hardware-specific TFT SPI library https://github.com/Bodmer/TFT_eSPI
-TFT_eSPI tft = TFT_eSPI(); // Invoke custom TFT library
+#include "FS.h"                 // i guess File System
+#include <SPI.h>                // i guess Serial Peripheral Interface
+#include <TFT_eSPI.h>           // Hardware-specific TFT SPI library https://github.com/Bodmer/TFT_eSPI
+TFT_eSPI tft = TFT_eSPI();      // Invoke custom TFT library
 
 // The SPIFFS (FLASH filing system) is used to hold touch screen calibration data
 // This is the file name used to store the calibration data file, name must start with "/".
@@ -1121,7 +1121,7 @@ void readFile(fs::FS & fs, const char * path) {
 
 // No time 2 sleep, Please let me sleep.
 // https://youtu.be/XzO9jGPtrhc
-//ver 00001
+
 
 // Thank you for the Coffee!
 //           https://www.paypal.me/LDijkman
