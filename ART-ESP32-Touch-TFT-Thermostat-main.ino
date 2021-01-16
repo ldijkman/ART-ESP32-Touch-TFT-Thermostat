@@ -150,21 +150,21 @@ byte nightbackgroundlightval = 10;
 #define PURPLE      0x780F
 #define OLIVE       0x7BE0
 #define LIGHTGREY   0xC618
-#define DARKGREY    0x7BEF
+#define DARKGREY    0x4208
 #define ORANGE      0xFD20
 #define GREENYELLOW 0xAFE5
 #define PINK        0xF81F
 
 #define dutchorange 0xfbc0
 #define iceblue     0x1dfb
-// pitty you can not enter a colorcode on next page
-// https://chrishewett.com/blog/true-rgb565-colour-picker/
+// pitty you can not enter a colorcode on next page RGB565 colours: https://chrishewett.com/blog/true-rgb565-colour-picker/
 
-long TempLong;           // some variables for storing millis
-long touchtime;
-long runTime;
-long runTime2;
-
+unsigned long TempLong;           // some variables for storing millis
+unsigned long touchtime;
+unsigned long runTime;
+unsigned long runTime2;
+unsigned long previousMillis = 0;
+unsigned long currentMillis = 0;
 
 const int heat_relais_pin = 26;          // Gpio 26 relais Heat for control central heating
 const int cool_relais_pin = 25;         //  Gpio 25 relais Cool for aico / fan
@@ -227,6 +227,7 @@ int bordercolor = dutchorange;
 
 byte DOW;                                     // my week 1 monday 7 sunday = yes = real weekends
 
+byte BlinkState;
 
 void setup(void) {
 
@@ -501,10 +502,14 @@ void loop() {
     if (now.second() < 10)tft.print("0");      // print 1 to 9 as 01 to 09
     tft.print(now.second());
 
-    tft.setCursor(15, 12);
     tft.setTextSize (1);
+    tft.setTextColor (DARKGREY, BLACK);
+    tft.setCursor(15, 12);
     tft.print("Day ");
-    tft.print(now.dayOfTheWeek());             // prints daynumber of the week
+    tft.println(now.dayOfTheWeek());             // prints daynumber of the week, weekend sux, sunday=0, saturday=6
+    tft.setCursor(15, 22);
+    tft.print("DOW ");
+    tft.println(DOW);                            // prints my DayOfWeek with a real weekend 1=monday ... 6=saturday 7=sunday
 
     tft.setTextSize (2);
     tft.setTextColor (LIGHTGREY, BLACK);
@@ -570,31 +575,31 @@ void loop() {
   }
 
 
-  tft.setTextColor(RED, BLACK);
-  tft.setTextSize(1);
-  tft.setCursor(310, 3);
-  tft.println("o");//char(3));              // Alive HEARTBEAT
-
-
-  if (millis() - runTime >= 1000) {         // Execute every 1000ms
-    runTime = millis();                     // store millis() counter in variable runtime
-
-
-    server.handleClient();  // Keep checking for a client connection
-
-
-    tft.setTextColor( BLACK, BLACK);
+  // alike arduino blink with no delay
+  currentMillis = millis();
+  if (currentMillis - previousMillis >= 500) {  // half second on off
+    previousMillis = currentMillis;
+    if (BlinkState == 0) {
+      tft.setTextColor(RED, BLACK);
+      BlinkState = 1;
+    } else {
+      tft.setTextColor( BLACK, BLACK);
+      BlinkState = 0;
+    }
     tft.setTextSize(1);
     tft.setCursor(310, 3);
-    tft.println("o");//char(3));          //Alive HEARTBEAT
+    tft.println("o");              // char(3));     // heart symbol           // Alive HEARTBEAT
+  }
 
 
 
+  if (millis() - runTime >= 1000) {                         // Execute every 1000ms
 
+    runTime = millis();                                     // store millis() counter in variable runtime
 
+    server.handleClient();                                  // Keep checking for a client connection
 
-
-    time_in_minutes = (now.hour() * 60 + now.minute()); //time to minutes makes it easier to switch on a time
+    time_in_minutes = (now.hour() * 60 + now.minute());     //time to minutes makes it easier to switch on a time
 
 
     //test hardcoded switch on day / time array
@@ -682,18 +687,17 @@ JumpOver:
 
 
 
-
-
-  tft.setCursor(250, 0);
-  tft.setTextColor (LIGHTGREY, BLACK);
-  tft.print(((millis() - touchtime) / 1000));                   // last touch secondstoswitchtofullscreen seconds ago, go fullscreen
+  tft.setTextColor (DARKGREY, BLACK);
+  tft.setTextSize(1);
+  tft.setCursor(250, 2);
+  tft.print(((millis() - touchtime) / 1000));                             // last touch secondstoswitchtofullscreen seconds ago, go fullscreen
+  if ((millis() - touchtime) / 1000 < 2)tft.print("       ");             // erase old countertext if reset counter
   if ((fullscreenactive == 0) && (((millis() - touchtime) / 1000) >= secondstoswitchtofullscreen)) {
-    fullscreenactive = 1;                          // show fullscreen with milibar and humidity
-    oldmodus = modus;           //if modus changes online redraw buttons
-    tft.fillRoundRect(5, 155, 310, 80, 1, BLACK);               // erase  buttons for fullscreen barometer en humidity text
-  }
-  tft.print("   ");    // erase some textval
+    fullscreenactive = 1;                                                         // show fullscreen with milibar and humidity
+    oldmodus = modus;                                                             // if modus changes online redraw buttons
+    tft.fillRoundRect(5, 155, 310, 80, 1, BLACK);                                 // erase  buttons for fullscreen barometer en humidity text
 
+  }
 
 
 
