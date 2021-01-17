@@ -88,7 +88,8 @@ WiFiUDP ntpUDP;
 // You can specify the time server pool and the offset, (in seconds)
 // additionaly you can specify the update interval (in milliseconds).
 byte NTP_Offset = 1;                                                                              // NTP time offset in hours + or -
-NTPClient timeClient(ntpUDP, "europe.pool.ntp.org", NTP_Offset * 60 * 60, 24 * 60 * 60 * 1000);   // offset in seconds, 24 hour update
+//NTPClient timeClient(ntpUDP, "europe.pool.ntp.org", NTP_Offset * 60 * 60, 24 * 60 * 60 * 1000);   // offset in seconds, 24 hour update
+NTPClient timeClient(ntpUDP, "time.google.com", NTP_Offset * 60 * 60, 24 * 60 * 60 * 1000);   // offset in seconds, 24 hour update
 int last_second = 0, second_ = 0, minute_ = 0, hour_ = 0, day_ = 0, month_ = 0, year_ = 0;        // some variables for NTP time
 unsigned long unix_epoch;
 
@@ -296,8 +297,15 @@ void setup(void) {
 
   tft.setRotation(1);     // TFT SPI setrotation before touch calibration
 
+  
+  tft.fillScreen(TFT_BLACK);                          // Clear the screen
+  tft.drawRoundRect(1, 1, 319, 239, 2, DARKGREY);     // show screen size on bigger display
+  tft.setCursor(0, 60);
+  tft.setTextColor(LIGHTGREY);  tft.setTextSize(3);
+  tft.println("Format FileSystem");
+  tft.println("10 to 20 seconds?");
+  
   touch_calibrate();      // TFT Calibrate the touch screen and retrieve the scaling factors
-
 
   tft.fillScreen(TFT_BLACK);                          // Clear the screen
   tft.drawRoundRect(1, 1, 319, 239, 2, DARKGREY);     // show screen size on bigger display
