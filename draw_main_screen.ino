@@ -45,10 +45,6 @@ void drawmainscreen() {
   if (now.second() < 10)tft.print("0");      // print 01 to 09 as 01 to 09
   tft.print(now.second());
 
-  tft.setCursor(15, 12);
-  tft.setTextSize (1);
-  tft.print("Day ");
-  tft.print(now.dayOfTheWeek());             // prints daynumber of the week
 
   tft.setTextSize (2);
   tft.setTextColor (LIGHTGREY, BLACK);

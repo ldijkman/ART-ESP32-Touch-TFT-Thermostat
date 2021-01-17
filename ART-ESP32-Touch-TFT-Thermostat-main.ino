@@ -124,7 +124,7 @@ RTC_DS3231 rtc;    // download zip from above and install library from zip
 Adafruit_BME280 BME280; // I2C
 bool BME280_status;
 
-const int ledPin = 17;            // corresponds to GPIO17 for backlight brightness
+const int ledPin = 17;            // corresponds to GPIO17 PWM for backlight brightness
 // connect to LED of SPI TFT display
 // setting PWM properties
 const int freq = 4000;           // hz
@@ -189,7 +189,7 @@ double cool_setpoint = 25;   // save our planet
 
 int time_in_minutes;
 
-float CalibrationOffset = 0.0;  // correction for actual temp +or-
+float CalibrationOffset = 0.0;  // correction for actual temperature +or-
 float switchbelowset = 0.2;     // switch point below
 float switchaboveset = 0.2;     // switch poit above
 
@@ -225,13 +225,14 @@ byte fullscreenactive = 0;                      // flag fullscreen 0 or 1
 int secondstoswitchtofullscreen = 20;          // seconds to go fullscreen with barometer and humdity
 int bordercolor = dutchorange;
 
-byte DOW;                                     // my week 1 monday 7 sunday = yes = real weekends
+byte DOW;                                     // my week 1=monday 7=sunday = yes = real weekends
 
 byte BlinkState;
 
+
+
+
 void setup(void) {
-
-
 
   // configure LED PWM functionalitites          // screen brightness background light
   ledcSetup(ledChannel, freq, resolution);
@@ -281,11 +282,6 @@ void setup(void) {
 
 
   Serial.begin(115200);   // serial monitor
-  //   if(!SPIFFS.begin(FORMAT_SPIFFS_IF_FAILED)){
-  //      Serial.println("SPIFFS Mount Failed");
-  //      return;
-  //  }
-  //readFile(SPIFFS, "/art_times.txt");
 
   tft.init();             // tft_espi
 
@@ -361,7 +357,8 @@ void setup(void) {
     //   rtc.adjust(DateTime(2020, 7, 24, 20, 15, 0));
   }
 
-  drawmainscreen();
+  drawmainscreen();           // jump to tab file drawmainscreen
+  
   tft.print(" ");
   /*draw a grid
     tft.fillRect(1, 1, 4, 4, YELLOW);     // yellow origin xy
@@ -377,7 +374,7 @@ void setup(void) {
   tft.setTextColor(GREEN, BLACK);
   tft.setCursor(15, 30);
 
-  WiFi.disconnect();
+  WiFi.disconnect();                                                // not needed?
 
   WiFi.mode(WIFI_STA);                                              // Connect to your wifi
 
@@ -419,8 +416,6 @@ void setup(void) {
   timeClient.begin();                 // start NTP?
 
 
-
-  OUTSUB();
 }
 
 
@@ -439,8 +434,8 @@ void loop() {
   unix_epoch = timeClient.getEpochTime();    // Get Unix epoch time from the NTP server
 
   second_ = second(unix_epoch);
-  if (last_second != second_) {
-    Serial.print("GetFormattedTime "); Serial.println(timeClient.getFormattedTime());      // NTP
+  if (last_second != second_) {                                                         // do next only once each new second
+    Serial.print("GetFormattedTime "); Serial.println(timeClient.getFormattedTime());   // NTP
 
     tft.setTextColor(GREEN, BLACK);
     tft.setTextSize(1);
@@ -509,12 +504,11 @@ void loop() {
 
     tft.setTextSize (1);
     tft.setTextColor (DARKGREY, BLACK);
-    tft.setCursor(15, 12);
+    tft.setCursor(15, 2);
     tft.print("Day ");
-    tft.println(now.dayOfTheWeek());             // prints daynumber of the week, weekend sux, sunday=0, saturday=6
-    tft.setCursor(15, 22);
-    tft.print("DOW ");
-    tft.println(DOW);                            // prints my DayOfWeek with a real weekend 1=monday ... 6=saturday 7=sunday
+    tft.print(now.dayOfTheWeek());             // prints daynumber of the week, weekend sux, sunday=0, saturday=6
+    tft.print(" DOW ");
+    tft.print(DOW);                            // prints my DayOfWeek with a real weekend 1=monday ... 6=saturday 7=sunday
 
     tft.setTextSize (2);
     tft.setTextColor (LIGHTGREY, BLACK);
@@ -558,8 +552,8 @@ void loop() {
 
 
 
-  while (! rtc.begin() || rtc.lostPower() == 1) {
-    //Glitch?
+  while (! rtc.begin() || rtc.lostPower() == 1) {            // lost RTC DS3231 Realtimeclock
+    // Glitch?
     delay(100);
     while (! rtc.begin() || rtc.lostPower() == 1) { // doublecheck try it again
       tft.fillScreen(RED);
@@ -580,7 +574,7 @@ void loop() {
   }
 
 
-  // alike arduino blink with no delay
+  // alike arduino blink with no delay        heartbeat not realy needed anymore, because there is seconds display now
   currentMillis = millis();
   if (currentMillis - previousMillis >= 500) {  // half second on off
     previousMillis = currentMillis;
@@ -593,7 +587,7 @@ void loop() {
     }
     tft.setTextSize(1);
     tft.setCursor(310, 3);
-    tft.println("o");              // char(3));     // heart symbol           // Alive HEARTBEAT
+    tft.println("o");              // tft.println(char(3));     // heart symbol           // Alive HEARTBEAT
   }
 
 
@@ -608,7 +602,6 @@ void loop() {
 
 
     //test hardcoded switch on day / time array
-    // saturday sunday;
     // stupid start the week with sunday => no more weekends
     // in The Netherlands the week starts with monday, we have weekends
 
@@ -617,9 +610,8 @@ void loop() {
     if (DOW == 0) DOW = 7;              // make sunday = 0 to sunday = 7    = yes = real weekends
 
     // monday to friday
-    if (DOW >= 1 && DOW <= 5  ) { // 1=monday to 5=friday
+    if (DOW >= 1 && DOW <= 5  ) {      // 1=monday to 5=friday
       Serial.println("it is a weekday");
-
 
       // timeinminutes is more easy to work switch with versus hours:minutes
       // timeinseconds is not needed minutes is accurate enough
@@ -645,9 +637,8 @@ void loop() {
     // in The Netherlands the week starts with monday, we have weekends
 
 
-    if (DOW == 6 || DOW == 7) { // 6=saturday 7=sunday;
+    if (DOW == 6 || DOW == 7) {      // 6=saturday 7=sunday;
       Serial.println("hieperdepiep hoera weekend");
-
 
       // timeinminutes is more easy to work switch with versus hours:minutes
       // timeinseconds is not needed minutes is accurate enough
@@ -691,8 +682,8 @@ JumpOver:
   tft.setTextColor (DARKGREY, BLACK);
   tft.setTextSize(1);
   tft.setCursor(250, 2);
-  tft.print(((millis() - touchtime) / 1000));                             // last touch secondstoswitchtofullscreen seconds ago, go fullscreen
-  if ((millis() - touchtime) / 1000 < 2)tft.print("       ");             // erase old countertext if reset counter
+  tft.print(((millis() - touchtime) / 1000));                              // last touch secondstoswitchtofullscreen seconds ago, go fullscreen
+  if ((millis() - touchtime) / 1000 < 2)tft.print("        ");             // erase old countertext after reset counter
   if ((fullscreenactive == 0) && (((millis() - touchtime) / 1000) >= secondstoswitchtofullscreen)) {
     fullscreenactive = 1;                                                         // show fullscreen with milibar and humidity
     oldmodus = modus;                                                             // if modus changes online redraw buttons
@@ -704,8 +695,7 @@ JumpOver:
 
 
   if (tft.getTouch(&x, &y)) {
-    touchtime = millis(); // store millis() for future screen aninmation if touch is longer as ?? time ago
-
+    touchtime = millis();         // store touch time millis() for future screen aninmation if touch is longer as ?? time ago
 
 
     //print touch xy position to serial monitor
@@ -1031,9 +1021,7 @@ void OUTSUB() {
     }
   }
 
-  // while ((millis() - runTime2) < 75) {  // delay to set execution time of outsub equal
-  //    Serial.println(millis() - runTime2);
-  // }
+
 
 
 }             // end outsub
