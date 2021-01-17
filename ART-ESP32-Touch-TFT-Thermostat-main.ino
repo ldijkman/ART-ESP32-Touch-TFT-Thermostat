@@ -6,12 +6,21 @@
 // https://m.facebook.com/groups/2643123052617990
 // https://www.facebook.com/groups/esp32smartthermostat
 //
+// *****************************************************************************
 // GNU General Public License,
 // which basically means that you may freely copy, change, and distribute it,
 // but you may not impose any restrictions on further distribution,
 // and you must make the source code available.
+// *****************************************************************************
 //
+// i have treid this program on various ESP32 38-Pin devices
+// 38-Pin ESP32 WROOM 32U External antenne
+// 38-Pin ESP32 WROVER     (one had a blob off solder connecting two pins of ESP32Chip wich prevented programming)
+// 38-Pin ESP32 WROOM 32   (one had a reset switch that does not work)
+// 38-Pin ESP32 WROOM 32D
 //
+// on first startup the screen is for 10 to 20 seconds white/snowy/blocky 
+// think its formatting the filesystem during that time
 //
 // TFT white screen / blank screen
 // make sure u set the file
