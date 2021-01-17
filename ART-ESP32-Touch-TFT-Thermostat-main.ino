@@ -19,7 +19,7 @@
 // 38-Pin ESP32 WROOM 32U  (External antenne)
 // 38-Pin ESP32 WROVER     (one had a blob off solder (near G22) connecting two pins of ESP32Chip wich prevented programming)
 //
-// on first startup the screen is for 10 to 20 seconds white/snowy/blocky 
+// on first startup the screen is for 10 to 20 seconds white/snowy/blocky
 // think its formatting the filesystem during that time
 //
 // TFT white screen / blank screen
@@ -298,14 +298,17 @@ void setup(void) {
 
   tft.setRotation(1);     // TFT SPI setrotation before touch calibration
 
-  
+
   tft.fillScreen(TFT_BLACK);                          // Clear the screen
   tft.drawRoundRect(1, 1, 319, 239, 2, DARKGREY);     // show screen size on bigger display
   tft.setCursor(0, 60);
   tft.setTextColor(LIGHTGREY);  tft.setTextSize(2);
   tft.println("Format FileSystem");                   // if its a new blank chip show a message
   tft.println("10 to 20 seconds?");
-  
+  tft.setTextSize(1); tft.setCursor(20, 230);
+  tft.println("Made by Luberth Dijkman Andijk The Netherlands");
+
+
   touch_calibrate();      // TFT Calibrate the touch screen and retrieve the scaling factors
 
   tft.fillScreen(TFT_BLACK);                          // Clear the screen
@@ -318,16 +321,16 @@ void setup(void) {
   tft.println("   Controlled");
   tft.setTextSize(1); tft.setCursor(20, 230);
   tft.println("Made by Luberth Dijkman Andijk The Netherlands");
-  
-                                                      // 8 second delay with countdown on screen
+
+  // 8 second delay with countdown on screen
   TempLong = millis();                                // store millis() counter in temporary variable TempLong
   while (1 == 1) {                                    // 1 wil always be 1   so forever
     if ((millis() - TempLong)  > 8000)break;          // after 8 seconds break while loop
     tft.setCursor(155, 200); tft.setTextSize(3);
     tft.setTextColor (LIGHTGREY, BLACK);
-    tft.print(8 - ((millis() - TempLong) / 1000)); tft.print(" ");
+    tft.print(8 - ((millis() - TempLong) / 1000)); tft.print(" ");    // tft print the countdown
   }
-  
+
 
   if (! rtc.begin()) {
     tft.fillScreen(RED);
@@ -851,7 +854,7 @@ JumpOver:
         }
         if (modus == 2) {                                         // auto
           auto_setpoint = (auto_setpoint - decrement_step);       // does not work in automode because it wil pop back to programmed value
-          if (auto_setpoint < 10)auto_setpoint = 10;                
+          if (auto_setpoint < 10)auto_setpoint = 10;
           tft.setTextColor(dutchorange, BLACK);
           tft.print(auto_setpoint, 1);
         }
@@ -872,7 +875,7 @@ JumpOver:
       if (x > 220 && x < 320 && y > 165 && y < 240) {
 
         tft.setTextSize(4);                                        // 0=normal 1=eco 2=auto 3=Cool
-        tft.setCursor(35, 65);                                    
+        tft.setCursor(35, 65);
         if (modus == 0) {                                         // normal
           normal_setpoint = (normal_setpoint + decrement_step);
           if (normal_setpoint > 30)normal_setpoint = 30;
@@ -887,7 +890,7 @@ JumpOver:
         }
         if (modus == 2) {                                         // auto
           auto_setpoint = (auto_setpoint + decrement_step);       // does not work in automode because it wil pop back to programmed value
-          if (auto_setpoint > 30)auto_setpoint = 30;            
+          if (auto_setpoint > 30)auto_setpoint = 30;
           tft.setTextColor(dutchorange, BLACK);
           tft.print(auto_setpoint, 1);
         }
