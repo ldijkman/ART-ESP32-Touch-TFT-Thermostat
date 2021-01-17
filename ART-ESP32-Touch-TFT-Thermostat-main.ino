@@ -87,10 +87,11 @@ WiFiUDP ntpUDP;
 
 // You can specify the time server pool and the offset, (in seconds)
 // additionaly you can specify the update interval (in milliseconds).
-byte NTP_Offset = 1;                                                                              // NTP time offset in hours + or -
+byte NTP_Offset = 1;                                                                                // NTP time offset in hours + or -
 //NTPClient timeClient(ntpUDP, "europe.pool.ntp.org", NTP_Offset * 60 * 60, 24 * 60 * 60 * 1000);   // offset in seconds, 24 hour update
-NTPClient timeClient(ntpUDP, "time.google.com", NTP_Offset * 60 * 60, 24 * 60 * 60 * 1000);   // offset in seconds, 24 hour update
-int last_second = 0, second_ = 0, minute_ = 0, hour_ = 0, day_ = 0, month_ = 0, year_ = 0;        // some variables for NTP time
+//NTPClient timeClient(ntpUDP, "time.google.com", NTP_Offset * 60 * 60, 24 * 60 * 60 * 1000);       // offset in seconds, 24 hour update
+NTPClient timeClient(ntpUDP, "time.nist.gov", NTP_Offset * 60 * 60, 24 * 60 * 60 * 1000);           // offset in seconds, 24 hour update
+int last_second = 0, second_ = 0, minute_ = 0, hour_ = 0, day_ = 0, month_ = 0, year_ = 0;          // some variables for NTP time
 unsigned long unix_epoch;
 
 
@@ -317,9 +318,16 @@ void setup(void) {
   tft.println("   Controlled");
   tft.setTextSize(1); tft.setCursor(20, 230);
   tft.println("Made by Luberth Dijkman Andijk The Netherlands");
-  delay(8000);                                                  // 8 second delay
-
-  tft.setTextColor(BLACK);
+  
+                                                      // 8 second delay with countdown on screen
+  TempLong = millis();                                // store millis() counter in temporary variable TempLong
+  while (1 == 1) {                                    // 1 wil always be 1   so forever
+    if ((millis() - TempLong)  > 8000)break;          // after 8 seconds break while loop
+    tft.setCursor(155, 200); tft.setTextSize(3);
+    tft.setTextColor (LIGHTGREY, BLACK);
+    tft.print(8 - ((millis() - TempLong) / 1000)); tft.print(" ");
+  }
+  
 
   if (! rtc.begin()) {
     tft.fillScreen(RED);
