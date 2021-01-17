@@ -301,8 +301,8 @@ void setup(void) {
   tft.fillScreen(TFT_BLACK);                          // Clear the screen
   tft.drawRoundRect(1, 1, 319, 239, 2, DARKGREY);     // show screen size on bigger display
   tft.setCursor(0, 60);
-  tft.setTextColor(LIGHTGREY);  tft.setTextSize(3);
-  tft.println("Format FileSystem");
+  tft.setTextColor(LIGHTGREY);  tft.setTextSize(2);
+  tft.println("Format FileSystem");                   // if its a new blank chip show a message
   tft.println("10 to 20 seconds?");
   
   touch_calibrate();      // TFT Calibrate the touch screen and retrieve the scaling factors
