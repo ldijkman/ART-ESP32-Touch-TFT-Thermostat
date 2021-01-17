@@ -358,7 +358,7 @@ void setup(void) {
   }
 
   drawmainscreen();           // jump to tab file drawmainscreen
-  
+
   tft.print(" ");
   /*draw a grid
     tft.fillRect(1, 1, 4, 4, YELLOW);     // yellow origin xy
@@ -810,44 +810,35 @@ JumpOver:
       if (x > 0 && x < 90 && y > 165 && y < 240) {
 
         // 0=normal 1=eco 2=auto 3=Cool
-        if (modus == 0) {                                        // normal
+        tft.setTextSize(4);                                       // 0=normal 1=eco 2=auto 3=Cool
+        tft.setCursor(35, 65);
+        if (modus == 0) {                                         // normal
           normal_setpoint = (normal_setpoint - decrement_step);
           if (normal_setpoint < 10)normal_setpoint = 10;
-        }
-        if (modus == 1) {                                       // eco
-          eco_setpoint = (eco_setpoint - decrement_step);
-          if (eco_setpoint < 10)eco_setpoint = 10;
-        }
-        if (modus == 2) {                                       // auto
-          auto_setpoint = (auto_setpoint - decrement_step);
-          if (auto_setpoint < 10)auto_setpoint = 10;
-        }
-        if (modus == 3) {                                       // cool
-          cool_setpoint = (cool_setpoint - decrement_step);
-          if (cool_setpoint < 10)cool_setpoint = 10;
-        }
-
-
-        tft.setTextSize(4);   // 0=normal 1=eco 2=auto 3=Cool
-        tft.setCursor(35, 65);
-        if (modus == 0) {                                       // normal
           tft.setTextColor(LIGHTGREY, BLACK);
           tft.print(normal_setpoint, 1);
         }
-        if (modus == 1) {                                      // eco
+        if (modus == 1) {                                         // eco
+          eco_setpoint = (eco_setpoint - decrement_step);
+          if (eco_setpoint < 10)eco_setpoint = 10;
           tft.setTextColor(GREEN, BLACK);
           tft.print(eco_setpoint, 1);
         }
-        if (modus == 2) {                                      // auto
+        if (modus == 2) {                                         // auto
+          auto_setpoint = (auto_setpoint - decrement_step);
+          if (auto_setpoint < 10)auto_setpoint = 10;
           tft.setTextColor(dutchorange, BLACK);
           tft.print(auto_setpoint, 1);
         }
-        if (modus == 3) {                                      // cool
+        if (modus == 3) {                                         // cool
+          cool_setpoint = (cool_setpoint - decrement_step);
+          if (cool_setpoint < 10)cool_setpoint = 10;
           tft.setTextColor(iceblue, BLACK);
           tft.print(cool_setpoint, 1);
         }
+
         delay(50);
-        //OUTSUB();
+
       }
 
 
@@ -855,46 +846,34 @@ JumpOver:
       // + touch button
       if (x > 220 && x < 320 && y > 165 && y < 240) {
 
-        // 0=normal 1=eco 2=auto 3=Cool
-        if (modus == 0) {                                     // normal
+        tft.setTextSize(4);                                        // 0=normal 1=eco 2=auto 3=Cool
+        tft.setCursor(35, 65);                                    
+        if (modus == 0) {                                         // normal
           normal_setpoint = (normal_setpoint + decrement_step);
           if (normal_setpoint > 30)normal_setpoint = 30;
-        }
-        if (modus == 1) {                                     // eco
-          eco_setpoint = (eco_setpoint + decrement_step);
-          if (eco_setpoint > 30)eco_setpoint = 30;
-        }
-        if (modus == 2) {                                     // auto
-          auto_setpoint = (auto_setpoint + decrement_step);
-          if (auto_setpoint > 30)auto_setpoint = 30;
-        }
-        if (modus == 3) {                                     // cool
-          cool_setpoint = (cool_setpoint  + decrement_step);
-          if (cool_setpoint > 30)cool_setpoint = 30;
-        }
-
-        tft.setTextSize(4);
-        tft.setCursor(35, 65);
-
-        if (modus == 0) {                                // normal
-          tft.setTextColor(LIGHTGREY, BLACK);          // 0=normal 1=eco 2=auto 3=Cool
+          tft.setTextColor(LIGHTGREY, BLACK);
           tft.print(normal_setpoint, 1);
         }
-        if (modus == 1) {                               // eco
+        if (modus == 1) {                                         // eco
+          eco_setpoint = (eco_setpoint + decrement_step);
+          if (eco_setpoint > 30)eco_setpoint = 30;
           tft.setTextColor(GREEN, BLACK);
           tft.print(eco_setpoint, 1);
         }
-        if (modus == 2) {                             // auto
+        if (modus == 2) {                                         // auto
+          auto_setpoint = (auto_setpoint + decrement_step);
+          if (auto_setpoint > 30)auto_setpoint = 30;
           tft.setTextColor(dutchorange, BLACK);
           tft.print(auto_setpoint, 1);
         }
-        if (modus == 3) {                             // cool
+        if (modus == 3) {                                         // cool
+          cool_setpoint = (cool_setpoint  + decrement_step);
+          if (cool_setpoint > 30)cool_setpoint = 30;
           tft.setTextColor(iceblue, BLACK);
           tft.print(cool_setpoint, 1);
         }
-        delay(50);
-        // OUTSUB();
 
+        delay(50);
 
       }
     }           // end if not fullscreen touch buttons should not react to touch when in fullscreen
