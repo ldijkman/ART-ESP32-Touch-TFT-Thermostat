@@ -14,10 +14,10 @@
 // *****************************************************************************
 //
 // i have treid this program on various ESP32 38-Pin devices
-// 38-Pin ESP32 WROOM 32U External antenne
-// 38-Pin ESP32 WROVER     (one had a blob off solder connecting two pins of ESP32Chip wich prevented programming)
 // 38-Pin ESP32 WROOM 32   (one had a reset switch that does not work)
 // 38-Pin ESP32 WROOM 32D
+// 38-Pin ESP32 WROOM 32U  (External antenne)
+// 38-Pin ESP32 WROVER     (one had a blob off solder (near G22) connecting two pins of ESP32Chip wich prevented programming)
 //
 // on first startup the screen is for 10 to 20 seconds white/snowy/blocky 
 // think its formatting the filesystem during that time
