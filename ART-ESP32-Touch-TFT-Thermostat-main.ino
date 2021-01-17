@@ -19,7 +19,7 @@
 // 38-Pin ESP32 WROOM 32U  (External antenne)
 // 38-Pin ESP32 WROVER     (one had a blob off solder (near G22) connecting two pins of ESP32Chip wich prevented programming)
 //
-// on first startup the screen is for 10 to 20 seconds white/snowy/blocky
+// on first startup the screen is for 10 to 20 seconds (a format message now)
 // think its formatting the filesystem during that time
 //
 // TFT white screen / blank screen
@@ -111,8 +111,6 @@ byte REPEAT_CAL = 0;     // repeat call flag fr calibration
 
 byte drawgreendot = 1;  // draw touch position with a greendot
 
-// set to 0 if u want to use a higher resolution NTC Thermistor KY-013 0,25 resolution is not verry useful for a thermostat in my opinion
-byte Use_TempSensor_from_DS3231 = 1;// 1 is yes use ds3231 temp res. 0.25C
 
 // IMPORTANTE!
 // set to 0 if RTClock is programmed and program arduino again with this set to 0
