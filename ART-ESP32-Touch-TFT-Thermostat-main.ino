@@ -732,8 +732,8 @@ JumpOver:
       // modus touch button
       if (x > 100 && x < 200 && y > 165 && y < 240) {
 
-        modus = modus + 1;
-        if (modus > 3)modus = 0;  // 0=normal 1=eco 2=auto 3=Cool
+        modus = modus + 1;             // if mode button is touched switch to next mode
+        if (modus > 3)modus = 0;       // 0=normal 1=eco 2=auto 3=Cool
 
 
 
@@ -825,8 +825,8 @@ JumpOver:
           tft.print(eco_setpoint, 1);
         }
         if (modus == 2) {                                         // auto
-          auto_setpoint = (auto_setpoint - decrement_step);
-          if (auto_setpoint < 10)auto_setpoint = 10;
+          auto_setpoint = (auto_setpoint - decrement_step);       // does not work in automode because it wil pop back to programmed value
+          if (auto_setpoint < 10)auto_setpoint = 10;                
           tft.setTextColor(dutchorange, BLACK);
           tft.print(auto_setpoint, 1);
         }
@@ -861,8 +861,8 @@ JumpOver:
           tft.print(eco_setpoint, 1);
         }
         if (modus == 2) {                                         // auto
-          auto_setpoint = (auto_setpoint + decrement_step);
-          if (auto_setpoint > 30)auto_setpoint = 30;
+          auto_setpoint = (auto_setpoint + decrement_step);       // does not work in automode because it wil pop back to programmed value
+          if (auto_setpoint > 30)auto_setpoint = 30;            
           tft.setTextColor(dutchorange, BLACK);
           tft.print(auto_setpoint, 1);
         }
