@@ -35,9 +35,9 @@ However i managed to find a solution to the problem. Lets start with the wiring:
 
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
-Luberth => i think the => TFT LCD 3.3VDC can be left disconnected according to http://www.lcdwiki.com
+Luberth => i think the => TFT LCD 5VDC can be left disconnected is NOT according to http://www.lcdwiki.com they say 3.3v can be left disconnected
 
-Luberth => i think the => TFT LCD 5VDC should be an external +3.3VDC not from ESP32 is too much for ESP32 voltage regulator
+Luberth => i think the => TFT LCD 3.3VDC should be an external +3.3VDC not from ESP32 LCD backlight power is too much for ESP32 voltage regulator
 
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
@@ -125,6 +125,14 @@ Have a good one ! :) @gvfo5
 
     
 <img src="https://www.pangodream.es/wp-content/uploads/2019/04/20190417_181247-768x576.jpg">
+
+During testing, you can connect TFT 3V3 pin directly to ESP32 3V3 pin, 
+
+but do it only during a short period of time because the current drawn by the screen LEDs is 134mA 
+
+and you will notice how the LEDs and the Development Board voltage limiter will become hot.
+
+<img src="https://www.pangodream.es/wp-content/uploads/2019/04/ILI9341_ESP32_Parallel-1024x640.png">
 
 <a href="https://www.pangodream.es/ili9341-esp32-parallel" target="spain">https://www.pangodream.es/ili9341-esp32-parallel</a>
 
