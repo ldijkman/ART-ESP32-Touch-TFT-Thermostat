@@ -84,13 +84,14 @@ const char* password = "password";          // your wifi router password
 #include <TimeLib.h>                 // Include Arduino time library https://github.com/PaulStoffregen/Time
 WiFiUDP ntpUDP;
 
+//#include <moonPhase.h>              // http://github.com/CelliesProjects/moonPhase-esp32   download zip, and install library from zip
 
 // You can specify the time server pool and the offset, (in seconds)
 // additionaly you can specify the update interval (in milliseconds).
 byte NTP_Offset = 1;                                                                                // NTP time offset in hours + or -
 //NTPClient timeClient(ntpUDP, "europe.pool.ntp.org", NTP_Offset * 60 * 60, 24 * 60 * 60 * 1000);   // offset in seconds, 24 hour update
-//NTPClient timeClient(ntpUDP, "time.google.com", NTP_Offset * 60 * 60, 24 * 60 * 60 * 1000);       // offset in seconds, 24 hour update
-NTPClient timeClient(ntpUDP, "time.nist.gov", NTP_Offset * 60 * 60, 24 * 60 * 60 * 1000);           // offset in seconds, 24 hour update
+NTPClient timeClient(ntpUDP, "time.google.com", NTP_Offset * 60 * 60, 24 * 60 * 60 * 1000);       // offset in seconds, 24 hour update
+//NTPClient timeClient(ntpUDP, "time.nist.gov", NTP_Offset * 60 * 60, 24 * 60 * 60 * 1000);           // offset in seconds, 24 hour update
 int last_second = 0, second_ = 0, minute_ = 0, hour_ = 0, day_ = 0, month_ = 0, year_ = 0;          // some variables for NTP time
 unsigned long unix_epoch;
 
@@ -321,12 +322,18 @@ void setup(void) {
   tft.println("Made by Luberth Dijkman Andijk The Netherlands");
 
   // 8 second delay with countdown on screen
-  TempLong = millis();                                // store millis() counter in temporary variable TempLong
+  TempLong = millis();  // store millis() counter in temporary variable TempLong
+  int xx;
   while (1 == 1) {                                    // 1 wil always be 1   so forever
     if ((millis() - TempLong)  > 8000)break;          // after 8 seconds break while loop
     tft.setCursor(155, 200); tft.setTextSize(3);
     tft.setTextColor (LIGHTGREY, BLACK);
-    tft.print(8 - ((millis() - TempLong) / 1000)); tft.print(" ");    // tft print the countdown
+    //tft.print(8 - ((millis() - TempLong) / 1000)); tft.print(" ");      // tft print the countdown
+   
+    tft.drawRoundRect(8 , 170, 304, 16, 8, GREEN);                     // illusion progress loadbar
+    xx = (millis() - TempLong);                                          
+    xx = map(xx, 0, 8000, 10, 300); 
+    tft.fillRoundRect(10, 172, xx, 12, 5, GREEN);                       // illusion progress loadbar
   }
 
 
