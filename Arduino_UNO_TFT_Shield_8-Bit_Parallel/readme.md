@@ -33,6 +33,14 @@ i had the same issues with this 3,5" TFT LCD and wiring it to an ESP32 and makin
 
 However i managed to find a solution to the problem. Lets start with the wiring:
 
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+Luberth => i think the => TFT LCD 3.3VDC can be left disconnected according to http://www.lcdwiki.com
+
+Luberth => i think the => TFT LCD 5VDC should be an external +3.3VDC not from ESP32 is too much for ESP32 voltage regulator
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
 #define TFT_CS 33
 
 #define TFT_DC 15
