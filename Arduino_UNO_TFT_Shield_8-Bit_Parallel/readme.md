@@ -19,7 +19,8 @@ ILI9341 + ESP32 (Parallel) at blazing speeds
 
 
 <a href="https://www.pangodream.es/ili9341-esp32-parallel" target="spain">https://www.pangodream.es/ili9341-esp32-parallel</a>
-
+#
+## looks like in 21 22 are free for i2c ds3231 rtc an bme280
 
     <a href="https://github.com/Bodmer/TFT_eSPI/issues/448" target="bodmer">8-bit parallel 3.5 TFT LCD Shield + ESP32 -TouchScreen issue #448                        https://github.com/Bodmer/TFT_eSPI/issues/448</a>
 
