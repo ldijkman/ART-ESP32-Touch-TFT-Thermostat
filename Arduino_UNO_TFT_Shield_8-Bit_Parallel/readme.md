@@ -134,6 +134,14 @@ and you will notice how the LEDs and the Development Board voltage limiter will 
 
 <img src="https://www.pangodream.es/wp-content/uploads/2019/04/ILI9341_ESP32_Parallel-1024x640.png">
 
+During testing, you can connect TFT 3V3 pin directly to ESP32 3V3 pin,
+
+but do it only during a short period of time because the current drawn by the screen LEDs is 134mA
+
+and you will notice how the LEDs and the Development Board voltage limiter will become hot.
+
+
+
 <a href="https://www.pangodream.es/ili9341-esp32-parallel" target="spain">https://www.pangodream.es/ili9341-esp32-parallel</a>
 
 <iframe width="640" height="480" src="https://www.youtube.com/embed/dhQjDKtNi58?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
