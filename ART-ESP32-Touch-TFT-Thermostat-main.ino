@@ -323,17 +323,14 @@ void setup(void) {
 
   // 8 second delay with countdown on screen
   TempLong = millis();  // store millis() counter in temporary variable TempLong
-  int xx;
   while (1 == 1) {                                    // 1 wil always be 1   so forever
     if ((millis() - TempLong)  > 8000)break;          // after 8 seconds break while loop
     tft.setCursor(155, 200); tft.setTextSize(3);
     tft.setTextColor (LIGHTGREY, BLACK);
     //tft.print(8 - ((millis() - TempLong) / 1000)); tft.print(" ");      // tft print the countdown
    
-    tft.drawRoundRect(8 , 170, 304, 16, 8, GREEN);                     // illusion progress loadbar
-    xx = (millis() - TempLong);                                          
-    xx = map(xx, 0, 8000, 10, 300); 
-    tft.fillRoundRect(10, 172, xx, 12, 5, GREEN);                       // illusion progress loadbar
+    tft.drawRoundRect(8 , 170, 304, 16, 8, GREEN);                                            // illusion progress loadbar outline
+    tft.fillRoundRect(10, 172, map((millis() - TempLong), 0, 8000, 10, 300), 12, 5, GREEN);   // illusion progress loadbar
   }
 
 
