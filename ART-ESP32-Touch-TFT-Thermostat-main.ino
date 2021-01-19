@@ -330,7 +330,7 @@ void setup(void) {
     tft.setCursor(155, 200); tft.setTextSize(3);
     tft.setTextColor (LIGHTGREY, BLACK);
     //tft.print(8 - ((millis() - TempLong) / 1000)); tft.print(" ");      // tft print the countdown
-   
+
     tft.drawRoundRect(8 , 170, 304, 16, 8, GREEN);                                            // illusion progress loadbar outline
     tft.fillRoundRect(10, 172, map((millis() - TempLong), 0, 8000, 10, 300), 12, 5, GREEN);   // illusion progress loadbar
   }
@@ -734,10 +734,10 @@ JumpOver:
     Serial.print(x);
     Serial.print(",");
     Serial.println(y);
-    tft.setCursor(140 , 22);
-    tft.print("X="); tft.println(x);
-    tft.setCursor(180, 22);
-    tft.print("Y="); tft.println(y);;
+    tft.setCursor(140 , 2);
+    tft.print("X="); tft.println(x); tft.print("  ");
+    tft.setCursor(180, 2);
+    tft.print("Y="); tft.println(y); tft.print("  ");
     if (drawgreendot)tft.drawPixel(x, y, GREEN);
 
 
