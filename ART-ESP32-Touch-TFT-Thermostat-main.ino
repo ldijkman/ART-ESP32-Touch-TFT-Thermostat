@@ -82,8 +82,8 @@ const char* ssid     = "Bangert-30-Andijk";  // wifi router name broadcasted in 
 const char* password = "password";          // your wifi router password
 
 
-#include <NTPClient.h>               // Include NTPClient library
-#include <TimeLib.h>                 // Include Arduino time library https://github.com/PaulStoffregen/Time
+#include <NTPClient.h>               // Include NTPClient library          https://github.com/arduino-libraries/NTPClient     sketch include lib install from zip
+#include <TimeLib.h>                 // Include Arduino time library       https://github.com/PaulStoffregen/Time             sketch include lib install from zip
 WiFiUDP ntpUDP;
 
 //#include <moonPhase.h>              // http://github.com/CelliesProjects/moonPhase-esp32   download zip, and install library from zip
