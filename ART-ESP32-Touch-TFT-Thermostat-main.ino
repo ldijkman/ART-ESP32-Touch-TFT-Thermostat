@@ -735,9 +735,9 @@ JumpOver:
     Serial.print(",");
     Serial.println(y);
     tft.setCursor(140 , 2);
-    tft.print("X="); tft.println(x); tft.print("  ");
+    tft.print("X="); tft.print(x); tft.print("  ");
     tft.setCursor(180, 2);
-    tft.print("Y="); tft.println(y); tft.print("  ");
+    tft.print("Y="); tft.print(y); tft.print("  ");
     if (drawgreendot)tft.drawPixel(x, y, GREEN);
 
 
