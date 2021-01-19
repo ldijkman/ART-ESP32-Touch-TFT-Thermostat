@@ -19,7 +19,9 @@
 // 38-Pin ESP32 WROOM 32U  (External antenne)
 // 38-Pin ESP32 WROVER     (one had a blob off solder (near G22) connecting two pins of ESP32Chip wich prevented programming)
 //
-// on first startup the screen is for 10 to 20 seconds (a format message now)
+// probably will also work on 30-32 pin ESP32 Devices
+//
+// on first startup the screen is for 10 to 20 seconds snowy / blank (a format message now)
 // think its formatting the filesystem during that time
 //
 // TFT white screen / blank screen
