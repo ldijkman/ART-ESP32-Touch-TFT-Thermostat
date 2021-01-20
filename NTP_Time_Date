@@ -19,7 +19,7 @@
 #include <WiFiUdp.h>
 #include <TimeLib.h>                                   // https://github.com/PaulStoffregen/Time
 
-const char *ssid     = "Bangert 30 Andijk";
+const char *ssid     = "Bangert-30-Andijk";
 const char *password = "password";
 
 
@@ -36,7 +36,14 @@ WiFiUDP ntpUDP;
 
 // You can specify the time server pool and the offset, (in seconds)
 // additionaly you can specify the update interval (in milliseconds).
-NTPClient timeClient(ntpUDP, "europe.pool.ntp.org", 3600, 24*60*60*1000); // 3600 sec = 1 hour offset and update every 24 hours
+//NTPClient timeClient(ntpUDP, "europe.pool.ntp.org", 3600, 24*60*60*1000); // 3600 sec = 1 hour offset and update every 24 hours
+NTPClient timeClient(ntpUDP, "http://139.162.149.127", 3600, 24*60*60*1000); // 3600 sec = 1 hour offset and update every 24 hours
+
+//1europe.pool.ntp.orgurope.pool.ntp.org./139.162.149.127
+//2europe.pool.ntp.orgurope.pool.ntp.org./91.210.59.156
+//3europe.pool.ntp.orgurope.pool.ntp.org./173.212.196.208
+//4europe.pool.ntp.orgurope.pool.ntp.org./77.68.139.83
+
 
 void setup(){
   Serial.begin(115200);
@@ -130,6 +137,7 @@ void loop() {
     Serial.print("  ");
 
     last_second = second_;
+  }
 
-}
+  
 }
