@@ -131,6 +131,5 @@ void loop() {
 
     last_second = second_;
 
-
-  delay(1000);
+}
 }
