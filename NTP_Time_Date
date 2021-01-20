@@ -51,9 +51,18 @@ void setup(){
 }
 
 void loop() {
-  timeClient.update();
+
 
    unsigned long unix_epoch = timeClient.getEpochTime();    // Get Unix epoch time from the NTP server
+
+
+  second_ = second(unix_epoch);
+  if (last_second != second_) {      
+    
+      if(!timeClient.update()){                              // NTP time
+          Serial.print("problem at line 472 time update ");
+      }
+
 
   Serial.println(timeClient.getFormattedTime());
   
