@@ -428,7 +428,8 @@ void setup(void) {
   tft.setCursor(120, 40);
   tft.println(WiFi.localIP());                                      // tft print ip adres
 
-  Serial.println("Use IP address: " + WiFi.localIP());              // IP address assigned to your ESP32
+  Serial.print("Use IP address: ");
+  Serial.println(WiFi.localIP());              // IP address assigned to your ESP32
 
   //----------------------------------------------------------------
   server.on("/", handleRoot);               // This displays the main webpage, when you open a client connection browser
