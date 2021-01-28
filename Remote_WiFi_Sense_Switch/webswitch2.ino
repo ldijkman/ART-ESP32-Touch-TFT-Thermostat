@@ -1,6 +1,6 @@
 
 // remote light switch for art
-// used nodemcu / wmos d1 r1 mini
+// used nodemcu / wmos d1 r1 mini 
 
 #include <ESP8266WiFi.h>
 
@@ -9,7 +9,8 @@ const char* password = "password";        // Wi-Fi Password
 
 int value = LOW;
 
-int LED = 14;   // relais connected to GPI0 14 (D5) (nodemcu / wmos d1 r1 mini
+// think D1 is the reliscontrolpin of relayshield d1 mini
+int LED = 5;   // relais connected to GPI05 (D1) (nodemcu / wmos d1 r1 mini
 
 WiFiServer server(80);
 
@@ -112,21 +113,21 @@ void loop()
   client.println("Content-Type: text/html");
   client.println("");
   client.println("<!DOCTYPE HTML>");
-  client.println("<html>");
+  client.println("<html><body><center><h1><br>");
   client.print(" CONTROL LED: = ");
 
   if (value == HIGH)
   {
     client.print("ON<br><br>");
-    client.println("<a href=\"/LED=OFF\"\"><button>OFF</button></a><br>");
+    client.println("<a href=\"/LED=OFF\"\"><button style=\"height:60px; width=120px;\"><h1> OFF </h1></button></a><br>");
   }
   else
   {
     client.print("OFF<br><br>"); 
-    client.println("<a href=\"/LED=ON\"\"><button>ON</button></a><br>");
+    client.println("<a href=\"/LED=ON\"\"><button style=\"height:60px; width=120px;\"><h1>  ON  </h1></button></a><br>");
   }
 
-  client.println("</html>");
+  client.println("</h1></center></body></html>");
 
 
 
