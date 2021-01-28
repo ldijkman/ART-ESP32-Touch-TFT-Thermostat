@@ -108,46 +108,23 @@ void loop()
 
 
   //*------------------HTML Page Code---------------------*//
-
-
-
   client.println("HTTP/1.1 200 OK"); //
-
   client.println("Content-Type: text/html");
-
   client.println("");
-
   client.println("<!DOCTYPE HTML>");
-
   client.println("<html>");
-
-
-
-  client.print(" CONTROL LED: ");
-
-
+  client.print(" CONTROL LED: = ");
 
   if (value == HIGH)
-
   {
-
-    client.print("ON");
-
+    client.print("ON<br><br>");
+    client.println("<a href=\"/LED=OFF\"\"><button>OFF</button></a><br>");
   }
-
   else
-
   {
-
-    client.print("OFF");
-
+    client.print("OFF<br><br>"); 
+    client.println("<a href=\"/LED=ON\"\"><button>ON</button></a><br>");
   }
-
-  client.println("<br><br>");
-
-  client.println("<a href=\"/LED=ON\"\"><button>ON</button></a>");
-
-  client.println("<a href=\"/LED=OFF\"\"><button>OFF</button></a><br />");
 
   client.println("</html>");
 
