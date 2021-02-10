@@ -68,6 +68,18 @@ AUTO mode = Switch heat temperature on programmed times with temperature
 COOL mode = continu setpoint cooling airco/ventilator (25C?)
 
 
+
+Maybe i will add a WoodStove Mode  = every hour? gas central water heating on for 5? minutes 
+
+i mostly heat on a wood stove wich makes it colder in other parts of the house
+
+i open the doors so that the heat can spread
+
+But with stormy ice cold eastern wind / storm pipes can freeze in my old house
+
+
+
+
 @[youtube](http://youtu.be/qNYT64CaLEI)	
 
 ![ART_ESP32_Thermostat](https://user-images.githubusercontent.com/45427770/101690375-8d377400-3a6d-11eb-8191-ab8abd6a1b2d.png)	
