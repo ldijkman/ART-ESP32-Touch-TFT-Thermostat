@@ -80,7 +80,7 @@ WebServer server(80);
 // some say do not use spaces in broadcasted wifi router name
 const char* ssid     = "Bangert-30-Andijk";  // wifi router name broadcasted in the air by your wifi router
 const char* password = "password";          // your wifi router password
-const char* soft_ap_ssid = "ART Thermostat Access Point"; // AP wifi name broadcasted in the air
+const char* soft_ap_ssid = "ART Thermostat Access Point"; // AP wifi name broadcasted in the air for direct connection
 const char* soft_ap_password= "";
 
 #include <NTPClient.h>               // Include NTPClient library          https://github.com/arduino-libraries/NTPClient     sketch include lib install from zip
