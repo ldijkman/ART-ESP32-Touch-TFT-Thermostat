@@ -1,6 +1,6 @@
 
 // remote light switch for art
-// used nodemcu / wmos d1 r1 mini 
+// used nodemcu / wemos d1 r1 mini 
 
 #include <ESP8266WiFi.h>
 
