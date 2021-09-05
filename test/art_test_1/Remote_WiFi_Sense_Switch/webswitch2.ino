@@ -4,8 +4,11 @@
 
 #include <ESP8266WiFi.h>
 
-const char* ssid = "Bangert-30-Andijk";    //  Your Wi-Fi Name
-const char* password = "password";        // Wi-Fi Password
+const char* ssid = "Bangert_30_Andijk";    //  Your Wi-Fi Name
+const char* password = "erin";        // Wi-Fi Password
+
+const char* soft_ap_ssid = "ART Light Switch Access Point"; // AP wifi name broadcasted in the air
+const char*  soft_ap_password= "";
 
 int value = LOW;
 
@@ -28,7 +31,8 @@ void setup()
 
 
   Serial.print("Connecting to the NetWork");
-
+  WiFi.mode(WIFI_AP_STA);                                              // Connect to your wifi
+ WiFi.softAP(soft_ap_ssid, soft_ap_password);
   WiFi.begin(ssid, password);
 
   while (WiFi.status() != WL_CONNECTED)
