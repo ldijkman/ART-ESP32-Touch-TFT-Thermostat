@@ -1,3 +1,10 @@
+remote relais lightswitch used esp8266 nodemcu / wemos d1 r1 mini with relais
+
+on of switcted from touch buttons => settings menu 2 on art lcd touch screen
+
+make timed remote light switch ???
+
+
 # ART-ESP32-Touch-TFT-Thermostat
 
 ART ESP32 SPI TFT Touch Clock Thermostat	
