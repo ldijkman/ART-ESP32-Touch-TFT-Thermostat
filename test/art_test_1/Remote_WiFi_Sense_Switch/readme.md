@@ -1,4 +1,4 @@
-remote relais lightswitch used esp8266 nodemcu / wemos d1 r1 mini 
+remote relais lightswitch used esp8266 nodemcu / wemos d1 r1 mini with relais
 
 on of switcted from touch buttons => settings menu 2 on art lcd touch screen
 
