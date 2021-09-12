@@ -3,7 +3,8 @@
 // why via chinese server
 // reprogram it with my program
 // connect usb with switch pressed to get into programming mode
-// you wll loose the chinese software
+// you will loose the chinese software
+// sonoff is generic esp8266 module = esp01 programmer = plug programmer usb in pc with sonoff button pressed to get into programmimg mode
 /*
 GPIO00 - BUTTON
 GPIO12 - RELAY
