@@ -1,10 +1,18 @@
+
+
 <!DOCTYPE HTML>
 <html>
-<!--meta http-equiv="refresh" content="5;"--><body><center><br>
+<body><center><br>
 <iframe id="1" src="http://10.10.100.106" title="http://10.10.100.106" width="350" height="300" scrolling="no"></iframe>
-<iframe id="2" src="http://10.10.100.107" title="http://10.10.100.107" width="350" height="300" scrolling="no"></iframe><br><br>
-<a href="http://10.10.100.106"><h1>10.10.100.106</h1>
+<iframe id="2" src="http://10.10.100.107" title="http://10.10.100.107" width="350" height="300" scrolling="no"></iframe>
+<iframe id="3" src="http://10.10.100.108" title="http://10.10.100.108" width="350" height="300" scrolling="no"></iframe>
+<iframe id="4" src="http://10.10.100.109" title="http://10.10.100.109" width="350" height="300" scrolling="no"></iframe>
+<br>
+
+<a href="http://10.10.100.106"><h1>10.10.100.106</h1></a><br>
 <a href="http://10.10.100.107"><h1>10.10.100.107</h1></a><br>
+<a href="http://10.10.100.108"><h1>10.10.100.108</h1></a><br>
+<a href="http://10.10.100.109"><h1>10.10.100.109</h1></a><br>
 <script>
 function refresh()
 {
@@ -12,8 +20,13 @@ function refresh()
     een.reload(true);
     var twee = document.getElementById('2');
     twee.reload(true);
+    var een = document.getElementById('3');
+    drie.reload(true);
+    var twee = document.getElementById('4');
+    vier.reload(true);
 }
 
 setTimeout('refresh()', 3000);
 </script>
 </h1></center></body></html>
+
