@@ -1,7 +1,8 @@
 // remote light switch for art
 // used sonoff basic wifi smart switch relais 10A
 // why via chinese server
-// reprogram it with my program
+// reprogram it with my program 
+// board generic esp8266 module
 // connect usb with switch pressed to get into programming mode
 // you wll loose the chinese software
 /*
