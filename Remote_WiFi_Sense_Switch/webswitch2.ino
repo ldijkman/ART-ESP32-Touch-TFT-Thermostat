@@ -1,10 +1,6 @@
 
 // remote light switch for art
-// used nodemcu / wemos d1 r1 mini 
-
-
-// remote light switch for art
-// used nodemcu / wemos d1 r1 mini 
+// used nodemcu /ESP8266 wemos d1 r1 mini with relais shield
 
 #include <ESP8266WiFi.h>
 
