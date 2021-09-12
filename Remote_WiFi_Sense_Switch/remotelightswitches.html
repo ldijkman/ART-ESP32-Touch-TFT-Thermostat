@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html>
+<!--meta http-equiv="refresh" content="5;"--><body><center><br>
+<iframe id="1" src="http://10.10.100.106" title="http://10.10.100.106" width="350" height="300" scrolling="no"></iframe>
+<iframe id="2" src="http://10.10.100.107" title="http://10.10.100.107" width="350" height="300" scrolling="no"></iframe><br><br>
+<a href="http://10.10.100.106"><h1>10.10.100.106</h1>
+<a href="http://10.10.100.107"><h1>10.10.100.107</h1></a><br>
+<script>
+function refresh()
+{
+    var een = document.getElementById('1');
+    een.reload(true);
+    var twee = document.getElementById('2');
+    twee.reload(true);
+}
+
+setTimeout('refresh()', 3000);
+</script>
+</h1></center></body></html>
