@@ -7,7 +7,7 @@
 const char* ssid = "Bangert_30_Andijk";    //  Your Wi-Fi Name
 const char* password = "ookikwilerin";        // Wi-Fi Password
 
-const char* soft_ap_ssid = "ART Light Switch Access Point"; // AP wifi name broadcasted in the air
+const char* soft_ap_ssid = "ART Light Switch Access Point 2"; // AP wifi name broadcasted in the air
 const char*  soft_ap_password= "";
 
 int value = LOW;
@@ -117,18 +117,22 @@ void loop()
   client.println("Content-Type: text/html");
   client.println("");
   client.println("<!DOCTYPE HTML>");
-  client.println("<html><body><center><h1><br>");
+  client.println("<html>");
+  client.print("<meta http-equiv=\"refresh\" content=\"5; URL=http://");
+  client.print(WiFi.localIP()); 
+  client.print("\">");
+  client.print("<body><center><h1><br>");
   client.print(" LIGHT = ");
 
   if (value == HIGH)
   {
     client.print("ON<br><br>");
-    client.println("<a href=\"/LED=OFF\"\"><button style=\"height:160px; width:320px;\"><h1> OFF </h1></button></a><br>");
+    client.println("<a href=\"/LED=OFF\"\"><button style=\"height:160px; width:320px; background-color:yellow;\"><h1> Turn OFF </h1></button></a><br>");
   }
   else
   {
     client.print("OFF<br><br>"); 
-    client.println("<a href=\"/LED=ON\"\"><button style=\"height:160px; width:320px;\"><h1>  ON  </h1></button></a><br>");
+    client.println("<a href=\"/LED=ON\"\"><button style=\"height:160px; width:320px; background-color:gray;\"><h1>  Turn ON  </h1></button></a><br>");
   }
 
  client.print("<br><br><br><a href=\"http://");
