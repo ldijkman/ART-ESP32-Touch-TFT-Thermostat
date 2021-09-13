@@ -2,12 +2,12 @@
 // used sonoff basic wifi smart switch relais 10A
 // why via chinese server
 // reprogram it with my program
-// connect usb with switch pressed to get into programming mode
+// connect usb with switch pressed to get into programming mode use esp01 programmer
 // you wll loose the chinese software
 /*
   GPIO00 - BUTTON
   GPIO12 - RELAY
-  GPIO13 - LED1
+  GPIO13 - Sonoff_Relais_pin1
 
   GPIO03 - RX PIN
   GPIO01 - TX PIN
@@ -24,8 +24,8 @@ const char*  soft_ap_password = "";
 int value = LOW;
 
 // think D1 is the reliscontrolpin of relayshield d1 mini
-//int LED = 5;   // relais connected to GPI05 (D1) (nodemcu / wmos d1 r1 mini
-int LED = 12;    // sonoff relais control pin
+//int Sonoff_Relais_pin = 5;   // relais connected to GPI05 (D1) (nodemcu / wmos d1 r1 mini
+int Sonoff_Relais_pin = 12;    // sonoff relais control pin
 WiFiServer server(80);
 
 
@@ -36,8 +36,11 @@ void setup()
 
   Serial.begin(115200); //Default Baudrate
 
-  pinMode(LED, OUTPUT);
-  digitalWrite(LED, LOW);
+  pinMode(Sonoff_Relais_pin, OUTPUT);
+  digitalWrite(Sonoff_Relais_pin, LOW);
+
+  pinMode(13, OUTPUT);
+  digitalWrite(13, HIGH);
 
   pinMode(0, INPUT);
 
@@ -81,15 +84,16 @@ void loop(){
 
   
   if (digitalRead(0)== LOW){                 // manual control on/off toggle light with pushbutton on sonoff
+    while (digitalRead(0)== LOW){/*wait for button release*/} 
     if (value == LOW){
-      digitalWrite(LED, HIGH); // Turn LED ON
+      digitalWrite(Sonoff_Relais_pin, HIGH); // Turn Sonoff_Relais_pin ON
       value = HIGH;
-      delay(500);
+      digitalWrite(13, LOW);
     }
     else{
-      digitalWrite(LED, LOW); // Turn LED OFF
+      digitalWrite(Sonoff_Relais_pin, LOW); // Turn Sonoff_Relais_pin OFF
       value = LOW;
-      delay(500);
+      digitalWrite(13, HIGH);
     }
 
   }
@@ -125,14 +129,15 @@ void loop(){
 
   if (request.indexOf("/LED=ON") != -1)
   {
-    digitalWrite(LED, HIGH); // Turn LED ON
+    digitalWrite(Sonoff_Relais_pin, HIGH); // Turn Sonoff_Relais_pin ON
     value = HIGH;
   }
 
   if (request.indexOf("/LED=OFF") != -1)
   {
-    digitalWrite(LED, LOW); // Turn LED OFF
+    digitalWrite(Sonoff_Relais_pin, LOW); // Turn Sonoff_Relais_pin OFF
     value = LOW;
+    digitalWrite(13, HIGH);
   }
 
 
@@ -151,12 +156,12 @@ void loop(){
 
   if (value == HIGH)
   {
-    client.print("ON<br><br>");
+    client.print("ON<br>");
     client.println("<a href=\"/LED=OFF\"\"><button style=\"height:160px; width:320px; background-color:yellow;\"><h1> Turn OFF </h1></button></a><br>");
   }
   else
   {
-    client.print("OFF<br><br>");
+    client.print("OFF<br>");
     client.println("<a href=\"/LED=ON\"\"><button style=\"height:160px; width:320px; background-color:gray;\"><h1>  Turn ON  </h1></button></a><br>");
   }
 
