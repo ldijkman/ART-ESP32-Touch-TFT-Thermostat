@@ -66,7 +66,7 @@ void settings_one_screen() {
       Serial.println("calibrate button pressed");
       delay(500);
       REPEAT_CAL = 1;
-      touch_calibrate();
+     touch_calibrate();
       x = 0; y = 0;
     }
 

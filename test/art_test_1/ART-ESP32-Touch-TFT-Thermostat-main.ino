@@ -243,11 +243,30 @@ byte DOW;                                     // my week 1=monday 7=sunday = yes
 
 byte BlinkState;
 
-const char *Relais_1_on = "http://192.168.178.10/LED=ON";    // esp8266 wemos d1 mini remote light switch
-const char *Relais_1_off = "http://192.168.178.10/LED=OFF";
+String sonoffaddress[10]={
+"http://10.10.100.100", 
+"http://10.10.100.100", 
+"http://10.10.100.102", 
+"http://10.10.100.100", 
+"http://10.10.100.100", 
+"http://10.10.100.100",
+"http://10.10.100.100"
+};
+
+int sonoffstatus[10];
+
+
+String sonoff1address = "http://10.10.100.100";
+const char *lightstatus = "http://10.10.100.100/value";
+const char *Relais_1_on = "http://10.10.100.100/LED=ON";    // esp8266 wemos d1 mini remote light switch
+const char *Relais_1_off = "http://10.10.100.100/LED=OFF";
+const char *Relais_2_on = "http://10.10.100.102/LED=ON";    // esp8266 wemos d1 mini remote light switch
+const char *Relais_2_off = "http://10.10.100.102/LED=OFF";
+int remotelightoninminutes = 19*60; // 19 hour x minutes Relais_1_on
+int remotelightoffinminutes = 23*60+30; // 23 hour x minutes+30 Relais_1_off
 
 const char* soft_ap_ssid = "ART Thermostat Access Point"; // AP wifi name broadcasted in the air
-const char*  soft_ap_password= "";
+const char*  soft_ap_password = "";
 
 void setup(void) {
 
@@ -414,7 +433,7 @@ void setup(void) {
   WiFi.disconnect();                                                // not needed?
 
   WiFi.mode(WIFI_AP_STA);                                              // Connect to your wifi
-WiFi.softAP(soft_ap_ssid, soft_ap_password);
+  WiFi.softAP(soft_ap_ssid, soft_ap_password);
   WiFi.begin(ssid, password);                                       // Start the Wi-Fi services
   Serial.println("Connecting to WiFi : " + String(ssid));
   tft.println("Connecting to WiFi : " + String(ssid));
@@ -435,7 +454,7 @@ WiFi.softAP(soft_ap_ssid, soft_ap_password);
 
   Serial.println("Use IP address: ");              // IP address assigned to your ESP32
   Serial.println( WiFi.localIP());
-  
+
   //----------------------------------------------------------------
   server.on("/", handleRoot);               // This displays the main webpage, when you open a client connection browser
   server.on("/temp", handleTEMP);           // To update Temperature called by the function getSensorData
@@ -598,7 +617,6 @@ void loop() {
 
 
 
-
   while (! rtc.begin() || rtc.lostPower() == 1) {            // lost RTC DS3231 Realtimeclock
     // Glitch?
     delay(100);
@@ -642,6 +660,50 @@ void loop() {
   if (millis() - runTime >= 1000) {                         // Execute every 1000ms
 
     runTime = millis();                                     // store millis() counter in variable runtime
+
+
+
+    
+    if (now.hour() * 60 + now.minute() == (remotelightoninminutes) && now.second() <= 10 ) {
+      HTTPClient http;
+      http.begin(Relais_1_on); //Specify the URL
+      int httpCode = http.GET();                                                  //Make the request
+
+      if (httpCode > 0) { //Check for the returning code
+
+        String payload = http.getString();
+        Serial.println(httpCode);
+        Serial.println(payload);
+      }
+
+      else {
+        Serial.println("Error on HTTP request");
+      }
+
+      http.end(); //Free the resources
+    }
+    if (now.hour() * 60 + now.minute()  == (remotelightoffinminutes) && now.second() <= 10 ) {
+      HTTPClient http;
+      http.begin(Relais_1_off); //Specify the URL
+      int httpCode = http.GET();                                                  //Make the request
+
+      if (httpCode > 0) { //Check for the returning code
+
+        String payload = http.getString();
+        Serial.println(httpCode);
+        Serial.println(payload);
+      }
+
+      else {
+        Serial.println("Error on HTTP request");
+      }
+
+      http.end(); //Free the resources
+    }
+
+
+
+
 
     server.handleClient();                                  // Keep checking for a client connection
 
@@ -758,7 +820,7 @@ JumpOver:
 
     // press on mainscreen / top of screen opens settings menu
     if (x > 0 && x < 320 && y > 0 && y < 140) {
-      settings_one_screen();    // open settings menu
+      settings_three_screen();    // open settings menu
       fullscreenactive = 0;
       drawmainscreen();         // restore main screen
 
