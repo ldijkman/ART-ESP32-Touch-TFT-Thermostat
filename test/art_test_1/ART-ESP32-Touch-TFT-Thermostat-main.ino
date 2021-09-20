@@ -243,27 +243,23 @@ byte DOW;                                     // my week 1=monday 7=sunday = yes
 
 byte BlinkState;
 
+// reprogrammed sonoff wifi basic smart switch or esp8266 wemos d1 mini remote light switch
 String sonoffaddress[10]={
 "http://10.10.100.100", 
-"http://10.10.100.100", 
 "http://10.10.100.102", 
-"http://10.10.100.100", 
-"http://10.10.100.100", 
-"http://10.10.100.100",
-"http://10.10.100.100"
+"http://10.10.100.101", 
+"http://10.10.100.1", 
+"http://10.10.100.1", 
+"http://10.10.100.1",
+"http://10.10.100.1"
 };
 
 int sonoffstatus[10];
 
+int remotelightoninminutes = 6*60; // 19 hour x minutes Relais_1_on
+int remotelightoffinminutes = 22*60+32; // 23 hour x minutes+30 Relais_1_off
 
-String sonoff1address = "http://10.10.100.100";
-const char *lightstatus = "http://10.10.100.100/value";
-const char *Relais_1_on = "http://10.10.100.100/LED=ON";    // esp8266 wemos d1 mini remote light switch
-const char *Relais_1_off = "http://10.10.100.100/LED=OFF";
-const char *Relais_2_on = "http://10.10.100.102/LED=ON";    // esp8266 wemos d1 mini remote light switch
-const char *Relais_2_off = "http://10.10.100.102/LED=OFF";
-int remotelightoninminutes = 19*60; // 19 hour x minutes Relais_1_on
-int remotelightoffinminutes = 23*60+30; // 23 hour x minutes+30 Relais_1_off
+
 
 const char* soft_ap_ssid = "ART Thermostat Access Point"; // AP wifi name broadcasted in the air
 const char*  soft_ap_password = "";
@@ -666,7 +662,7 @@ void loop() {
     
     if (now.hour() * 60 + now.minute() == (remotelightoninminutes) && now.second() <= 10 ) {
       HTTPClient http;
-      http.begin(Relais_1_on); //Specify the URL
+      http.begin(sonoffaddress[0] + "/LED=ON"); //Specify the URL
       int httpCode = http.GET();                                                  //Make the request
 
       if (httpCode > 0) { //Check for the returning code
@@ -684,7 +680,7 @@ void loop() {
     }
     if (now.hour() * 60 + now.minute()  == (remotelightoffinminutes) && now.second() <= 10 ) {
       HTTPClient http;
-      http.begin(Relais_1_off); //Specify the URL
+      http.begin(sonoffaddress[0] + "/LED=OFF"); //Specify the URL
       int httpCode = http.GET();                                                  //Make the request
 
       if (httpCode > 0) { //Check for the returning code
