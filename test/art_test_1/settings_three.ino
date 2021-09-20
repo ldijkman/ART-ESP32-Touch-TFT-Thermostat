@@ -70,14 +70,15 @@ void settings_three_screen() {
         if (httpCode > 0) {                                                // Check for the returning code
 
           String payload = http.getString();
+          payload.trim(); // trim the white space off the string:  other wise the 0 or 1 compare does not work 
           //Serial.println(httpCode);
-          // Serial.println(payload);
+            Serial.print("payload >");Serial.print(payload); Serial.print("<");Serial.println("-");
           //     Serial.println(payload.toInt());
-          if (payload.toInt() == 0) {
+          if (payload == "0") {
             //   Serial.println("UIT");
             sonoffstatus[i] = 0;
           }
-          if (payload.toInt() == 1) {
+          if (payload == "1") {
             //  Serial.println("AAN");
             sonoffstatus[i] = 1;
           }
@@ -337,3 +338,4 @@ void sendit(int wich) {
   http.end(); //Free the resources
 
 }
+
