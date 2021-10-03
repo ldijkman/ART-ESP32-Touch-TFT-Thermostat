@@ -1,5 +1,9 @@
 # ART-ESP32-Touch-TFT-Thermostat
 
+
+https://gofund.me/b8bf0b52
+
+
 ART ESP32 SPI TFT Touch Clock Thermostat	
 
 Manual by Touch TFT and WIFI(Future) clock thermostat
@@ -237,6 +241,7 @@ Make YourSelf UseFull!
 ## http://arduino.tk
 ## http://PRINT-it.tk      
 ## http://PRINTit.tk
+
 
 
 Art has a brand new home server http://www.arduino.tk
