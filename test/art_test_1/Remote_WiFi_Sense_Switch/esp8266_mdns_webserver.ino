@@ -1,4 +1,3 @@
-
 // remote light switch for art
 // used sonoff basic wifi smart switch relais 10A
 // why via chinese server
@@ -17,18 +16,7 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266mDNS.h>
 
-
 #define ESP_getChipId()   (ESP.getChipId())
-
-// SSID and PW for Config Portal
-// String ssid = "ESP_" + String(ESP_getChipId(), HEX);
-
-
-const char* ssid = "Bangert_30_Andijk";    //  Your Wi-Fi Name
-const char* password = "ookikwilerin";        // Wi-Fi Password
-
-String soft_ap_ssid = "ART-Light-Switch-AP-" + String(ESP_getChipId(), HEX);    // AP wifi name broadcasted in the air unique by chipid
-const char*  soft_ap_password = "";
 
 // program each esp32 or sonoff relay switch with its own easy to locate name
 const char* ServerName = "kitchen";    // http://kitchen.local     does not work on android // fing network app is handy for finding wifi ip network addresses
@@ -38,18 +26,21 @@ const char* ServerName = "kitchen";    // http://kitchen.local     does not work
 //const char* ServerName = "bedroom";  // http://bedroom.local     does not work on android // fing network app is handy for finding wifi ip network addresses
 //const char* ServerName = "stairs";   // http://stairs.local     does not work on android // fing network app is handy for finding wifi ip network addresses
 
+const char* ssid = "Bangert_30_Andijk";    //  Your Wi-Fi Name
+const char* password = "ookikwilerin";        // Wi-Fi Password
 
+String soft_ap_ssid = "ART-" + String(ServerName) + "-Light-" + String(ESP_getChipId(), HEX);    // AP wifi name broadcasted in the air unique by chipid
+const char*  soft_ap_password = "";
 
 
 int value = LOW;
 
 // think D1 is the reliscontrolpin of relayshield d1 mini
-int Sonoff_Relais_pin = 5;   // relais connected to GPI05 (D1) (nodemcu / wmos d1 r1 mini
+int Sonoff_Relais_pin = 5;       // relais connected to GPI05 (D1) (nodemcu / wemos d1 r1 mini
 //int Sonoff_Relais_pin = 12;    // sonoff relais control pin
 
 WiFiServer server(80);
-//
-//IPAddress staticIP (10,10,100,110);
+
 
 
 void setup()
@@ -72,9 +63,9 @@ void setup()
   //WiFi.mode(WIFI_STA);                              // Connect to your wifi
 
   WiFi.softAP(soft_ap_ssid, soft_ap_password);
-  //WiFi.config(staticIP,,,);
+ 
   WiFi.begin(ssid, password);
-  //SetupDeviceName(ServerName);
+ 
 
   WiFi.setAutoReconnect(true);
   WiFi.persistent(true);
