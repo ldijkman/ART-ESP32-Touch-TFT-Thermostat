@@ -232,15 +232,3 @@ MDNS.update();
 
 }
 
-//#########################################################################################
-void SetupDeviceName(const char *DeviceName) {
-  if (MDNS.begin(DeviceName)) { // The name that will identify your device on the network
-    Serial.println("mDNS responder started");
-    Serial.print("Device name: ");
-    Serial.println(DeviceName);
-    MDNS.addService("n8i-mlp", "tcp", 23); // Add service
-  }
-  else
-    Serial.println("Error setting up MDNS responder");
-}
-//#########################################################################################
