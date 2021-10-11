@@ -14,7 +14,7 @@
 */
 
 #include <ESP8266WiFi.h>
-#include <ESP8266mDNS.h> 
+#include <ESP8266mDNS.h>
 
 
 #define ESP_getChipId()   (ESP.getChipId())
@@ -30,12 +30,12 @@ String soft_ap_ssid = "ART-Light-Switch-AP-" + String(ESP_getChipId(), HEX);    
 const char*  soft_ap_password = "";
 
 // program each esp32 or sonoff relay switch with its own easy to locate name
-const char* ServerName = "kitchen";  // http://kitchen.local     does not work on android // fing network app is handy for finding wifi ip network addresses 
-//const char* ServerName = "hallway";  // http://hallway.local     does not work on android // fing network app is handy for finding wifi ip network addresses 
-//const char* ServerName = "living";   // http://living.local     does not work on android // fing network app is handy for finding wifi ip network addresses 
-//const char* ServerName = "garage";   // http://garage.local     does not work on android // fing network app is handy for finding wifi ip network addresses 
-//const char* ServerName = "bedroom";  // http://bedroom.local     does not work on android // fing network app is handy for finding wifi ip network addresses 
-//const char* ServerName = "stairs";   // http://stairs.local     does not work on android // fing network app is handy for finding wifi ip network addresses 
+const char* ServerName = "kitchen";    // http://kitchen.local     does not work on android // fing network app is handy for finding wifi ip network addresses
+//const char* ServerName = "hallway";  // http://hallway.local     does not work on android // fing network app is handy for finding wifi ip network addresses
+//const char* ServerName = "living";   // http://living.local     does not work on android // fing network app is handy for finding wifi ip network addresses
+//const char* ServerName = "garage";   // http://garage.local     does not work on android // fing network app is handy for finding wifi ip network addresses
+//const char* ServerName = "bedroom";  // http://bedroom.local     does not work on android // fing network app is handy for finding wifi ip network addresses
+//const char* ServerName = "stairs";   // http://stairs.local     does not work on android // fing network app is handy for finding wifi ip network addresses
 
 
 
@@ -67,25 +67,25 @@ void setup()
 
 
   Serial.print("Connecting to the NetWork");
-  WiFi.mode(WIFI_AP_STA);                  
-//WiFi.mode(WIFI_STA);                              // Connect to your wifi
+  WiFi.mode(WIFI_AP_STA);
+  //WiFi.mode(WIFI_STA);                              // Connect to your wifi
 
   WiFi.softAP(soft_ap_ssid, soft_ap_password);
   //WiFi.config(staticIP,,,);
   WiFi.begin(ssid, password);
-   //SetupDeviceName(ServerName);
+  //SetupDeviceName(ServerName);
 
-WiFi.setAutoReconnect(true);
-WiFi.persistent(true);
+  WiFi.setAutoReconnect(true);
+  WiFi.persistent(true);
 
   while (WiFi.status() != WL_CONNECTED)
-  { 
+  {
     digitalWrite(13, LOW );
     delay(250);
     digitalWrite(13, HIGH);
     delay(250);
     Serial.print(".");
-    
+
 
   }
 
@@ -101,7 +101,7 @@ WiFi.persistent(true);
   Serial.print("mDNS responder started http://");
   Serial.print(ServerName);
   Serial.println(".local");
-  
+
   MDNS.addService("http", "tcp", 80);
   Serial.println("mDNS responder started");
 
@@ -121,17 +121,19 @@ WiFi.persistent(true);
 
 
 
-void loop(){
-MDNS.update();
-  
-  if (digitalRead(0)== LOW){                 // manual control on/off toggle light with pushbutton on sonoff
-    while (digitalRead(0)== LOW){/*wait for button release*/} 
-    if (value == LOW){
+void loop() {
+  MDNS.update();
+
+  if (digitalRead(0) == LOW) {               // manual control on/off toggle light with pushbutton on sonoff
+    while (digitalRead(0) == LOW) {
+      /*wait for button release*/
+    }
+    if (value == LOW) {
       digitalWrite(Sonoff_Relais_pin, HIGH); // Turn Sonoff_Relais_pin ON
       value = HIGH;
       digitalWrite(13, LOW);
     }
-    else{
+    else {
       digitalWrite(Sonoff_Relais_pin, LOW); // Turn Sonoff_Relais_pin OFF
       value = LOW;
       digitalWrite(13, HIGH);
@@ -166,13 +168,13 @@ MDNS.update();
 
   if (request.indexOf("/value") != -1)
   {
-      client.println("HTTP/1.1 200 OK"); //
-  client.println("Content-Type: text/html");
-  client.println("");
-  //client.println("<!DOCTYPE HTML>");
-  //client.println("<html>");
-     client.println(value); //
-     return;
+    client.println("HTTP/1.1 200 OK"); //
+    client.println("Content-Type: text/html");
+    client.println("");
+    //client.println("<!DOCTYPE HTML>");
+    //client.println("<html>");
+    client.println(value); //
+    return;
   }
 
 
@@ -202,27 +204,33 @@ MDNS.update();
   client.print("<meta http-equiv=\"refresh\" content=\"5; URL=http://");
   client.print(WiFi.localIP());
   client.print("\">");
-  client.print("<body><center><h1><br>");
+  client.print("<body><center><h4>");
   client.print(" LIGHT = ");
 
   if (value == HIGH)
   {
-    client.print("ON<br>");
-    client.println("<a href=\"/LED=OFF\"\"><button style=\"height:160px; width:320px; background-color:yellow;\"><h1> Turn OFF </h1></button></a><br>");
+    client.print("ON</h4>");
+    client.println("<a href=\"/LED=OFF\"\"><button style=\"height:160px; width:320px; background-color:yellow;\"><h1> Turn OFF </h1></button></a>");
   }
   else
   {
-    client.print("OFF<br>");
-    client.println("<a href=\"/LED=ON\"\"><button style=\"height:160px; width:320px; background-color:gray;\"><h1>  Turn ON  </h1></button></a><br>");
+    client.print("OFF</h4>");
+    client.println("<a href=\"/LED=ON\"\"><button style=\"height:160px; width:320px; background-color:gray;\"><h1>  Turn ON  </h1></button></a>");
   }
+  client.print("<a href=\"http://");
+  client.print(ServerName);
+  client.print(".local\"><h4>http://");
+  client.print(ServerName);
+  client.println(".local</h4></a>");
 
-  client.print("<br><br><br><a href=\"http://");
-  client.print(WiFi.localIP());
-  client.print("\"><h1>");
-  client.print(WiFi.localIP());
-  client.println("</h1></a><br>");
 
-  client.println("</h1></center></body></html>");
+  client.print("<a href=\"http://");
+  client.print(WiFi.localIP());
+  client.print("\"><h4>http://");
+  client.print(WiFi.localIP());
+  client.println("</h4></a>");
+
+  client.println("</center></body></html>");
 
 
 
@@ -233,3 +241,5 @@ MDNS.update();
   Serial.println("");
 
 }
+
+
