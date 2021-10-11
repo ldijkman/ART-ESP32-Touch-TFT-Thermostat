@@ -31,11 +31,11 @@ const char*  soft_ap_password = "";
 
 // program each esp32 or sonoff relay switch with its own easy to locate name
 const char* ServerName = "kitchen";  // http://kitchen.local     does not work on android // fing network app is handy for finding wifi ip network addresses 
-const char* ServerName = "hallway";  // http://hallway.local     does not work on android // fing network app is handy for finding wifi ip network addresses 
-const char* ServerName = "living";   // http://living.local     does not work on android // fing network app is handy for finding wifi ip network addresses 
-const char* ServerName = "garage";   // http://garage.local     does not work on android // fing network app is handy for finding wifi ip network addresses 
-const char* ServerName = "bedroom";  // http://bedroom.local     does not work on android // fing network app is handy for finding wifi ip network addresses 
-const char* ServerName = "stairs";   // http://stairs.local     does not work on android // fing network app is handy for finding wifi ip network addresses 
+//const char* ServerName = "hallway";  // http://hallway.local     does not work on android // fing network app is handy for finding wifi ip network addresses 
+//const char* ServerName = "living";   // http://living.local     does not work on android // fing network app is handy for finding wifi ip network addresses 
+//const char* ServerName = "garage";   // http://garage.local     does not work on android // fing network app is handy for finding wifi ip network addresses 
+//const char* ServerName = "bedroom";  // http://bedroom.local     does not work on android // fing network app is handy for finding wifi ip network addresses 
+//const char* ServerName = "stairs";   // http://stairs.local     does not work on android // fing network app is handy for finding wifi ip network addresses 
 
 
 
