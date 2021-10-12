@@ -1,3 +1,15 @@
+-------------------------------------------------
+
+do not like makerfabs
+
+ordered one
+
+payed for it
+
+never recieved
+
+---------------------------------------------------------------------
+
 
 Makerfabs_ESP32-3.2-TFT-Version
 
