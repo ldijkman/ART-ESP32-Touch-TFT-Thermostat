@@ -1,10 +1,14 @@
-
-// remote light switch for art
+// esp8266 remote light switch for art
 // used sonoff basic wifi smart switch relais 10A
+// or wemos d1 mini with relais
 // why via chinese server
 // reprogram it with my program
 // connect usb with switch pressed to get into programming mode
 // you wll loose the chinese software
+
+// help??? should use a wiffimanager to set wifisettings for network
+// and set mdns bonjour http://???????.local hostname 
+
 /*
   GPIO00 - BUTTON
   GPIO12 - RELAY
@@ -20,17 +24,18 @@
 #define ESP_getChipId()   (ESP.getChipId())
 
 // program each esp32 or sonoff relay switch with its own easy to locate name
-const char* ServerName = "kitchen";    // http://kitchen.local     does not work on android // fing network app is handy for finding wifi ip network addresses
-//const char* ServerName = "hallway";  // http://hallway.local     does not work on android // fing network app is handy for finding wifi ip network addresses
-//const char* ServerName = "living";   // http://living.local     does not work on android // fing network app is handy for finding wifi ip network addresses
-//const char* ServerName = "garage";   // http://garage.local     does not work on android // fing network app is handy for finding wifi ip network addresses
-//const char* ServerName = "bedroom";  // http://bedroom.local     does not work on android // fing network app is handy for finding wifi ip network addresses
-//const char* ServerName = "stairs";   // http://stairs.local     does not work on android // fing network app is handy for finding wifi ip network addresses
+//const char* ServerName = "kitchen";    // http://kitchen.local     does not work on android // fing network app is handy for finding wifi ip network addresses
+const char* ServerName = "hallway";      // http://hallway.local     does not work on android // fing network app is handy for finding wifi ip network addresses
+//const char* ServerName = "living";     // http://living.local     does not work on android // fing network app is handy for finding wifi ip network addresses
+//const char* ServerName = "garage";     // http://garage.local     does not work on android // fing network app is handy for finding wifi ip network addresses
+//const char* ServerName = "bedroom";    // http://bedroom.local     does not work on android // fing network app is handy for finding wifi ip network addresses
+//const char* ServerName = "stairs";     // http://stairs.local     does not work on android // fing network app is handy for finding wifi ip network addresses
+//const char* ServerName = "upstairs";   // http://upstairs.local     does not work on android // fing network app is handy for finding wifi ip network addresses
 
-const char* ssid = "Bangert_30_Andijk";    //  Your Wi-Fi Name
-const char* password = "ookikwilerin";        // Wi-Fi Password
+const char* ssid = "Bangert_30_Andijk";       // Your Wi-Fi routerName
+const char* password = "ookikwilerin";        // Your Wi-Fi router Password
 
-String soft_ap_ssid = "ART-" + String(ServerName) + "-Light-" + String(ESP_getChipId(), HEX);    // AP wifi name broadcasted in the air unique by chipid
+String soft_ap_ssid = "ART-" + String(ServerName) + "-Light-" + String(ESP_getChipId(), HEX);    // AP accesspoint wifi name broadcasted in the air unique by chipid
 const char*  soft_ap_password = "";
 
 
@@ -234,7 +239,3 @@ void loop() {
   Serial.println("");
 
 }
-
-
-
-
