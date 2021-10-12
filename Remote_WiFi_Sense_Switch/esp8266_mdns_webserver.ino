@@ -9,6 +9,9 @@
 // help??? should use a wiffimanager to set wifisettings for network
 // and set mdns bonjour http://???????.local hostname 
 
+// i used esp01 programmer for sonoff 
+// press button sonoff when connect usb to get into programming mode (rx,tx, 3.3v, gnd.)
+
 /*
   GPIO00 - BUTTON
   GPIO12 - RELAY
