@@ -1,4 +1,6 @@
 /*
+ * https://github.com/esp8266/Arduino/blob/master/libraries/ESP8266mDNS/examples/LEAmDNS/mDNS_ServiceMonitor/mDNS_ServiceMonitor.ino
+ * 
   ESP8266 mDNS Responder Service Monitor
   This example demonstrates two features of the LEA MDNSResponder:
   1. The host and service domain negotiation process that ensures
