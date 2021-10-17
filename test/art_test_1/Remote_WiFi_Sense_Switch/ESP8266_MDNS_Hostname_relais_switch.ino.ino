@@ -5,6 +5,7 @@
 // my raspberry pi does mdns
 //
 // still working on this code not all done yet
+// https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/test/art_test_1/Remote_WiFi_Sense_Switch/ESP8266_MDNS_Hostname_relais_switch.ino.ino
 //
 // https://oshwlab.com/l.dijkman/esp32-dev-kit-38-pin-to-spi-touch-tft
 // https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat
