@@ -223,9 +223,9 @@ void setup() {
 
   intrelaispin = String(relaispin).toInt();
   Serial.println(intrelaispin);
-intbuttonpin = String(intbuttonpin).toInt();
+intbuttonpin = String(buttonpin).toInt();
   Serial.println(intbuttonpin);
-intstatusledpin = String(intstatusledpin).toInt();
+intstatusledpin = String(statusledpin).toInt();
   Serial.println(intstatusledpin);
 
 
