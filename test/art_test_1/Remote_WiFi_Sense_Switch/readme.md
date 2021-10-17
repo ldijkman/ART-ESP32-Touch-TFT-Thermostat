@@ -1,3 +1,11 @@
+# latest esp8266 relais switch mdns config portal
+
+https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/test/art_test_1/Remote_WiFi_Sense_Switch/ESP8266_MDNS_Hostname_relais_switch.ino.ino
+
+
+
+
+
 remote relais lightswitch used esp8266 nodemcu / wemos d1 r1 mini with relais
 
 on of switcted from touch buttons => settings menu 2 on art lcd touch screen
