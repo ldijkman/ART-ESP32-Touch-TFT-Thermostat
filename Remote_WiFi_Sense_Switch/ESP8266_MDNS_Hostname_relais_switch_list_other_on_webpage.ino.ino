@@ -43,7 +43,7 @@
 
 #include <WiFiClient.h>
 #include <ESP8266WebServer.h>
-                            
+
 WiFiServer server(80);
 
 //define your default values here, if there are different values in config.json, they are overwritten.
@@ -256,9 +256,9 @@ void setup() {
 
   intrelaispin = String(relaispin).toInt();
   Serial.println(intrelaispin);
-intbuttonpin = String(buttonpin).toInt();
+  intbuttonpin = String(buttonpin).toInt();
   Serial.println(intbuttonpin);
-intstatusledpin = String(statusledpin).toInt();
+  intstatusledpin = String(statusledpin).toInt();
   Serial.println(intstatusledpin);
 
 
@@ -270,7 +270,7 @@ intstatusledpin = String(statusledpin).toInt();
 
   pinMode(intbuttonpin, INPUT);
 
-    // Setup MDNS responders
+  // Setup MDNS responders
   MDNS.setHostProbeResultCallback(hostProbeResult);
 
 }
@@ -299,8 +299,8 @@ void loop() {
     }
 
   }
-  
- WiFiClient client = server.available();
+
+  WiFiClient client = server.available();
 
   if (!client)
 
@@ -403,10 +403,10 @@ void loop() {
     < / script >
   */
 
- IPAddress ip = WiFi.localIP();
+  IPAddress ip = WiFi.localIP();
   String ipStr = ip.toString();
   //String s = "<!DOCTYPE HTML>\r\n<html><h3><head>Hello from ";
-   String s = "";
+  String s = "";
   //s += WiFi.hostname() + ".local at " + WiFi.localIP().toString() + "</h3></head>";
   s += "<br/><h4>Local HTTP services are :</h4>";
   s += "<ol>";
@@ -423,7 +423,7 @@ void loop() {
       //s += "<br/>IP4:";
       s += "<br/>";
       for (auto ip : info.IP4Adresses()) {
-        s += " <a href=http://\"" + ip.toString() + "\">"+ ip.toString() +"</a>";
+        s += "<a href=\"http://" + ip.toString() + "\">" + ip.toString() + "</a>";    // make it a link
       }
     }
     if (info.txtAvailable()) {
@@ -436,7 +436,7 @@ void loop() {
   }
   s += "</ol><br/>";
 
-client.print(s);
+  client.print(s);
 
   client.println("</center></body></html>");
 
