@@ -409,9 +409,9 @@ void loop() {
   String s = "";
   //s += WiFi.hostname() + ".local at " + WiFi.localIP().toString() + "</h3></head>";
   s += "<br/><h4>Local HTTP services are :</h4>";
-  s += "<ol>";
+  s += "";
   for (auto info :  MDNS.answerInfo(hMDNSServiceQuery)) {
-    s += "<li>";
+    s += "";
     //s += info.serviceDomain();
     if (info.hostDomainAvailable()) {
       //s += "<br/>Hostname: ";
@@ -432,9 +432,9 @@ void loop() {
         s += "\t" + String(kv.first) + " : " + String(kv.second) + "<br/>";
       }
     }
-    s += "</li>";
+    s += "";
   }
-  s += "</ol><br/>";
+  s += "<br/>";
 
   client.print(s);
 
