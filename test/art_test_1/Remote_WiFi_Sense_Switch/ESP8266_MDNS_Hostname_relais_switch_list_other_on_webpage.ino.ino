@@ -2,12 +2,19 @@
 //
 // switch webpage lists other devices on the local network
 //
+//
 // pitty android chrome does not do mdns
 // use bonjourbrowser app for android
 // apple does do mdns?
 // my raspberry pi does mdns
 //
 // still working on this code not all done yet
+//
+// code used from https://github.com/tzapu/WiFiManager/blob/master/examples/Parameters/SPIFFS/AutoConnectWithFSParameters/AutoConnectWithFSParameters.ino
+// code used from https://github.com/esp8266/Arduino/blob/master/libraries/ESP8266mDNS/examples/LEAmDNS/mDNS_ServiceMonitor/mDNS_ServiceMonitor.ino
+//
+// https://www.electronicwings.com/users/LuberthDijkman/projects/1337/smart-thermostat-art-the-best-nest-thing
+//
 // https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/test/art_test_1/Remote_WiFi_Sense_Switch/ESP8266_MDNS_Hostname_relais_switch.ino.ino
 //
 // https://oshwlab.com/l.dijkman/esp32-dev-kit-38-pin-to-spi-touch-tft
