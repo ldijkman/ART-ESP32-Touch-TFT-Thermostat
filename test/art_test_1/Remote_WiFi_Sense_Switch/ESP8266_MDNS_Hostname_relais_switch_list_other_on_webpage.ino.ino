@@ -299,8 +299,8 @@ void loop() {
     }
 
   }
-
-  WiFiClient client = server.available();
+  
+ WiFiClient client = server.available();
 
   if (!client)
 
@@ -405,22 +405,25 @@ void loop() {
 
  IPAddress ip = WiFi.localIP();
   String ipStr = ip.toString();
-  String s = "<!DOCTYPE HTML>\r\n<html><h3><head>Hello from ";
-  s += WiFi.hostname() + ".local at " + WiFi.localIP().toString() + "</h3></head>";
+  //String s = "<!DOCTYPE HTML>\r\n<html><h3><head>Hello from ";
+   String s = "";
+  //s += WiFi.hostname() + ".local at " + WiFi.localIP().toString() + "</h3></head>";
   s += "<br/><h4>Local HTTP services are :</h4>";
   s += "<ol>";
   for (auto info :  MDNS.answerInfo(hMDNSServiceQuery)) {
     s += "<li>";
-    s += info.serviceDomain();
+    //s += info.serviceDomain();
     if (info.hostDomainAvailable()) {
-      s += "<br/>Hostname: ";
+      //s += "<br/>Hostname: ";
+      s += "<br/>";
       s += String(info.hostDomain());
-      s += (info.hostPortAvailable()) ? (":" + String(info.hostPort())) : "";
+      //s += (info.hostPortAvailable()) ? (":" + String(info.hostPort())) : "";
     }
     if (info.IP4AddressAvailable()) {
-      s += "<br/>IP4:";
+      //s += "<br/>IP4:";
+      s += "<br/>";
       for (auto ip : info.IP4Adresses()) {
-        s += " " + ip.toString();
+        s += " <a href=http://\"" + ip.toString() + "\">"+ ip.toString() +"</a>";
       }
     }
     if (info.txtAvailable()) {
