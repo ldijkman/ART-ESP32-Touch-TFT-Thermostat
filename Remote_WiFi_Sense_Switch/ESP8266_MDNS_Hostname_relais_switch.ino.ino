@@ -1,11 +1,11 @@
 // esp8266 relais switch config portal mdns http//?????.local hostnames
-// pitty android chrome does not do mdns 
+// pitty android chrome does not do mdns
 // use bonjourbrowser app for android
 // apple does do mdns?
 // my raspberry pi does mdns
 //
-// still working on this code not all done yet  
-// 
+// still working on this code not all done yet
+//
 // https://oshwlab.com/l.dijkman/esp32-dev-kit-38-pin-to-spi-touch-tft
 // https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat
 // http://www.Arduino.TK
@@ -33,7 +33,7 @@
 WiFiServer server(80);
 
 //define your default values here, if there are different values in config.json, they are overwritten.
-char mdns_hostname[40];
+char mdns_hostname[40] = "Unique Room name?";
 char relaispin[6] = "12";
 char buttonpin[34] = "0";
 char statusledpin[34] = "13";
@@ -219,7 +219,7 @@ void setup() {
 
   Serial.println(String(relaispin).toInt());
   intrelaispin = String(relaispin).toInt();
-  Serial.println(intrelaispin); 
+  Serial.println(intrelaispin);
 
   pinMode(intrelaispin, OUTPUT);
   digitalWrite(intrelaispin, LOW);
