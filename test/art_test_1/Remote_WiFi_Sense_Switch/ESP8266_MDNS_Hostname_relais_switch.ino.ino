@@ -40,6 +40,8 @@ char buttonpin[34] = "0";
 char statusledpin[34] = "13";
 
 int intrelaispin;
+int intbuttonpin;
+int intstatusledpin;
 
 int value = LOW;
 
@@ -218,17 +220,22 @@ void setup() {
   MDNS.addService("http", "tcp", 80);
   Serial.println("mDNS responder started");
 
-  Serial.println(String(relaispin).toInt());
+
   intrelaispin = String(relaispin).toInt();
   Serial.println(intrelaispin);
+intbuttonpin = String(intbuttonpin).toInt();
+  Serial.println(intbuttonpin);
+intstatusledpin = String(intstatusledpin).toInt();
+  Serial.println(intstatusledpin);
+
 
   pinMode(intrelaispin, OUTPUT);
   digitalWrite(intrelaispin, LOW);
 
-  pinMode(13, OUTPUT);
-  digitalWrite(13, HIGH);
+  pinMode(intstatusledpin, OUTPUT);
+  digitalWrite(intstatusledpin, HIGH);
 
-  pinMode(0, INPUT);
+  pinMode(intbuttonpin, INPUT);
 
 }
 
@@ -240,19 +247,19 @@ void loop() {
 
   MDNS.update();
 
-  if (digitalRead(0) == LOW) {               // manual control on/off toggle light with pushbutton on sonoff
-    while (digitalRead(0) == LOW) {
+  if (digitalRead(intbuttonpin) == LOW) {               // manual control on/off toggle light with pushbutton on sonoff
+    while (digitalRead(intbuttonpin) == LOW) {
       /*wait for button release*/
     }
     if (value == LOW) {
       digitalWrite(String(relaispin).toInt(), HIGH); // Turn relaispin ON
       value = HIGH;
-      digitalWrite(13, LOW);
+      digitalWrite(intstatusledpin, LOW);
     }
     else {
       digitalWrite(String(relaispin).toInt(), LOW); // Turn relaispin OFF
       value = LOW;
-      digitalWrite(13, HIGH);
+      digitalWrite(intstatusledpin, HIGH);
     }
 
   }
@@ -299,7 +306,7 @@ void loop() {
   {
     digitalWrite(intrelaispin, HIGH); // Turn relaispin ON
     value = HIGH;
-    digitalWrite(13, LOW  );
+    digitalWrite(intstatusledpin, LOW  );
     Serial.println(intrelaispin);
   }
 
@@ -307,7 +314,7 @@ void loop() {
   {
     digitalWrite(intrelaispin, LOW); // Turn relaispin OFF
     value = LOW;
-    digitalWrite(13, HIGH);
+    digitalWrite(intstatusledpin, HIGH);
     Serial.println(intrelaispin);
   }
 
