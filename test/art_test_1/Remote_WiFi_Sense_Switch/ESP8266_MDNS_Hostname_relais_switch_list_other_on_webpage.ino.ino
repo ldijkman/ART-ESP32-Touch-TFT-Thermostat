@@ -1,5 +1,7 @@
 // esp8266 relais switch config portal mdns http//?????.local hostnames
 //
+// https://www.youtube.com/watch?v=sRqMcyHR-Ls
+//
 // each switch webpage automaticly linked lists other http://*.local devices on the local network
 // no settings hardcoded => all settings configurable in wifimanager 
 //
