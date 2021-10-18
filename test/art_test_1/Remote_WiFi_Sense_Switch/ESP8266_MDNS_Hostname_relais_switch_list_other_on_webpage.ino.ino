@@ -3,7 +3,7 @@
 // https://www.youtube.com/watch?v=sRqMcyHR-Ls
 //
 // each switch webpage automaticly linked lists other http://*.local devices on the local network
-// no settings hardcoded => all settings configurable in wifimanager 
+// no settings hardcoded => all settings configurable in wifimanager
 //
 //
 // pitty android chrome does not do mdns => use bonjourbrowser app for android
@@ -26,7 +26,7 @@
 // https://m.facebook.com/groups/2643123052617990
 // https://www.facebook.com/groups/esp32smartthermostat
 //
-// GNU General Public License, 
+// GNU General Public License,
 // which basically means that you may freely copy, change, and distribute it,
 // but you may not impose any restrictions on further distribution,
 // and you must make the source code available.
@@ -183,7 +183,12 @@ void setup() {
   //if it does not connect it starts an access point with the specified name
   //here  "AutoConnectAP"
   //and goes into a blocking loop awaiting configuration
-  if (!wifiManager.autoConnect("AutoConnectAP", "")) {
+
+#define ESP_getChipId()   (ESP.getChipId())
+  String soft_ap_ssid = "AutoConnectAP-" + String(ESP_getChipId(), HEX);  // wifi accesspoint name shouted in the air make it unique with chipid
+  char buf[25];
+  soft_ap_ssid.toCharArray(buf,25);                     // i dont know how strings an chars work could/should be done easier
+  if (!wifiManager.autoConnect(buf, "")) {              // password field is left empty "" no password
     Serial.println("failed to connect and hit timeout");
     delay(3000);
     //reset and try again, or maybe put it to deep sleep
