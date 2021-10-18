@@ -1,10 +1,10 @@
 // esp8266 relais switch config portal mdns http//?????.local hostnames
 //
-// switch webpage lists other devices on the local network
+// each switch webpage automaticly linked lists other http://*.local devices on the local network
+// no settings hardcoded => all settings configurable in wifimanager 
 //
 //
-// pitty android chrome does not do mdns
-// use bonjourbrowser app for android
+// pitty android chrome does not do mdns => use bonjourbrowser app for android
 // apple does do mdns?
 // my raspberry pi does mdns
 //
@@ -24,11 +24,12 @@
 // https://m.facebook.com/groups/2643123052617990
 // https://www.facebook.com/groups/esp32smartthermostat
 //
-// GNU General Public License,
+// GNU General Public License, 
 // which basically means that you may freely copy, change, and distribute it,
 // but you may not impose any restrictions on further distribution,
 // and you must make the source code available.
 //
+// keep above message intact?
 
 #include <FS.h>                   //this needs to be first, or it all crashes and burns...
 #include <WiFiManager.h>          //https://github.com/tzapu/WiFiManager
@@ -48,9 +49,9 @@ WiFiServer server(80);
 
 //define your default values here, if there are different values in config.json, they are overwritten.
 char mdns_hostname[40] = "UniqueRoomName";
-char relaispin[6] = "12";
-char buttonpin[34] = "0";
-char statusledpin[34] = "13";
+char relaispin[5] = "12";
+char buttonpin[5] = "0";
+char statusledpin[5] = "13";
 
 int intrelaispin;
 int intbuttonpin;
@@ -127,6 +128,7 @@ void setup() {
           strcpy(mdns_hostname, json["mdns_hostname"]);
           strcpy(relaispin, json["relaispin"]);
           strcpy(buttonpin, json["buttonpin"]);
+          strcpy(statusledpin, json["statusledpin"]);
         } else {
           Serial.println("failed to load json config");
         }
