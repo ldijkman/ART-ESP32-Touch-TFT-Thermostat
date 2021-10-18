@@ -33,14 +33,14 @@
 //
 // keep above message intact?
 
-#include <FS.h>                   //this needs to be first, or it all crashes and burns...
-#include <WiFiManager.h>          //https://github.com/tzapu/WiFiManager
+#include <FS.h>                   // this needs to be first, or it all crashes and burns...
+#include <WiFiManager.h>          // https://github.com/tzapu/WiFiManager
 
 #ifdef ESP32
 #include <SPIFFS.h>
 #endif
 
-#include <ArduinoJson.h>          //https://github.com/bblanchon/ArduinoJson
+#include <ArduinoJson.h>          // https://github.com/bblanchon/ArduinoJson
 #include <ESP8266WiFi.h>
 #include <ESP8266mDNS.h>
 
@@ -51,13 +51,13 @@ WiFiServer server(80);
 
 //define your default values here, if there are different values in config.json, they are overwritten.
 char mdns_hostname[40] = "UniqueRoomName";
-char relaispin[5] = "12";
-char buttonpin[5] = "0";
-char statusledpin[5] = "13";
-
-int intrelaispin;
-int intbuttonpin;
-int intstatusledpin;
+char relaispin[5] = "12";                     // should be byte or int ???
+char buttonpin[5] = "0";                      // should be byte or int ???
+char statusledpin[5] = "13";                  // should be byte or int ???
+                                         // this should be done easier
+int intrelaispin;                             // for char string to int
+int intbuttonpin;                             // for char string to int  
+int intstatusledpin;                          // for char string to int
 
 int value = LOW;
 /*
@@ -95,7 +95,7 @@ void setup() {
   Serial.begin(115200);
   Serial.println();
 
-  //clean FS, for testing
+  //clean FS, for testing              or just program with => all flash contents?
   //SPIFFS.format();
 
   //read configuration from FS json
@@ -181,11 +181,11 @@ void setup() {
 
   //fetches ssid and pass and tries to connect
   //if it does not connect it starts an access point with the specified name
-  //here  "AutoConnectAP"
+  //here  "AutoConnectAP-chipid"
   //and goes into a blocking loop awaiting configuration
 
 #define ESP_getChipId()   (ESP.getChipId())
-  String soft_ap_ssid = "AutoConnectAP-" + String(ESP_getChipId(), HEX);  // wifi accesspoint name shouted in the air make it unique with chipid
+  String soft_ap_ssid = "AutoConnectAP-" + String(ESP_getChipId(), HEX);  // wifi accesspoint name broadcasted in the air make it unique with chipid
   char buf[25];
   soft_ap_ssid.toCharArray(buf,25);                     // i dont know how strings an chars work could/should be done easier
   if (!wifiManager.autoConnect(buf, "")) {              // password field is left empty "" no password
@@ -197,7 +197,7 @@ void setup() {
   }
 
   //if you get here you have connected to the WiFi
-  Serial.println("connected...yeey :)");
+  Serial.println("connected...yipee..yeey! :)");
 
   //read updated parameters
   strcpy(mdns_hostname, custom_MDNS_HostName.getValue());
@@ -417,22 +417,22 @@ void loop() {
   //String s = "<!DOCTYPE HTML>\r\n<html><h3><head>Hello from ";
   String s = "";
   //s += WiFi.hostname() + ".local at " + WiFi.localIP().toString() + "</h3></head>";
-  s += "<br/><h4>Local HTTP services are :</h4>";
-  s += "";
+  s += "<h4>Local HTTP services are :</h4>";
+  //s += "";
   for (auto info :  MDNS.answerInfo(hMDNSServiceQuery)) {
-    s += "";
+    //s += "";
     //s += info.serviceDomain();
     if (info.hostDomainAvailable()) {
       //s += "<br/>Hostname: ";
-      s += "<br/>";
-      s += String(info.hostDomain());
+     // s += "<br/>";
+      s += String(info.hostDomain());                                                   // .local name
       //s += (info.hostPortAvailable()) ? (":" + String(info.hostPort())) : "";
     }
     if (info.IP4AddressAvailable()) {
       //s += "<br/>IP4:";
       s += "<br/>";
       for (auto ip : info.IP4Adresses()) {
-        s += "<a href=\"http://" + ip.toString() + "\">" + ip.toString() + "</a>";    // make it a link
+        s += "<a href=\"http://" + ip.toString() + "\">" + ip.toString() + "</a><br><br>";    // make ip adres a link
       }
     }
     if (info.txtAvailable()) {
