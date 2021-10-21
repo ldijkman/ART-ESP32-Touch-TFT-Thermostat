@@ -1,5 +1,7 @@
 // esp8266 relais switch config portal mdns http//?????.local hostnames
 //
+// does anyone know howto add an OTA button on the switch webpage???????? (over the air update upgrade switch)
+//
 // https://www.youtube.com/watch?v=sRqMcyHR-Ls
 //
 // each switch webpage automaticly linked lists other http://*.local devices on the local network
