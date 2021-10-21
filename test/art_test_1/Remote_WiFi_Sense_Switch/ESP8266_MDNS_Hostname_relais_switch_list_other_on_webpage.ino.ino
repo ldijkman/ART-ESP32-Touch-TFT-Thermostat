@@ -2,6 +2,8 @@
 //
 // https://www.youtube.com/watch?v=sRqMcyHR-Ls
 //
+// does anyone know howto add an OTA button on the switch webpage???????? (over the air update upgrade switch)
+//
 // each switch webpage automaticly linked lists other http://*.local devices on the local network
 // no settings hardcoded => all settings configurable in wifimanager
 //
