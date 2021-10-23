@@ -8,6 +8,8 @@
 // each switch webpage automaticly linked lists other http://*.local devices on the local network
 // no settings hardcoded => all settings configurable in wifimanager
 //
+// no hard to remember ip numbers
+// find your esp devices easy with mdns http://kitchen.local http://living.local etcetera
 //
 // pitty android chrome does not do mdns => use bonjourbrowser app for android
 // apple does do mdns?
