@@ -1,7 +1,10 @@
 # latest esp8266 relais switch mdns config portal
 
+List automaticly scanned linked list other esp devices on network
+
 https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/test/art_test_1/Remote_WiFi_Sense_Switch/ESP8266_MDNS_Hostname_relais_switch.ino.ino
 
+Tzapu wifimanager no hardcoded wifi settings and configurable mdns hostname and i/o
 
 https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/test/art_test_1/Remote_WiFi_Sense_Switch/ESP8266_MDNS_Hostname_relais_switch_list_other_on_webpage.ino.ino
 
