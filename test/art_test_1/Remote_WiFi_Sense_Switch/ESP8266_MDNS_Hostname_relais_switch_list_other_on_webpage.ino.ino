@@ -9,6 +9,7 @@
 // like the html to set time slider but needs more periods in a day http://jsfiddle.net/inadcod/GyanJ/
 // another multi slider https://embed.plnkr.co/XJyMrxVgFixCKkUnwUTA/preview
 //                      https://run.plnkr.co/preview/ckv3kuhbm00072z61vhtkj9oq/
+// https://refreshless.com/nouislider/
 //
 //
 //
