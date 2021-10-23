@@ -10,6 +10,7 @@
 //
 // no hard to remember ip numbers
 // find your esp devices easy with mdns http://kitchen.local http://living.local etcetera
+// and each esp device shows a linked list of the other devices on the network on its webpage
 //
 // pitty android chrome does not do mdns => use bonjourbrowser app for android
 // apple does do mdns?
