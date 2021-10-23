@@ -6,6 +6,10 @@
 //
 // does anyone know howto add an OTA button on the switch webpage???????? (over the air update upgrade switch)
 //
+// like the html to set time slider but needs more periods in a day http://jsfiddle.net/inadcod/GyanJ/
+//
+//
+//
 // each switch webpage automaticly linked lists other http://*.local devices on the local network
 // no settings hardcoded => all settings configurable in wifimanager
 //
