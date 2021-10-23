@@ -7,6 +7,7 @@
 // does anyone know howto add an OTA button on the switch webpage???????? (over the air update upgrade switch)
 //
 // like the html to set time slider but needs more periods in a day http://jsfiddle.net/inadcod/GyanJ/
+// another multi slider https://embed.plnkr.co/XJyMrxVgFixCKkUnwUTA/preview
 //
 //
 //
