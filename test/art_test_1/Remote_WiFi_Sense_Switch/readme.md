@@ -12,6 +12,8 @@ https://www.youtube.com/watch?v=sRqMcyHR-Ls
 
 List automaticly scanned linked list other esp devices on network
 
+If a new switch mdns http://***.local is added it automaticly appears in the linked list on all other esp devices webpage
+
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/test/art_test_1/Remote_WiFi_Sense_Switch/Screenshot_20211017-132221_BonjourBrowser.jpg">
 --
 Tzapu wifimanager no hardcoded wifi settings and configurable mdns hostname and i/o
