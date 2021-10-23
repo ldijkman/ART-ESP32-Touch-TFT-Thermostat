@@ -8,7 +8,7 @@
 // each switch webpage automaticly linked lists other http://*.local devices on the local network
 // no settings hardcoded => all settings configurable in wifimanager
 //
-// no hard to remember ip numbers
+// no hard to search or remember ip numbers
 // find your esp devices easy with mdns http://kitchen.local http://living.local etcetera
 // and each esp device shows a linked list of the other devices on the network on its webpage
 //
