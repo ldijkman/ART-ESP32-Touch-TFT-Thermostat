@@ -1,5 +1,5 @@
 // esp8266 relais switch config portal mdns http//?????.local hostnames
-// i noticed that my sonoff are ESP8285 bt it programs well wth => generic ESP8266 settings of arduino ide
+// i noticed that my sonoffs are ESP8285 but it programs well with => generic ESP8266 settings of arduino ide
 //
 // does anyone know howto add an OTA button on the switch webpage???????? (over the air update upgrade switch)
 //
