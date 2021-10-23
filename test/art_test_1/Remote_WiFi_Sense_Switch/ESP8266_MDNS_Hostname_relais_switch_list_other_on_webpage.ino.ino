@@ -12,7 +12,7 @@
 // find your esp devices easy with mdns http://kitchen.local http://living.local etcetera
 // and each esp device shows a linked list of the other devices on the network on its webpage
 //
-// pitty android chrome does not do mdns => use bonjourbrowser app for android
+// pitty android chrome does not do mdns => use bonjourbrowser app for android https://play.google.com/store/apps/details?id=de.wellenvogel.bonjourbrowser&hl=en&gl=US
 // apple does do mdns?
 // my raspberry pi does mdns
 //
