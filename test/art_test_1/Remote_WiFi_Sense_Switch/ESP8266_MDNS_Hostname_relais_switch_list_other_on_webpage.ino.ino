@@ -10,6 +10,7 @@
 // another multi slider https://embed.plnkr.co/XJyMrxVgFixCKkUnwUTA/preview
 //                      https://run.plnkr.co/preview/ckv3kuhbm00072z61vhtkj9oq/
 // https://refreshless.com/nouislider/
+// https://github.com/leongersen/noUiSlider
 //
 //
 //
