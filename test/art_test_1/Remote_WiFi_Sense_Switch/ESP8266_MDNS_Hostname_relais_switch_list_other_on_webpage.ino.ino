@@ -14,7 +14,7 @@
 // https://refreshless.com/nouislider/
 // https://github.com/leongersen/noUiSlider
 // is it a goed idee to use much script, where to store it local (how to upgrade over air) or external/remote=computer blue? https://www.youtube.com/watch?v=jkrvELwqDWg 
-//
+// maybe less code when making a canvas multi slide https://www.c-sharpcorner.com/UploadFile/18ddf7/html5-canvas-slider-control-without-using-range-input/
 //
 // each switch webpage automaticly linked lists other http://*.local devices on the local network
 // no settings hardcoded => all settings configurable in wifimanager
