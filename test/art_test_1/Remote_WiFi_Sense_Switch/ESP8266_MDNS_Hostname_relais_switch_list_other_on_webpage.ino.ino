@@ -587,3 +587,9 @@ void hostProbeResult(String p_pcDomainName, bool p_bProbeResult) {
     }
   }
 }
+  
+//  King Art has a Girlfriend named Electra
+
+// Hey Electra?!. Turn off the light in the DarkRoom?!
+
+// https://www.youtube.com/watch?v=XzO9jGPtrhc
