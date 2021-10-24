@@ -11,7 +11,7 @@
 //                      https://run.plnkr.co/preview/ckv3kuhbm00072z61vhtkj9oq/
 // https://refreshless.com/nouislider/
 // https://github.com/leongersen/noUiSlider
-// is it a goed idee to use much script, where to store it local (how to upgrade over air) or remote=computer blue? https://www.youtube.com/watch?v=szs4bWoul8w 
+// is it a goed idee to use much script, where to store it local (how to upgrade over air) or remote=computer blue? https://www.youtube.com/watch?v=jkrvELwqDWg 
 //
 //
 // each switch webpage automaticly linked lists other http://*.local devices on the local network
