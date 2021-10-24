@@ -1,4 +1,4 @@
-// I Do Not like that Google Fucked Up the Google login on Raspberry Pi Chromium Browser!!!
+// I Do Not like that Google Fucked Up the Google login on Raspberry Pi Chromium Browser!!! => sudo apt install -y chromium-browser rpi-chromium-mods
 //
 // esp8266 relais switch tzapu wifi manager config portal with mdns http//?????.local hostnames
 // i noticed that my sonoffs are ESP8285 but it programs well with => generic ESP8266 settings of arduino ide
