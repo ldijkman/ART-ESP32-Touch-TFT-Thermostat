@@ -21,6 +21,8 @@ Tzapu wifimanager no hardcoded wifi settings and configurable mdns hostname and 
 
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/test/art_test_1/Remote_WiFi_Sense_Switch/Screenshot_20211016-120537_Chrome.jpg">
 
+----
+researching for a nice way to input and fast view automatice timed settings
 
 slilebars needs scales and a timefield for each bar
 
