@@ -32,7 +32,7 @@ but could be a nice fast graphical overview of switch times on a day in landscap
 
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/test/art_test_1/Remote_WiFi_Sense_Switch/Screenshot_20211025-174354_Chrome.jpg">
 
-like this slider
+like this slider that the handles are not blocking view of the bar
 
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/test/art_test_1/Remote_WiFi_Sense_Switch/Screenshot_20211025-175631_Chrome.jpg">
 
