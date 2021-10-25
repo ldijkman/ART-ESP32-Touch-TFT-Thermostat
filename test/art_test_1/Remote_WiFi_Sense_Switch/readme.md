@@ -24,9 +24,9 @@ Tzapu wifimanager no hardcoded wifi settings and configurable mdns hostname and 
 
 slilebars needs scales and a timefield for each bar
 
-touch does not work on phone
+touch and slide does not work properly on phone
 
-but could be nice fast graphical overview of switch times on a day in landscape mode on phone 
+but could be a nice fast graphical overview of switch times on a day in landscape mode on phone 
 
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/test/art_test_1/Remote_WiFi_Sense_Switch/Screenshot_20211025-174354_Chrome.jpg">
 
