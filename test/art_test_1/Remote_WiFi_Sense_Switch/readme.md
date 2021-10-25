@@ -38,6 +38,14 @@ like this slider that the handles are not blocking view of the bar
 
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/test/art_test_1/Remote_WiFi_Sense_Switch/Screenshot_20211025-175631_Chrome.jpg">
 
+-
+
+Nouislider works nice on phone
+
+https://jsfiddle.net/leongersen/9hyfv0bw/11/
+
+-
+-
 
 remote relais lightswitch used esp8266 nodemcu / wemos d1 r1 mini with relais
 
