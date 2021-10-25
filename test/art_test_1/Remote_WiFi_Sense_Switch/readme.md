@@ -44,7 +44,11 @@ Nouislider works nice on phone
 
 https://jsfiddle.net/user/leongersen/fiddles/
 
+---
 
+2 handles 0 to 24 hour https://jsfiddle.net/luberth/ow3zceyn/show/
+
+---
 -
 -
 
