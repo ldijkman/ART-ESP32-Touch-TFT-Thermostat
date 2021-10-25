@@ -1,5 +1,8 @@
 // I Do Not like that Google Fucked Up the Google login on Raspberry Pi Chromium Browser!!! => sudo apt install -y chromium-browser rpi-chromium-mods
 //
+// https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/tree/main/test/art_test_1/Remote_WiFi_Sense_Switch
+/
+//
 // esp8266 relais switch tzapu wifi manager config portal with mdns http//?????.local hostnames
 // i noticed that my sonoffs are ESP8285 but it programs well with => generic ESP8266 settings of arduino ide
 // tested with sonoff basic esp8285, esp01-esp8266, wemos d1 mini esp8266 with relais shield
