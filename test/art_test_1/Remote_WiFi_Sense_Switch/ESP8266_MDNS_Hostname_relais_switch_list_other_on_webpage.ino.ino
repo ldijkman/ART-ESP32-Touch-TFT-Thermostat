@@ -10,9 +10,13 @@
 //
 // like the html to set time slider but needs more periods in a day 
 //                      http://jsfiddle.net/inadcod/GyanJ/
+// if made better timescale and fields for time, it would show times well in landscape on phone 
+// but touch and slide on phone does not work
 //                      http://jsfiddle.net/luberth/5bs2gan6/show/
+//
 // another multi slider https://embed.plnkr.co/XJyMrxVgFixCKkUnwUTA/preview
 //                      https://run.plnkr.co/preview/ckv3kuhbm00072z61vhtkj9oq/
+//
 // https://refreshless.com/nouislider/
 // https://github.com/leongersen/noUiSlider
 // is it a goed idee to use much script, where to store it local (how to upgrade over air) or external/remote=computer blue? https://www.youtube.com/watch?v=jkrvELwqDWg 
