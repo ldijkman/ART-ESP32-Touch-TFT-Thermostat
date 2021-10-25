@@ -21,6 +21,17 @@ Tzapu wifimanager no hardcoded wifi settings and configurable mdns hostname and 
 
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/test/art_test_1/Remote_WiFi_Sense_Switch/Screenshot_20211016-120537_Chrome.jpg">
 
+
+slilebars needs scales and a timefield for each bar
+
+touch does not work on phone
+
+but could be nice fast graphical overview of switch times on a day in landscape mode on phone 
+
+<img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/test/art_test_1/Remote_WiFi_Sense_Switch/Screenshot_20211025-174354_Chrome.jpg">
+
+
+
 remote relais lightswitch used esp8266 nodemcu / wemos d1 r1 mini with relais
 
 on of switcted from touch buttons => settings menu 2 on art lcd touch screen
