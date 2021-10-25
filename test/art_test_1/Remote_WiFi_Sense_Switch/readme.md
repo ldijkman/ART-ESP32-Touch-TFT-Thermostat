@@ -30,6 +30,8 @@ touch and slide does not work properly on phone
 
 but could be a nice fast graphical overview of switch times on a day in landscape mode on phone 
 
+Hey Electra?! Turn on the lights automatic each monday fron 2:55 to 5:50?! ;-)
+
 <img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/test/art_test_1/Remote_WiFi_Sense_Switch/Screenshot_20211025-174354_Chrome.jpg">
 
 like this slider that the handles are not blocking view of the bar
