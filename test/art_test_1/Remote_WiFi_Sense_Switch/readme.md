@@ -42,7 +42,8 @@ like this slider that the handles are not blocking view of the bar
 
 Nouislider works nice on phone
 
-https://jsfiddle.net/leongersen/9hyfv0bw/11/
+https://jsfiddle.net/user/leongersen/fiddles/
+
 
 -
 -
