@@ -48,7 +48,7 @@ https://jsfiddle.net/user/leongersen/fiddles/
 
 2 handles 0 to 24 hour https://jsfiddle.net/luberth/ow3zceyn/show/
 
-<img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/test/art_test_1/Remote_WiFi_Sense_Switch/Screenshot_20211025-195305_Chrome.jpg">
+<img src="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/test/art_test_1/Remote_WiFi_Sense_Switch/20211030_150201.jpg">
 ---
 -
 -
