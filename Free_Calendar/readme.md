@@ -7,6 +7,7 @@ https://plnkr.co/plunk/2u0EyeybmaM9kdI8
 
 
 
+![Screenshot from 2023-12-26 07-34-43](https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/assets/45427770/53eb168b-f580-4fdd-93b6-6328c8a21bd4)
 
 
 
